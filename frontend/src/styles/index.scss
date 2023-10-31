@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+
 *,
 *::before,
 *::after {
@@ -13,4 +15,7 @@ html {
 
 body {
   font-size: 1.6rem;
+  line-height: 1.5;
+  font-family: "Satoshi", sans-serif;
+  color: #000;
 }
