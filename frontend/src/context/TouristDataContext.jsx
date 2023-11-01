@@ -6,9 +6,20 @@ const context = createContext();
 export default function TouristDataContext({ children }) {
   const [activePanel, setActivePanel] = useState("intro");
   const [language, setLanguage] = useState("en");
+  const [selectedVisitPeriod, setSelectedVisitPeriod] = useState(null);
+  const [visitCount, setVisitCount] = useState(null);
   return (
     <context.Provider
-      value={{ activePanel, setActivePanel, language, setLanguage }}
+      value={{
+        activePanel,
+        setActivePanel,
+        language,
+        setLanguage,
+        selectedVisitPeriod,
+        setSelectedVisitPeriod,
+        visitCount,
+        setVisitCount,
+      }}
     >
       {children}
     </context.Provider>

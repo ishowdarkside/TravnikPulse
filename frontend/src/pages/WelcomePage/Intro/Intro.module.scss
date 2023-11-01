@@ -31,25 +31,26 @@
 
   .text {
     position: absolute;
-    width: 413px;
+    width: 41.3rem;
+    max-width: 41.3rem;
     bottom: 0px;
     left: 0;
-
-    animation: textAnimation 1s linear 5s forwards;
-    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: textAnimation 0.4s linear 3s forwards;
+    opacity: 0;
   }
   @keyframes textAnimation {
     0% {
       bottom: 0;
     }
     100% {
+      opacity: 1;
       bottom: 188px;
     }
   }
   .plane {
     position: absolute;
     left: 20px;
-    animation: planeAnimation 5s linear forwards;
+    animation: planeAnimation 3s linear forwards;
   }
 
   .loc {
