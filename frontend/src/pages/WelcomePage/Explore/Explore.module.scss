@@ -1,0 +1,45 @@
+@import "../../../styles/mixin.scss";
+
+.exploreSection {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interactionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    margin-top: 4rem;
+    @include text("display-md-bold");
+  }
+
+  p {
+    max-width: 33rem;
+    text-align: center;
+    span {
+      color: #ee2d21;
+    }
+
+    @include text("text-md-semibold");
+  }
+
+  button {
+    padding: 1.2rem 2rem;
+    background-color: #ee2d21;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 33rem;
+    max-width: 33rem;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-top: 4rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}
