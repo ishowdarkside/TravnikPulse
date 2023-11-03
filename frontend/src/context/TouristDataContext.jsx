@@ -8,6 +8,7 @@ export default function TouristDataContext({ children }) {
   const [language, setLanguage] = useState("en");
   const [selectedVisitPeriod, setSelectedVisitPeriod] = useState(null);
   const [visitCount, setVisitCount] = useState(null);
+  const [position, setPosition] = useState(null);
   return (
     <context.Provider
       value={{
@@ -19,6 +20,8 @@ export default function TouristDataContext({ children }) {
         setSelectedVisitPeriod,
         visitCount,
         setVisitCount,
+        position,
+        setPosition,
       }}
     >
       {children}

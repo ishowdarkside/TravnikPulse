@@ -1,10 +1,12 @@
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
-import Map from '../../../components/Map/Map';
+import Map from "../../../components/Map/Map";
 import styles from "./Location.module.scss";
+import { useState } from "react";
 
 export default function Location() {
   const { activePanel, setActivePanel } = useTouristDataContext();
+  const [isMarked, setIsMarked] = useState(false);
 
   return (
     <section className={styles.locationSection}>
@@ -18,9 +20,12 @@ export default function Location() {
           Travnik, nearby you
         </p>
 
-        <Map />
+        <Map setIsMarked={setIsMarked} />
 
-        <button onClick={() => setActivePanel("preferenceDetails")}>
+        <button
+          onClick={() => setActivePanel("preferenceDetails")}
+          disabled={!isMarked}
+        >
           Proceed to App
         </button>
       </div>
