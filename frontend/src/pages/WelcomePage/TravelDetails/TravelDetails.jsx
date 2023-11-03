@@ -84,7 +84,7 @@ export default function TravelDetails() {
             </div>
           </div>
         </div>
-        <button>Continue</button>
+        <button onClick={() => setActivePanel('locationDetails')}>Continue</button>
       </div>
     </section>
   );

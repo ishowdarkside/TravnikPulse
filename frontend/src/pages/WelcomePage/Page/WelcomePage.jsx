@@ -5,6 +5,8 @@ import styles from "./WelcomePage.module.scss";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import Explore from "../Explore/Explore";
 import TravelDetails from "../TravelDetails/TravelDetails";
+import Location from "../Location/Location";
+import Preference from "../Preferences/Preference";
 
 export default function WelcomePage() {
   const { activePanel, setActivePanel } = useTouristDataContext();
@@ -19,6 +21,8 @@ export default function WelcomePage() {
       {activePanel === "language" && <Language />}
       {activePanel === "explore" && <Explore />}
       {activePanel === "travelDetails" && <TravelDetails />}
+      {activePanel === 'locationDetails' && <Location />}
+      {activePanel === 'preferenceDetails' && <Preference />}
     </section>
   );
 }
