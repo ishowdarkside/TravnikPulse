@@ -20,8 +20,8 @@ export default function Preference() {
         <PreferenceOptions />
 
         <button
-          onClick={() => setActivePanel("preferenceDetails")}
-          disabled={preferences.length === 0}
+          onClick={() => setActivePanel("proceed")}
+          disabled={preferences.length < 5}
         >
           Submit Choices
         </button>

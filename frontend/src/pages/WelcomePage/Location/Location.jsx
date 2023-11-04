@@ -25,7 +25,7 @@ export default function Location() {
           onClick={() => setActivePanel("preferenceDetails")}
           disabled={!position}
         >
-          Proceed to App
+          Continue
         </button>
       </div>
     </section>

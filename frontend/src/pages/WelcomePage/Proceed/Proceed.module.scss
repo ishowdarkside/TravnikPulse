@@ -1,0 +1,29 @@
+.proceedPanel {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    width: 30rem;
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+
+    button {
+      width: 100%;
+
+      line-height: 2.4rem;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 700;
+      padding: 1.2rem 0;
+      background-color: #ee2d21;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+}
