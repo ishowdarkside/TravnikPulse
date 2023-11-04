@@ -5,8 +5,7 @@ import styles from "./Location.module.scss";
 import { useState } from "react";
 
 export default function Location() {
-  const { activePanel, setActivePanel } = useTouristDataContext();
-  const [isMarked, setIsMarked] = useState(false);
+  const { activePanel, setActivePanel, position } = useTouristDataContext();
 
   return (
     <section className={styles.locationSection}>
@@ -20,11 +19,11 @@ export default function Location() {
           Travnik, nearby you
         </p>
 
-        <Map setIsMarked={setIsMarked} />
+        <Map />
 
         <button
           onClick={() => setActivePanel("preferenceDetails")}
-          disabled={!isMarked}
+          disabled={!position}
         >
           Proceed to App
         </button>

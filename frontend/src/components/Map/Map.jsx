@@ -20,10 +20,9 @@ const customIcon = L.icon({
   iconAnchor: [16, 32],
 });
 
-export default function Map({ setIsMarked }) {
+export default function Map() {
   const { setPosition, position } = useTouristDataContext();
   const handleMapClick = (e) => {
-    setIsMarked(true);
     setPosition({ lat: e.latlng.lat, lng: e.latlng.lng });
   };
 

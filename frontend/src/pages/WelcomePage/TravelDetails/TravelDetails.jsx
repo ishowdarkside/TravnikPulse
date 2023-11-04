@@ -84,7 +84,12 @@ export default function TravelDetails() {
             </div>
           </div>
         </div>
-        <button onClick={() => setActivePanel('locationDetails')}>Continue</button>
+        <button
+          onClick={() => setActivePanel("locationDetails")}
+          disabled={!selectedVisitPeriod || !visitCount}
+        >
+          Continue
+        </button>
       </div>
     </section>
   );
