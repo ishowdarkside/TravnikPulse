@@ -3,10 +3,17 @@ export default function Protect({ children }) {
   const selectedVisitPeriod = localStorage.getItem("selectedVisitPeriod");
   const preferences = JSON.parse(localStorage.getItem("preferences"));
   const visitCount = localStorage.getItem("visitCount");
+  const language = localStorage.getItem("language");
   const position = JSON.parse(localStorage.getItem("position"));
 
-  if (!selectedVisitPeriod || !preferences || !visitCount || !position)
+  if (
+    !selectedVisitPeriod ||
+    !preferences ||
+    !visitCount ||
+    !position ||
+    !language
+  )
     return <Navigate to="/welcome" />;
-  console.log(selectedVisitPeriod, preferences, visitCount, position);
+
   return children;
 }

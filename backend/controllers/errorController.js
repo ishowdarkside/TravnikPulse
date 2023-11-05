@@ -1,13 +1,37 @@
 const errorController = (err, req, res, next) => {
   if (process.env.NODE_ENV === "dev") {
     res.status(500).json({
-      message: err.message,
       err,
       stack: err.stack,
     });
   }
 
   if (process.env.NODE_ENV === "production") {
+    if (err.errors?.date) {
+      return res.status(400).json({
+        status: "fail",
+        message: "Incorrect date format",
+      });
+    }
+
+    if (err.errors["categories.0"]) {
+      const { value } = err.errors["categories.0"]?.properties;
+
+      return res.status(400).json({
+        status: "fail",
+        message: `${value} isn't right category`,
+      });
+    }
+
+    if (err.name === "ValidationError") {
+      const errMsg = Object.values(err.errors).at(0)?.message;
+
+      return res.status(400).json({
+        status: "fail",
+        message: errMsg,
+      });
+    }
+
     if (err.isOperational) {
       return res.status(err.statusCode).json({
         status: "fail",

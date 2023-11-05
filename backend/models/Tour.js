@@ -37,49 +37,55 @@ const TourSchema = new mongoose.Schema({
       "petFriendlyPlaces",
       "vegeterian",
     ],
-    location: {
-      lat: {
-        type: Number,
-        required: [true, "Please the location of your tour"],
-      },
-      lng: {
-        type: Number,
-        required: [true, "Please provide the location of your tour"],
-      },
-    },
-    duration: {
+    required: [true, "Provide categories for tour"],
+  },
+  location: {
+    lat: {
       type: Number,
-      required: [true, "Please provide duration of the tour"],
+      required: [true, "Please the location of your tour"],
     },
-    date: {
-      type: Date,
-      required: [true, "Please provide the date of the event"],
+    lng: {
+      type: Number,
+      required: [true, "Please provide the location of your tour"],
     },
-    price: {
-      type: mongoose.Schema.Mixed,
-      enum: ["Free"],
-      required: [true, "Provide price of event or asign as FREE"],
-    },
-    ratings: {
-      type: [Number],
-    },
+  },
+  duration: {
+    type: Number,
+    required: [true, "Please provide duration of the tour"],
+  },
+  date: {
+    type: Date,
+    required: [true, "Please provide the date of the event"],
+  },
+  price: {
+    type: mongoose.Schema.Types.Mixed,
+    enum: ["Free"],
+    required: [true, "Provide price of event or asign as FREE"],
+  },
+  ratings: {
+    type: [Number],
+  },
 
-    reviews: {
-      type: [
-        {
-          review: {
-            type: String,
-          },
-          images: {
-            type: [String],
-          },
-          approved: {
-            type: Boolean,
-            default: false,
-          },
+  reviews: {
+    type: [
+      {
+        review: {
+          type: String,
         },
-      ],
-    },
+        images: {
+          type: [String],
+        },
+        approved: {
+          type: Boolean,
+          default: false,
+        },
+      },
+    ],
+  },
+
+  coverImg: {
+    type: String,
+    required: [true, "Provide tour cover image"],
   },
 });
 
