@@ -51,12 +51,12 @@ const TourSchema = new mongoose.Schema({
       type: Number,
       required: [true, "Please provide duration of the tour"],
     },
-    Date: {
+    date: {
       type: Date,
       required: [true, "Please provide the date of the event"],
     },
     price: {
-      type: Mongoose.Schema.Mixed,
+      type: mongoose.Schema.Mixed,
       enum: ["Free"],
       required: [true, "Provide price of event or asign as FREE"],
     },
@@ -83,6 +83,6 @@ const TourSchema = new mongoose.Schema({
   },
 });
 
-const Tour = mongoose.Model("Tour", TourSchema);
+const Tour = mongoose.model("Tour", TourSchema);
 
 module.exports = Tour;

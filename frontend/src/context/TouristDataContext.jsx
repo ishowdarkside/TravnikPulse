@@ -10,6 +10,7 @@ export default function TouristDataContext({ children }) {
   const [visitCount, setVisitCount] = useState(null);
   const [position, setPosition] = useState(null);
   const [preferences, setPreferences] = useState([]);
+  const [suggestPlace, setSuggestPlace] = useState(false);
   return (
     <context.Provider
       value={{
@@ -25,6 +26,8 @@ export default function TouristDataContext({ children }) {
         setPosition,
         preferences,
         setPreferences,
+        suggestPlace,
+        setSuggestPlace,
       }}
     >
       {children}

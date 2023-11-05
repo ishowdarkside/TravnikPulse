@@ -5,6 +5,7 @@ import DateActive from "../../../assets/date-active.png";
 import DateInactive from "../../../assets/date-inactive.png";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
+import { TypeAnimation } from "react-type-animation";
 
 export default function TravelDetails() {
   const {
@@ -13,6 +14,8 @@ export default function TravelDetails() {
     visitCount,
     setVisitCount,
     setActivePanel,
+    suggestPlace,
+    setSuggestPlace,
   } = useTouristDataContext();
 
   return (
@@ -56,6 +59,33 @@ export default function TravelDetails() {
               3+
             </div>
           </div>
+          {selectedVisitPeriod >= 2 && (
+            <div className={styles.checkboxWrapper}>
+              <div
+                className={`${styles.checkbox} ${
+                  suggestPlace ? styles.checkboxActive : ""
+                }`}
+                onClick={() => setSuggestPlace((curr) => !curr)}
+              ></div>
+              <span>
+                Do you want us to suggest{" "}
+                <TypeAnimation
+                  sequence={[
+                    // Same substring at the start will only be typed out once, initially
+                    "hotels",
+                    1000, // wait 1s before replacing "Mice" with "Hamsters"
+                    "motels",
+                    1000,
+                    "guesthouses",
+                    1000,
+                    "cottages",
+                    1000,
+                  ]}
+                  repeat={Infinity}
+                />
+              </span>
+            </div>
+          )}
         </div>
         <div className={styles.touristCountWrapper}>
           <span>How many of you are visiting Travnik?</span>

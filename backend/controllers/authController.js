@@ -49,7 +49,6 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.refresh = catchAsync(async (req, res, next) => {
   const refreshToken = req.cookies.refreshToken;
-
   // Check for refresh token
   if (!refreshToken)
     return res
