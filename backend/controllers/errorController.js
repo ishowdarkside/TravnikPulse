@@ -14,7 +14,7 @@ const errorController = (err, req, res, next) => {
       });
     }
 
-    if (err.errors["categories.0"]) {
+    if (err.errors?.["categories.0"]) {
       const { value } = err.errors["categories.0"]?.properties;
 
       return res.status(400).json({

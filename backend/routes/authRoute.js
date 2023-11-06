@@ -1,9 +1,13 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 const router = express.Router();
-const { login, refresh } = require(path.join(__dirname, '..', 'controllers', 'authController'));
+const { login } = require(path.join(
+  __dirname,
+  "..",
+  "controllers",
+  "authController"
+));
 
-router.post('/login', login);
-router.post('/refresh', refresh);
+router.post("/login", login);
 
 module.exports = router;

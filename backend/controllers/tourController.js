@@ -35,12 +35,34 @@ exports.getTours = catchAsync(async (req, res, next) => {
 });
 
 exports.getSingleTour = catchAsync(async (req, res, next) => {
-  const { tourId } = req.params;
-  const tour = await Tour.findById(tourId);
+  const { tourID } = req.params;
+  const tour = await Tour.findById(tourID);
   if (!tour) return next(new AppError(404, "Tour not found!"));
 
   return res.status(200).json({
     status: "success",
     tour,
   });
+});
+
+exports.editTour = catchAsync(async (req, res, next) => {
+  const tour = await Tour.findById(tourID);
+
+  if (!tour) return next(new AppError(404, "Tour not found!"));
+  Object.entries(req.body).forEach((e) => {
+    tour[e[0]] = e[1];
+  });
+
+  await tour.save({ validateBeforeSave: true });
+
+  res.status(200).json({
+    status: "success",
+    message: "Tour updated successfully!",
+  });
+});
+
+exports.deleteTour = catchAsync(async (req, res, next) => {
+  const { tourID } = req.params;
+  await Tour.findByIdAndDelete(tourID);
+  res.status(204).json({});
 });

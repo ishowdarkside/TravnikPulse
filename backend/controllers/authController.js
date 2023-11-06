@@ -1,5 +1,6 @@
 const path = require("path");
 const catchAsync = require(path.join(__dirname, "..", "utils", "catchAsync"));
+const AppError = require(path.join(__dirname, "..", "utils", "AppError"));
 const jwt = require("jsonwebtoken");
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -24,53 +25,24 @@ exports.login = catchAsync(async (req, res, next) => {
       .json({ status: "fail", message: "Invalid username/password" });
 
   // Generate access token
-  const accessToken = jwt.sign(
-    { username: adminData.username },
-    process.env.SECRET_KEY,
-    { expiresIn: "10s" }
-  );
-
-  // Generate refresh token
-  const refreshToken = jwt.sign(
-    { username: adminData.username },
-    process.env.SECRET_KEY,
-    { expiresIn: "7d" }
-  );
+  const token = jwt.sign({ id: process.env.ADMIN_ID }, process.env.SECRET_KEY, {
+    expiresIn: "7d",
+  });
 
   // Set refresh token as a cookie
-  res.cookie("refreshToken", refreshToken, {
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-  });
 
   // Return access token
-  res.json({ accessToken });
+  res.json({
+    status: "success",
+    message: "Logged in successfully!",
+    token,
+  });
 });
 
-exports.refresh = catchAsync(async (req, res, next) => {
-  const refreshToken = req.cookies.refreshToken;
-  // Check for refresh token
-  if (!refreshToken)
-    return res
-      .status(403)
-      .json({ status: "fail", message: "Refresh token not provided" });
-
-  // Verify refresh token
-  jwt.verify(refreshToken, process.env.SECRET_KEY, (err, user) => {
-    // Validate refresh token
-    if (err)
-      return res
-        .status(403)
-        .json({ status: "fail", message: "Invalid refresh token" });
-
-    // Generate new access token
-    const accessToken = jwt.sign(
-      { username: user.username },
-      process.env.SECRET_KEY,
-      { expiresIn: "1h" }
-    );
-
-    // Return access token
-    res.json({ accessToken });
-  });
+exports.protect = catchAsync(async (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")?.[1];
+  if (!token) return next(new AppError(401, "Unauthorized!"));
+  const verified = await jwt.verify(token, process.env.SECRET_KEY);
+  if (verified.id !== process.env.ADMIN_ID) return next(401, "Unauthorized");
+  next();
 });
