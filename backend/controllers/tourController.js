@@ -10,10 +10,9 @@ exports.createTour = catchAsync(async (req, res, next) => {
   const { name, categories, location, duration, date, price, description } =
     req.body;
 
-  /*
   if (!req.file || !req.file.mimetype.startsWith("image"))
     return next(new AppError(400, "Provide valid image"));
-*/
+
   const imageName = uuidv4();
 
   if (!categories || categories?.length === 0)
@@ -29,12 +28,12 @@ exports.createTour = catchAsync(async (req, res, next) => {
     duration,
     coverImg: `${imageName}.jpeg`,
   });
-  /*
+
   await sharp(req.file.buffer)
     .jpeg(90)
     .resize(1280, 800)
     .toFile(`public/${imageName}.jpeg`);
-*/
+
   res.status(201).json({
     status: "success",
     message: "Tour created successfully!",
