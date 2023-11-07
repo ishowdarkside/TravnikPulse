@@ -7,12 +7,12 @@ export default function PreferenceFilter() {
 
     return (
         <section className={styles.preferenceFilter}>
-            {allPreferences.filter(({preference}) => userPreferences.includes(preference)).map(({preference, icon}, index) => (
+            {allPreferences.filter(({preference}) => userPreferences.includes(preference)).map(({value, icon}, index) => (
                 <div className={styles.preference} key={index}>
                     <div className={styles.icon}>
                         {icon}
                     </div>
-                    <span className={styles.span}>{preference}</span>
+                    <span className={styles.span}>{value}</span>
                 </div>
             ))}
         </section>

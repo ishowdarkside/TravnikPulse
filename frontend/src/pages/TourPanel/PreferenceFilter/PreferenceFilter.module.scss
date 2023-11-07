@@ -51,7 +51,7 @@
         display: block;
         margin-top: 1rem;
         color: #000;
-        @include text("text-xl-medium");
+        @include text("text-md-medium");
 
         &.active {
           color: $color-primary-red;
