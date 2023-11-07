@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const errorController = require("./controllers/errorController");
 const authRouter = require("./routes/authRoute");
 const tourRouter = require("./routes/tourRoute");
+const reviewRouter = require("./routes/reviewRoute");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 dotenv.config({ path: "./config.env" });
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/tours", tourRouter);
+app.use("/api/reviews", reviewRouter);
 
 app.use(errorController);
 

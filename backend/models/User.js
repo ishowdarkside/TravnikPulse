@@ -32,10 +32,8 @@ const UserSchema = new mongoose.Schema({
   reviewedTours: {
     type: [
       {
-        tour: { type: mongoose.Schema.Types.ObjectId, ref: "Tour" },
-        review: { type: String },
-        approved: { type: Boolean, default: false },
-        images: [String],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Review",
       },
     ],
   },

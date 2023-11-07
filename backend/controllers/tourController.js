@@ -3,6 +3,7 @@ const catchAsync = require(path.join(__dirname, "..", "utils", "catchAsync"));
 const AppError = require(path.join(__dirname, "..", "utils", "AppError"));
 const Tour = require(path.join(__dirname, "..", "models", "Tour"));
 const User = require(path.join(__dirname, "..", "models", "User"));
+const Review = require(path.join(__dirname, "..", "models", "Review"));
 const sharp = require("sharp");
 const { v4: uuidv4 } = require("uuid");
 
@@ -120,7 +121,7 @@ exports.rateTour = catchAsync(async (req, res, next) => {
   tour.ratings.push({ user: req.user.id, value: rating });
   await tour.save({ validateBeforeSave: false });
 
-  //Add review to user Rated Tours Array
+  //Add rating to user Rated Tours Array
   const user = await User.findById(req.user.id);
   user.ratedTours.push({ tour: req.params.tourID, value: rating });
   await user.save({ validateBeforeSave: false });
@@ -149,19 +150,27 @@ exports.reviewTour = catchAsync(async (req, res, next) => {
     );
   }
 
+  let reviewDocument;
   if (req.files)
-    tour.reviews.push({ user: req.user.id, images: imageArr, review });
-  if (!req.files) tour.reviews.push({ user: req.user.id, review });
+    reviewDocument = await Review.create({
+      review,
+      images: imageArr,
+      user: req.user.id,
+      tour: req.params.tourID,
+    });
+  if (!req.files)
+    reviewDocument = await Review.create({
+      user: req.user.id,
+      review,
+      tour: req.params.tourID,
+    });
 
+  tour.reviews.push(reviewDocument.id);
   await tour.save({ validateBeforeSave: false });
 
   //Save Review to user profile
   const user = await User.findById(req.user.id);
-  user.reviewedTours.push({
-    tour: req.params.tourID,
-    review,
-    images: imageArr,
-  });
+  user.reviewedTours.push(reviewDocument.id);
 
   await user.save({ validateBeforeSave: false });
   res.status(200).json({
@@ -190,3 +199,5 @@ exports.bookmarkTour = catchAsync(async (req, res, next) => {
       : "Tour unbookmarked",
   });
 });
+
+//Admin get All reviews waiting for aprove

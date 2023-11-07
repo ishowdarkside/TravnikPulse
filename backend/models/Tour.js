@@ -70,24 +70,7 @@ const TourSchema = new mongoose.Schema({
   },
 
   reviews: {
-    type: [
-      {
-        review: {
-          type: String,
-        },
-        images: {
-          type: [String],
-        },
-        approved: {
-          type: Boolean,
-          default: false,
-        },
-        user: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
-      },
-    ],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   },
 
   coverImg: {
