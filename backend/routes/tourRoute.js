@@ -7,9 +7,20 @@ const {
   getSingleTour,
   editTour,
   deleteTour,
+  rateTour,
+  bookmarkTour,
   getToursWithin,
+  reviewTour,
 } = require(path.join(__dirname, "..", "controllers", "tourController"));
+
 const { protect } = require(path.join(
+  __dirname,
+  "..",
+  "controllers",
+  "authController"
+));
+
+const { protectAdmin } = require(path.join(
   __dirname,
   "..",
   "controllers",
@@ -20,14 +31,27 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 router
   .route("/")
-  .post(protect, upload.single("coverImg"), createTour)
+  .post(protectAdmin, upload.single("coverImg"), createTour)
   .get(getTours);
 router
   .route("/:tourID")
   .get(getSingleTour)
-  .patch(protect, editTour)
-  .delete(protect, deleteTour);
+  .patch(protectAdmin, editTour)
+  .delete(protectAdmin, deleteTour);
 
 router.get("/tours-within/distance/:distance/center/:latlng", getToursWithin);
+
+//Rate tour
+router.patch("/rate-tour/:tourID", protect, rateTour);
+router.patch(
+  "/review-tour/:tourID",
+  protect,
+  upload.array("images", 6),
+  reviewTour
+);
+
+//Bookmark tour
+
+router.patch("/bookmark-tour/:tourID", protect, bookmarkTour);
 
 module.exports = router;

@@ -2,39 +2,68 @@ const path = require("path");
 const catchAsync = require(path.join(__dirname, "..", "utils", "catchAsync"));
 const AppError = require(path.join(__dirname, "..", "utils", "AppError"));
 const jwt = require("jsonwebtoken");
+const User = require(path.join(__dirname, "..", "models", "User"));
+const bcrypt = require("bcrypt");
 
 exports.login = catchAsync(async (req, res, next) => {
   const { username, password } = req.body;
-
-  // Check for username and password
   if (!username || !password)
-    return res
-      .status(400)
-      .json({ status: "fail", message: "All fields are required" });
+    return next(new AppError(400, "Provide all fields"));
 
-  // Admin data
-  const adminData = {
-    username: process.env.ADMIN_USERNAME,
-    password: process.env.ADMIN_PASSWORD,
-  };
+  const user = await User.findOne({ username });
+  if (!user) return next(new AppError(401, "Invalid username/password"));
 
-  // Login validation
-  if (adminData.username !== username || adminData.password !== password)
-    return res
-      .status(401)
-      .json({ status: "fail", message: "Invalid username/password" });
+  const compared = await bcrypt.compare(password, user.password);
+  if (!compared) return next(new AppError(401, "Invalid username/passwrod"));
 
-  // Generate access token
-  const token = jwt.sign({ id: process.env.ADMIN_ID }, process.env.SECRET_KEY, {
-    expiresIn: "7d",
+  const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
+    expiresIn: "30d",
   });
 
-  // Set refresh token as a cookie
-
-  // Return access token
-  res.json({
-    status: "success",
+  return res.status(200).json({
+    status: "successs",
     message: "Logged in successfully!",
+    token,
+  });
+});
+
+exports.protectAdmin = catchAsync(async (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")?.[1];
+  if (!token) return next(new AppError(401, "Unauthorized!"));
+  const verified = jwt.verify(
+    token,
+    process.env.SECRET_KEY,
+    async (err, decoded) => {
+      if (err) return next(new AppError(401, "Token malformed, login again"));
+      const user = await User.findById(decoded.id);
+      if (!user)
+        return next(
+          new AppError(400, "User does no longer exist. Please sign up!")
+        );
+
+      if (user.role !== "admin") return next(new AppError(401, "Unauthorized"));
+      req.user = user;
+      next();
+    }
+  );
+});
+
+//User auth
+
+exports.signup = catchAsync(async (req, res, next) => {
+  const { username, password, passwordConfirm } = req.body;
+  if (!username || !password || !passwordConfirm)
+    return next(new AppError(400, "Provide all fields!"));
+
+  if (password !== passwordConfirm)
+    return next(new AppError(400, "Passwords are not matching!"));
+  const user = await User.create({ username, password, passwordConfirm });
+  const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
+    expiresIn: "30d",
+  });
+  res.status(201).json({
+    status: "success",
+    message: "Signed up successfully!",
     token,
   });
 });
@@ -42,7 +71,19 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.protect = catchAsync(async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")?.[1];
   if (!token) return next(new AppError(401, "Unauthorized!"));
-  const verified = await jwt.verify(token, process.env.SECRET_KEY);
-  if (verified.id !== process.env.ADMIN_ID) return next(401, "Unauthorized");
-  next();
+  const verified = await jwt.verify(
+    token,
+    process.env.SECRET_KEY,
+    async (err, decoded) => {
+      if (err) return next(new AppError(401, "Token malformed, login again"));
+      const user = await User.findById(decoded.id);
+      if (!user)
+        return next(
+          new AppError(400, "User does no longer exist. Please sign up!")
+        );
+
+      req.user = user;
+      next();
+    }
+  );
 });
