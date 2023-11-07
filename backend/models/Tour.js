@@ -61,7 +61,12 @@ const TourSchema = new mongoose.Schema({
     required: [true, "Provide price of event or asign as FREE"],
   },
   ratings: {
-    type: [Number],
+    type: [
+      {
+        user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        value: { type: Number },
+      },
+    ],
   },
 
   reviews: {
@@ -77,6 +82,10 @@ const TourSchema = new mongoose.Schema({
           type: Boolean,
           default: false,
         },
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
       },
     ],
   },
@@ -84,6 +93,10 @@ const TourSchema = new mongoose.Schema({
   coverImg: {
     type: String,
     required: [true, "Provide tour cover image"],
+  },
+  description: {
+    type: String,
+    required: [true, "Please provide description of your tour"],
   },
 });
 
