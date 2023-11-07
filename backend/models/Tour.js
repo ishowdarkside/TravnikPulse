@@ -40,14 +40,12 @@ const TourSchema = new mongoose.Schema({
     required: [true, "Provide categories for tour"],
   },
   location: {
-    lat: {
-      type: Number,
-      required: [true, "Please the location of your tour"],
+    type: {
+      type: String,
+      default: "Point",
+      enum: ["Point"],
     },
-    lng: {
-      type: Number,
-      required: [true, "Please provide the location of your tour"],
-    },
+    coordinates: [Number],
   },
   duration: {
     type: Number,
