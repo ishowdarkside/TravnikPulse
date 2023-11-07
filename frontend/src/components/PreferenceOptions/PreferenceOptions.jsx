@@ -10,7 +10,6 @@ export default function PreferenceOptions() {
     setPreferences((curr) => [...curr, p]);
   }
 
-  console.log(preferences);
   return (
     <div className={styles.preferenceWrapper}>
       <div className={styles.grid}>

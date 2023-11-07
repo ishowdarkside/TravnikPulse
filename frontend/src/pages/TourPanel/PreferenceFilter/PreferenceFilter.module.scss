@@ -10,6 +10,8 @@
     overflow-x: scroll;
     margin: 3rem 2rem 2rem 2rem;
     padding: 1rem 0;
+    position: relative;
+    z-index: 2;
 
     &::-webkit-scrollbar {
       display: none;
@@ -49,7 +51,7 @@
         display: block;
         margin-top: 1rem;
         color: #000;
-        @include text("text-xl-medium");
+        @include text("text-md-medium");
 
         &.active {
           color: $color-primary-red;
