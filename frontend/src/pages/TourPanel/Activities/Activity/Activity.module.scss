@@ -2,7 +2,6 @@
 
 .activity {
   @include responsive("mobile") {
-    background-image: url("../../../../assets/prijovicka.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

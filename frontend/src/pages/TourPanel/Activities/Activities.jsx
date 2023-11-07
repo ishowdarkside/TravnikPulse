@@ -1,15 +1,20 @@
 // Components
-import Activity from './Activity/Activity';
+import Activity from "./Activity/Activity";
 // SCSS
-import styles from './Activities.module.scss';
+import styles from "./Activities.module.scss";
+import { useGetTours } from "../../../hooks/useTours";
 
 export default function Activities() {
-    return (
-        <section className={styles.activities}>
-            <Activity />
-            <Activity />
-            <Activity />
-            <Activity />
-        </section>
-    )
+  const { data, isLoading } = useGetTours();
+
+  if (isLoading) return <h1>LOADING...</h1>;
+
+  console.log(data);
+  return (
+    <section className={styles.activities}>
+      {data.map((tour) => (
+        <Activity tour={tour} key={tour._id} />
+      ))}
+    </section>
+  );
 }

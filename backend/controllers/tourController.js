@@ -32,7 +32,7 @@ exports.createTour = catchAsync(async (req, res, next) => {
 
   await sharp(req.file.buffer)
     .jpeg(90)
-    .resize(1280, 800)
+    .resize({ width: 1280, height: 800, fit: "cover" })
     .toFile(`public/${imageName}.jpeg`);
 
   res.status(201).json({
