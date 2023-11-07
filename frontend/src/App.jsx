@@ -12,9 +12,11 @@ function App() {
         <Route
           path="/app"
           element={
-            <Protect>
-              <TourPanel />
-            </Protect>
+            <TouristDataContext>
+              <Protect>
+                <TourPanel />
+              </Protect>
+            </TouristDataContext>
           }
         />
         <Route

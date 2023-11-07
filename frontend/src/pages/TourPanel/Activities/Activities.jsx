@@ -9,6 +9,7 @@ export default function Activities() {
             <Activity />
             <Activity />
             <Activity />
+            <Activity />
         </section>
     )
 }

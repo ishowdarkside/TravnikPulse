@@ -11,6 +11,7 @@ export default function TouristDataContext({ children }) {
   const [position, setPosition] = useState(null);
   const [preferences, setPreferences] = useState([]);
   const [suggestPlace, setSuggestPlace] = useState(false);
+
   return (
     <context.Provider
       value={{

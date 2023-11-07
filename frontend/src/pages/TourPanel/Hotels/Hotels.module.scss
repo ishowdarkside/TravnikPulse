@@ -1,0 +1,30 @@
+@import '../../../styles/mixin.scss';
+
+.hotels {
+    @include responsive("mobile") {
+        margin: 2rem 0;
+        height: 100%;
+    }
+
+    .mainTitle {
+        @include responsive("mobile") {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0 2rem 0;
+        }
+    }
+    
+    .hotelWrapper {
+        @include responsive("mobile") {
+            display: flex;
+            width: 100%;
+            overflow-x: scroll;
+            gap: 2rem;
+    
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+}

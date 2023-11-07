@@ -3,7 +3,7 @@ import styles from "./Proceed.module.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function Proceed() {
-  const { selectedVisitPeriod, visitCount, position, preferences, language } =
+  const { selectedVisitPeriod, visitCount, position, preferences, language, suggestPlace } =
     useTouristDataContext();
 
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ export default function Proceed() {
     localStorage.setItem("position", JSON.stringify(position));
     localStorage.setItem("preferences", JSON.stringify(preferences));
     localStorage.setItem("language", JSON.stringify(language));
+    localStorage.setItem('suggestPlace', JSON.stringify(suggestPlace))
 
     navigate("/app");
   }
