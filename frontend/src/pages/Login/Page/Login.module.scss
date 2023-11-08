@@ -1,0 +1,77 @@
+@import "../../../styles/mixin.scss";
+.loginSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+
+  @include responsive("mobile") {
+    padding: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 60rem;
+    max-width: 60rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 5rem 2rem;
+    gap: 1rem;
+    border-radius: 2rem;
+    align-items: center;
+
+    @include responsive("mobile") {
+      width: 50rem;
+      max-width: 50rem;
+    }
+
+    img {
+      margin-bottom: 2rem;
+
+      @include responsive("mobile") {
+        width: 20rem;
+      }
+    }
+
+    button {
+      width: 40rem;
+      max-width: 40rem;
+      margin-top: 3rem;
+      line-height: 2.4rem;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 700;
+      padding: 1.2rem 0;
+      background-color: #ee2d21;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+
+      @include responsive("mobile") {
+        width: 100%;
+        max-width: none;
+      }
+    }
+
+    input {
+      width: 40rem;
+      max-width: 40rem;
+      padding: 1.2rem 1rem;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      color: #666666;
+      font-size: 1.5rem;
+      outline: none;
+
+      @include responsive("mobile") {
+        width: 100%;
+        max-width: none;
+      }
+      &::placeholder {
+        color: #e0e0e0;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

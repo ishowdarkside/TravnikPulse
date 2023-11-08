@@ -87,3 +87,25 @@ exports.protect = catchAsync(async (req, res, next) => {
     }
   );
 });
+
+exports.getUser = catchAsync(async (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")?.[1];
+  if (!token) return next(new AppError(401, "Unauthorized!"));
+  const verified = await jwt.verify(
+    token,
+    process.env.SECRET_KEY,
+    async (err, decoded) => {
+      if (err) return next(new AppError(401, "Token malformed, login again"));
+      const user = await User.findById(decoded.id).select("-password");
+      if (!user)
+        return next(
+          new AppError(400, "User does no longer exist. Please sign up!")
+        );
+
+      res.status(200).json({
+        status: "success",
+        user,
+      });
+    }
+  );
+});
