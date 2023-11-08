@@ -1,0 +1,20 @@
+@import '../../../styles/mixin.scss';
+.nav {
+    display: flex;
+    padding: 2rem 0;
+    position: relative;
+
+    a {
+        position: absolute;
+        top: 2.5rem;
+        left: 2rem;
+        @include text('display-sm-regular');
+    }
+
+    .text {
+        @include responsive("mobile") {
+          width: 23rem;
+          margin: 0 auto;
+        }
+      }
+}

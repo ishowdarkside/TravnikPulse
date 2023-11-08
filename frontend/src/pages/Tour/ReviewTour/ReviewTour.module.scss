@@ -1,0 +1,33 @@
+@import '../../../styles/mixin.scss';
+
+.reviewTour {
+    padding: 2rem;
+
+    h2 {
+        margin-bottom: 4rem;
+    }
+
+    .form {
+        margin: 1rem 0;
+        width: 100%;
+
+        .inputContainer {
+            margin: 2rem 0;
+
+            label {
+                display: block;
+                margin-bottom: 1rem;
+                @include text('text-xl-semibold');
+            }
+
+            input, textarea {
+                padding: 1.5rem;
+                outline: none;
+                border: 1px solid #ddd;
+                width: 100%;
+                border-radius: 0.6rem;
+                font-family: Inter;
+            }
+        }
+    }
+}
