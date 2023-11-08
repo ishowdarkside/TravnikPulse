@@ -1,0 +1,71 @@
+{
+  "hotels": [
+    {
+      "name": "Hotel Vezir Palace",
+      "rating" : 4.6,
+      "stars": 4,
+      "location": {
+        "latitude": 44.22954221734065,
+        "longitude": 17.670071442327863
+      },
+      "pictures": [
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/226684314.jpg?k=d0ce7f1352b9ad1b6da7e24c58b93920544cf78f94f29ee178b5f2f551eb1f59&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/209173779.jpg?k=bf9287ef54407e918f2cdffba932c260b2655c2c692c8660d060c77cd59fb0b4&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/209173902.jpg?k=29e42045495213ddbc8ab9608011d534ebf761f8d06b06bf38c02d8877ad1b84&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/226680162.jpg?k=7847adbb776467c4fe386c2ff15ff13d5d1cb13f5de7384e9b0c37dc68012a8b&o=&hp=1"
+      ]
+    },
+
+    {
+      "name": "Hotel Lipa",
+      "rating" : 4.5,
+      "stars": 4,
+      "location": {
+        "latitude": 44.227066763863796,
+        "longitude": 17.6610760117299
+      },
+      "pictures": [
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/414390753.jpg?k=426490ab5b6a3723cbc1a5fe42bd5a3633da1e4ed0f63e120b7d8cc8e909c9cc&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/415324652.jpg?k=1c970d80faaff6fdd8bd011796db65aed28d4ceb5002d96a0198839d5c035271&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/415334454.jpg?k=2641dbbf145ca1d46b59f03ddc3944ae6acd7aa9658210ccc722625d192f28ce&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/414390739.jpg?k=c723f7ea904c846bc4b36f9ddd39189f41d09de1ae623de98a2cd8e4f8ace5e0&o=&hp=1"
+      ]
+    },
+
+    {
+      "name": "Hotel Lipa",
+      "rating" : 4.7,
+      "stars": 3,
+      "location": {
+        "latitude": 44.227028244786254,
+        "longitude": 17.646137481086075
+      },
+      "pictures": [
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/211274406.jpg?k=cc25e920cc371a5d8cebc28c93fe9d422bd76f84c4e593e82c78093eb95113ef&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/211455494.jpg?k=6682958a84ad3aa7a926c449d1a0408669b8cff1be460539c340e6ca28fd4a32&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/211469996.jpg?k=235634706713f949875116f2da5fc041cafcdc131ae8de075d3b5e499313644b&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/211465853.jpg?k=3147bf4bfa70edc68b61175771414c3b03ca52434a578e085427881f2374e926&o=&hp=1"
+        
+      ]
+    },
+
+    {
+      "name": "Hotel Bajra",
+      "rating" : 4.4,
+      "stars": 3,
+      "location": {
+        "latitude": 44.218494778404825, 
+        "longitude": 17.692888800000002
+      },
+      "pictures": [
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/320565207.jpg?k=aa87e6f7fbfc41b78d75a9d349a7e327416827ef10b8202f8c12b5570b2ed81a&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/320565203.jpg?k=f6656b6bc79efbd13505bf73db03de41bcef4d28e75d0550d69c227cbeabc0a2&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/343881329.jpg?k=16c42f4f3647a1486e69a6106b3dcfc211308bf13808e098b0a402e1a571bba8&o=&hp=1",
+        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/320565189.jpg?k=da98c37e38108b98cb722ed711f9c5058437c9beffcd60b7df3e9059cdba11e7&o=&hp=1"
+                
+      ]
+    }
+
+   
+  ]
+}
