@@ -8,8 +8,17 @@ const sharp = require("sharp");
 const { v4: uuidv4 } = require("uuid");
 
 exports.createTour = catchAsync(async (req, res, next) => {
-  const { name, categories, location, duration, date, price, description } =
-    req.body;
+  console.log(req.body);
+  const {
+    name,
+    categories,
+    location,
+    duration,
+    date,
+    price,
+    description,
+    time,
+  } = req.body;
 
   if (!req.file || !req.file.mimetype.startsWith("image"))
     return next(new AppError(400, "Provide valid image"));
@@ -28,6 +37,7 @@ exports.createTour = catchAsync(async (req, res, next) => {
     description,
     duration,
     coverImg: `${imageName}.jpeg`,
+    time,
   });
 
   await sharp(req.file.buffer)

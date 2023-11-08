@@ -51,6 +51,10 @@ const TourSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please provide duration of the tour"],
   },
+  time: {
+    type: Number,
+    required: [true, "please provide time"],
+  },
   date: {
     type: Date,
     required: [true, "Please provide the date of the event"],
