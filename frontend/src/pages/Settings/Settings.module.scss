@@ -1,0 +1,37 @@
+@import '../../styles/mixin.scss';
+
+.item {
+    @include responsive("mobile") {
+        background-color: #f8f8f8;
+        margin: 1rem 0;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        @include text('text-xl-semibold');
+    
+        svg {
+            @include text('display-sm-bold')
+        }
+    }
+}
+
+.settingsWrapper {
+    @include responsive("mobile") {     
+        padding: 0 2rem;
+    
+        .settings {
+            margin: 2rem 0;
+    
+            .general {
+                margin: 2rem 0;
+            }
+            
+            .notifications {
+                margin: 4rem 0;
+            }
+        }
+    }
+
+}

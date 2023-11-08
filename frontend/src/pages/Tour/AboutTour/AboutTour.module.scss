@@ -1,4 +1,7 @@
+@import '../../../styles/mixin.scss';
 .details {
-    padding: 2rem;
-    height: 100%;
+    @include responsive("mobile") {
+        padding: 2rem;
+        height: 100%;
+    }
 }

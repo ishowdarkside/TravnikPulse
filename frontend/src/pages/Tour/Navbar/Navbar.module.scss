@@ -1,5 +1,6 @@
 @import '../../../styles/mixin.scss';
 .nav {
+  @include responsive("mobile") {     
     display: flex;
     padding: 2rem 0;
     position: relative;
@@ -17,4 +18,5 @@
           margin: 0 auto;
         }
       }
+  }
 }
