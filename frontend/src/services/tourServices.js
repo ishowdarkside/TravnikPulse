@@ -8,3 +8,13 @@ export async function getAllTours() {
     console.log(err);
   }
 }
+
+export async function getSingleTour(tourId) {
+  try {
+    const res = await fetch(`${BASE_URL}api/tours/${tourId}`);
+    const data = await res.json();
+    return data.tour;
+  } catch (err) {
+    console.log(err);
+  }
+}

@@ -27,9 +27,4 @@ body {
   line-height: 1.5;
   font-family: "Satoshi", sans-serif;
   color: #000;
-
-  @include responsive("mobile") {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }

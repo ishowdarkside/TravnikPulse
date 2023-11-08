@@ -9,7 +9,6 @@ export default function Activities() {
 
   if (isLoading) return <h1>LOADING...</h1>;
 
-  console.log(data);
   return (
     <section className={styles.activities}>
       {data.map((tour) => (

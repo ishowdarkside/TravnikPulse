@@ -1,0 +1,7 @@
+@import '../../styles/mixin.scss';
+.mainApp {
+    @include responsive("mobile") {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+}
