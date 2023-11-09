@@ -1,3 +1,4 @@
+import allHotels from '../../../utils/hotels/hotel.json';
 // Components
 import Hotel from './Hotel/Hotel';
 // React icons
@@ -10,13 +11,9 @@ export default function Hotels() {
         <section className={styles.hotels}>
             <h2 className={styles.mainTitle}>We found a place for you to sleep <AiOutlineArrowRight /></h2>
             <div className={styles.hotelWrapper}>
-                <Hotel />
-                <Hotel />
-                <Hotel />
-                <Hotel />
-                <Hotel />
-                <Hotel />
-                <Hotel />
+                {allHotels.hotels.map((hotel, index) => (
+                    <Hotel hotel={hotel} key={index} />
+                ))}
             </div>
         </section>
     )

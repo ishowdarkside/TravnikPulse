@@ -38,7 +38,7 @@ function App() {
               <Route path="admin" element={<Admin />} />
               <Route path="map" element={<Map />} />
               <Route path="shop" element={<Shop />} />
-              <Route path="settings" element={<Settings />} />
+              <Route path="settings" element={<TouristDataContext><Settings /></TouristDataContext>} />
               <Route path="/app/:tourID" element={<Tour />} />
             </Route>
             <Route

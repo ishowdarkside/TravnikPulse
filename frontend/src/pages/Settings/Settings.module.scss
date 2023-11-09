@@ -9,7 +9,19 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        cursor: pointer;
         @include text('text-xl-semibold');
+
+        &.disabled {
+            cursor: default;
+            opacity: .4;
+        }
+
+        &.active {
+            box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
+        }
     
         svg {
             @include text('display-sm-bold')
@@ -26,6 +38,10 @@
     
             .general {
                 margin: 2rem 0;
+
+                .options {
+                    position: relative;
+                }
             }
             
             .notifications {

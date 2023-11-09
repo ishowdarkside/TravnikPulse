@@ -2,7 +2,6 @@
 
 .hotel {
     @include responsive("mobile") {
-        background-image: url('../../../../assets/hotel-bg-image.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
