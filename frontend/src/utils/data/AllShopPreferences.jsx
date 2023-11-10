@@ -1,29 +1,31 @@
-import { BiSolidDrink } from 'react-icons/bi'
-
+//import { BiSolidDrink } from 'react-icons/bi'
+import {LiaStoreAltSolid} from 'react-icons/lia'
+import {PiForkKnife} from 'react-icons/pi'
+import {MdOutlineFastfood, MdOutlineBakeryDining} from 'react-icons/md'
 export const allShopPreferences = [
     {
         value: 'Stores',
         preference: 'stores',
-        icon: <BiSolidDrink />,
+        icon: <LiaStoreAltSolid />,
     },
     {
         value: 'Resturants',
         preference: 'resturants',
-        icon: <BiSolidDrink />,
+        icon: <PiForkKnife />,
     },
     {
         value: 'Fast food',
         preference: 'food',
-        icon: <BiSolidDrink />,
+        icon: <MdOutlineFastfood />,
     },
     {
         value: 'Gas',
         preference: 'gas',
-        icon: <BiSolidDrink />,
+        icon: <MdOutlineLocalGasStation />,
     },
     {
         value: 'Bakery',
         preference: 'bakery',
-        icon: <BiSolidDrink />,
+        icon: <MdOutlineBakeryDining />,
     },
 ]
