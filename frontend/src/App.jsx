@@ -14,6 +14,7 @@ import Shop from "./pages/Shop/Shop";
 import Settings from "./pages/Settings/Settings";
 import Tour from "./pages/Tour/Tour";
 import AdminContext from "./context/AdminContext";
+import CalendarPage from "./pages/ClientCalendar/CalendarPage/CalendarPage";
 
 const queryClient = new QueryClient();
 
@@ -54,7 +55,8 @@ function App() {
                   </TouristDataContext>
                 }
               />
-              <Route path="/app/tour/:tourID" element={<Tour />} />
+              <Route path="tour/:tourID" element={<Tour />} />
+              <Route path="calendar" element={<CalendarPage />} />
             </Route>
             <Route
               path="/welcome"

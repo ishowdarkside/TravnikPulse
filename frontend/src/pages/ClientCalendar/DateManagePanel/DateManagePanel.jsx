@@ -1,14 +1,12 @@
-import { useAdminContext } from "../../../context/AdminContext";
+/* eslint-disable react/prop-types */
 import { useGetTours } from "../../../hooks/useTours";
 import { formatDate, weekdays } from "../../../services/dateServices";
 import styles from "./DateManagePanel.module.scss";
-import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
-import EventComponent from "./EventComponent/EventComponent";
+import { AiOutlineClose } from "react-icons/ai";
+import EventComponent from "../EventComponent/EventComponent";
 
-export default function DateManagePanel() {
+export default function DateManagePanel({ activeDate, setActiveDate }) {
   const { data, isLoading } = useGetTours();
-  const { activeDate, setActiveDate } = useAdminContext();
-
   if (isLoading) return <h1>LOADING...</h1>;
 
   const matchingDateTours = data.filter(
@@ -18,13 +16,23 @@ export default function DateManagePanel() {
   const dayFormated = `${new Date(activeDate).getDate()} ${
     weekdays[new Date(activeDate).getDay()]
   }`;
+
+  if (matchingDateTours.length === 0)
+    return (
+      <div className={styles.panel}>
+        <button
+          onClick={() => setActiveDate(null)}
+          className={styles.closePanel}
+        >
+          <AiOutlineClose />
+        </button>
+        <span>{dayFormated}</span>
+        <p>No activities for this day 😢</p>
+      </div>
+    );
   return (
     <div className={styles.panel}>
       <span className={styles.panelDate}>{dayFormated}</span>
-
-      <div className={styles.plusDiv}>
-        <AiOutlinePlus />
-      </div>
       <button onClick={() => setActiveDate(null)} className={styles.closePanel}>
         <AiOutlineClose />
       </button>
