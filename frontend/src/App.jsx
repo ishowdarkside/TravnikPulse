@@ -11,8 +11,9 @@ import { Toaster } from "react-hot-toast";
 import Admin from "./pages/Admin/Page/Admin";
 import Map from "./pages/Map/Map";
 import Shop from "./pages/Shop/Shop";
-import Settings from './pages/Settings/Settings'
+import Settings from "./pages/Settings/Settings";
 import Tour from "./pages/Tour/Tour";
+import AdminContext from "./context/AdminContext";
 
 const queryClient = new QueryClient();
 
@@ -35,11 +36,25 @@ function App() {
                 }
               />
               <Route path="login" element={<Login />} />
-              <Route path="admin" element={<Admin />} />
+              <Route
+                path="admin"
+                element={
+                  <AdminContext>
+                    <Admin />
+                  </AdminContext>
+                }
+              />
               <Route path="map" element={<Map />} />
               <Route path="shop" element={<Shop />} />
-              <Route path="settings" element={<TouristDataContext><Settings /></TouristDataContext>} />
-              <Route path="/app/:tourID" element={<Tour />} />
+              <Route
+                path="settings"
+                element={
+                  <TouristDataContext>
+                    <Settings />
+                  </TouristDataContext>
+                }
+              />
+              <Route path="/app/tour/:tourID" element={<Tour />} />
             </Route>
             <Route
               path="/welcome"

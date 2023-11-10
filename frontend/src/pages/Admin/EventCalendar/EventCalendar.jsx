@@ -1,11 +1,13 @@
 import Calendar from "react-calendar";
 import { useGetTours } from "../../../hooks/useTours";
 import styles from "./EventCalendar.module.scss";
+import { useAdminContext } from "../../../context/AdminContext";
+import { formatDate, weekdays } from "../../../services/dateServices";
 //import "react-calendar/dist/Calendar.css";
 
-const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 export default function EventCalendar() {
   const { data, isLoading } = useGetTours();
+  const { setActiveDate } = useAdminContext();
 
   if (isLoading) return <h1>LOADING...</h1>;
 
@@ -41,18 +43,12 @@ export default function EventCalendar() {
             </>
           );
         }}
-        onChange={(e) => console.log(e)}
+        onChange={(e) => {
+          setActiveDate(e);
+        }}
         tileClassName={styles.dateBox}
         showNeighboringMonth={false}
       />
     </div>
   );
-}
-
-function formatDate(date) {
-  const dateFormatted = new Date(date);
-  const year = dateFormatted.getFullYear();
-  const month = dateFormatted.getMonth();
-  const day = dateFormatted.getDate();
-  return `${year}-${month}-${day}`;
 }

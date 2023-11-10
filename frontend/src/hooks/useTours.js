@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllTours, getSingleTour } from "../services/tourServices";
-import { useLocation } from "react-router";
+import { useParams } from "react-router-dom";
 
 export function useGetTours() {
   const { data, isLoading } = useQuery({
@@ -12,12 +12,12 @@ export function useGetTours() {
 }
 
 export function useGetSingleTour() {
-  const location = useLocation();
-  const pathname = location.pathname.split('/')[2];
+  const { tourID } = useParams();
+
   const { data, isLoading } = useQuery({
-    queryFn: () => getSingleTour(pathname),
+    queryFn: () => getSingleTour(tourID),
     queryKey: ["tour"],
   });
 
-  return { data, isLoading }
+  return { data, isLoading };
 }
