@@ -9,10 +9,11 @@
     height: 15rem;
     overflow-x: scroll;
     overflow-y: hidden;
-    margin: 3rem 2rem 2rem 2rem;
+    margin: 3rem 0 2rem 0;
     padding: 1rem 0;
     position: relative;
     z-index: 999999;
+    width: calc(100vw - 2rem);
 
     &::-webkit-scrollbar {
       display: none;

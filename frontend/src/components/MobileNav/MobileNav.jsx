@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 // React icons
 import { TbMailOpened } from 'react-icons/tb'
-import { LuMap } from 'react-icons/lu';
+import { LuMap, LuUserCircle2 } from 'react-icons/lu';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
 import { IoMdOptions } from 'react-icons/io';
 // CSS
@@ -17,6 +17,7 @@ export default function MobileNav() {
                 <li><Link to='/app/map' className={pathname === '/app/map' ? `${styles.link} ${styles.active}` : styles.link}><LuMap /></Link></li>
                 <li><Link to='/app/shop' className={pathname === '/app/shop' ? `${styles.link} ${styles.active}` : styles.link}><HiOutlineShoppingBag /></Link></li>
                 <li><Link to='/app/settings' className={pathname === '/app/settings' ? `${styles.link} ${styles.active}` : styles.link}><IoMdOptions /></Link></li>
+                <li><Link to='/app/login' className={pathname === '/app/login' ? `${styles.link} ${styles.active}` : styles.link}><LuUserCircle2 /></Link></li>
             </ul>
         </nav>
     )

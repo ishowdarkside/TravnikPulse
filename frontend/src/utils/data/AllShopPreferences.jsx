@@ -13,7 +13,7 @@ export const allShopPreferences = [
     },
     {
         value: 'Fast food',
-        preference: 'fastFood',
+        preference: 'food',
         icon: <BiSolidDrink />,
     },
     {

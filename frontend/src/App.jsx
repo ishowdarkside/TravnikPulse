@@ -46,7 +46,7 @@ function App() {
                 }
               />
               <Route path="map" element={<Map />} />
-              <Route path="shop" element={<Shop />} />
+              <Route path="shop" element={<TouristDataContext><Shop /></TouristDataContext>} />
               <Route
                 path="settings"
                 element={

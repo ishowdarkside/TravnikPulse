@@ -21,6 +21,8 @@ export default function Settings() {
     const { language, setSuggestPlace, suggestPlace } = useTouristDataContext();
     const navigate = useNavigate();
 
+    console.log(suggestPlace, language)
+
     // Reset all settings
     function resetSettings() {
         // Clear settings from storage
