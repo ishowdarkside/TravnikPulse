@@ -4,10 +4,12 @@ import { formatDate, weekdays } from "../../../services/dateServices";
 import styles from "./DateManagePanel.module.scss";
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import EventComponent from "./EventComponent/EventComponent";
+import { useNavigate } from "react-router-dom";
 
 export default function DateManagePanel() {
   const { data, isLoading } = useGetTours();
   const { activeDate, setActiveDate } = useAdminContext();
+  const navigate = useNavigate();
 
   if (isLoading) return <h1>LOADING...</h1>;
 
@@ -22,7 +24,10 @@ export default function DateManagePanel() {
     <div className={styles.panel}>
       <span className={styles.panelDate}>{dayFormated}</span>
 
-      <div className={styles.plusDiv}>
+      <div
+        className={styles.plusDiv}
+        onClick={() => navigate("/app/admin/create-tour")}
+      >
         <AiOutlinePlus />
       </div>
       <button onClick={() => setActiveDate(null)} className={styles.closePanel}>

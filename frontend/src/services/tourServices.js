@@ -19,3 +19,33 @@ export async function getSingleTour(tourId) {
     console.log(err);
   }
 }
+
+export async function deleteTour(tourId) {
+  try {
+    const token = localStorage.getItem("jwt");
+    await fetch(`${BASE_URL}api/tours/${tourId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function editTour(formData, tourID) {
+  const token = localStorage.getItem("jwt");
+  try {
+    const res = await fetch(`${BASE_URL}api/tours/${tourID}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}

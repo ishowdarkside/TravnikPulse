@@ -16,6 +16,7 @@ import Tour from "./pages/Tour/Tour";
 import AdminContext from "./context/AdminContext";
 import CalendarPage from "./pages/ClientCalendar/CalendarPage/CalendarPage";
 import EditTourAdmin from "./pages/EditTourAdmin/Page/EditTourAdmin";
+import ProtectAdmin from "./components/ProtectAdmin";
 
 const queryClient = new QueryClient();
 
@@ -43,11 +44,20 @@ function App() {
                   index
                   element={
                     <AdminContext>
-                      <Admin />
+                      <ProtectAdmin>
+                        <Admin />
+                      </ProtectAdmin>
                     </AdminContext>
                   }
                 />
-                <Route path="edit-tour/:tourID" element={<EditTourAdmin />} />
+                <Route
+                  path="edit-tour/:tourID"
+                  element={
+                    <ProtectAdmin>
+                      <EditTourAdmin />
+                    </ProtectAdmin>
+                  }
+                />
               </Route>
               <Route path="map" element={<Map />} />
               <Route

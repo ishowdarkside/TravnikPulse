@@ -1,3 +1,10 @@
+.notFoundPage {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .returnBtn {
   position: absolute;
   top: 2rem;
@@ -6,8 +13,4 @@
   outline: none;
   padding: 1rem;
   border-radius: 100px;
-}
-
-.editTourSection {
-  padding: 10rem 3rem;
 }

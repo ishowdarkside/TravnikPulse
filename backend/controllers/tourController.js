@@ -5,6 +5,7 @@ const Tour = require(path.join(__dirname, "..", "models", "Tour"));
 const User = require(path.join(__dirname, "..", "models", "User"));
 const Review = require(path.join(__dirname, "..", "models", "Review"));
 const sharp = require("sharp");
+const fs = require("fs").promises;
 const { v4: uuidv4 } = require("uuid");
 
 exports.createTour = catchAsync(async (req, res, next) => {
@@ -73,7 +74,22 @@ exports.getSingleTour = catchAsync(async (req, res, next) => {
 });
 
 exports.editTour = catchAsync(async (req, res, next) => {
+  const { tourID } = req.params;
   const tour = await Tour.findById(tourID);
+  const imageName = uuidv4();
+
+  if (req.file) {
+    await sharp(req.file.buffer)
+      .jpeg(90)
+      .resize({ width: 1280, height: 800, fit: "cover" })
+      .toFile(`public/${imageName}.jpeg`);
+
+    req.body.coverImg = `${imageName}.jpeg`;
+    await fs.unlink(`public/${tour.coverImg}`);
+  }
+
+  if (req.body.categories) req.body.categories = req.body.categories.split(",");
+  if (req.body.location) req.body.location = JSON.parse(req.body.location);
 
   if (!tour) return next(new AppError(404, "Tour not found!"));
   Object.entries(req.body).forEach((e) => {
@@ -90,6 +106,8 @@ exports.editTour = catchAsync(async (req, res, next) => {
 
 exports.deleteTour = catchAsync(async (req, res, next) => {
   const { tourID } = req.params;
+  const tour = await Tour.findById(tourID);
+  await fs.unlink(`public/${tour.coverImg}`);
   await Tour.findByIdAndDelete(tourID);
   res.status(204).json({});
 });
