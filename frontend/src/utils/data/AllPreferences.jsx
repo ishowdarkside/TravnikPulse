@@ -1,6 +1,14 @@
-import { BiSolidDrink } from 'react-icons/bi'
-import { MdOutlineFastfood, MdOutlineSportsSoccer } from 'react-icons/md';
+import { BiSolidDrink, BiTrip, BiSlideshow } from 'react-icons/bi'
+import { MdOutlineFastfood, MdOutlineSportsSoccer, MdOutlineMuseum, MdOutlineMusicNote, MdOutlinePark, MdOutlineScience, MdOutlineEventAvailable, MdOutlineShoppingCart, MdOutlineHiking, MdForest, MdOutlinePets } from 'react-icons/md';
 import { TbMovie } from 'react-icons/tb'
+import { BsBrush, BsMoonStars } from 'react-icons/bs'
+import { RiFilePaper2Line } from 'react-icons/ri'
+import { LuConciergeBell } from 'react-icons/lu'
+import { TbBuildingCircus } from 'react-icons/tb'
+import { PiChalkboardTeacher, PiCoffeeBold, PiPlant } from 'react-icons/pi'
+import { GiRiver, GiCampingTent, GiProcessor } from 'react-icons/gi'
+import { LiaToolsSolid } from 'react-icons/lia'
+import {FaPersonBiking } from 'react-icons/fa'
 
 export const allPreferences = [
     {
@@ -16,22 +24,22 @@ export const allPreferences = [
     {
         value: 'Art',
         preference: 'art',
-        icon: <MdOutlineFastfood />,
+        icon: <BsBrush />,
     },
     {
         value: 'History',
         preference: 'history',
-        icon: <MdOutlineFastfood />,
+        icon: <RiFilePaper2Line />,
     },
     {
         value: 'Amenities',
         preference: 'amenities',
-        icon: <MdOutlineFastfood />,
+        icon: <LuConciergeBell />,
     },
     {
         value: 'Museums',
         preference: 'museums',
-        icon: <MdOutlineFastfood />,
+        icon: <MdOutlineMuseum />,
     },
     {
         value: 'Movies',
@@ -41,27 +49,27 @@ export const allPreferences = [
     {
         value: 'Music',
         preference: 'music',
-        icon: <MdOutlineFastfood />,
+        icon: <MdOutlineMusicNote />,
     },
     {
         value: 'Culture',
         preference: 'culture',
-        icon: <MdOutlineFastfood />,
+        icon: <BsMoonStars />,
     },
     {
         value: 'Day Trips',
         preference: 'dayTrip',
-        icon: <MdOutlineFastfood />,
+        icon: <BiTrip />,
     },
     {
         value: 'Parks',
         preference: 'parks',
-        icon: <MdOutlineFastfood />,
+        icon: <MdOutlinePark />,
     },
     {
         value: 'Science',
         preference: 'science',
-        icon: <MdOutlineFastfood />,
+        icon: <MdOutlineScience />,
     },
     {
         value: 'Sport',
@@ -71,76 +79,76 @@ export const allPreferences = [
     {
         value: 'Show',
         preference: 'show',
-        icon: <MdOutlineFastfood />,
+        icon: <BiSlideshow />,
     },
     {
         value: 'Circus',
         preference: 'circus',
-        icon: <MdOutlineFastfood />,
+        icon: <TbBuildingCircus />,
     },
     {
         value: 'Events',
         preference: 'events',
-        icon: <MdOutlineFastfood />,
+        icon: <MdOutlineEventAvailable />,
     },
     {
         value: 'Seminars',
         preference: 'seminars',
-        icon: <MdOutlineFastfood />,
+        icon: <PiChalkboardTeacher />,
     },
     {
         value: 'River',
         preference: 'river',
-        icon: <MdOutlineFastfood />,
+        icon: <GiRiver />,
     },
     {
         value: 'Workshops',
         preference: 'workshop',
-        icon: <MdOutlineFastfood />,
+        icon: <LiaToolsSolid />,
     },
     {
         value: 'Shopping',
         preference: 'shopping',
-        icon: <MdOutlineFastfood />,
+        icon: <MdOutlineShoppingCart />,
     },
     {
         value: 'Hiking',
         preference: 'hiking',
-        icon: <MdOutlineFastfood />,
+        icon: <MdOutlineHiking />,
     },
     {
         value: 'Camping',
         preference: 'camping',
-        icon: <MdOutlineFastfood />,
+        icon: <GiCampingTent />,
     },
     {
         value: 'Outdoor',
         preference: 'outdoor',
-        icon: <MdOutlineFastfood />,
+        icon: <MdForest />,
     },
     {
         value: 'Technology',
         preference: 'technology',
-        icon: <MdOutlineFastfood />,
+        icon: <GiProcessor />,
     },
     {
         value: 'Coffee Shops',
         preference: 'coffeeShop',
-        icon: <MdOutlineFastfood />,
+        icon: <PiCoffeeBold />,
     },
     {
         value: 'Biking Routes',
         preference: 'bikingRoutes',
-        icon: <MdOutlineFastfood />,
+        icon: <FaPersonBiking />,
     },
     {
         value: 'Vegetarian',
         preference: 'vegeterian',
-        icon: <MdOutlineFastfood />,
+        icon: <PiPlant />,
     },
     {
         value: 'Pet-Friendly Places',
         preference: 'petFriendlyPlaces',
-        icon: <MdOutlineFastfood />,
+        icon: <MdOutlinePets />,
     },
 ]
