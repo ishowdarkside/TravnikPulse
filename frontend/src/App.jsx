@@ -15,6 +15,9 @@ import Settings from "./pages/Settings/Settings";
 import Tour from "./pages/Tour/Tour";
 import AdminContext from "./context/AdminContext";
 import CalendarPage from "./pages/ClientCalendar/CalendarPage/CalendarPage";
+import EditTourAdmin from "./pages/EditTourAdmin/Page/EditTourAdmin";
+import ProtectAdmin from "./components/ProtectAdmin";
+import CreateTourAdmin from "./pages/CreateTourAdmin/CreateTourAdmin";
 
 const queryClient = new QueryClient();
 
@@ -37,16 +40,45 @@ function App() {
                 }
               />
               <Route path="login" element={<Login />} />
+              <Route path="admin">
+                <Route
+                  index
+                  element={
+                    <AdminContext>
+                      <ProtectAdmin>
+                        <Admin />
+                      </ProtectAdmin>
+                    </AdminContext>
+                  }
+                />
+                <Route
+                  path="edit-tour/:tourID"
+                  element={
+                    <ProtectAdmin>
+                      <EditTourAdmin />
+                    </ProtectAdmin>
+                  }
+                />
+                <Route
+                  path="create-tour"
+                  element={
+                    <AdminContext>
+                      <ProtectAdmin>
+                        <CreateTourAdmin />
+                      </ProtectAdmin>
+                    </AdminContext>
+                  }
+                />
+              </Route>
+              <Route path="map" element={<Map />} />
               <Route
-                path="admin"
+                path="shop"
                 element={
-                  <AdminContext>
-                    <Admin />
-                  </AdminContext>
+                  <TouristDataContext>
+                    <Shop />
+                  </TouristDataContext>
                 }
               />
-              <Route path="map" element={<Map />} />
-              <Route path="shop" element={<TouristDataContext><Shop /></TouristDataContext>} />
               <Route
                 path="settings"
                 element={

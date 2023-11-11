@@ -36,7 +36,7 @@ router
 router
   .route("/:tourID")
   .get(getSingleTour)
-  .patch(protectAdmin, editTour)
+  .patch(protectAdmin, upload.single("coverImg"), editTour)
   .delete(protectAdmin, deleteTour);
 
 router.get("/tours-within/distance/:distance/center/:latlng", getToursWithin);

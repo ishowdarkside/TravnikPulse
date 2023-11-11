@@ -10,7 +10,6 @@ import styles from "./Tour.module.scss";
 export default function Tour() {
   const [showReview, setShowReview] = useState(false);
   const { data, isLoading } = useGetSingleTour();
-  const { data:user, isLoading: userLoading } = useGetUser();
 
   if (isLoading) return <h1>Loading...</h1>;
 

@@ -20,9 +20,13 @@ export default function Weather() {
 
     let backgroundImage;
 
+    console.log(data)
+
     if (data.weather[0].main === 'Clouds') {
         backgroundImage = { backgroundImage: `url(${cloudyBackground})` };
     } else if (data.weather[0].main === 'Sunny') {
+        backgroundImage = { backgroundImage: `url(${sunnyBackground})` };
+    } else if (data.weather[0].main === 'Clear') {
         backgroundImage = { backgroundImage: `url(${sunnyBackground})` };
     } else if (data.weather[0].main === 'Rainy') {
         backgroundImage = { backgroundImage: `url(${rainBackground})` };
@@ -39,6 +43,7 @@ export default function Weather() {
             </div>
             <div className={styles.right}>
                 {data.weather[0].main === 'Clouds' && <img src={cloudyIcon} alt="" className={styles.weatherSymbol} />}
+                {data.weather[0].main === 'Clear' && <img src={cloudyIcon} alt="" className={styles.weatherSymbol} />}
                 {data.weather[0].main === 'Sunny' && <img src={sunnyIcon} alt="" className={styles.weatherSymbol} />}
                 {data.weather[0].main === 'Rainy' && <img src={rainIcon} alt="" className={styles.weatherSymbol} />}
                 {data.weather[0].main === 'Snowy' && <img src={snowIcon} alt="" className={styles.weatherSymbol} />}

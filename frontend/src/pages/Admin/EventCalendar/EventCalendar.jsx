@@ -27,6 +27,7 @@ export default function EventCalendar() {
                   {` ${weekdays[new Date(date).getDay()]}`}
                 </span>
               )}
+
               {toursOnDate.length > 0 && (
                 <>
                   <div className={styles.imgWrapper}>
@@ -46,7 +47,15 @@ export default function EventCalendar() {
         onChange={(e) => {
           setActiveDate(e);
         }}
-        tileClassName={styles.dateBox}
+        tileClassName={({ date }) => {
+          const toursOnDate = data.filter(
+            (tour) => formatDate(tour.date) === formatDate(date)
+          );
+          const today = formatDate(new Date()) === formatDate(date);
+          if (toursOnDate.length > 0 && !today)
+            return `${styles.haveEvent} ${styles.dateBox}`;
+          return today ? `${styles.dateBox} ${styles.today}` : styles.dateBox;
+        }}
         showNeighboringMonth={false}
       />
     </div>

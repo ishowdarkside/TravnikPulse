@@ -28,3 +28,19 @@ body {
   font-family: "Satoshi", sans-serif;
   color: #000;
 }
+
+.react-time-picker__wrapper {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+
+  background: #fff;
+  /* Shadow/xs */
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  color: #5b5b5b;
+  @include text("text-sm-medium");
+  padding: 1rem;
+  input {
+    outline: none;
+    padding: 0 2rem !important;
+  }
+}
