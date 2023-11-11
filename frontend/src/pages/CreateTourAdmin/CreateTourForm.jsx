@@ -20,19 +20,25 @@ export default function CreateTourForm() {
   const [price, setPrice] = useState("");
   const [isFree, setIsFree] = useState(false);
   const [position, setPosition] = useState([]);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { mutate, isLoading } = useCreateTour();
   const { activeDate } = useAdminContext();
 
   if (!activeDate) return <Navigate to="/app/admin" />;
 
   async function submitFnc(data) {
-    console.log("ACTIVATED");
     if (!time) return toast.error("Assign event time!");
     if (!isFree && !price)
       return toast.error("Assign price of event or mark it as FREE!");
     if (position.length === 0)
       return toast.error("Assign event location on map");
+
+    if (selectedPreferences.length === 0)
+      return toast.error("Select categories of your event");
 
     const formData = new FormData();
     formData.append("time", time);
@@ -65,6 +71,11 @@ export default function CreateTourForm() {
           placeholder="Title goes here"
           {...register("name", { required: true })}
         />
+        {errors.name && (
+          <span className={styles.errorMsg}>
+            Provide title of your activity
+          </span>
+        )}
       </div>
       <div className={styles.inputWrapper}>
         <span>Categories</span>
@@ -92,6 +103,11 @@ export default function CreateTourForm() {
           name="duration"
           {...register("duration", { required: true })}
         />
+        {errors.duration && (
+          <span className={styles.errorMsg}>
+            Provide duration of your activity
+          </span>
+        )}
       </div>
       <div className={styles.inputWrapper}>
         <span>Price</span>
@@ -117,6 +133,11 @@ export default function CreateTourForm() {
           placeholder="Description"
           {...register("description", { required: true })}
         ></textarea>
+        {errors.description && (
+          <span className={styles.errorMsg}>
+            Provide description of activity
+          </span>
+        )}
       </div>
       <div className={styles.inputWrapper}>
         <span>Cover Image</span>
@@ -131,6 +152,11 @@ export default function CreateTourForm() {
           accept="image/*"
           className={styles.inputImg}
         />
+        {errors.coverImg && (
+          <span className={styles.errorMsg}>
+            Provide cover image of activity
+          </span>
+        )}
       </div>
 
       <div>

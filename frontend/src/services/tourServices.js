@@ -59,5 +59,5 @@ export async function createTour(formData) {
     body: formData,
   });
   const data = await res.json();
-  console.log(data);
+  return data;
 }
