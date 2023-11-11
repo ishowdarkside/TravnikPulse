@@ -12,6 +12,59 @@
         cursor: pointer;
         @include text('text-xl-semibold');
 
+        span {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            .customCheckbox {
+                background-color: #34C759;
+                border-radius: 6rem;
+                position: relative;
+                cursor: pointer;
+                .defaultCheckbox {
+                    display: none;
+                }
+                .checkbox {
+                  display: block;
+                  width: 7rem;
+                  height: 4rem;
+                  border: 2px solid #34C759;
+                  border-radius: 6rem;
+                  transition: .5s;
+                  &:before {
+                    content: "";
+                    position: absolute;
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    top: 2px;
+                    right: 1px;
+                    box-sizing: border-box;      
+                    background: #fff;
+                    border-radius: 40px;
+                    transition: .5s;
+                    box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
+                    -webkit-box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
+                  }
+                }
+                :checked ~ .checkbox:before {
+                  background: #fff;
+                  border-color: #fff;
+                  transform: translatex(-3rem);
+                }
+                :checked ~ .checkbox {
+                    background-color: #ddd;
+                    border: 1px solid #ddd
+                }
+                :checked + .checkbox {
+                    background-color: #ddd;
+                    
+                }
+            }
+        }
+        
         &.disabled {
             cursor: default;
             opacity: .4;

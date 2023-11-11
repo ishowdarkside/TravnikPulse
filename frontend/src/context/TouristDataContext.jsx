@@ -19,7 +19,7 @@ export default function TouristDataContext({ children }) {
 			const storageLanguage = JSON.parse(localStorage.getItem('language'));
 			const storageSuggestion = JSON.parse(localStorage.getItem('suggestPlace'));
 
-			if (storageLanguage && storageSuggestion) {
+			if (storageLanguage || storageSuggestion) {
 				setLanguage(storageLanguage);
 				setSuggestPlace(storageSuggestion);
 			}

@@ -1,7 +1,6 @@
 @import "../../../styles/mixin.scss";
 .weatherSection {
   @include responsive("mobile") {
-    background-image: url("../../../assets/weather-sunny-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -25,7 +24,7 @@
       height: 100%;
       width: 100%;
       border-radius: 2rem;
-      background-color: rgba($color: #5489ce, $alpha: 0.8);
+      background-color: rgba($color: #5489ce, $alpha: 0.6);
     }
   }
 

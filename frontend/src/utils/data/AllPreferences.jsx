@@ -8,7 +8,7 @@ import { TbBuildingCircus } from 'react-icons/tb'
 import { PiChalkboardTeacher, PiCoffeeBold, PiPlant } from 'react-icons/pi'
 import { GiRiver, GiCampingTent, GiProcessor } from 'react-icons/gi'
 import { LiaToolsSolid } from 'react-icons/lia'
-import {FaPersonBiking } from 'react-icons/fa'
+import { GrBike } from 'react-icons/gr'
 
 export const allPreferences = [
     {
@@ -139,7 +139,7 @@ export const allPreferences = [
     {
         value: 'Biking Routes',
         preference: 'bikingRoutes',
-        icon: <FaPersonBiking />,
+        icon: <GrBike />,
     },
     {
         value: 'Vegetarian',

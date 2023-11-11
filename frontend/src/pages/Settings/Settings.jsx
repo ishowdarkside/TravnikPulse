@@ -63,7 +63,13 @@ export default function Settings() {
                         </div>
                         <div className={styles.item} onClick={() => setSuggestPlace(prevState => !prevState)}>
                             <MdOutlineBed />
-                            <span>{suggestPlace ? 'Disable suggestions' : 'Activate suggestions'}</span>
+                            <span>
+                                Disable suggestions
+                                <label className={styles.customCheckbox}>
+                                    <input type="checkbox" onChange={() => setSuggestPlace(prevState => !prevState)} checked={suggestPlace} className={styles.defaultCheckbox} />
+                                    <span className={styles.checkbox}></span>
+                                </label>
+                            </span>
                         </div>
                     </div>
                 </div>

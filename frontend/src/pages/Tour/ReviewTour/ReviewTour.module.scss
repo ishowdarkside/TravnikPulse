@@ -3,6 +3,7 @@
 .reviewTour {
     @include responsive("mobile") {
         padding: 2rem;
+        margin-bottom: 10rem;
     
         h2 {
             margin-bottom: 4rem;
@@ -11,6 +12,26 @@
         .form {
             margin: 1rem 0;
             width: 100%;
+
+            .stars {
+                margin: 5rem 0 2rem 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                .star {
+                    font-size: 4rem;
+                    color: #ddd;
+                    cursor: pointer;
+
+                    &:hover {
+                        opacity: .5;
+                    }
+                
+                    &.active {
+                        color: #EED70B;
+                    }
+                }
+            }
     
             .inputContainer {
                 margin: 2rem 0;
@@ -28,6 +49,27 @@
                     width: 100%;
                     border-radius: 0.6rem;
                     font-family: Inter;
+                }
+
+                .fileInput {
+                    padding: 1.2rem 2rem;
+                    border-radius: 1rem;
+                    border: 1px solid #ddd;
+                    color: #999;
+                    position: relative;
+                    @include text("text-lg-regular");
+                    
+                    svg {
+                        position: absolute;
+                        right: 1.5rem;
+                        top: 0.8rem;
+                        bottom: 0;
+                        font-size: 3.5rem;
+                    }
+                }
+
+                .defaultFileInput {
+                    display: none;
                 }
             }
         }
