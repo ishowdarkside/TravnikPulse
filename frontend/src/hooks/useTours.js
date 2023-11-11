@@ -1,5 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { editTour, getAllTours, getSingleTour } from "../services/tourServices";
+import {
+  createTour,
+  editTour,
+  getAllTours,
+  getSingleTour,
+} from "../services/tourServices";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
@@ -30,13 +35,34 @@ export function useEditTour() {
   const { mutate, isLoading } = useMutation({
     mutationFn: (formData) => editTour(formData, tourID),
     onSuccess: (res) => {
-      console.log(res, "OVDJE");
       if (res.status === "success") {
         queryClient.invalidateQueries(["tours", "tour"]);
         toast.success(res.message);
         navigate(-1);
       }
     },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { mutate, isLoading };
+}
+
+export function useCreateTour() {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: (formData) => createTour(formData),
+    onSuccess: (res) => {
+      if (res.status === "success") {
+        toast.success(res.message);
+        queryClient.invalidateQueries(["tours"]);
+        return navigate(-1);
+      }
+
+      //else
+      toast.error(res.message);
+    },
+    onError: (err) => toast.error(err.message),
   });
 
   return { mutate, isLoading };

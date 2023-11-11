@@ -9,7 +9,8 @@ const fs = require("fs").promises;
 const { v4: uuidv4 } = require("uuid");
 
 exports.createTour = catchAsync(async (req, res, next) => {
-  console.log(req.body);
+  req.body.categories = req.body.categories.split(",");
+  req.body.location = JSON.parse(req.body.location);
   const {
     name,
     categories,

@@ -49,3 +49,15 @@ export async function editTour(formData, tourID) {
     console.log(err);
   }
 }
+
+export async function createTour(formData) {
+  const token = localStorage.getItem("jwt");
+  console.log("JA POKRENUT");
+  const res = await fetch(`${BASE_URL}api/tours`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+  const data = await res.json();
+  console.log(data);
+}

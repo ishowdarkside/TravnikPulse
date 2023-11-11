@@ -40,6 +40,6 @@ body {
   @include text("text-sm-medium");
   padding: 1rem;
   input {
-    padding: 0 2rem;
+    padding: 0 2rem !important;
   }
 }

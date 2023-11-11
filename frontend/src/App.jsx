@@ -17,6 +17,7 @@ import AdminContext from "./context/AdminContext";
 import CalendarPage from "./pages/ClientCalendar/CalendarPage/CalendarPage";
 import EditTourAdmin from "./pages/EditTourAdmin/Page/EditTourAdmin";
 import ProtectAdmin from "./components/ProtectAdmin";
+import CreateTourAdmin from "./pages/CreateTourAdmin/CreateTourAdmin";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,16 @@ function App() {
                     <ProtectAdmin>
                       <EditTourAdmin />
                     </ProtectAdmin>
+                  }
+                />
+                <Route
+                  path="create-tour"
+                  element={
+                    <AdminContext>
+                      <ProtectAdmin>
+                        <CreateTourAdmin />
+                      </ProtectAdmin>
+                    </AdminContext>
                   }
                 />
               </Route>

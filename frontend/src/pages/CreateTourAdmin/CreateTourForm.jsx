@@ -1,44 +1,48 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import styles from "./EditTourForm.module.scss";
-import EditTourPreferences from "../EditTourPreferences/EditTourPreferences";
+import styles from "./CreateTourAdmin.module.scss";
+import EditTourPreferences from "../EditTourAdmin/EditTourPreferences/EditTourPreferences";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
-import EditTourMap from "../EditTourMap/EditTourMap";
+import EditTourMap from "../EditTourAdmin/EditTourMap/EditTourMap";
 import { useForm } from "react-hook-form";
-import { useEditTour } from "../../../hooks/useTours";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { useCreateTour } from "../../hooks/useTours";
+import { useAdminContext } from "../../context/AdminContext";
+import { Navigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
-export default function EditTourForm({ tour }) {
-  const [selectedPreferences, setSelectedPreferences] = useState(
-    tour.categories
-  );
+export default function CreateTourForm() {
+  const [selectedPreferences, setSelectedPreferences] = useState([]);
 
-  //staviti state iz toura kad prebacim na string
-  const [time, setTime] = useState(tour.time);
-  const [price, setPrice] = useState(tour.price);
-  const [isFree, setIsFree] = useState(() =>
-    tour.price === "FREE" ? true : false
-  );
-  const [position, setPosition] = useState(tour.location.coordinates);
-
+  const [time, setTime] = useState(null);
+  const [price, setPrice] = useState("");
+  const [isFree, setIsFree] = useState(false);
+  const [position, setPosition] = useState([]);
   const { register, handleSubmit } = useForm();
-  const { mutate, isLoading } = useEditTour();
+  const { mutate, isLoading } = useCreateTour();
+  const { activeDate } = useAdminContext();
+
+  if (!activeDate) return <Navigate to="/app/admin" />;
 
   async function submitFnc(data) {
-    if (data.coverImg.length === 0) delete data.coverImg;
+    console.log("ACTIVATED");
+    if (!time) return toast.error("Assign event time!");
+    if (!isFree && !price)
+      return toast.error("Assign price of event or mark it as FREE!");
+    if (position.length === 0)
+      return toast.error("Assign event location on map");
+
     const formData = new FormData();
     formData.append("time", time);
     formData.append("price", isFree ? "FREE" : price);
     formData.append("location", JSON.stringify({ coordinates: position }));
-    if (selectedPreferences.length > 0)
-      formData.append("categories", selectedPreferences);
+    formData.append("categories", selectedPreferences);
+    formData.append("coverImg", data.coverImg[0]);
+    formData.append("date", activeDate);
+    delete data.coverImg;
 
-    if (data.coverImg && data.coverImg.length > 0) {
-      formData.append("coverImg", data.coverImg[0]);
-      delete data.coverImg;
-    }
     Object.entries(data).forEach((entry) => {
       formData.append(entry[0], entry[1]);
     });
@@ -52,13 +56,13 @@ export default function EditTourForm({ tour }) {
       onSubmit={handleSubmit((data) => submitFnc(data))}
       className={styles.form}
     >
-      <h1>Edit event</h1>
+      <h1>Create event</h1>
       <div className={styles.inputWrapper}>
         <label htmlFor="name">Title</label>
         <input
           type="text"
           name="name"
-          defaultValue={tour.name}
+          placeholder="Title goes here"
           {...register("name", { required: true })}
         />
       </div>
@@ -81,12 +85,11 @@ export default function EditTourForm({ tour }) {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <label htmlFor="duration">Duration</label>
+        <label htmlFor="duration">Duration (in minutes)</label>
         <input
           type="number"
           placeholder="120 Minutes"
           name="duration"
-          defaultValue={tour.duration}
           {...register("duration", { required: true })}
         />
       </div>
@@ -112,7 +115,6 @@ export default function EditTourForm({ tour }) {
         <span>Description</span>
         <textarea
           placeholder="Description"
-          defaultValue={tour.description}
           {...register("description", { required: true })}
         ></textarea>
       </div>
@@ -125,7 +127,7 @@ export default function EditTourForm({ tour }) {
           type="file"
           name="coverImg"
           id="coverImg"
-          {...register("coverImg")}
+          {...register("coverImg", { required: true })}
           accept="image/*"
           className={styles.inputImg}
         />
@@ -133,11 +135,7 @@ export default function EditTourForm({ tour }) {
 
       <div>
         <span>Choose location of activity</span>
-        <EditTourMap
-          tour={tour}
-          position={position}
-          setPosition={setPosition}
-        />
+        <EditTourMap position={position} setPosition={setPosition} />
       </div>
       <button type="submit" className={styles.submitBtn}>
         Save changes

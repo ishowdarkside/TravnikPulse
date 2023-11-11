@@ -25,7 +25,9 @@ export default function EditTourMap({ position, setPosition }) {
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <MapClickHandler onMapClick={handleMapClick} />
-        <Marker position={position} icon={customIcon} />
+        {position.length > 0 && (
+          <Marker position={position} icon={customIcon} />
+        )}
       </MapContainer>
     </div>
   );
