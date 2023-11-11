@@ -15,6 +15,7 @@ import Settings from "./pages/Settings/Settings";
 import Tour from "./pages/Tour/Tour";
 import AdminContext from "./context/AdminContext";
 import CalendarPage from "./pages/ClientCalendar/CalendarPage/CalendarPage";
+import EditTourAdmin from "./pages/EditTourAdmin/Page/EditTourAdmin";
 
 const queryClient = new QueryClient();
 
@@ -37,16 +38,26 @@ function App() {
                 }
               />
               <Route path="login" element={<Login />} />
+              <Route path="admin">
+                <Route
+                  index
+                  element={
+                    <AdminContext>
+                      <Admin />
+                    </AdminContext>
+                  }
+                />
+                <Route path="edit-tour/:tourID" element={<EditTourAdmin />} />
+              </Route>
+              <Route path="map" element={<Map />} />
               <Route
-                path="admin"
+                path="shop"
                 element={
-                  <AdminContext>
-                    <Admin />
-                  </AdminContext>
+                  <TouristDataContext>
+                    <Shop />
+                  </TouristDataContext>
                 }
               />
-              <Route path="map" element={<Map />} />
-              <Route path="shop" element={<TouristDataContext><Shop /></TouristDataContext>} />
               <Route
                 path="settings"
                 element={

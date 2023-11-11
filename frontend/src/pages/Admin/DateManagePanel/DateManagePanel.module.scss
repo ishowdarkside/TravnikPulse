@@ -1,10 +1,9 @@
 @import "../../../styles/mixin.scss";
 .panel {
-  height: 100dvh;
+  min-height: 100dvh;
   top: 0;
   left: 0;
-
-  position: fixed;
+  position: absolute;
   width: 100%;
   background-color: #ffff;
   padding: 7rem 3rem;
@@ -15,29 +14,35 @@
 }
 
 .toursWrapper {
-  height: 65rem;
-  overflow-y: scroll;
+  display: flex;
+  padding-bottom: 13rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
 }
 
 .plusDiv {
-  margin-bottom: 2rem;
-  height: 10rem;
-  width: 100%;
-  background-color: #ee2d21;
+  height: 7rem;
+  width: 7rem;
+  position: fixed;
+  bottom: 3rem;
+  right: 5rem;
+  background-color: #00a9ac;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  border-radius: 2rem;
+  border-radius: 100px;
 }
 
 .closePanel {
   position: absolute;
-  top: 2rem;
+  top: 3rem;
   right: 2rem;
   border: none;
   outline: none;
+  font-size: 3rem;
   background-color: transparent;
 }
 

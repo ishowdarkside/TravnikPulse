@@ -10,13 +10,11 @@ export async function getAllTours() {
 }
 
 export async function getSingleTour(tourId) {
-  console.log(tourId);
   try {
     const res = await fetch(`${BASE_URL}api/tours/${tourId}`);
     const data = await res.json();
-
-    console.log(data);
-    return data.tour;
+    if (data.status === "success") return data.tour;
+    return "not-found";
   } catch (err) {
     console.log(err);
   }

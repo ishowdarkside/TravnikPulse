@@ -32,6 +32,13 @@ export default function DateManagePanel() {
         {matchingDateTours.map((tour) => (
           <EventComponent tour={tour} key={tour._id} />
         ))}
+
+        {matchingDateTours.length === 0 && (
+          <span>
+            No tours on this date! Start creating some by clicking on plus icon
+            .
+          </span>
+        )}
       </div>
     </div>
   );
