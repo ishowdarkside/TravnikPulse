@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 // React icons
 import { MdOutlineDone } from "react-icons/md";
 import { AiOutlineCloudUpload, AiFillStar } from "react-icons/ai";
@@ -8,7 +8,9 @@ import { useCreateReview } from "../../../hooks/useReview";
 
 export default function ReviewTour() {
   const [filesLength, setFilesLength] = useState(0);
+  const [images, setImages] = useState(null);
   const [rating, setRating] = useState(0);
+  const messageRef = useRef();
 
   const { mutate, isLoading } = useCreateReview();
 
@@ -17,10 +19,23 @@ export default function ReviewTour() {
   return (
     <div className={styles.reviewTour}>
       <h2>Your review is incredibly helpful, thank you</h2>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData()
+        formData.append('review', messageRef.current.value);
+        Array.from(images).forEach((image) => {
+          formData.append('images', image)
+        });
+        mutate(formData)
+        // Reset value
+        setImages(null)
+        setRating(0)
+        setFilesLength(0)
+        messageRef.current.value = ''
+      }}>
         <div className={styles.inputContainer}>
-          <label htmlFor="message">Message</label>
-          <textarea rows="5" id="message" placeholder="Your message"></textarea>
+          <label htmlFor="review">Message</label>
+          <textarea rows="5" id="review" ref={messageRef} placeholder="Your message"></textarea>
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="file">Attach images</label>
@@ -35,7 +50,12 @@ export default function ReviewTour() {
             id="file"
             className={styles.defaultFileInput}
             multiple
-            onChange={(e) => setFilesLength(e.target.files.length)}
+            onChange={(e) => {
+              // Images length
+              setFilesLength(e.target.files.length)
+              // Images
+              setImages(e.target.files)
+            }}
           />
         </div>
         <div className={styles.stars}>

@@ -74,7 +74,10 @@ export function useCreateReview() {
     mutationFn: (formData) => createReview(tourID, formData),
     onSuccess: (res) => {
       if (res.status === "fail") return toast.error(res.message);
-      queryClient.invalidateQueries(["tours"]);
+      if (res.status === "success") {
+        toast.success(res.message); 
+        queryClient.invalidateQueries(["tours"]);
+      }
     },
   });
   return { mutate, isLoading };

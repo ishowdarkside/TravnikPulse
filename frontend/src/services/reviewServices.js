@@ -62,7 +62,6 @@ export async function declineReview(reviewID) {
 }
 
 //FOR CLIENT
-
 export async function createReview(tourID, formData) {
   const token = localStorage.getItem("jwt");
   try {

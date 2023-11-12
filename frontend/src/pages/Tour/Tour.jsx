@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGetSingleTour } from "../../hooks/useTours";
+import { useGetUser } from "../../hooks/useAuth";
 // Components
 import Navbar from "./Navbar/Navbar";
 import AboutTour from "./AboutTour/AboutTour";
@@ -10,8 +11,9 @@ import styles from "./Tour.module.scss";
 export default function Tour() {
   const [showReview, setShowReview] = useState(false);
   const { data, isLoading } = useGetSingleTour();
+  const { data: user, isLoading: loadingUser } = useGetUser(); 
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading || loadingUser) return <h1>Loading...</h1>;
 
   return (
     <>
@@ -31,7 +33,7 @@ export default function Tour() {
         </div>
 
         {!showReview ? (
-          <AboutTour setShowReview={setShowReview} data={data} />
+          <AboutTour setShowReview={setShowReview} data={data} user={user} />
         ) : (
           <ReviewTour />
         )}
