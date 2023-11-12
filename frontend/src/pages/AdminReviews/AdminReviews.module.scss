@@ -1,0 +1,25 @@
+@import "../../styles/mixin.scss";
+
+.sectionBody {
+  padding: 10rem 3rem;
+
+  h2 {
+    @include text("text-xl-semibold");
+  }
+
+  .sectionParagraph {
+    @include text("text-md-medium");
+  }
+
+  .reviewsWrapper {
+    margin-top: 2rem;
+  }
+
+  .noReviews {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -18,6 +18,9 @@ import CalendarPage from "./pages/ClientCalendar/CalendarPage/CalendarPage";
 import EditTourAdmin from "./pages/EditTourAdmin/Page/EditTourAdmin";
 import ProtectAdmin from "./components/ProtectAdmin";
 import CreateTourAdmin from "./pages/CreateTourAdmin/CreateTourAdmin";
+import AdminCalendar from "./pages/AdminCalendar/AdminCalendar";
+import AdminReviews from "./pages/AdminReviews/AdminReviews";
+import AdminSingleReview from "./pages/AdminSingleReview/AdminSingleReview";
 import Register from "./pages/Register/Page/Register";
 
 const queryClient = new QueryClient();
@@ -69,6 +72,32 @@ function App() {
                         <CreateTourAdmin />
                       </ProtectAdmin>
                     </AdminContext>
+                  }
+                />
+                <Route
+                  path="calendar"
+                  element={
+                    <AdminContext>
+                      <ProtectAdmin>
+                        <AdminCalendar />
+                      </ProtectAdmin>
+                    </AdminContext>
+                  }
+                />
+                <Route
+                  path="reviews"
+                  element={
+                    <ProtectAdmin>
+                      <AdminReviews />
+                    </ProtectAdmin>
+                  }
+                />
+                <Route
+                  path="reviews/:reviewID"
+                  element={
+                    <ProtectAdmin>
+                      <AdminSingleReview />
+                    </ProtectAdmin>
                   }
                 />
               </Route>

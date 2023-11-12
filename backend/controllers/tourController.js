@@ -54,7 +54,12 @@ exports.createTour = catchAsync(async (req, res, next) => {
 });
 
 exports.getTours = catchAsync(async (req, res, next) => {
-  const tours = await Tour.find();
+  const tours = await Tour.find().populate({
+    path: "reviews",
+    populate: { path: "user", select: "username" },
+  });
+  /*.populate({ path: "reviews", populate: { path: "tour" } });*/
+
   res.status(200).json({
     status: "success",
     results: tours.length,

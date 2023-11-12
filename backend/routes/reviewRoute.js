@@ -13,6 +13,7 @@ const {
   getUnapprovedReviews,
   approveReview,
   declineReview,
+  getSingleReview,
 } = require(path.join(__dirname, "..", "controllers", "reviewController"));
 
 const upload = multer({ storage: multer.memoryStorage() });
@@ -26,6 +27,7 @@ router.patch(
 );
 
 router.get("/unapproved-reviews", protectAdmin, getUnapprovedReviews);
+router.get("/unapproved-reviews/:reviewID", protectAdmin, getSingleReview);
 router.patch("/approve-review/:reviewID", protectAdmin, approveReview);
 router.delete("/decline-review/:reviewID", protectAdmin, declineReview);
 
