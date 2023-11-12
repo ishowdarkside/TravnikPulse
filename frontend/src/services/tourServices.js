@@ -61,3 +61,21 @@ export async function createTour(formData) {
   const data = await res.json();
   return data;
 }
+
+export async function rateTour(tourID, rating) {
+  const token = localStorage.getItem('jwt');
+  try {
+    const res = await fetch(`${BASE_URL}api/tours/rate-tour/${tourID}`, {
+      method: 'PATCH',
+      headers: { 
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({rating}),
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error)
+  }
+}

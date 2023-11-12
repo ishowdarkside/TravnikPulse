@@ -4,6 +4,7 @@ import {
   editTour,
   getAllTours,
   getSingleTour,
+  rateTour,
 } from "../services/tourServices";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -65,5 +66,23 @@ export function useCreateTour() {
     onError: (err) => toast.error(err.message),
   });
 
+  return { mutate, isLoading };
+}
+
+export function useRateTour() {
+  const { tourID } = useParams();
+  const queryClient = useQueryClient();
+
+  const { mutate, isLoading } = useMutation({
+    mutationFn: (rating) => rateTour(tourID, rating),
+    onSuccess: (res) => {
+      if (res.status === "fail") return toast.error(res.message);
+      if (res.status === "success") {
+        toast.success(res.message); 
+        queryClient.invalidateQueries(["tours"]);
+      }
+    },
+    onError: (err) => console.log(err)
+  });
   return { mutate, isLoading };
 }

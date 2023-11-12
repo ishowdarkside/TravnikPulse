@@ -5,6 +5,7 @@ import { AiOutlineCloudUpload, AiFillStar } from "react-icons/ai";
 // SCSS
 import styles from "./ReviewTour.module.scss";
 import { useCreateReview } from "../../../hooks/useReview";
+import { useRateTour } from "../../../hooks/useTours";
 
 export default function ReviewTour() {
   const [filesLength, setFilesLength] = useState(0);
@@ -12,9 +13,10 @@ export default function ReviewTour() {
   const [rating, setRating] = useState(0);
   const messageRef = useRef();
 
-  const { mutate, isLoading } = useCreateReview();
+  const { mutate: reviewMutation, isLoading: reviewIsLoading } = useCreateReview();
+  const { mutate: rateMutation, isLoading: rateIsLoading } = useRateTour();
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (reviewIsLoading || rateIsLoading) return <h1>LOADING...</h1>;
 
   return (
     <div className={styles.reviewTour}>
@@ -22,16 +24,41 @@ export default function ReviewTour() {
       <form className={styles.form} onSubmit={(e) => {
         e.preventDefault();
         const formData = new FormData()
-        formData.append('review', messageRef.current.value);
-        Array.from(images).forEach((image) => {
-          formData.append('images', image)
-        });
-        mutate(formData)
-        // Reset value
-        setImages(null)
-        setRating(0)
-        setFilesLength(0)
-        messageRef.current.value = ''
+        
+        if(rating > 0 && images !== null && messageRef.current.value !== '') {
+          formData.append('review', messageRef.current.value);
+          Array.from(images).forEach((image) => {
+            formData.append('images', image)
+          });
+          
+          reviewMutation(formData)
+          rateMutation(rating)
+          // Rest
+          setImages(null)
+          setFilesLength(0)
+          messageRef.current.value = ''
+          setRating(0)
+          return;
+        }
+        
+        if(rating === 0 && images !== null && messageRef.current.value !== '') {
+          formData.append('review', messageRef.current.value);
+          Array.from(images).forEach((image) => {
+            formData.append('images', image)
+          });
+          reviewMutation(formData)
+          // Reset
+          setImages(null)
+          setFilesLength(0)
+          messageRef.current.value = ''
+          return;
+        }
+        
+        if(rating > 0) {
+          rateMutation(rating)
+          setRating(0)
+          return;
+        }
       }}>
         <div className={styles.inputContainer}>
           <label htmlFor="review">Message</label>
