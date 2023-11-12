@@ -69,6 +69,20 @@ exports.getUnapprovedReviews = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getSingleReview = catchAsync(async (req, res, next) => {
+  const review = await Review.findById(req.params.reviewID)
+    .populate({
+      path: "user",
+      select: "username",
+    })
+    .populate({ path: "tour", select: "name description coverImg" });
+
+  res.status(200).json({
+    status: "success",
+    review,
+  });
+});
+
 exports.approveReview = catchAsync(async (req, res, next) => {
   const review = await Review.findById(req.params.reviewID);
   review.approved = true;
