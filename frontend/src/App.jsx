@@ -18,6 +18,7 @@ import CalendarPage from "./pages/ClientCalendar/CalendarPage/CalendarPage";
 import EditTourAdmin from "./pages/EditTourAdmin/Page/EditTourAdmin";
 import ProtectAdmin from "./components/ProtectAdmin";
 import CreateTourAdmin from "./pages/CreateTourAdmin/CreateTourAdmin";
+import Register from "./pages/Register/Page/Register";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ function App() {
                 }
               />
               <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
               <Route path="admin">
                 <Route
                   index

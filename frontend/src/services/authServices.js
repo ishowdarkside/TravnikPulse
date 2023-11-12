@@ -19,6 +19,27 @@ export async function login(username, password) {
   }
 }
 
+export async function signup(username, password, passwordConfirm) {
+  try {
+    const res = await fetch(`${BASE_URL}api/auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        passwordConfirm
+      }),
+    });
+
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export async function getUser() {
   const token = localStorage.getItem("jwt");
   if (!token) return "Unauthorized";

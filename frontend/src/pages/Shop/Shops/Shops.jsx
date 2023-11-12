@@ -9,8 +9,6 @@ export default function Shops() {
 
     if(isLoading) return <h1>Loading...</h1>
 
-    console.log(activeShopPreference)
-
     return (
         <section className={styles.shops}>
             {/* Display shops by filter default will be stores */}

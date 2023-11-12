@@ -6,6 +6,6 @@ export default function Modal({ children }) {
         <div className={styles.modal}>
             {children}  
         </div>,
-        document.getElementById('portal')
+        document.body
     )
 }

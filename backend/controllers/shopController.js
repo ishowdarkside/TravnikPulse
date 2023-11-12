@@ -8,8 +8,6 @@ const { v4: uuidv4 } = require("uuid");
 exports.addShop = catchAsync(async (req, res, next) => {
   const { shopName, location, category } = req.body;
 
-  console.log(req.body);
-
   if (!req.file || !req.file.mimetype.startsWith("image"))
     return next(new AppError(400, "Provide valid image"));
 

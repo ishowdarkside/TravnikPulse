@@ -6,7 +6,6 @@ import DateManagePanel from "../DateManagePanel/DateManagePanel";
 
 export default function CalendarPage() {
   const [activeDate, setActiveDate] = useState(null);
-  console.log(activeDate);
   return (
     <section>
       <Navbar />

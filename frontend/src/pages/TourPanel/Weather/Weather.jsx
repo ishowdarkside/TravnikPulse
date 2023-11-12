@@ -20,8 +20,6 @@ export default function Weather() {
 
     let backgroundImage;
 
-    console.log(data)
-
     if (data.weather[0].main === 'Clouds') {
         backgroundImage = { backgroundImage: `url(${cloudyBackground})` };
     } else if (data.weather[0].main === 'Sunny') {

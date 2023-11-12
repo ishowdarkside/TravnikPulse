@@ -2,7 +2,7 @@
 @import "../../../styles/variables.scss";
 .formWrapper {
   padding: 0 2rem;
-  .loginSection {
+  .registerSection {
     margin: 5rem 0 20rem 0;
 
     h2 {
@@ -12,6 +12,7 @@
     p {
       @include text("text-xl-semibold");
       color: #333;
+      padding-right: 7rem;
     }
   
     form {
