@@ -7,6 +7,8 @@ export default function ProtectAdmin({ children }) {
 
   if (isLoading) return <h1>LOADING...</h1>;
   if (data === "Unauthorized") return <Navigate to="/app" />;
+  if (data.status === "fail") return <Navigate to="/app" />;
+
   if (!isLoading && data.role && data.role !== "admin")
     return <Navigate to="/app" />;
 

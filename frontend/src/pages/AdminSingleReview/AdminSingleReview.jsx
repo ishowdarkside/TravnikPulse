@@ -1,22 +1,27 @@
-import { useGetSingleUnapprovedReview } from "../../hooks/useReview";
+import {
+  useApproveReview,
+  useDeclineReview,
+  useGetSingleUnapprovedReview,
+} from "../../hooks/useReview";
 import ReturnButton from "../../components/ReturnButton/ReturnButton";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendarEvent } from "react-icons/bs";
-import { MdOutlineSpeakerNotes } from "react-icons/md";
 import styles from "./AdminSingleReview.module.scss";
 
 export default function AdminSingleReview() {
   const { data, isLoading } = useGetSingleUnapprovedReview();
+  const { mutate: approve, isLoading: isApproving } = useApproveReview();
+  const { mutate: decline, isLoading: isDeleting } = useDeclineReview();
+  if (isLoading || isApproving || isDeleting) return <h1>LOADING...</h1>;
 
-  if (isLoading) return <h1>LOADING...</h1>;
-
-  if (data === "not-found")
+  if (data === "not-found" || !data)
     return (
       <>
         <ReturnButton />
         <span>Something went really wrong 😢</span>
       </>
     );
+
   return (
     <>
       <ReturnButton />
@@ -35,8 +40,8 @@ export default function AdminSingleReview() {
 
         <div>
           <span className={styles.comment}>
-            {" "}
-            <MdOutlineSpeakerNotes /> {data.review}
+            <b>Review: </b>
+            {data.review}
           </span>
         </div>
         {data.images.length > 0 && (
@@ -50,6 +55,10 @@ export default function AdminSingleReview() {
             ))}
           </div>
         )}
+        <div className={styles.buttonWrapper}>
+          <button onClick={() => approve()}>Approve review</button>
+          <button onClick={() => decline()}>Decline review</button>
+        </div>
       </section>
     </>
   );

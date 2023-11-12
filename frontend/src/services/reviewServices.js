@@ -29,3 +29,51 @@ export async function getSingleUnapprovedReview(reviewID) {
     console.log(err);
   }
 }
+
+export async function approveReview(reviewID) {
+  const token = localStorage.getItem("jwt");
+  console.log(token);
+  try {
+    const res = await fetch(
+      `${BASE_URL}api/reviews/approve-review/${reviewID}`,
+      {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function declineReview(reviewID) {
+  const token = localStorage.getItem("jwt");
+  try {
+    await fetch(`${BASE_URL}api/reviews/decline-review/${reviewID}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+//FOR CLIENT
+
+export async function createReview(tourID, formData) {
+  const token = localStorage.getItem("jwt");
+  try {
+    const res = await fetch(`${BASE_URL}api/reviews/review-tour/${tourID}`, {
+      method: "PATCH",
+      headers: { Authorization: `Bearer ${token}` },
+      body: formData,
+    });
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
