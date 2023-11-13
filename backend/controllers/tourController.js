@@ -226,7 +226,7 @@ exports.bookmarkTour = catchAsync(async (req, res, next) => {
     user.bookmarkedTours.push(req.params.tourID);
   else
     user.bookmarkedTours = user.bookmarkedTours.filter(
-      (bookmark) => bookmark !== req.params.tourID
+      (bookmark) => bookmark.toHexString() !== req.params.tourID
     );
 
   await user.save({ validateBeforeSave: false });

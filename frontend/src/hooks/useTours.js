@@ -102,8 +102,9 @@ export function useBookmarkTour() {
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation({
     mutationFn: () => bookmarkTour(tourID),
-    onSuccess: () => {
+    onSuccess: (res) => {
       queryClient.invalidateQueries(["tour"]);
+      console.log(`IZ HOOKA `, res);
     },
   });
   return { mutate, isLoading };

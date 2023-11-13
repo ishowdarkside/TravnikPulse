@@ -30,9 +30,11 @@ export default function AboutTour({ data, setShowReview, user }) {
 
   const isExpired = new Date(data.date).getTime() < new Date().getTime();
 
-  const { mutate: bookmark, isLoading: isBookmarking } = useBookmarkTour();
+  const { mutate: bookmark } = useBookmarkTour();
 
-  const isBookmarked = user.bookmarkedTours?.includes(data?._id);
+  const isBookmarked = user.bookmarkedTours?.some(
+    (bookmark) => bookmark._id === data?._id
+  );
 
   return (
     <>
