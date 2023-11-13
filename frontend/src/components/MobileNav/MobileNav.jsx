@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 // React icons
-import { TbMailOpened } from "react-icons/tb";
-import { LuMap, LuUserCircle2 } from "react-icons/lu";
+
+import { AiOutlineHome, AiOutlineCalendar } from "react-icons/ai";
+import { LuMap } from "react-icons/lu";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoMdOptions } from "react-icons/io";
+
 // CSS
 import styles from "./MobileNav.module.scss";
 
@@ -22,7 +24,7 @@ export default function MobileNav() {
                 : styles.link
             }
           >
-            <TbMailOpened />
+            <AiOutlineHome />
           </Link>
         </li>
         <li>
@@ -35,6 +37,18 @@ export default function MobileNav() {
             }
           >
             <LuMap />
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/app/calendar"
+            className={
+              pathname === "/app/calendar"
+                ? `${styles.link} ${styles.active}`
+                : styles.link
+            }
+          >
+            <AiOutlineCalendar />
           </Link>
         </li>
         <li>
@@ -59,18 +73,6 @@ export default function MobileNav() {
             }
           >
             <IoMdOptions />
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/app/me"
-            className={
-              pathname === "/app/me"
-                ? `${styles.link} ${styles.active}`
-                : styles.link
-            }
-          >
-            <LuUserCircle2 />
           </Link>
         </li>
       </ul>
