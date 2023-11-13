@@ -1,14 +1,17 @@
-import MobileNav from '../../components/MobileNav/MobileNav';
 import Navbar from '../../components/Navbar/Navbar';
+import MapFilter from './MapFilter/MapFilter';
+import MainMap from './MainMap/MainMap';
+import MobileNav from '../../components/MobileNav/MobileNav';
 // SCSS
 import styles from './Map.module.scss';
 
 export default function Map() {
-    return (
-        <div className={styles.mapWrapper}>
-            <Navbar />
-            <h1>Map</h1>
-            <MobileNav />
-        </div>
-    )
+	return (
+		<div className={styles.mapWrapper}>
+			<Navbar />
+			<MapFilter />
+			<MainMap />
+			<MobileNav />
+		</div>
+	);
 }

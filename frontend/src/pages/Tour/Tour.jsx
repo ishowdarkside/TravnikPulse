@@ -28,7 +28,6 @@ export default function Tour() {
           <div className={styles.imageOverlay} />
           <div className={styles.imageContent}>
             <h2>{data.name}</h2>
-            <p>{data.description}</p>
           </div>
         </div>
 

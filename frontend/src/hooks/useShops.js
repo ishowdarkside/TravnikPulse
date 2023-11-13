@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllShops } from "../services/shopServices";
+import { getAllShops, getRadiusShop } from "../services/shopServices";
 
 // Get all shops
 export function useGetAllShops() {
@@ -10,3 +10,11 @@ export function useGetAllShops() {
 
     return { data, isLoading }
 }
+
+export function useGetRadiusShops() {
+    const { data, isLoading } = useQuery({
+      queryFn: getRadiusShop,
+      queryKey: ["RadiusShops"]
+    });
+    return { data, isLoading }
+  }

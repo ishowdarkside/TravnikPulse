@@ -22,6 +22,7 @@ import AdminCalendar from "./pages/AdminCalendar/AdminCalendar";
 import AdminReviews from "./pages/AdminReviews/AdminReviews";
 import AdminSingleReview from "./pages/AdminSingleReview/AdminSingleReview";
 import Register from "./pages/Register/Page/Register";
+import MapContext from "./context/MapContext";
 
 const queryClient = new QueryClient();
 
@@ -101,7 +102,12 @@ function App() {
                   }
                 />
               </Route>
-              <Route path="map" element={<Map />} />
+              <Route path="map" element={
+                <MapContext>
+                  <Map />
+                </MapContext>
+              } />
+
               <Route
                 path="shop"
                 element={

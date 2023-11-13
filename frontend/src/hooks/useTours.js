@@ -3,6 +3,7 @@ import {
   createTour,
   editTour,
   getAllTours,
+  getRadiusTour,
   getSingleTour,
   rateTour,
 } from "../services/tourServices";
@@ -85,4 +86,12 @@ export function useRateTour() {
     onError: (err) => console.log(err)
   });
   return { mutate, isLoading };
+}
+
+export function useGetRadiusTours() {
+  const { data, isLoading } = useQuery({
+    queryFn: getRadiusTour,
+    queryKey: ["RadiusTours"]
+  });
+  return { data, isLoading }
 }
