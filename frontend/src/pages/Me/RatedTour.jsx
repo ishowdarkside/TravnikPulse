@@ -1,0 +1,20 @@
+/* eslint-disable react/prop-types */
+import styles from "./RatedTour.module.scss";
+import { AiFillStar } from "react-icons/ai";
+export default function RatedTour({ ratedTour }) {
+  const starsArr = Array.from({ length: ratedTour.value }, () => 0);
+
+  return (
+    <div className={styles.ratedTourWrapper}>
+      <div className={styles.imgWrapper}>
+        <img src={`http://127.0.1:8000/${ratedTour.tour?.coverImg}`} />
+        <div className={styles.starWrapper}>
+          {starsArr.map((star, i) => (
+            <AiFillStar key={i} />
+          ))}
+        </div>
+      </div>
+      <span>{ratedTour.tour?.name}</span>
+    </div>
+  );
+}

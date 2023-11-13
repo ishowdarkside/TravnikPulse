@@ -1,68 +1,72 @@
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 // React icons
 import { MdOutlineDone } from "react-icons/md";
 import { AiOutlineCloudUpload, AiFillStar } from "react-icons/ai";
 // SCSS
 import styles from "./ReviewTour.module.scss";
 import { useCreateReview } from "../../../hooks/useReview";
-import { useRateTour } from "../../../hooks/useTours";
+import { useGetSingleTour, useRateTour } from "../../../hooks/useTours";
+import { useGetUser } from "../../../hooks/useAuth";
 
 export default function ReviewTour() {
+  const { data: user, isLoading: isLoadingUser } = useGetUser();
+  const { data: tour, isLoading: isLoadingTour } = useGetSingleTour();
+
   const [filesLength, setFilesLength] = useState(0);
   const [images, setImages] = useState(null);
-  const [rating, setRating] = useState(0);
-  const messageRef = useRef();
+  const [rating, setRating] = useState(() => {
+    const myRating = tour.ratings.find((rating) => rating.user === user._id);
+    return myRating ? +myRating.value : 0;
+  });
+  const hasAlreadyRated = tour.ratings.find(
+    (rating) => rating.user === user._id
+  )
+    ? true
+    : false;
 
-  const { mutate: reviewMutation, isLoading: reviewIsLoading } = useCreateReview();
+  const [message, setMessage] = useState("");
+
+  const { mutate: reviewMutation, isLoading: reviewIsLoading } =
+    useCreateReview();
   const { mutate: rateMutation, isLoading: rateIsLoading } = useRateTour();
 
-  if (reviewIsLoading || rateIsLoading) return <h1>LOADING...</h1>;
+  useEffect(() => {
+    if (rating === 0 || hasAlreadyRated) return;
+    rateMutation(rating);
+  }, [rating]);
+
+  function handleSubmit(e) {
+    console.log("JA SAM POZVAN");
+    e.preventDefault();
+    const formData = new FormData();
+
+    if (!message) return;
+    formData.append("review", message);
+
+    if (images)
+      Array.from(images).forEach((image) => {
+        formData.append("images", image);
+      });
+
+    reviewMutation(formData);
+  }
+
+  if (reviewIsLoading || rateIsLoading || isLoadingUser || isLoadingTour)
+    return <h1>LOADING...</h1>;
 
   return (
     <div className={styles.reviewTour}>
       <h2>Your review is incredibly helpful, thank you</h2>
-      <form className={styles.form} onSubmit={(e) => {
-        e.preventDefault();
-        const formData = new FormData()
-        
-        if(rating > 0 && images !== null && messageRef.current.value !== '') {
-          formData.append('review', messageRef.current.value);
-          Array.from(images).forEach((image) => {
-            formData.append('images', image)
-          });
-          
-          reviewMutation(formData)
-          rateMutation(rating)
-          // Rest
-          setImages(null)
-          setFilesLength(0)
-          messageRef.current.value = ''
-          setRating(0)
-          return;
-        }
-        
-        if(rating === 0 && images !== null && messageRef.current.value !== '') {
-          formData.append('review', messageRef.current.value);
-          Array.from(images).forEach((image) => {
-            formData.append('images', image)
-          });
-          reviewMutation(formData)
-          // Reset
-          setImages(null)
-          setFilesLength(0)
-          messageRef.current.value = ''
-          return;
-        }
-        
-        if(rating > 0) {
-          rateMutation(rating)
-          setRating(0)
-          return;
-        }
-      }}>
+      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.inputContainer}>
           <label htmlFor="review">Message</label>
-          <textarea rows="5" id="review" ref={messageRef} placeholder="Your message"></textarea>
+          <textarea
+            rows="5"
+            id="review"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Your message"
+          ></textarea>
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="file">Attach images</label>
@@ -79,9 +83,9 @@ export default function ReviewTour() {
             multiple
             onChange={(e) => {
               // Images length
-              setFilesLength(e.target.files.length)
+              setFilesLength(e.target.files.length);
               // Images
-              setImages(e.target.files)
+              setImages(e.target.files);
             }}
           />
         </div>
@@ -90,34 +94,49 @@ export default function ReviewTour() {
             className={
               rating > 0 ? `${styles.star} ${styles.active}` : styles.star
             }
-            onClick={() => setRating(1)}
+            onClick={() => {
+              if (hasAlreadyRated) return;
+              setRating(1);
+            }}
           />
           <AiFillStar
             className={
               rating > 1 ? `${styles.star} ${styles.active}` : styles.star
             }
-            onClick={() => setRating(2)}
+            onClick={() => {
+              if (hasAlreadyRated) return;
+              setRating(2);
+            }}
           />
           <AiFillStar
             className={
               rating > 2 ? `${styles.star} ${styles.active}` : styles.star
             }
-            onClick={() => setRating(3)}
+            onClick={() => {
+              if (hasAlreadyRated) return;
+              setRating(3);
+            }}
           />
           <AiFillStar
             className={
               rating > 3 ? `${styles.star} ${styles.active}` : styles.star
             }
-            onClick={() => setRating(4)}
+            onClick={() => {
+              if (hasAlreadyRated) return;
+              setRating(4);
+            }}
           />
           <AiFillStar
             className={
               rating > 4 ? `${styles.star} ${styles.active}` : styles.star
             }
-            onClick={() => setRating(5)}
+            onClick={() => {
+              if (hasAlreadyRated) return;
+              setRating(5);
+            }}
           />
         </div>
-        <button>
+        <button type="submit">
           <MdOutlineDone />
           Submit review
         </button>

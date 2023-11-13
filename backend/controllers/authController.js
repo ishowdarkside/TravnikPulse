@@ -96,7 +96,13 @@ exports.getUser = catchAsync(async (req, res, next) => {
     process.env.SECRET_KEY,
     async (err, decoded) => {
       if (err) return next(new AppError(401, "Token malformed, login again"));
-      const user = await User.findById(decoded.id).select("-password");
+      const user = await User.findById(decoded.id)
+        .select("-password")
+        .populate({
+          path: "reviewedTours",
+          populate: { path: "tour", select: "coverImg name" },
+        })
+        .populate({ path: "ratedTours.tour", select: "coverImg name" });
       if (!user)
         return next(
           new AppError(400, "User does no longer exist. Please sign up!")

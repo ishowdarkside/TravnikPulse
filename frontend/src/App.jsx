@@ -22,6 +22,9 @@ import AdminCalendar from "./pages/AdminCalendar/AdminCalendar";
 import AdminReviews from "./pages/AdminReviews/AdminReviews";
 import AdminSingleReview from "./pages/AdminSingleReview/AdminSingleReview";
 import Register from "./pages/Register/Page/Register";
+import Page from "./pages/AdminShops/Page/Page";
+import CreateShop from "./pages/CreateShop/CreateShop";
+import Me from "./pages/Me/Me";
 
 const queryClient = new QueryClient();
 
@@ -100,6 +103,15 @@ function App() {
                     </ProtectAdmin>
                   }
                 />
+                <Route
+                  path="shops"
+                  element={
+                    <ProtectAdmin>
+                      <Page />
+                    </ProtectAdmin>
+                  }
+                />
+                <Route path="shops/create-shop" element={<CreateShop />} />
               </Route>
               <Route path="map" element={<Map />} />
               <Route
@@ -120,6 +132,7 @@ function App() {
               />
               <Route path="tour/:tourID" element={<Tour />} />
               <Route path="calendar" element={<CalendarPage />} />
+              <Route path="me" element={<Me />} />
             </Route>
             <Route
               path="/welcome"

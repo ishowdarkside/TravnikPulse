@@ -4,6 +4,7 @@ import styles from "./ReviewComponent.module.scss";
 
 export default function ReviewComponent({ i, review }) {
   const navigate = useNavigate();
+
   return (
     <div
       className={styles.reviewItem}
@@ -11,8 +12,8 @@ export default function ReviewComponent({ i, review }) {
     >
       <div className={styles.index}>{i}</div>
       <p>
-        <b>{review.user.username} </b> left a review on tour "{review.tour.name}
-        "
+        <b>{review.user.username} </b> left a review on tour "
+        {review?.tour?.name}"
       </p>
     </div>
   );

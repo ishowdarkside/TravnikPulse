@@ -151,7 +151,7 @@ exports.rateTour = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.tourID);
 
   //If user have already rated tour, throw error
-  if (tour.ratings.some((rating) => rating.user === req.user.id))
+  if (tour.ratings.some((rating) => rating.user.toHexString() === req.user.id))
     return next(new AppError(400, "You have already rated this tour"));
   tour.ratings.push({ user: req.user.id, value: rating });
   await tour.save({ validateBeforeSave: false });

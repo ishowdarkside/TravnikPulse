@@ -43,7 +43,7 @@ export default function Admin() {
             </span>
             <AiOutlineStar />
           </Link>
-          <Link to="app/admin/shops">
+          <Link to="/app/admin/shops">
             <span>03</span>
             <span className={styles.eventTitle}>Shops</span>
             <span className={styles.itemLength}>
