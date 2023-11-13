@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const context = createContext();
 
 export default function MapContext({ children }) {
-	const [ activeFilter, setActiveFilter ] = useState('tours');
+	const [ activeFilter, setActiveFilter ] = useState('all');
 	const [ tourLocation, setTourLocation ] = useState(null);
 	const [ currentPosition, setCurrentPosition ] = useState([]);
 

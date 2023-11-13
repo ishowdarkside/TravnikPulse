@@ -3,7 +3,7 @@ import TravnikPulseLogo from "../../assets/simple-logo.png";
 import { BiUserCircle } from "react-icons/bi";
 import styles from "./Navbar.module.scss";
 import { useGetUser } from "../../hooks/useAuth";
-import { BiSolidUserCircle } from "react-icons/bi";
+import { BiSolidUserCircle, BiLogInCircle } from "react-icons/bi";
 
 export default function Navbar() {
   const { data: user, isLoading } = useGetUser();
@@ -31,7 +31,7 @@ export default function Navbar() {
 
         {user === "Unauthorized" && location.pathname !== "/app/login" && (
           <Link className={styles.loginBtn} to="/app/login">
-            LOGIN &rarr;
+            Log in <BiLogInCircle />
           </Link>
         )}
       </nav>

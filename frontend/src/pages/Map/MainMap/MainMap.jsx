@@ -1,15 +1,16 @@
 import { useEffect, useRef } from 'react';
 import { useGetRadiusTours, useGetTours } from '../../../hooks/useTours';
-import { MapContainer, Marker, Popup, TileLayer, useMap, Circle  } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer, Circle  } from 'react-leaflet';
 import Markers from '../Markers.jsx/Markers';
 import { useGetAllShops, useGetRadiusShops } from '../../../hooks/useShops';
 import styles from './MainMap.module.scss';
 import { FaTimes } from 'react-icons/fa'
-import L from 'leaflet';
 import 'leaflet-routing-machine';
 import 'leaflet/dist/leaflet.css';
 import LeafletRouting from '../LeafletRouting/LeafletRouting';
 import { useMapContext } from '../../../context/MapContext';
+import allHotels from '../../../utils/hotels/hotel.json';
+
 
 export default function MainMap() {
 	const { activeFilter, setTourLocation, tourLocation, currentPosition, setCurrentPosition } = useMapContext();
@@ -28,13 +29,13 @@ export default function MainMap() {
 			});
 		},
 		[ setCurrentPosition ]
-	);
+		);
 
 	if (toursLoading || shopsLoading || radiusTourLoading || radiusShopLoading) return <h1>Loading...</h1>;
 
-	const allData = [...radiusTours, ...radiusShops]
+	const allData = [...radiusTours, ...radiusShops, ...allHotels.hotels]
 	console.log(allData);
-	const activeData = activeFilter === 'shops' ? shops : activeFilter === 'radius' ? allData : activeFilter === 'tours' ? tours : null;
+	const activeData = activeFilter === 'shops' ? shops : activeFilter === 'hotels' ? allHotels.hotels : activeFilter === 'radius' || activeFilter === 'all' ? allData : activeFilter === 'tours' ? tours : null;
 	
 	console.log(activeData)
 	console.log(shops)

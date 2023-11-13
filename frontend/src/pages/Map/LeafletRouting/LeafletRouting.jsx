@@ -8,6 +8,13 @@ export default function LeafletRouting({ tourLocation, currentPosition, cancelRo
 	const routingControlRef = useRef(null);
 
 	useEffect(() => {
+		// Update map center when tourLocation changes
+		if (tourLocation) {
+		  map.setView(currentPosition, 15);
+		}
+	  }, [tourLocation, map]);
+
+	useEffect(() => {
 		// Create a new routing control if it doesn't exist
 		if (!routingControlRef.current) {
 			const routingControl = L.Routing.control({
@@ -15,7 +22,7 @@ export default function LeafletRouting({ tourLocation, currentPosition, cancelRo
 				lineOptions: {
 					styles: [
 						{
-							color: 'red',
+							color: '#437de0',
 							weight: 5,
 						},
 					],

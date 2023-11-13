@@ -11,10 +11,13 @@ import { GiSandsOfTime } from 'react-icons/gi'
 import { IoMdTime } from 'react-icons/io';
 import { TfiMoney } from 'react-icons/tfi'
 import { FaWalking } from 'react-icons/fa'
+import { useMapContext } from '../../../context/MapContext';
 
 export default function Markers({ tour, setTourLocation }) {
 	const [ showModal, setShowModal ] = useState(false);
+	const { activeFilter } = useMapContext();
 	const map = useMap();
+
 
 	const customIcon = new L.Icon({
 		iconUrl: `http://127.0.0.1:8000/${tour.coverImg}`,
@@ -22,6 +25,15 @@ export default function Markers({ tour, setTourLocation }) {
 		iconAnchor: [24, 48], // position it to the right
 		popupAnchor: [0, -48], // adjust the popup position relative to the marker
 	  });
+
+	  
+		const hotelIcon = new L.Icon({
+			iconUrl: tour.pictures ? tour.pictures[0] : `http://127.0.0.1:8000/${tour.coverImg}`,
+			iconSize: [48, 48], // increase the size
+			iconAnchor: [24, 48], // position it to the right
+			popupAnchor: [0, -48], // adjust the popup position relative to the marker
+		  });
+	
 
 	  const handleMarkerClick = () => {
 		setShowModal(prevState => !prevState)
@@ -40,9 +52,13 @@ export default function Markers({ tour, setTourLocation }) {
 		}
 	  }, [showModal, map]);
 
+	  console.log(tour)
+
 	return (
     <>
-		<Marker id={styles.marker} eventHandlers={{ click: () => handleMarkerClick() }} position={[tour.location.coordinates[0], tour.location.coordinates[1]]} icon={customIcon}></Marker>
+		{tour.coverImg && <Marker id={styles.marker} eventHandlers={{ click: () => handleMarkerClick() }} position={[tour.location.coordinates[0], tour.location.coordinates[1]]} icon={customIcon}></Marker>}
+		{tour.pictures && <Marker id={styles.marker} eventHandlers={{ click: () => handleMarkerClick() }} position={[tour.location.coordinates[0], tour.location.coordinates[1]]} icon={hotelIcon}></Marker>}
+
 		{showModal && (
 			ReactDOM.createPortal(
 				<div className={styles.customModal}>
@@ -60,7 +76,7 @@ export default function Markers({ tour, setTourLocation }) {
 							}}><MdDirections />Directions</button>
 							<Link to={`/app/tour/${tour._id}`}>See more</Link>
 						</div>
-						<img src={`http://127.0.0.1:8000/${tour.coverImg}`} className={styles.img} alt="" />
+						<img src={tour?.type !== 'hotels' ? `http://127.0.0.1:8000/${tour.coverImg}` : tour.pictures[0]} className={styles.img} alt="" />
 						<div className={styles.navigation}>
 							<ul>
 								<li>Overview</li>
@@ -70,10 +86,12 @@ export default function Markers({ tour, setTourLocation }) {
 					<div className={styles.navContent}>
 							<ul>
 								<li><SlLocationPin />Location</li>
-								<li><IoMdTime /> Event time</li>
+								{tour.type !== 'hotels' && ( <>
+									<li><IoMdTime /> Event time</li>
 								<li><GiSandsOfTime />Event duration</li>
 								<li><FaWalking />Time you need</li>
 								<li><TfiMoney />{tour.price} KM</li>
+								</>)}
 							</ul>
 						</div>
 				</div>,
