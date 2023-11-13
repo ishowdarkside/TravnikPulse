@@ -70,9 +70,13 @@ exports.getTours = catchAsync(async (req, res, next) => {
 exports.getSingleTour = catchAsync(async (req, res, next) => {
   const { tourID } = req.params;
 
-  const tour = await Tour.findById(tourID);
+  const tour = await Tour.findById(tourID).populate({
+    path: "reviews",
+    populate: { path: "user", select: "username" },
+  });
   if (!tour) return next(new AppError(404, "Tour not found!"));
 
+  tour.reviews = tour.reviews.filter((review) => review.approved);
   return res.status(200).json({
     status: "success",
     tour,

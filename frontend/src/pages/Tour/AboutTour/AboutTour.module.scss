@@ -1,7 +1,29 @@
-@import '../../../styles/mixin.scss';
+@import "../../../styles/mixin.scss";
 .details {
-    @include responsive("mobile") {
-        padding: 2rem;
-        height: 100%;
-    }
+  @include responsive("mobile") {
+    padding: 2rem;
+    height: 100%;
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  color: #313131;
+}
+
+.filters {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.reviewsWrapper {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }

@@ -16,7 +16,7 @@ export default function Tour() {
   if (isLoading || loadingUser) return <h1>Loading...</h1>;
 
   return (
-    <>
+    <section className={styles.sectionBody}>
       <Navbar />
       <div className={styles.tour}>
         <div
@@ -26,10 +26,7 @@ export default function Tour() {
           }}
         >
           <div className={styles.imageOverlay} />
-          <div className={styles.imageContent}>
-            <h2>{data.name}</h2>
-            <p>{data.description}</p>
-          </div>
+          <div className={styles.imageContent}></div>
         </div>
 
         {!showReview ? (
@@ -38,6 +35,6 @@ export default function Tour() {
           <ReviewTour />
         )}
       </div>
-    </>
+    </section>
   );
 }
