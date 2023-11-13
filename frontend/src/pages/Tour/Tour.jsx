@@ -8,6 +8,7 @@ import ReviewTour from "./ReviewTour/ReviewTour";
 // CSS
 import styles from "./Tour.module.scss";
 import MobileNav from "../../components/MobileNav/MobileNav";
+import NotFound from "../../pages/NotFound/NotFound.jsx";
 
 export default function Tour() {
   const [showReview, setShowReview] = useState(false);
@@ -16,6 +17,7 @@ export default function Tour() {
 
   if (isLoading || loadingUser) return <h1>Loading...</h1>;
 
+  if (data === "not-found") return <NotFound />;
   return (
     <section className={styles.sectionBody}>
       <Navbar />

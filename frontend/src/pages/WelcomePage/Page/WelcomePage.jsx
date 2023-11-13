@@ -14,7 +14,7 @@ export default function WelcomePage() {
   useEffect(() => {
     setTimeout(() => {
       setActivePanel("language");
-    }, 7000);
+    }, 3000);
   }, []);
   return (
     <section className={styles.welcomeSection}>

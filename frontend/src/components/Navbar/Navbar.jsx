@@ -9,7 +9,7 @@ export default function Navbar() {
   const { data: user, isLoading } = useGetUser();
 
   const location = useLocation();
-  console.log(location);
+
   if (isLoading) return <h1>LOADING...</h1>;
   return (
     <>

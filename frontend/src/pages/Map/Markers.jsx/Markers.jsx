@@ -52,8 +52,6 @@ export default function Markers({ tour, setTourLocation }) {
 		}
 	  }, [showModal, map]);
 
-	  console.log(tour)
-
 	return (
     <>
 		{tour.coverImg && <Marker id={styles.marker} eventHandlers={{ click: () => handleMarkerClick() }} position={[tour.location.coordinates[0], tour.location.coordinates[1]]} icon={customIcon}></Marker>}

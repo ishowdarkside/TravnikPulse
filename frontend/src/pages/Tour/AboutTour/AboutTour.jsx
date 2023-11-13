@@ -9,10 +9,11 @@ import {
   AiOutlineStar,
 } from "react-icons/ai";
 import { TbTimeDuration45 } from "react-icons/tb";
-
+import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
 import { PiMoneyLight } from "react-icons/pi";
 import ReviewComponent from "../ReviewComponent/ReviewComponent";
+import { useBookmarkTour } from "../../../hooks/useTours";
 
 export default function AboutTour({ data, setShowReview, user }) {
   const navigate = useNavigate();
@@ -28,6 +29,12 @@ export default function AboutTour({ data, setShowReview, user }) {
     data.ratings.length;
 
   const isExpired = new Date(data.date).getTime() < new Date().getTime();
+
+  const { mutate: bookmark } = useBookmarkTour();
+
+  const isBookmarked = user.bookmarkedTours?.some(
+    (bookmark) => bookmark._id === data?._id
+  );
 
   return (
     <>
@@ -59,6 +66,17 @@ export default function AboutTour({ data, setShowReview, user }) {
             </span>
           )}
         </div>
+        {user !== "Unauthorized" && user.role && (
+          <button
+            className={`${styles.bookmarkActivity} ${
+              isBookmarked ? styles.isBookmarked : ""
+            }`}
+            onClick={bookmark}
+          >
+            {isBookmarked ? <BsBookmarkFill /> : <BsBookmark />}
+            {isBookmarked ? "Activity bookmarked" : "Bookmark this activity"}
+          </button>
+        )}
         <button
           className={styles.leaveReviewBtn}
           onClick={() => {

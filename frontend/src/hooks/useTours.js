@@ -4,6 +4,7 @@ import {
   editTour,
   getAllTours,
   getRadiusTour,
+  bookmarkTour,
   getSingleTour,
   rateTour,
 } from "../services/tourServices";
@@ -79,11 +80,11 @@ export function useRateTour() {
     onSuccess: (res) => {
       if (res.status === "fail") return toast.error(res.message);
       if (res.status === "success") {
-        toast.success(res.message); 
+        toast.success(res.message);
         queryClient.invalidateQueries(["tours"]);
       }
     },
-    onError: (err) => console.log(err)
+    onError: (err) => console.log(err),
   });
   return { mutate, isLoading };
 }
@@ -91,7 +92,20 @@ export function useRateTour() {
 export function useGetRadiusTours() {
   const { data, isLoading } = useQuery({
     queryFn: getRadiusTour,
-    queryKey: ["RadiusTours"]
+    queryKey: ["RadiusTours"],
   });
-  return { data, isLoading }
+  return { data, isLoading };
+}
+
+export function useBookmarkTour() {
+  const { tourID } = useParams();
+  const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: () => bookmarkTour(tourID),
+    onSuccess: (res) => {
+      queryClient.invalidateQueries(["tour"]);
+      console.log(`IZ HOOKA `, res);
+    },
+  });
+  return { mutate, isLoading };
 }

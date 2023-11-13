@@ -6,6 +6,7 @@ import { RiAdminLine } from "react-icons/ri";
 import RatedTour from "./RatedTour";
 import MobileNav from "../../components/MobileNav/MobileNav";
 import Navbar from "../../components/Navbar/Navbar";
+import BookmarkComponent from "./BookmarkComponent/BookmarkComponent";
 
 export default function Me() {
   const { data: user, isLoading } = useGetUser();
@@ -28,6 +29,17 @@ export default function Me() {
             <RiAdminLine />
             Admin Panel
           </Link>
+        )}
+
+        {user.bookmarkedTours.length > 0 && (
+          <div className={styles.bookmarksWrapper}>
+            <span className={styles.spanSub}>Bookmarked activities</span>
+            <div className={styles.bookmarksGrid}>
+              {user.bookmarkedTours.map((tour) => (
+                <BookmarkComponent tour={tour} key={tour._id} />
+              ))}
+            </div>
+          </div>
         )}
 
         {user.reviewedTours.length === 0 && user.ratedTours.length > 0 && (

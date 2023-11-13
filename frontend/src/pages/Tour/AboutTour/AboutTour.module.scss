@@ -50,3 +50,23 @@
     opacity: 0.7;
   }
 }
+
+.bookmarkActivity {
+  padding: 1rem;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 2rem;
+  border: 1px solid #f37022;
+  color: #f37022;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  justify-content: center;
+  gap: 1rem;
+  @include text("text-sm-bold");
+}
+
+.isBookmarked {
+  background-color: #f37022 !important;
+  color: #fff !important;
+}

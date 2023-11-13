@@ -47,8 +47,22 @@ function App() {
                   </TouristDataContext>
                 }
               />
-              <Route path="login" element={<Login />} />
-              <Route path="register" element={<Register />} />
+              <Route
+                path="login"
+                element={
+                  <Protect>
+                    <Login />
+                  </Protect>
+                }
+              />
+              <Route
+                path="register"
+                element={
+                  <Protect>
+                    <Register />
+                  </Protect>
+                }
+              />
               <Route path="admin">
                 <Route
                   index
@@ -114,11 +128,16 @@ function App() {
                 />
                 <Route path="shops/create-shop" element={<CreateShop />} />
               </Route>
-              <Route path="map" element={
-                <MapContext>
-                  <Map />
-                </MapContext>
-              } />
+              <Route
+                path="map"
+                element={
+                  <Protect>
+                    <MapContext>
+                      <Map />
+                    </MapContext>
+                  </Protect>
+                }
+              />
 
               <Route
                 path="shop"
@@ -131,13 +150,29 @@ function App() {
               <Route
                 path="settings"
                 element={
-                  <TouristDataContext>
-                    <Settings />
-                  </TouristDataContext>
+                  <Protect>
+                    <TouristDataContext>
+                      <Settings />
+                    </TouristDataContext>
+                  </Protect>
                 }
               />
-              <Route path="tour/:tourID" element={<Tour />} />
-              <Route path="calendar" element={<CalendarPage />} />
+              <Route
+                path="tour/:tourID"
+                element={
+                  <Protect>
+                    <Tour />
+                  </Protect>
+                }
+              />
+              <Route
+                path="calendar"
+                element={
+                  <Protect>
+                    <CalendarPage />
+                  </Protect>
+                }
+              />
               <Route path="me" element={<Me />} />
             </Route>
             <Route

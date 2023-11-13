@@ -9,21 +9,17 @@ export default function MapContext({ children }) {
 
 	useEffect(
 		() => {
-			const userPosition = JSON.parse(localStorage.getItem('userPosition'));
+			const userPosition = JSON.parse(localStorage.getItem('position'));
 
+			
 			if (userPosition) {
-				setCurrentPosition(userPosition);
+				setCurrentPosition([userPosition.lng, userPosition.lat]);
 			}
 		},
 		[ setCurrentPosition ]
 	);
-
-	useEffect(
-		() => {
-			localStorage.setItem('userPosition', JSON.stringify(currentPosition));
-		},
-		[ currentPosition ]
-	);
+//{"lat":44.23971871120775,"lng":17.688015904859643}
+	
 
 	return (
 		<context.Provider

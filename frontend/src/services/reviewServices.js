@@ -32,7 +32,7 @@ export async function getSingleUnapprovedReview(reviewID) {
 
 export async function approveReview(reviewID) {
   const token = localStorage.getItem("jwt");
-  console.log(token);
+
   try {
     const res = await fetch(
       `${BASE_URL}api/reviews/approve-review/${reviewID}`,
