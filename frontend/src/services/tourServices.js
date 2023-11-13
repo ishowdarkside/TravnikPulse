@@ -52,7 +52,7 @@ export async function editTour(formData, tourID) {
 
 export async function createTour(formData) {
   const token = localStorage.getItem("jwt");
-  console.log("JA POKRENUT");
+
   const res = await fetch(`${BASE_URL}api/tours`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}` },
@@ -63,19 +63,35 @@ export async function createTour(formData) {
 }
 
 export async function rateTour(tourID, rating) {
-  const token = localStorage.getItem('jwt');
+  const token = localStorage.getItem("jwt");
   try {
     const res = await fetch(`${BASE_URL}api/tours/rate-tour/${tourID}`, {
-      method: 'PATCH',
-      headers: { 
+      method: "PATCH",
+      headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({rating}),
+      body: JSON.stringify({ rating }),
     });
     const data = await res.json();
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
+  }
+}
+
+export async function bookmarkTour(tourID) {
+  const token = localStorage.getItem("jwt");
+  try {
+    const res = await fetch(`${BASE_URL}api/tours/bookmark-tour/${tourID}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err.message);
   }
 }

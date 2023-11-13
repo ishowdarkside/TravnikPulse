@@ -14,7 +14,7 @@ export default function CreateShopFrom() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(coverImg);
+
     if (position.length == 0 || !shopName || !category || !coverImg)
       return toast.error("Fill out all required fields!");
 

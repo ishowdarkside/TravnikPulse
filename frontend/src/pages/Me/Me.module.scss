@@ -86,3 +86,13 @@
   transform: translate(-50%, -50%);
   width: 100%;
 }
+
+.bookmarksWrapper {
+  margin-top: 2rem;
+}
+
+.bookmarksGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}

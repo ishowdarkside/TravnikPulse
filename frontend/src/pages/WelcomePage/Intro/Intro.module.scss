@@ -1,90 +1,22 @@
 @import "../../../styles/mixin.scss";
 .introWrapper {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  h1 {
-    @include text("display-2xl-bold");
-    color: #f37022;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: fadeIn 1s ease-in-out;
+
+  img {
+    animation: fadeIn 2s ease;
   }
 
   @keyframes fadeIn {
     from {
+      transform: scale(0.1);
       opacity: 0;
     }
     to {
+      transform: scale(1);
       opacity: 1;
     }
   }
-
-  .splashLogo {
-    position: relative;
-    /* overflow: hidden; */
-    height: 300px;
-  }
-
-  .text {
-    position: absolute;
-    width: 41.3rem;
-    max-width: 41.3rem;
-    bottom: 0px;
-    left: 0;
-    animation: textAnimation 0.4s linear 3s forwards;
-    opacity: 0;
-  }
-  @keyframes textAnimation {
-    0% {
-      bottom: 0;
-    }
-    100% {
-      opacity: 1;
-      bottom: 189px;
-    }
-  }
-  .plane {
-    position: absolute;
-    left: 20px;
-    animation: planeAnimation 3s linear forwards;
-  }
-
-  .loc {
-    position: absolute;
-    right: -10px;
-  }
-  @keyframes planeAnimation {
-    0% {
-      top: 0;
-      left: 10px;
-    }
-    25% {
-      left: 100px;
-      top: -15px;
-      transform: rotate(45deg);
-    }
-    50% {
-      left: 200px;
-      top: 25px;
-      transform: rotate(0deg);
-    }
-    75% {
-      left: 350px;
-      top: -28px;
-      transform: rotate(75deg);
-    }
-    100% {
-      transform: rotate(45deg);
-      left: 360px;
-      top: 10px;
-    }
-  }
-}
-
-.relative {
-  position: relative;
 }

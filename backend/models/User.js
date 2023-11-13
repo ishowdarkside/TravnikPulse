@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema({
     ],
   },
   bookmarkedTours: {
-    type: [String],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Tour" }],
   },
 });
 

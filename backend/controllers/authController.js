@@ -102,7 +102,8 @@ exports.getUser = catchAsync(async (req, res, next) => {
           path: "reviewedTours",
           populate: { path: "tour", select: "coverImg name" },
         })
-        .populate({ path: "ratedTours.tour", select: "coverImg name" });
+        .populate({ path: "ratedTours.tour", select: "coverImg name" })
+        .populate({ path: "bookmarkedTours", select: "name coverImg" });
       if (!user)
         return next(
           new AppError(400, "User does no longer exist. Please sign up!")

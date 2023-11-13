@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  bookmarkTour,
   createTour,
   editTour,
   getAllTours,
@@ -78,11 +79,25 @@ export function useRateTour() {
     onSuccess: (res) => {
       if (res.status === "fail") return toast.error(res.message);
       if (res.status === "success") {
-        toast.success(res.message); 
+        toast.success(res.message);
         queryClient.invalidateQueries(["tours"]);
       }
     },
-    onError: (err) => console.log(err)
+    onError: (err) => console.log(err),
   });
+  return { mutate, isLoading };
+}
+
+export function useBookmarkTour() {
+  const { tourID } = useParams();
+
+  const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: () => bookmarkTour(tourID),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["tour"]);
+    },
+  });
+
   return { mutate, isLoading };
 }

@@ -9,8 +9,6 @@ export default function ReviewComponent({ review, tour }) {
 
   const starCount = Array.from({ length: usersRating?.value || 1 }, () => 0);
 
-  console.log(review);
-
   return (
     <div className={styles.reviewWrapper}>
       <div className={styles.userRateData}>

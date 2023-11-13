@@ -8,7 +8,7 @@ import { Navigate } from "react-router-dom";
 export default function Login() {
   const { data: user, isLoading } = useGetUser();
   if (isLoading) return <h1>LOADING...</h1>;
-  console.log(user);
+
   if (user !== "Unauthorized" && user.role) return <Navigate to="/app/me" />;
   return (
     <div className={styles.formWrapper}>
