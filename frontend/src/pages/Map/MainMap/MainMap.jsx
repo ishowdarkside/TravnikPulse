@@ -32,9 +32,7 @@ export default function MainMap() {
   
   useEffect(() => {
 	const userLocation = JSON.parse(localStorage.getItem('position'))
-	  setCurrentPosition([userLocation.lng, userLocation.lat])
-
-	  
+	  setCurrentPosition([userLocation.lat, userLocation.lng])
 	}, [setCurrentPosition]);
 	
 	console.log(currentPosition)
@@ -45,14 +43,11 @@ export default function MainMap() {
 
 	const activeData = activeFilter === 'shops' ? shops : activeFilter === 'hotels' ? allHotels.hotels : activeFilter === 'radius' || activeFilter === 'all' ? allData : activeFilter === 'tours' ? tours : null;
 	
-
 	// Check if currentPosition has a valid value before rendering the map
 	if (!currentPosition || currentPosition.length !== 2) return null;
 
   const radiusInKm = 50;
   const radiusInMeters = radiusInKm * 1000;
-
-
 
   return (
     <>

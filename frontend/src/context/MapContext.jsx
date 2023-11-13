@@ -13,7 +13,7 @@ export default function MapContext({ children }) {
 
 			
 			if (userPosition) {
-				setCurrentPosition([userPosition.lng, userPosition.lat]);
+				setCurrentPosition([userPosition.lat, userPosition.lng]);
 			}
 		},
 		[ setCurrentPosition ]
