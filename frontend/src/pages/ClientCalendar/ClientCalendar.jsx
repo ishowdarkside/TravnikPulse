@@ -4,7 +4,7 @@ import { useGetTours } from "../../hooks/useTours";
 import styles from "./ClientCalendar.module.scss";
 import { formatDate, weekdays } from "../../services/dateServices";
 
-export default function ClientCalendar({ setActiveDate }) {
+export default function EventCalendar({ setActiveDate }) {
   const { data, isLoading } = useGetTours();
 
   if (isLoading) return <h1>LOADING...</h1>;
@@ -25,6 +25,7 @@ export default function ClientCalendar({ setActiveDate }) {
                   {` ${weekdays[new Date(date).getDay()]}`}
                 </span>
               )}
+
               {toursOnDate.length > 0 && (
                 <>
                   <div className={styles.imgWrapper}>
@@ -44,7 +45,15 @@ export default function ClientCalendar({ setActiveDate }) {
         onChange={(e) => {
           setActiveDate(e);
         }}
-        tileClassName={styles.dateBox}
+        tileClassName={({ date }) => {
+          const toursOnDate = data.filter(
+            (tour) => formatDate(tour.date) === formatDate(date)
+          );
+          const today = formatDate(new Date()) === formatDate(date);
+          if (toursOnDate.length > 0 && !today)
+            return `${styles.haveEvent} ${styles.dateBox}`;
+          return today ? `${styles.dateBox} ${styles.today}` : styles.dateBox;
+        }}
         showNeighboringMonth={false}
       />
     </div>

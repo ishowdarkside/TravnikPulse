@@ -39,7 +39,7 @@
     color: #fff;
     font-weight: 700;
     padding: 1.2rem 0;
-    background-color: #ee2d21;
+    background-color: #f37022;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -83,7 +83,7 @@
 }
 
 .activeOption {
-  background-color: #ee2d21 !important;
+  background-color: #f37022 !important;
   color: #ffff !important;
   border: 3px solid #ffc5c1 !important;
 }
@@ -101,7 +101,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ee2d21;
+  background-color: #f37022;
   position: relative;
   &::before {
     content: "✓";

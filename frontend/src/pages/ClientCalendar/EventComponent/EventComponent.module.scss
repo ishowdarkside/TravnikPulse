@@ -1,3 +1,23 @@
+@import "../../../styles/mixin.scss";
+
 .tourWrapper {
-  max-width: 35rem;
+  max-width: 40rem;
+
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding-bottom: 2rem;
+  h3 {
+    @include text("text-xl-medium");
+    padding-left: 1rem;
+  }
+
+  p {
+    @include text("text-md-medium");
+    padding-left: 1rem;
+  }
+}
+
+.imgWrapper {
+  position: relative;
 }

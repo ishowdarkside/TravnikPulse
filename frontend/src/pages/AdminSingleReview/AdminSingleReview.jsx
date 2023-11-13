@@ -30,23 +30,23 @@ export default function AdminSingleReview() {
         <p className={styles.sub}>Approve or decline review request</p>
 
         <div className={styles.userWrapper}>
-          <AiOutlineUser /> <span>{data.user.username}</span>
+          <AiOutlineUser /> <span>{data.user?.username}</span>
         </div>
 
         <div className={styles.eventWrapper}>
           <BsCalendarEvent />
-          <span>{data.tour.name}</span>
+          <span>{data.tour?.name}</span>
         </div>
 
         <div>
           <span className={styles.comment}>
             <b>Review: </b>
-            {data.review}
+            {data?.review}
           </span>
         </div>
         {data.images.length > 0 && (
           <div className={styles.imgWrapper}>
-            {data.images.map((img) => (
+            {data.images?.map((img) => (
               <img
                 src={`http://127.0.1:8000/${img}`}
                 alt="review image"

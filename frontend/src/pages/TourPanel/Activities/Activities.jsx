@@ -13,9 +13,10 @@ export default function Activities() {
 
   return (
     <section className={styles.activities}>
-      {data.filter(({ categories }) => categories.includes(activePreference)).map((tour) => (
-        <Activity tour={tour} key={tour._id} />
-      ))}
+      {data &&
+        data
+          .filter(({ categories }) => categories.includes(activePreference))
+          .map((tour) => <Activity tour={tour} key={tour._id} />)}
     </section>
   );
 }

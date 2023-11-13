@@ -22,7 +22,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #ee2d21;
+    background-color: #f37022;
     border-radius: 5px;
   }
 
@@ -43,7 +43,7 @@
 }
 
 .activeOption {
-  background-color: #ee2d21 !important;
+  background-color: #f37022 !important;
   color: #ffff !important;
-  border: 3px solid #ffc5c1 !important;
+  border: 3px solid rgba(#f37022, 0.3) !important;
 }

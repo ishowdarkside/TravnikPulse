@@ -70,9 +70,13 @@ exports.getTours = catchAsync(async (req, res, next) => {
 exports.getSingleTour = catchAsync(async (req, res, next) => {
   const { tourID } = req.params;
 
-  const tour = await Tour.findById(tourID);
+  const tour = await Tour.findById(tourID).populate({
+    path: "reviews",
+    populate: { path: "user", select: "username" },
+  });
   if (!tour) return next(new AppError(404, "Tour not found!"));
 
+  tour.reviews = tour.reviews.filter((review) => review.approved);
   return res.status(200).json({
     status: "success",
     tour,
@@ -151,7 +155,7 @@ exports.rateTour = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.tourID);
 
   //If user have already rated tour, throw error
-  if (tour.ratings.some((rating) => rating.user === req.user.id))
+  if (tour.ratings.some((rating) => rating.user.toHexString() === req.user.id))
     return next(new AppError(400, "You have already rated this tour"));
   tour.ratings.push({ user: req.user.id, value: rating });
   await tour.save({ validateBeforeSave: false });

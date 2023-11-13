@@ -6,6 +6,8 @@ const sharp = require("sharp");
 const { v4: uuidv4 } = require("uuid");
 
 exports.addShop = catchAsync(async (req, res, next) => {
+  req.body.location = JSON.parse(req.body.location);
+
   const { shopName, location, category } = req.body;
 
   if (!req.file || !req.file.mimetype.startsWith("image"))

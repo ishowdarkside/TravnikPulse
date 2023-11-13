@@ -2,21 +2,22 @@ import { useState } from "react";
 import { useGetSingleTour } from "../../hooks/useTours";
 import { useGetUser } from "../../hooks/useAuth";
 // Components
-import Navbar from "./Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import AboutTour from "./AboutTour/AboutTour";
 import ReviewTour from "./ReviewTour/ReviewTour";
 // CSS
 import styles from "./Tour.module.scss";
+import MobileNav from "../../components/MobileNav/MobileNav";
 
 export default function Tour() {
   const [showReview, setShowReview] = useState(false);
   const { data, isLoading } = useGetSingleTour();
-  const { data: user, isLoading: loadingUser } = useGetUser(); 
+  const { data: user, isLoading: loadingUser } = useGetUser();
 
   if (isLoading || loadingUser) return <h1>Loading...</h1>;
 
   return (
-    <>
+    <section className={styles.sectionBody}>
       <Navbar />
       <div className={styles.tour}>
         <div
@@ -26,17 +27,16 @@ export default function Tour() {
           }}
         >
           <div className={styles.imageOverlay} />
-          <div className={styles.imageContent}>
-            <h2>{data.name}</h2>
-          </div>
+          <div className={styles.imageContent}></div>
         </div>
 
         {!showReview ? (
           <AboutTour setShowReview={setShowReview} data={data} user={user} />
         ) : (
-          <ReviewTour />
+          <ReviewTour setShowReview={setShowReview} />
         )}
       </div>
-    </>
+      <MobileNav />
+    </section>
   );
 }

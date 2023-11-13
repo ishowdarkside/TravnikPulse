@@ -1,0 +1,43 @@
+.sectionBody {
+  padding: 10rem 3rem;
+
+  h2 {
+    margin-bottom: 5rem;
+  }
+}
+
+.shopsWrapper {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10rem;
+}
+
+.category {
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #f37022;
+}
+
+.categoryWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.createShop {
+  font-size: 4rem;
+  color: #fff;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  background-color: #f37022;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 2rem;
+}

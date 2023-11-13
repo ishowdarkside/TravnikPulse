@@ -33,12 +33,14 @@ exports.reviewTour = catchAsync(async (req, res, next) => {
       images: imageArr,
       user: req.user.id,
       tour: req.params.tourID,
+      approved: req.user.role === "admin" ? true : false,
     });
   if (!req.files)
     reviewDocument = await Review.create({
       user: req.user.id,
       review,
       tour: req.params.tourID,
+      approved: req.user.role === "admin" ? true : false,
     });
 
   tour.reviews.push(reviewDocument.id);

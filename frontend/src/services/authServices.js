@@ -29,7 +29,7 @@ export async function signup(username, password, passwordConfirm) {
       body: JSON.stringify({
         username,
         password,
-        passwordConfirm
+        passwordConfirm,
       }),
     });
 
