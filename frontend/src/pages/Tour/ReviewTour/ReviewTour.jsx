@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 // React icons
 import { MdOutlineDone } from "react-icons/md";
@@ -8,7 +9,7 @@ import { useCreateReview } from "../../../hooks/useReview";
 import { useGetSingleTour, useRateTour } from "../../../hooks/useTours";
 import { useGetUser } from "../../../hooks/useAuth";
 
-export default function ReviewTour() {
+export default function ReviewTour({ setShowReview }) {
   const { data: user, isLoading: isLoadingUser } = useGetUser();
   const { data: tour, isLoading: isLoadingTour } = useGetSingleTour();
 
@@ -36,7 +37,6 @@ export default function ReviewTour() {
   }, [rating]);
 
   function handleSubmit(e) {
-    console.log("JA SAM POZVAN");
     e.preventDefault();
     const formData = new FormData();
 
@@ -56,6 +56,12 @@ export default function ReviewTour() {
 
   return (
     <div className={styles.reviewTour}>
+      <button
+        className={styles.cancelReview}
+        onClick={() => setShowReview(false)}
+      >
+        x
+      </button>
       <h2>Your review is incredibly helpful, thank you</h2>
       <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.inputContainer}>
@@ -136,7 +142,7 @@ export default function ReviewTour() {
             }}
           />
         </div>
-        <button type="submit">
+        <button type="submit" className={styles.submitBtn}>
           <MdOutlineDone />
           Submit review
         </button>

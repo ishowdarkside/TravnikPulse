@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useGetSingleTour } from "../../hooks/useTours";
 import { useGetUser } from "../../hooks/useAuth";
 // Components
-import Navbar from "./Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import AboutTour from "./AboutTour/AboutTour";
 import ReviewTour from "./ReviewTour/ReviewTour";
 // CSS
 import styles from "./Tour.module.scss";
+import MobileNav from "../../components/MobileNav/MobileNav";
 
 export default function Tour() {
   const [showReview, setShowReview] = useState(false);
@@ -32,9 +33,10 @@ export default function Tour() {
         {!showReview ? (
           <AboutTour setShowReview={setShowReview} data={data} user={user} />
         ) : (
-          <ReviewTour />
+          <ReviewTour setShowReview={setShowReview} />
         )}
       </div>
+      <MobileNav />
     </section>
   );
 }

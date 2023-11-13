@@ -1,11 +1,11 @@
 import { Link, Navigate } from "react-router-dom";
 import { useGetUser } from "../../hooks/useAuth";
 import styles from "./Me.module.scss";
-import ReturnButton from "../../components/ReturnButton/ReturnButton";
 import PrevReviewComponent from "./PrevReviewComponent";
 import { RiAdminLine } from "react-icons/ri";
 import RatedTour from "./RatedTour";
 import MobileNav from "../../components/MobileNav/MobileNav";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function Me() {
   const { data: user, isLoading } = useGetUser();
@@ -17,7 +17,7 @@ export default function Me() {
 
   return (
     <>
-      <ReturnButton />
+      <Navbar />
       <section className={styles.sectionBody}>
         <span>
           Hi <b>{user.username}</b>, welcome back!

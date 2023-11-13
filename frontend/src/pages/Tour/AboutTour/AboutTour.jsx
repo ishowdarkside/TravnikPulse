@@ -59,6 +59,18 @@ export default function AboutTour({ data, setShowReview, user }) {
             </span>
           )}
         </div>
+        <button
+          className={styles.leaveReviewBtn}
+          onClick={() => {
+            // If user is not logged
+            if (user === "Unauthorized") return navigate("/app/login");
+            // When user is logged in
+            setShowReview((prevState) => !prevState);
+          }}
+        >
+          <TbMessage2Minus />
+          Leave a review
+        </button>
         {data.reviews.length > 0 && (
           <div className={styles.reviewsWrapper}>
             {data.reviews.map((review) => (
@@ -67,18 +79,6 @@ export default function AboutTour({ data, setShowReview, user }) {
           </div>
         )}
       </div>
-
-      <button
-        onClick={() => {
-          // If user is not logged
-          if (user === "Unauthorized") return navigate("/app/login");
-          // When user is logged in
-          setShowReview((prevState) => !prevState);
-        }}
-      >
-        <TbMessage2Minus />
-        Leave a review
-      </button>
     </>
   );
 }
