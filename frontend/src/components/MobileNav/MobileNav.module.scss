@@ -4,6 +4,7 @@
   @include responsive("mobile") {
     background-color: #fff;
     position: fixed;
+    z-index: 2;
     bottom: 1.5rem;
     left: 0;
     right: 0;

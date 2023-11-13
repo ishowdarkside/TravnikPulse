@@ -3,7 +3,10 @@
 
 .nav {
   @include responsive("mobile") {
-    padding: 2.5rem 0;
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+    padding: 2.5rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

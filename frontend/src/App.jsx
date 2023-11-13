@@ -25,6 +25,7 @@ import Register from "./pages/Register/Page/Register";
 import Page from "./pages/AdminShops/Page/Page";
 import CreateShop from "./pages/CreateShop/CreateShop";
 import Me from "./pages/Me/Me";
+import MapContext from "./context/MapContext";
 
 const queryClient = new QueryClient();
 
@@ -113,7 +114,12 @@ function App() {
                 />
                 <Route path="shops/create-shop" element={<CreateShop />} />
               </Route>
-              <Route path="map" element={<Map />} />
+              <Route path="map" element={
+                <MapContext>
+                  <Map />
+                </MapContext>
+              } />
+
               <Route
                 path="shop"
                 element={

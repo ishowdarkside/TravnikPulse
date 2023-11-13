@@ -28,3 +28,15 @@ export async function createShop(formData) {
     console.log(err);
   }
 }
+
+export async function getRadiusShop() {
+  const userPositon = JSON.parse(localStorage.getItem('userPosition'))
+  try {
+    const res = await fetch(`${BASE_URL}api/shops/shops-within/distance/80/center/${userPositon[1]}, ${userPositon[0]}`);
+    const data = await res.json();
+    console.log(data.shops)
+    return data.shops;
+  } catch (error) {
+    console.log(error)
+  }
+}

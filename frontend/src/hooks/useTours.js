@@ -1,9 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-  bookmarkTour,
   createTour,
   editTour,
   getAllTours,
+  getRadiusTour,
+  bookmarkTour,
   getSingleTour,
   rateTour,
 } from "../services/tourServices";
@@ -88,9 +89,16 @@ export function useRateTour() {
   return { mutate, isLoading };
 }
 
+export function useGetRadiusTours() {
+  const { data, isLoading } = useQuery({
+    queryFn: getRadiusTour,
+    queryKey: ["RadiusTours"],
+  });
+  return { data, isLoading };
+}
+
 export function useBookmarkTour() {
   const { tourID } = useParams();
-
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation({
     mutationFn: () => bookmarkTour(tourID),
@@ -98,6 +106,5 @@ export function useBookmarkTour() {
       queryClient.invalidateQueries(["tour"]);
     },
   });
-
   return { mutate, isLoading };
 }

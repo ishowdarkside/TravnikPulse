@@ -95,3 +95,17 @@ export async function bookmarkTour(tourID) {
     console.log(err.message);
   }
 }
+
+export async function getRadiusTour() {
+  const userPositon = JSON.parse(localStorage.getItem("userPosition"));
+  try {
+    const res = await fetch(
+      `${BASE_URL}api/tours/tours-within/distance/80/center/${userPositon[1]}, ${userPositon[0]}`
+    );
+    const data = await res.json();
+    console.log(data.tours);
+    return data.tours;
+  } catch (error) {
+    console.log(error);
+  }
+}

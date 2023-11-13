@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { createShop, getAllShops } from "../services/shopServices";
+import { createShop, getAllShops, getRadiusShop } from "../services/shopServices";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -30,3 +30,11 @@ export function useCreateShop() {
 
   return { mutate, isLoading };
 }
+
+export function useGetRadiusShops() {
+    const { data, isLoading } = useQuery({
+      queryFn: getRadiusShop,
+      queryKey: ["RadiusShops"]
+    });
+    return { data, isLoading }
+  }
