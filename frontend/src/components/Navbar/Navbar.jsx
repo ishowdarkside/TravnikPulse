@@ -3,6 +3,7 @@ import TravnikPulseLogo from "../../assets/simple-logo.png";
 import { BiUserCircle } from "react-icons/bi";
 import styles from "./Navbar.module.scss";
 import { useGetUser } from "../../hooks/useAuth";
+import { BiSolidUserCircle } from "react-icons/bi";
 
 export default function Navbar() {
   const { data: user, isLoading } = useGetUser();
@@ -20,7 +21,11 @@ export default function Navbar() {
         />
         {user.role && (
           <NavLink to="/app/me" className={styles.calendar}>
-            <BiUserCircle />
+            {location.pathname === "/app/me" ? (
+              <BiSolidUserCircle />
+            ) : (
+              <BiUserCircle />
+            )}
           </NavLink>
         )}
 

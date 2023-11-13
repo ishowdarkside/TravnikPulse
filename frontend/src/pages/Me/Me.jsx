@@ -17,8 +17,8 @@ export default function Me() {
 
   return (
     <>
-      <Navbar />
       <section className={styles.sectionBody}>
+        <Navbar />
         <span>
           Hi <b>{user.username}</b>, welcome back!
         </span>
