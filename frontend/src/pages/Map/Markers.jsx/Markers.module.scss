@@ -2,24 +2,47 @@
 @import "../../../styles/mixin.scss";
 .customModal {
   position: fixed;
-  top: 0;
+  bottom: 0;
   height: 100vh;
   width: 100%;
   background-color: #fff;
   z-index: 999;
   font-size: 2rem;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: block !important;
+    background-color: rgba($color-primary-red, 0.1);
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-primary-red; /* Set the color of the scrollbar thumb */
+
+    border-radius: 6px; /* Optional: Rounded corners for the thumb */
+    cursor: pointer;
+  }
 
   @include desktop-md {
-    right: 0;
+    right: 2rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
     width: 40rem;
+    height: 60rem;
+    bottom: 2rem;
+    border-radius: 2rem;
+  }
+
+  @include desktop-lg {
+    height: 80rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
   .mainSection {
     padding: 2rem 2rem 0 2rem;
-    box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
+
     .closeModal {
+      cursor: pointer;
       svg {
         font-size: 3rem;
       }
@@ -39,12 +62,12 @@
       margin: 1rem 0;
 
       button {
-        padding: 1.5rem 3rem;
+        padding: 1rem 1.5rem;
         border-radius: 3rem;
         background-color: $color-primary-red;
         color: #fff;
         border: none;
-        font-size: 2rem;
+        @include text("text-sm-medium");
         display: flex;
         align-items: center;
         font-weight: bold;
@@ -53,7 +76,8 @@
 
       a {
         color: $color-primary-red;
-        font-size: 2.3rem;
+
+        @include text("text-sm-medium");
       }
     }
 
