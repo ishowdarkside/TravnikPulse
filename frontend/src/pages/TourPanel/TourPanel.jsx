@@ -1,4 +1,3 @@
-import { useGetUser } from "../../hooks/useAuth";
 import { useTouristDataContext } from "../../context/TouristDataContext";
 // Components
 import Navbar from "../../components/Navbar/Navbar";
@@ -9,14 +8,12 @@ import Activities from "./Activities/Activities";
 import MobileNav from "../../components/MobileNav/MobileNav";
 // SCSS
 import styles from "./TourPanel.module.scss";
-import Spinner from "../../components/Spinner/Spinner";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
+import DesktopBar from "./DesktopBar/DesktopBar";
 
 export default function TourPanel() {
   const { suggestPlace } = useTouristDataContext();
-  const { data: user, isLoading } = useGetUser();
 
-  if (isLoading) return <Spinner />;
   return (
     <>
       <DesktopNav />
@@ -24,6 +21,7 @@ export default function TourPanel() {
         <div className={styles.container}>
           <Navbar />
           <Weather />
+          <DesktopBar />
           {suggestPlace && <Hotels />}
           <PreferenceFilter />
           <Activities />

@@ -14,7 +14,7 @@
   @include text("text-xl-regular");
 
   @include desktop-md() {
-    width: auto;
+    display: none;
   }
 
   .weatherOverlay {
