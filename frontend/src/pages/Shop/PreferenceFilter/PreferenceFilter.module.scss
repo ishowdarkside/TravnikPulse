@@ -18,8 +18,15 @@
     width: 100% !important;
 
     &::-webkit-scrollbar {
-      display: block !important;
-      background-color: #ddd !important;
+      background-color: #ffff;
+      width: 3px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #f37022;
+      border-radius: 3px;
     }
   }
 

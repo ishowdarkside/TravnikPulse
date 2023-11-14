@@ -2,6 +2,7 @@
 .details {
   padding: 2rem;
   height: 100%;
+  background-color: #ffff;
 }
 
 .flex {
@@ -17,6 +18,16 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+
+  @include desktop() {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop-md() {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 3rem 0;
+  }
 }
 
 .reviewsWrapper {
@@ -71,4 +82,11 @@
 
 .underline {
   text-decoration: underline;
+}
+
+.btnWrapper {
+  @include desktop() {
+    display: flex;
+    gap: 2rem;
+  }
 }
