@@ -12,10 +12,17 @@
   position: absolute;
   top: 12rem;
 
-  @include responsive("mobile") {
-    flex-direction: column;
-    right: 1rem;
-    width: fit-content;
+  @include responsive("mobile") { 
+    left: 1rem;
+    padding-left: 2rem;
+    padding-right: 5rem;
+    overflow-x: scroll;
+    width: 50rem;
+    justify-content: flex-start;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .filter {

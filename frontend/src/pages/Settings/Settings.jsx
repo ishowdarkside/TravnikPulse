@@ -47,10 +47,10 @@ export default function Settings() {
 
   return (
     <>
-        <div className={styles.container}>
         <Navbar />
         <DesktopNav />
         
+        <div className={styles.container}>
       <div className={styles.settingsWrapper}>
         <div className={styles.settings}>
           {/* GENERAL SETTINGS */}

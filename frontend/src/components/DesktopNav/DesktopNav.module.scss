@@ -2,6 +2,7 @@
 
 .nav {
   padding: 2rem 0;
+  border: 1px solid #eee;
 
   @include responsive("tab-port") {
     display: none;

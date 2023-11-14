@@ -69,3 +69,7 @@ body {
   .leaflet-marker-draggable {
   z-index: -9999 !important;
 }
+
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  display: none;
+}

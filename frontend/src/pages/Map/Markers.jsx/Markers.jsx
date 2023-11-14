@@ -20,16 +20,16 @@ export default function Markers({ tour, setTourLocation }) {
 
 	const customIcon = new L.Icon({
 		iconUrl: `http://127.0.0.1:8000/${tour.coverImg}`,
-		iconSize: [48, 48], // increase the size
-		iconAnchor: [24, 48], // position it to the right
-		popupAnchor: [0, -48], // adjust the popup position relative to the marker
+		iconSize: [48, 48], 
+		iconAnchor: [24, 48], 
+		popupAnchor: [0, -48],
 	});
 
 	const hotelIcon = new L.Icon({
 		iconUrl: tour.pictures ? tour.pictures[0] : `http://127.0.0.1:8000/${tour.coverImg}`,
-		iconSize: [48, 48], // increase the size
-		iconAnchor: [24, 48], // position it to the right
-		popupAnchor: [0, -48], // adjust the popup position relative to the marker
+		iconSize: [48, 48],
+		iconAnchor: [24, 48], 
+		popupAnchor: [0, -48], 
 	});
 	
 
@@ -49,6 +49,8 @@ export default function Markers({ tour, setTourLocation }) {
 		  map.scrollWheelZoom.enable();
 		}
 	  }, [showModal, map]);
+
+	  console.log(tour)
 
 	return (
     <>
@@ -70,7 +72,7 @@ export default function Markers({ tour, setTourLocation }) {
 								// Set coordinates
 								setTourLocation(tour.location.coordinates)
 							}}><MdDirections />Directions</button>
-							{tour?.type !== 'hotels' && <Link to={`/app/tour/${tour._id}`}>See more</Link>}
+							{tour?.type !== 'hotels' && !tour.shopName && <Link to={`/app/tour/${tour._id}`}>See more</Link>}
 						</div>
 						<img src={tour?.type !== 'hotels' ? `http://127.0.0.1:8000/${tour.coverImg}` : tour.pictures[0]} className={styles.img} alt="" />
 						<div className={styles.navigation}>
@@ -81,8 +83,8 @@ export default function Markers({ tour, setTourLocation }) {
 					</div>
 					<div className={styles.navContent}>
 							<ul>
-								<li><FaWalking />{travelTime ? travelTime + tour.duration + ' min' : 'Start route to calculate'}</li>
-								{tour.type !== 'hotels' && ( <>
+								<li><FaWalking />{travelTime ? tour.duration === undefined ? travelTime + 'min' : travelTime + tour?.duration + ' min' : 'Start route to calculate'}</li>
+								{tour.type !== 'hotels' && !tour.shopName && ( <>
 									<li><IoMdTime />{tour.time}</li>
 									<li><GiSandsOfTime />{Math.floor(tour.duration / 60)} hours</li>
 									<li><TfiMoney />{tour.price === 'FREE' ? tour.price : tour.price + ' KM'}</li>
