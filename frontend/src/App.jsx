@@ -180,9 +180,11 @@ function App() {
                 <Route
                   path="tour/:tourID"
                   element={
-                    <Protect>
-                      <Tour />
-                    </Protect>
+                    <MapContext>
+                      <Protect>
+                        <Tour />
+                      </Protect>
+                    </MapContext>
                   }
                 />
                 <Route

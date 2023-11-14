@@ -8,6 +8,7 @@ export default function MapContext({ children }) {
 	const [ currentPosition, setCurrentPosition ] = useState([]);
 	const [ travelTime, setTravelTime ] = useState(null);
 	const [ radius, setRadius ] = useState(0);
+	const [ eventLocation, setEventLocation ] = useState(null);
 
 	useEffect(
 		() => {
@@ -34,7 +35,9 @@ export default function MapContext({ children }) {
 				radius,
 				setRadius,
 				travelTime,
-				setTravelTime
+				setTravelTime,
+				eventLocation,
+				setEventLocation
 			}}
 		>
 			{children}

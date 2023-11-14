@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useGetRadiusTours, useGetTours } from "../../../hooks/useTours";
-import { MapContainer, Marker, Popup, TileLayer, Circle } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, Circle, useMap } from "react-leaflet";
 import Markers from "../Markers.jsx/Markers";
 import { useGetAllShops, useGetRadiusShops } from "../../../hooks/useShops";
 import styles from "./MainMap.module.scss";
@@ -21,6 +21,7 @@ export default function MainMap() {
     currentPosition,
     setCurrentPosition,
     radius,
+    eventLocation
   } = useMapContext();
   const { data: tours, isLoading: toursLoading } = useGetTours();
   const { data: shops, isLoading: shopsLoading } = useGetAllShops();

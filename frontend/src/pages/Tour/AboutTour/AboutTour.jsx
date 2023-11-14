@@ -14,8 +14,10 @@ import { CiLocationOn } from "react-icons/ci";
 import { PiMoneyLight } from "react-icons/pi";
 import ReviewComponent from "../ReviewComponent/ReviewComponent";
 import { useBookmarkTour } from "../../../hooks/useTours";
+import { useMapContext } from "../../../context/MapContext";
 
 export default function AboutTour({ data, setShowReview, user }) {
+  const { eventLocation, setEventLocation } = useMapContext();
   const navigate = useNavigate();
 
   const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
@@ -52,7 +54,7 @@ export default function AboutTour({ data, setShowReview, user }) {
           <p className={styles.flex}>
             <TbTimeDuration45 /> {data.duration} min
           </p>
-          <Link className={styles.flex}>
+          <Link to='/app/map' className={styles.flex} onClick={() => setEventLocation(data.location.coordinates)}>
             <CiLocationOn /> View location on map
           </Link>
           <p className={styles.flex}>
