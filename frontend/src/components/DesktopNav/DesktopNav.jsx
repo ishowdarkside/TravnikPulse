@@ -1,10 +1,12 @@
 import styles from "./DesktopNav.module.scss";
 import Logo from "../../assets/simple-logo.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useGetUser } from "../../hooks/useAuth";
 import Spinner from "../../components/Spinner/Spinner";
 export default function DesktopNav() {
   const { data: user, isLoading } = useGetUser();
+
+  const location = useLocation();
 
   if (isLoading) return <Spinner />;
   return (
@@ -27,7 +29,11 @@ export default function DesktopNav() {
           <li>
             <NavLink to="/app/settings">Settings</NavLink>
           </li>
-          <li className={styles.operation}>
+          <li
+            className={`${styles.operation} ${
+              location.pathname === "/app/me" ? styles.whiteBG : ""
+            }`}
+          >
             <NavLink to="/app/me">
               {user === "Unauthorized" ? "Login " : user.username}
             </NavLink>
