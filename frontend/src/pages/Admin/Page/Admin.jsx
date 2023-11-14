@@ -6,6 +6,7 @@ import { AiOutlineCalendar, AiOutlineStar } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { useGetUnapprovedReviews } from "../../../hooks/useReview";
 import ReturnButton from "../../../components/ReturnButton/ReturnButton";
+import Spinner from "../../../components/Spinner/Spinner";
 
 export default function Admin() {
   const { data: tours, isLoading } = useGetTours();
@@ -13,8 +14,7 @@ export default function Admin() {
   const { data: unapprovedReviews, isLoading: isLoadingReviews } =
     useGetUnapprovedReviews();
 
-  if (isLoading || isLoadingShops || isLoadingReviews)
-    return <h1>LOADING...</h1>;
+  if (isLoading || isLoadingShops || isLoadingReviews) return <Spinner />;
 
   return (
     <>

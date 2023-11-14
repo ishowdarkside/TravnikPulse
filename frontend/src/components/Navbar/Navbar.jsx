@@ -4,13 +4,14 @@ import { BiUserCircle } from "react-icons/bi";
 import styles from "./Navbar.module.scss";
 import { useGetUser } from "../../hooks/useAuth";
 import { BiSolidUserCircle, BiLogInCircle } from "react-icons/bi";
+import Spinner from "../Spinner/Spinner";
 
 export default function Navbar() {
   const { data: user, isLoading } = useGetUser();
 
   const location = useLocation();
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
   return (
     <>
       <nav className={styles.nav}>

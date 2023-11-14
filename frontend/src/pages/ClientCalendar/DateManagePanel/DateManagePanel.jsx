@@ -4,10 +4,11 @@ import { formatDate, weekdays } from "../../../services/dateServices";
 import styles from "./DateManagePanel.module.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import EventComponent from "../EventComponent/EventComponent";
+import Spinner from "../../../components/Spinner/Spinner";
 
 export default function DateManagePanel({ activeDate, setActiveDate }) {
   const { data, isLoading } = useGetTours();
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
 
   const matchingDateTours = data.filter(
     (tour) => formatDate(tour.date) === formatDate(activeDate)

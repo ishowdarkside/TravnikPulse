@@ -3,11 +3,12 @@ import Calendar from "react-calendar";
 import { useGetTours } from "../../hooks/useTours";
 import styles from "./ClientCalendar.module.scss";
 import { formatDate, weekdays } from "../../services/dateServices";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function EventCalendar({ setActiveDate }) {
   const { data, isLoading } = useGetTours();
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.calendarWrapper}>

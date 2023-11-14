@@ -1,10 +1,17 @@
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import styles from "./Proceed.module.scss";
 import { useNavigate } from "react-router-dom";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 export default function Proceed() {
-  const { selectedVisitPeriod, visitCount, position, preferences, language, suggestPlace } =
-    useTouristDataContext();
+  const {
+    selectedVisitPeriod,
+    visitCount,
+    position,
+    preferences,
+    language,
+    suggestPlace,
+  } = useTouristDataContext();
 
   const navigate = useNavigate();
 
@@ -14,14 +21,15 @@ export default function Proceed() {
     localStorage.setItem("position", JSON.stringify(position));
     localStorage.setItem("preferences", JSON.stringify(preferences));
     localStorage.setItem("language", JSON.stringify(language));
-    localStorage.setItem('suggestPlace', JSON.stringify(suggestPlace))
+    localStorage.setItem("suggestPlace", JSON.stringify(suggestPlace));
 
     navigate("/app");
   }
   return (
     <section className={styles.proceedPanel}>
       <div>
-        <h2>You are all set to go!</h2>
+        <AiFillCheckCircle />
+        <h2>You are all set!</h2>
         <button onClick={handleClick}>Start exploring Travnik</button>
       </div>
     </section>

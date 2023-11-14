@@ -9,13 +9,14 @@ import ReviewTour from "./ReviewTour/ReviewTour";
 import styles from "./Tour.module.scss";
 import MobileNav from "../../components/MobileNav/MobileNav";
 import NotFound from "../../pages/NotFound/NotFound.jsx";
+import Spinner from "../../components/Spinner/Spinner.jsx";
 
 export default function Tour() {
   const [showReview, setShowReview] = useState(false);
   const { data, isLoading } = useGetSingleTour();
   const { data: user, isLoading: loadingUser } = useGetUser();
 
-  if (isLoading || loadingUser) return <h1>Loading...</h1>;
+  if (isLoading || loadingUser) return <Spinner />;
 
   if (data === "not-found") return <NotFound />;
   return (

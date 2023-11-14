@@ -3,13 +3,14 @@ import { useGetTours } from "../../../hooks/useTours";
 import styles from "./EventCalendar.module.scss";
 import { useAdminContext } from "../../../context/AdminContext";
 import { formatDate, weekdays } from "../../../services/dateServices";
+import Spinner from "../../../components/Spinner/Spinner";
 //import "react-calendar/dist/Calendar.css";
 
 export default function EventCalendar() {
   const { data, isLoading } = useGetTours();
   const { setActiveDate } = useAdminContext();
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.calendarWrapper}>

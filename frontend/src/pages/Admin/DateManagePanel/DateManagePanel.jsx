@@ -5,13 +5,14 @@ import styles from "./DateManagePanel.module.scss";
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import EventComponent from "./EventComponent/EventComponent";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../../../components/Spinner/Spinner";
 
 export default function DateManagePanel() {
   const { data, isLoading } = useGetTours();
   const { activeDate, setActiveDate } = useAdminContext();
   const navigate = useNavigate();
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
 
   const matchingDateTours = data.filter(
     (tour) => formatDate(tour.date) === formatDate(activeDate)

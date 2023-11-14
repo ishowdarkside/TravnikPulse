@@ -7,12 +7,13 @@ import ReturnButton from "../../components/ReturnButton/ReturnButton";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendarEvent } from "react-icons/bs";
 import styles from "./AdminSingleReview.module.scss";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function AdminSingleReview() {
   const { data, isLoading } = useGetSingleUnapprovedReview();
   const { mutate: approve, isLoading: isApproving } = useApproveReview();
   const { mutate: decline, isLoading: isDeleting } = useDeclineReview();
-  if (isLoading || isApproving || isDeleting) return <h1>LOADING...</h1>;
+  if (isLoading || isApproving || isDeleting) return <Spinner />;
 
   if (data === "not-found" || !data)
     return (

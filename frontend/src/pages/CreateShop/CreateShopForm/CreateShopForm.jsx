@@ -4,6 +4,7 @@ import styles from "./CreateShopForm.module.scss";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useCreateShop } from "../../../hooks/useShops";
 import toast from "react-hot-toast";
+import Spinner from "../../../components/Spinner/Spinner";
 export default function CreateShopFrom() {
   const [position, setPosition] = useState([]);
   const [shopName, setShopName] = useState("");
@@ -26,7 +27,7 @@ export default function CreateShopFrom() {
     mutate(formData);
   }
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
   return (
     <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
       <div className={styles.inputWrapper}>
