@@ -143,11 +143,11 @@ function App() {
                 <Route
                   path="map"
                   element={
-                    <Protect>
-                      <MapContext>
+                    <MapContext>
+                      <Protect>
                         <Map />
-                      </MapContext>
-                    </Protect>
+                      </Protect>
+                    </MapContext>
                   }
                 />
 

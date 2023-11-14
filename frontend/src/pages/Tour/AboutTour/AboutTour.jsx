@@ -15,6 +15,7 @@ import { PiMoneyLight } from "react-icons/pi";
 import ReviewComponent from "../ReviewComponent/ReviewComponent";
 import { useBookmarkTour } from "../../../hooks/useTours";
 import { useMapContext } from "../../../context/MapContext";
+import { useEffect } from "react";
 
 export default function AboutTour({ data, setShowReview, user }) {
   const { eventLocation, setEventLocation } = useMapContext();
@@ -54,9 +55,15 @@ export default function AboutTour({ data, setShowReview, user }) {
           <p className={styles.flex}>
             <TbTimeDuration45 /> {data.duration} min
           </p>
-          <Link to='/app/map' className={styles.flex} onClick={() => setEventLocation(data.location.coordinates)}>
+          <span
+            className={`${styles.flex} ${styles.underline}`}
+            onClick={() => {
+              setEventLocation(data.location.coordinates);
+              navigate("/app/map");
+            }}
+          >
             <CiLocationOn /> View location on map
-          </Link>
+          </span>
           <p className={styles.flex}>
             <PiMoneyLight /> {data.price}
             {data.price !== "FREE" && "KM"}
