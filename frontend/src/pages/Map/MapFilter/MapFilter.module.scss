@@ -2,27 +2,67 @@
 @import '../../../styles/mixin.scss';
 
 .mapFilter {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem;
-    gap: 2rem;
-    
-    .filter {
-        background-color: #fff;
-        color: #000;
-        width: 100%;
-        padding: 1rem;
-        border-radius: 5rem;
-        text-align: center;
-        @include text("text-xl-semibold");
-        
-        &.active {
-            background-color: $color-primary-red;
-            color: #fff;
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 2rem;
+	gap: 2rem;
 
-        }
+	.filter {
+		background-color: #fff;
+		color: #000;
+		width: 100%;
+		padding: 1rem;
+		border-radius: 5rem;
+		text-align: center;
+		@include text("text-xl-semibold");
+
+		&.active {
+			background-color: $color-primary-red;
+			color: #fff;
+		}
+	}
+}
+
+.radiusModal {
+	position: fixed;
+	bottom: 12rem;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	width: 45rem;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+
+    svg {
+        width: 20%;
+        background-color: #fff;
+        height: 5.7rem;
+        padding: 1.5rem;
+        border-radius: 5px;
     }
+
+	input {
+		width: 60%;
+		padding: 2rem;
+		border: 1px solid #ddd;
+		outline: none;
+		border-radius: 5px;
+	}
+
+	button {
+		padding: 1.5rem;
+		width: 20%;
+		border: 0;
+		border-radius: 5px;
+		background-color: $color-primary-red;
+		color: #fff;
+        font-size: 2rem;
+        font-family: "Satoshi";
+	}
 }

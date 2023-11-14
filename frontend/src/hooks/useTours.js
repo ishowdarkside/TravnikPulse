@@ -90,9 +90,11 @@ export function useRateTour() {
 }
 
 export function useGetRadiusTours() {
+  const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({
     queryFn: getRadiusTour,
     queryKey: ["RadiusTours"],
+   
   });
   return { data, isLoading };
 }

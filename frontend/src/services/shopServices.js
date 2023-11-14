@@ -31,9 +31,11 @@ export async function createShop(formData) {
 
 export async function getRadiusShop() {
   const userPositon = JSON.parse(localStorage.getItem('position'))
+  const radius = JSON.parse(localStorage.getItem('radius'));
   try {
-    const res = await fetch(`${BASE_URL}api/shops/shops-within/distance/80/center/${userPositon.lng}, ${userPositon.lat}`);
+    const res = await fetch(`${BASE_URL}api/shops/shops-within/distance/${radius}/center/${userPositon.lng}, ${userPositon.lat}`);
     const data = await res.json();
+    console.log(data.shops)
     return data.shops;
   } catch (error) {
     console.log(error)

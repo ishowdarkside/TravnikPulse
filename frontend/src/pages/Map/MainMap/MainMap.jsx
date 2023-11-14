@@ -11,8 +11,6 @@ import LeafletRouting from '../LeafletRouting/LeafletRouting';
 import { useMapContext } from '../../../context/MapContext';
 import allHotels from '../../../utils/hotels/hotel.json';
 
-
-
 export default function MainMap() {
   const {
     activeFilter,
@@ -20,6 +18,7 @@ export default function MainMap() {
     tourLocation,
     currentPosition,
     setCurrentPosition,
+    radius
   } = useMapContext();
   const { data: tours, isLoading: toursLoading } = useGetTours();
   const { data: shops, isLoading: shopsLoading } = useGetAllShops();
@@ -35,20 +34,25 @@ export default function MainMap() {
 	  setCurrentPosition([userLocation.lat, userLocation.lng])
 	}, [setCurrentPosition]);
 	
-	console.log(currentPosition)
   if (toursLoading || shopsLoading || radiusTourLoading || radiusShopLoading)
     return <h1>Loading...</h1>;
 
-	const allData = [...radiusTours, ...radiusShops, ...allHotels.hotels]
+	const allData = [...tours, ...shops, ...allHotels.hotels]
+	const allRadiusData = [...radiusTours, ...radiusShops]
 
-	const activeData = activeFilter === 'shops' ? shops : activeFilter === 'hotels' ? allHotels.hotels : activeFilter === 'radius' || activeFilter === 'all' ? allData : activeFilter === 'tours' ? tours : null;
-	
-	// Check if currentPosition has a valid value before rendering the map
-	if (!currentPosition || currentPosition.length !== 2) return null;
+	const activeData = 
+        activeFilter === 'shops' ? shops : 
+        activeFilter === 'hotels' ? allHotels.hotels : 
+        activeFilter === 'radius' ? allRadiusData : 
+        activeFilter === 'all' ? allData : 
+        activeFilter === 'tours' ? tours : null;
 
-  const radiusInKm = 50;
-  const radiusInMeters = radiusInKm * 1000;
-
+        
+        // Check if currentPosition has a valid value before rendering the map
+        if (!currentPosition || currentPosition.length !== 2) return null;
+        
+        const radiusInKm = radius;
+        const radiusInMeters = radiusInKm * 1000;
   return (
     <>
       <MapContainer
@@ -66,7 +70,7 @@ export default function MainMap() {
         ))}
 
         <Marker position={currentPosition} />
-        {activeFilter === "radius" && (
+        {activeFilter === 'radius' && (
           <Circle center={currentPosition} radius={radiusInMeters} />
         )}
 

@@ -6,20 +6,20 @@ export default function MapContext({ children }) {
 	const [ activeFilter, setActiveFilter ] = useState('all');
 	const [ tourLocation, setTourLocation ] = useState(null);
 	const [ currentPosition, setCurrentPosition ] = useState([]);
+	const [ radius, setRadius ] = useState(0);
 
 	useEffect(
 		() => {
 			const userPosition = JSON.parse(localStorage.getItem('position'));
+			const userRadius = JSON.parse(localStorage.getItem('radius'));
 
-			
-			if (userPosition) {
-				setCurrentPosition([userPosition.lat, userPosition.lng]);
+			if (userPosition || userRadius) {
+				setCurrentPosition([ userPosition.lat, userPosition.lng ]);
+				setRadius(userRadius)
 			}
 		},
-		[ setCurrentPosition ]
+		[ setCurrentPosition, setRadius ]
 	);
-//{"lat":44.23971871120775,"lng":17.688015904859643}
-	
 
 	return (
 		<context.Provider
@@ -29,7 +29,9 @@ export default function MapContext({ children }) {
 				tourLocation,
 				setTourLocation,
 				currentPosition,
-				setCurrentPosition
+				setCurrentPosition,
+				radius,
+				setRadius
 			}}
 		>
 			{children}
