@@ -75,29 +75,32 @@ export default function AboutTour({ data, setShowReview, user }) {
             </span>
           )}
         </div>
-        {user !== "Unauthorized" && user.role && (
+
+        <div className={styles.btnWrapper}>
+          {user !== "Unauthorized" && user.role && (
+            <button
+              className={`${styles.bookmarkActivity} ${
+                isBookmarked ? styles.isBookmarked : ""
+              }`}
+              onClick={bookmark}
+            >
+              {isBookmarked ? <BsBookmarkFill /> : <BsBookmark />}
+              {isBookmarked ? "Activity bookmarked" : "Bookmark this activity"}
+            </button>
+          )}
           <button
-            className={`${styles.bookmarkActivity} ${
-              isBookmarked ? styles.isBookmarked : ""
-            }`}
-            onClick={bookmark}
+            className={styles.leaveReviewBtn}
+            onClick={() => {
+              // If user is not logged
+              if (user === "Unauthorized") return navigate("/app/login");
+              // When user is logged in
+              setShowReview((prevState) => !prevState);
+            }}
           >
-            {isBookmarked ? <BsBookmarkFill /> : <BsBookmark />}
-            {isBookmarked ? "Activity bookmarked" : "Bookmark this activity"}
+            <TbMessage2Minus />
+            Leave a review
           </button>
-        )}
-        <button
-          className={styles.leaveReviewBtn}
-          onClick={() => {
-            // If user is not logged
-            if (user === "Unauthorized") return navigate("/app/login");
-            // When user is logged in
-            setShowReview((prevState) => !prevState);
-          }}
-        >
-          <TbMessage2Minus />
-          Leave a review
-        </button>
+        </div>
         {data.reviews.length > 0 && (
           <div className={styles.reviewsWrapper}>
             {data.reviews.map((review) => (

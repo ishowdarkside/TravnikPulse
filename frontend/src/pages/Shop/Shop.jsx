@@ -10,8 +10,10 @@ export default function Shop() {
     <div className={styles.shopWrapper}>
       <DesktopNav />
       <Navbar />
-      <PreferenceFilter />
-      <Shops />
+      <div className={styles.container}>
+        <PreferenceFilter />
+        <Shops />
+      </div>
       <MobileNav />
     </div>
   );

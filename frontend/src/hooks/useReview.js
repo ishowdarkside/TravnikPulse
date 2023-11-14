@@ -69,14 +69,16 @@ export function useDeclineReview() {
 export function useCreateReview() {
   const { tourID } = useParams();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const { mutate, isLoading } = useMutation({
     mutationFn: (formData) => createReview(tourID, formData),
     onSuccess: (res) => {
       if (res.status === "fail") return toast.error(res.message);
       if (res.status === "success") {
-        toast.success(res.message); 
+        toast.success(res.message);
         queryClient.invalidateQueries(["tours"]);
+        navigate(-1);
       }
     },
   });

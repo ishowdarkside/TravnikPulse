@@ -7,6 +7,11 @@
   -webkit-box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.75);
 
+  @include desktop() {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .image {
     background-position: center;
     background-repeat: no-repeat;
@@ -15,6 +20,9 @@
     position: relative;
     border-radius: 1rem;
 
+    @include desktop() {
+      height: 40rem;
+    }
     .imageOverlay {
       background: linear-gradient(
         rgba(0, 0, 0, 0),
@@ -44,4 +52,13 @@
 
 .sectionBody {
   padding: 0rem 2rem 10rem 2rem;
+}
+
+.container {
+  @include desktop-md() {
+    max-width: 120rem;
+    margin-left: auto;
+    padding-top: 10rem;
+    margin-right: auto;
+  }
 }

@@ -10,6 +10,7 @@ import styles from "./Tour.module.scss";
 import MobileNav from "../../components/MobileNav/MobileNav";
 import NotFound from "../../pages/NotFound/NotFound.jsx";
 import Spinner from "../../components/Spinner/Spinner.jsx";
+import DesktopNav from "../../components/DesktopNav/DesktopNav.jsx";
 
 export default function Tour() {
   const [showReview, setShowReview] = useState(false);
@@ -21,23 +22,26 @@ export default function Tour() {
   if (data === "not-found") return <NotFound />;
   return (
     <section className={styles.sectionBody}>
+      <DesktopNav />
       <Navbar />
-      <div className={styles.tour}>
-        <div
-          className={styles.image}
-          style={{
-            backgroundImage: `url('http://127.0.0.1:8000/${data.coverImg}')`,
-          }}
-        >
-          <div className={styles.imageOverlay} />
-          <div className={styles.imageContent}></div>
-        </div>
+      <div className={styles.container}>
+        <div className={styles.tour}>
+          <div
+            className={styles.image}
+            style={{
+              backgroundImage: `url('http://127.0.0.1:8000/${data.coverImg}')`,
+            }}
+          >
+            <div className={styles.imageOverlay} />
+            <div className={styles.imageContent}></div>
+          </div>
 
-        {!showReview ? (
-          <AboutTour setShowReview={setShowReview} data={data} user={user} />
-        ) : (
-          <ReviewTour setShowReview={setShowReview} />
-        )}
+          {!showReview ? (
+            <AboutTour setShowReview={setShowReview} data={data} user={user} />
+          ) : (
+            <ReviewTour setShowReview={setShowReview} />
+          )}
+        </div>
       </div>
       <MobileNav />
     </section>
