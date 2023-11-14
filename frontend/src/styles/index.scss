@@ -27,6 +27,12 @@ body {
   line-height: 1.5;
   font-family: "Satoshi", sans-serif;
   color: #000;
+
+  @include desktop-md() {
+    background-image: url("../assets/bg-img.jpg");
+    background-size: cover;
+    background-position: center;
+  }
 }
 
 .react-time-picker__wrapper {
