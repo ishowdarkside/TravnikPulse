@@ -2,32 +2,26 @@
 @import "../../styles/variables.scss";
 
 .nav {
-  @include responsive("mobile") {
-    position: relative;
-    z-index: 2;
-    background-color: #fff;
-    padding: 2.5rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+  padding: 2.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
   .text {
-    @include responsive("mobile") {
-      width: 23rem;
-    }
+    width: 23rem;
   }
 
   .calendar {
-    @include responsive("mobile") {
-      text-decoration: none;
-      color: $color-primary-red;
-      font-weight: bold;
-      font-size: 4rem;
-      display: flex;
-      align-items: center;
-    }
+    text-decoration: none;
+    color: $color-primary-red;
+    font-weight: bold;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
   }
 }
 

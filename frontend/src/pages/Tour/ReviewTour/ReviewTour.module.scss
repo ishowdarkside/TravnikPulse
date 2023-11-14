@@ -1,35 +1,33 @@
 @import "../../../styles/mixin.scss";
 
 .reviewTour {
-  @include responsive("mobile") {
-    padding: 2rem;
-    margin-bottom: 10rem;
+  padding: 2rem;
+  margin-bottom: 10rem;
 
-    h2 {
-      margin-bottom: 4rem;
-    }
+  h2 {
+    margin-bottom: 4rem;
+  }
 
-    .form {
-      margin: 1rem 0;
-      width: 100%;
+  .form {
+    margin: 1rem 0;
+    width: 100%;
 
-      .stars {
-        margin: 5rem 0 2rem 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        .star {
-          font-size: 4rem;
-          color: #ddd;
-          cursor: pointer;
+    .stars {
+      margin: 5rem 0 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      .star {
+        font-size: 4rem;
+        color: #ddd;
+        cursor: pointer;
 
-          &:hover {
-            opacity: 0.5;
-          }
+        &:hover {
+          opacity: 0.5;
+        }
 
-          &.active {
-            color: #eed70b;
-          }
+        &.active {
+          color: #eed70b;
         }
       }
 

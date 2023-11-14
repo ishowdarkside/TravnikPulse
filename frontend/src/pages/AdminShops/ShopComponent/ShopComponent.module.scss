@@ -1,9 +1,8 @@
 @import "../../../styles/mixin.scss";
 .shopWrapper {
-  @include responsive("mobile") {
-    max-width: none;
-    width: 100%;
-  }
+  max-width: none;
+  width: 100%;
+
   max-width: 40rem;
   position: relative;
   border-radius: 2rem;

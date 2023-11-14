@@ -1,30 +1,24 @@
-@import '../../../styles/mixin.scss';
+@import "../../../styles/mixin.scss";
 
 .hotels {
-    @include responsive("mobile") {
-        margin: 2rem 0;
-        height: 100%;
-    }
+  margin: 2rem 0;
+  height: 100%;
 
-    .mainTitle {
-        @include responsive("mobile") {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 1rem 0 2rem 0;
-        }
+  .mainTitle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0 2rem 0;
+  }
+
+  .hotelWrapper {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    gap: 2rem;
+
+    &::-webkit-scrollbar {
+      display: none;
     }
-    
-    .hotelWrapper {
-        @include responsive("mobile") {
-            display: flex;
-            width: 100%;
-            overflow-x: scroll;
-            gap: 2rem;
-    
-            &::-webkit-scrollbar {
-                display: none;
-            }
-        }
-    }
+  }
 }

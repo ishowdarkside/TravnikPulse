@@ -1,54 +1,52 @@
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import "../../styles/mixin.scss";
+@import "../../styles/variables.scss";
 
 .item {
-  @include responsive("mobile") {
-    background-color: #f8f8f8;
-    margin: 1rem 0;
-    padding: 2rem;
-    border-radius: 0.5rem;
+  background-color: #f8f8f8;
+  margin: 1rem 0;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  @include text("text-xl-semibold");
+
+  span {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    @include text("text-xl-semibold");
+    width: 100%;
 
-    span {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-
-      .customCheckbox {
-        background-color: #34c759;
+    .customCheckbox {
+      background-color: #34c759;
+      border-radius: 6rem;
+      position: relative;
+      cursor: pointer;
+      .defaultCheckbox {
+        display: none;
+      }
+      .checkbox {
+        display: block;
+        width: 7rem;
+        height: 4rem;
+        border: 2px solid #34c759;
         border-radius: 6rem;
-        position: relative;
-        cursor: pointer;
-        .defaultCheckbox {
-          display: none;
-        }
-        .checkbox {
-          display: block;
-          width: 7rem;
-          height: 4rem;
-          border: 2px solid #34c759;
-          border-radius: 6rem;
+        transition: 0.5s;
+        &:before {
+          content: "";
+          position: absolute;
+          width: 3.5rem;
+          height: 3.5rem;
+          top: 2px;
+          right: 1px;
+          box-sizing: border-box;
+          background: #fff;
+          border-radius: 40px;
           transition: 0.5s;
-          &:before {
-            content: "";
-            position: absolute;
-            width: 3.5rem;
-            height: 3.5rem;
-            top: 2px;
-            right: 1px;
-            box-sizing: border-box;
-            background: #fff;
-            border-radius: 40px;
-            transition: 0.5s;
-            box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
-            -webkit-box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
-            -moz-box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
-          }
+          box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
+          -webkit-box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.75);
         }
         :checked ~ .checkbox:before {
           background: #fff;
@@ -83,33 +81,31 @@
 }
 
 .settingsWrapper {
-    @include responsive("mobile") {     
-        padding: 0 2rem;
-    
-        .settings {
-            margin: 2rem 0;
-    
-            .general {
-                margin: 2rem 0;
+  padding: 0 2rem;
 
-                .logout {
-                    width: 100%;
-                    padding: 1.5rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 1rem;
-                    border: 0;
-                    background-color: $color-primary-red;
-                    color: #fff;
-                    font-size: 2rem;
-                    border-radius: 1rem;
-                    font-family: 'Satoshi';
+  .settings {
+    margin: 2rem 0;
 
-                    svg {
-                        font-size: 3rem;
-                    }
-                }
+    .general {
+      margin: 2rem 0;
+
+      .logout {
+        width: 100%;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        border: 0;
+        background-color: $color-primary-red;
+        color: #fff;
+        font-size: 2rem;
+        border-radius: 1rem;
+        font-family: "Satoshi";
+
+        svg {
+          font-size: 3rem;
+        }
 
         .options {
           position: relative;

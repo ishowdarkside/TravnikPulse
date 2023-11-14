@@ -1,0 +1,16 @@
+@import "../../../styles/mixin.scss";
+.activities {
+  @include desktop() {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop-md() {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include desktop-lg() {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -13,7 +13,7 @@
       @include text("text-xl-semibold");
       color: #333;
     }
-  
+
     form {
       display: flex;
       flex-direction: column;
@@ -21,15 +21,13 @@
       gap: 1rem;
       border-radius: 2rem;
       align-items: center;
-  
+
       img {
         margin-bottom: 2rem;
-  
-        @include responsive("mobile") {
-          width: 20rem;
-        }
+
+        width: 20rem;
       }
-  
+
       button {
         width: 40rem;
         max-width: 40rem;
@@ -44,11 +42,9 @@
         border-radius: 6px;
         cursor: pointer;
         @include text("text-xl-bold");
-  
-        @include responsive("mobile") {
-          width: 100%;
-          max-width: none;
-        }
+
+        width: 100%;
+        max-width: none;
       }
 
       a {
@@ -58,14 +54,14 @@
         color: $color-primary-red;
         @include text("text-lg-regular");
       }
-  
+
       .inputContainer {
         width: 100%;
         label {
           display: block;
           margin: 1rem 0;
           color: #828282;
-          @include text("text-xl-regular")
+          @include text("text-xl-regular");
         }
 
         input {
@@ -73,16 +69,15 @@
           max-width: 40rem;
           padding: 1.5rem;
           border-radius: 6px;
-          border: 1px solid #E0E0E0;
+          border: 1px solid #e0e0e0;
           color: #666666;
           font-size: 1.5rem;
           outline: none;
           @include text("text-xl-regular");
-    
-          @include responsive("mobile") {
-            width: 100%;
-            max-width: none;
-          }
+
+          width: 100%;
+          max-width: none;
+
           &::placeholder {
             color: #e0e0e0;
             font-size: 1.6rem;

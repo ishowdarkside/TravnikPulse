@@ -2,43 +2,41 @@
 @import "../../styles/mixin.scss";
 
 .tour {
-  @include responsive("mobile") {
+  border-radius: 1rem;
+  box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.75);
+
+  .image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20rem;
+    position: relative;
     border-radius: 1rem;
-    box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.75);
 
-    .image {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 20rem;
-      position: relative;
-      border-radius: 1rem;
+    .imageOverlay {
+      background: linear-gradient(
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.6),
+        rgb(0, 0, 0)
+      );
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
 
-      .imageOverlay {
-        background: linear-gradient(
-          rgba(0, 0, 0, 0),
-          rgba(0, 0, 0, 0.6),
-          rgb(0, 0, 0)
-        );
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-      }
+    .imageContent {
+      position: absolute;
+      padding: 2rem;
+      bottom: 2rem;
+      color: #fff;
+      @include text("text-xl-bold");
 
-      .imageContent {
-        position: absolute;
-        padding: 2rem;
-        bottom: 2rem;
-        color: #fff;
-        @include text("text-xl-bold");
-
-        h2 {
-          margin-bottom: 1rem;
-        }
+      h2 {
+        margin-bottom: 1rem;
       }
     }
   }

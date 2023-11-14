@@ -18,12 +18,14 @@ export default function TourPanel() {
   if (isLoading) return <Spinner />;
   return (
     <section className={styles.mainApp}>
-      <Navbar />
-      <Weather />
-      {suggestPlace && <Hotels />}
-      <PreferenceFilter />
-      <Activities />
-      <MobileNav />
+      <div className={styles.container}>
+        <Navbar />
+        <Weather />
+        {suggestPlace && <Hotels />}
+        <PreferenceFilter />
+        <Activities />
+        <MobileNav />
+      </div>
     </section>
   );
 }
