@@ -7,6 +7,7 @@ import { BsCart2 } from "react-icons/bs";
 import { useGetUnapprovedReviews } from "../../../hooks/useReview";
 import ReturnButton from "../../../components/ReturnButton/ReturnButton";
 import Spinner from "../../../components/Spinner/Spinner";
+import DesktopNav from "../../../components/DesktopNav/DesktopNav";
 
 export default function Admin() {
   const { data: tours, isLoading } = useGetTours();
@@ -18,6 +19,7 @@ export default function Admin() {
 
   return (
     <>
+      <DesktopNav />
       <ReturnButton app={true} />
       <section className={styles.section}>
         <h2>You’re logged in as administrator</h2>

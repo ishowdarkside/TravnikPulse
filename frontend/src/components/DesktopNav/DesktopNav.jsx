@@ -10,13 +10,13 @@ export default function DesktopNav() {
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
-        <Link to="/app">
+        <Link to="/app/dashboard">
           <img src={Logo} alt="logo" />
         </Link>
 
         <ul>
           <li>
-            <NavLink to="/app">Dashboard</NavLink>
+            <NavLink to="/app/dashboard">Dashboard</NavLink>
           </li>
           <li>
             <NavLink to="/app/map">Map</NavLink>
@@ -25,11 +25,11 @@ export default function DesktopNav() {
             <NavLink to="/app/shop">Shops</NavLink>
           </li>
           <li>
-            <NavLink to="/app/settings">settings</NavLink>
+            <NavLink to="/app/settings">Settings</NavLink>
           </li>
-          <li>
+          <li className={styles.operation}>
             <NavLink to="/app/me">
-              {user === "Unauthorized" ? "Login in " : user.username}
+              {user === "Unauthorized" ? "Login " : user.username}
             </NavLink>
           </li>
         </ul>

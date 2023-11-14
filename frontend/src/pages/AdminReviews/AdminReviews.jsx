@@ -3,6 +3,9 @@ import { useGetUnapprovedReviews } from "../../hooks/useReview";
 import ReviewComponent from "./ReviewComponent";
 import styles from "./AdminReviews.module.scss";
 import Spinner from "../../components/Spinner/Spinner";
+import DesktopNav from "../../components/DesktopNav/DesktopNav";
+import Navbar from "../../components/Navbar/Navbar";
+import MobileNav from "../../components/MobileNav/MobileNav";
 
 export default function AdminReviews() {
   const { data: reviews, isLoading } = useGetUnapprovedReviews();
@@ -11,6 +14,8 @@ export default function AdminReviews() {
 
   return (
     <>
+      <DesktopNav />
+      <Navbar />
       <ReturnButton />
       <section className={styles.sectionBody}>
         <h2>Reviews</h2>
@@ -29,6 +34,7 @@ export default function AdminReviews() {
           ))}
         </div>
       </section>
+      <MobileNav />
     </>
   );
 }

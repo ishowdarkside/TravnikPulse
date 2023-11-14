@@ -1,102 +1,107 @@
-@import '../../../styles/variables.scss';
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixin.scss";
 .customModal {
-	position: fixed;
-	top: 0;
-	height: 100vh;
-	width: 100%;
-	background-color: #fff;
-	z-index: 999;
-	font-size: 2rem;
-	overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+  font-size: 2rem;
+  overflow-y: scroll;
 
-	.mainSection {
-		padding: 2rem 2rem 0 2rem;
-		box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
-		-webkit-box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
-		-moz-box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
-		.closeModal {
-			svg {
-				font-size: 3rem;
-			}
-		}
+  @include desktop-md {
+    right: 0;
+    width: 40rem;
+  }
+  .mainSection {
+    padding: 2rem 2rem 0 2rem;
+    box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 3px 9px 0px rgba(0, 0, 0, 0.75);
+    .closeModal {
+      svg {
+        font-size: 3rem;
+      }
+    }
 
-		.content {
-			margin: 2rem 0;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-		}
+    .content {
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-		.btns {
-			display: flex;
-			align-items: center;
-			gap: 2rem;
-			margin: 1rem 0;
+    .btns {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin: 1rem 0;
 
-			button {
-				padding: 1.5rem 3rem;
-				border-radius: 3rem;
-				background-color: $color-primary-red;
-				color: #fff;
-				border: none;
-				font-size: 2rem;
-				display: flex;
-				align-items: center;
-				font-weight: bold;
-				gap: 1rem;
-			}
+      button {
+        padding: 1.5rem 3rem;
+        border-radius: 3rem;
+        background-color: $color-primary-red;
+        color: #fff;
+        border: none;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        gap: 1rem;
+      }
 
-            a {
-                color: $color-primary-red;
-                font-size: 2.3rem;
-            }
-		}
+      a {
+        color: $color-primary-red;
+        font-size: 2.3rem;
+      }
+    }
 
-		.img {
-			width: 100%;
-			margin: 1rem 0;
-			border-radius: 1rem;
-		}
+    .img {
+      width: 100%;
+      margin: 1rem 0;
+      border-radius: 1rem;
+    }
 
-		.navigation {
-			ul {
-				display: flex;
-				align-items: center;
-				list-style: none;
-				gap: 4rem;
-				border-bottom: 1px solid #ddd;
-				position: relative;
-				top: 3px;
+    .navigation {
+      ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 4rem;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        top: 3px;
 
-				li {
-					border-bottom: 3px solid $color-primary-red;
-					padding: 1rem 0;
-					font-weight: bold;
-					text-transform: uppercase;
-					font-size: 1.7rem;
-				}
-			}
-		}
-	}
-	.navContent {
-		ul {
-			list-style: none;
+        li {
+          border-bottom: 3px solid $color-primary-red;
+          padding: 1rem 0;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+  .navContent {
+    ul {
+      list-style: none;
 
-			li {
-				padding: 2rem;
-				background-color: #fff;
-				border-bottom: 1px solid #ddd;
-				display: flex;
-				align-items: center;
-				gap: 2rem;
+      li {
+        padding: 2rem;
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
 
-				svg {
-					font-size: 5.5rem;
-                    color: $color-primary-red;
-                    border-right: 1px solid #ddd;
-                    padding-right: 2rem;
-				}
-			}
-		}
-	}
+        svg {
+          font-size: 5.5rem;
+          color: $color-primary-red;
+          border-right: 1px solid #ddd;
+          padding-right: 2rem;
+        }
+      }
+    }
+  }
 }

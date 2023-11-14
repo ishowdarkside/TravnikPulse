@@ -49,8 +49,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/app" />} />
               <Route path="/app">
+                <Route index element={<Navigate to="/app/dashboard" />} />
                 <Route
-                  index
+                  path="dashboard"
                   element={
                     <TouristDataContext>
                       <Protect>

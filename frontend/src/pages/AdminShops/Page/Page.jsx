@@ -5,6 +5,9 @@ import ShopComponent from "../ShopComponent/ShopComponent.jsx";
 import styles from "./Page.module.scss";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../../../components/Spinner/Spinner.jsx";
+import Navbar from "../../../components/Navbar/Navbar.jsx";
+import DesktopNav from "../../../components/DesktopNav/DesktopNav.jsx";
+import MobileNav from "../../../components/MobileNav/MobileNav.jsx";
 
 export default function Page() {
   const { data: shops, isLoading } = useGetAllShops();
@@ -16,6 +19,9 @@ export default function Page() {
   return (
     <>
       <ReturnButton />
+      <DesktopNav />
+      <Navbar />
+
       <section className={styles.sectionBody}>
         <h2>Shops</h2>
         <div className={styles.shopsWrapper}>
@@ -40,6 +46,7 @@ export default function Page() {
       >
         <BiPlus />
       </button>
+      <MobileNav />
     </>
   );
 }
