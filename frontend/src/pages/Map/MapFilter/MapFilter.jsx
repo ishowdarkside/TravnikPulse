@@ -3,6 +3,10 @@ import { useMapContext } from "../../../context/MapContext";
 import { FaTimes } from "react-icons/fa";
 import styles from "./MapFilter.module.scss";
 import { useQueryClient } from "@tanstack/react-query";
+import { FaRegDotCircle } from "react-icons/fa";
+import { IoBedOutline } from "react-icons/io5";
+import { MdEvent } from "react-icons/md";
+import { FiShoppingBag } from "react-icons/fi";
 
 export default function MapFilter() {
   const [radiusModal, setRadiusModal] = useState(false);
@@ -22,7 +26,7 @@ export default function MapFilter() {
             }
             onClick={() => {
               setRadiusModal(false);
-              setActiveFilter("all")
+              setActiveFilter("all");
             }}
           >
             All
@@ -38,7 +42,7 @@ export default function MapFilter() {
               setRadiusModal(true);
             }}
           >
-            Radius
+            <FaRegDotCircle /> Radius
           </div>
           <div
             className={
@@ -47,10 +51,11 @@ export default function MapFilter() {
                 : styles.filter
             }
             onClick={() => {
-              setRadiusModal(false)
-              setActiveFilter("tours")
+              setRadiusModal(false);
+              setActiveFilter("tours");
             }}
           >
+            <MdEvent />
             Events
           </div>
           <div
@@ -61,9 +66,10 @@ export default function MapFilter() {
             }
             onClick={() => {
               setRadiusModal(false);
-              setActiveFilter("hotels")
+              setActiveFilter("hotels");
             }}
           >
+            <IoBedOutline />
             Hotels
           </div>
           <div
@@ -73,10 +79,11 @@ export default function MapFilter() {
                 : styles.filter
             }
             onClick={() => {
-              setRadiusModal(false)
-              setActiveFilter("shops")
+              setRadiusModal(false);
+              setActiveFilter("shops");
             }}
           >
+            <FiShoppingBag />
             Shops
           </div>
         </section>

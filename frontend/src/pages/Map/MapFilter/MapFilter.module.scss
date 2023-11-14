@@ -12,12 +12,11 @@
   position: absolute;
   top: 12rem;
 
-  @include responsive("mobile") { 
-    left: 1rem;
+  @include responsive("mobile") {
     padding-left: 2rem;
     padding-right: 5rem;
     overflow-x: scroll;
-    width: 50rem;
+    width: 100%;
     justify-content: flex-start;
 
     &::-webkit-scrollbar {
@@ -29,15 +28,17 @@
     background-color: #fff;
     color: #000;
     cursor: pointer;
-
-    padding: 1rem 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 2rem;
     border-radius: 5rem;
     text-align: center;
+
+    svg {
+    }
     @include text("text-md-semibold");
 
-    @include responsive("mobile") {
-      width: 12rem;
-    }
     &.active {
       background-color: $color-primary-red;
       color: #fff;
