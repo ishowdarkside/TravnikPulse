@@ -25,7 +25,7 @@ export default function DesktopNav() {
             <NavLink to="/app/shop">Shops</NavLink>
           </li>
           <li>
-            <NavLink to="/settings">settings</NavLink>
+            <NavLink to="/app/settings">settings</NavLink>
           </li>
           <li>
             <NavLink to="/app/me">

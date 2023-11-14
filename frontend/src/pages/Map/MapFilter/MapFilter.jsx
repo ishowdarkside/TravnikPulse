@@ -20,7 +20,10 @@ export default function MapFilter() {
                 ? `${styles.filter} : ${styles.active}`
                 : styles.filter
             }
-            onClick={() => setActiveFilter("all")}
+            onClick={() => {
+              setRadiusModal(false);
+              setActiveFilter("all")
+            }}
           >
             All
           </div>
@@ -43,7 +46,10 @@ export default function MapFilter() {
                 ? `${styles.filter} : ${styles.active}`
                 : styles.filter
             }
-            onClick={() => setActiveFilter("tours")}
+            onClick={() => {
+              setRadiusModal(false)
+              setActiveFilter("tours")
+            }}
           >
             Events
           </div>
@@ -53,7 +59,10 @@ export default function MapFilter() {
                 ? `${styles.filter} : ${styles.active}`
                 : styles.filter
             }
-            onClick={() => setActiveFilter("hotels")}
+            onClick={() => {
+              setRadiusModal(false);
+              setActiveFilter("hotels")
+            }}
           >
             Hotels
           </div>
@@ -63,7 +72,10 @@ export default function MapFilter() {
                 ? `${styles.filter} : ${styles.active}`
                 : styles.filter
             }
-            onClick={() => setActiveFilter("shops")}
+            onClick={() => {
+              setRadiusModal(false)
+              setActiveFilter("shops")
+            }}
           >
             Shops
           </div>

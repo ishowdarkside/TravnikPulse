@@ -71,8 +71,8 @@ export default function MainMap() {
     <>
       <MapContainer
         id={styles.map}
-        center={TRAVNIK_COORS}
-        zoom={15}
+        center={eventLocation !== null ? eventLocation : TRAVNIK_COORS}
+        zoom={eventLocation !== null ? 20 : 15}
         scrollWheelZoom={true}
       >
         <TileLayer
