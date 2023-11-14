@@ -103,7 +103,7 @@ export async function getRadiusTour() {
   if (!radius) return "no-radius";
   try {
     const res = await fetch(
-      `${BASE_URL}api/tours/tours-within/distance/${radius}/center/${userPositon.lng}, ${userPositon.lat}`
+      `${BASE_URL}api/tours/tours-within/distance/${radius}/center/${userPositon.lng},${userPositon.lat}`
     );
     const data = await res.json();
     console.log(data.tours);
