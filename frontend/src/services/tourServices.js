@@ -100,6 +100,9 @@ export async function getRadiusTour() {
   const userPositon = JSON.parse(localStorage.getItem("position"));
   const radius = JSON.parse(localStorage.getItem("radius"));
 
+  console.log(
+    `${BASE_URL}api/tours/tours-within/distance/${radius}/center/${userPositon.lng},${userPositon.lat}`
+  );
   if (!radius) return "no-radius";
   try {
     const res = await fetch(

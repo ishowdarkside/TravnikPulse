@@ -6,7 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 export default function MapFilter() {
   const [radiusModal, setRadiusModal] = useState(false);
-  const { setActiveFilter, activeFilter, tourLocation, setRadius, radius } =
+  const { setActiveFilter, activeFilter, tourLocation, setRadius } =
     useMapContext();
   const radiusInputRef = useRef(null);
   const queryClient = useQueryClient();
@@ -86,7 +86,10 @@ export default function MapFilter() {
                 setRadius(radiusInputRef.current.value);
                 setRadiusModal(false);
                 // Set radius in localstorage
-                localStorage.setItem("radius", JSON.parse(radius));
+                localStorage.setItem(
+                  "radius",
+                  JSON.parse(radiusInputRef.current.value)
+                );
                 queryClient.invalidateQueries(["RadiusTours", "RadiusShops"]);
               }}
             >
