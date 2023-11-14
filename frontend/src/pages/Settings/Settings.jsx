@@ -21,7 +21,7 @@ import { useGetUser } from "../../hooks/useAuth";
 import Modal from "./Modal/Modal";
 import Spinner from "../../components/Spinner/Spinner";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
-import travnikLogo from '../../assets/main-logo.png'
+import travnikLogo from "../../assets/main-logo.png";
 
 export default function Settings() {
   const [langDropdown, setLangDropdown] = useState();
@@ -47,108 +47,111 @@ export default function Settings() {
 
   return (
     <>
-        <Navbar />
-        <DesktopNav />
-        
-        <div className={styles.container}>
-      <div className={styles.settingsWrapper}>
-        <div className={styles.settings}>
-          {/* GENERAL SETTINGS */}
-          <div className={styles.general}>
-            {user !== "Unauthorized" && (
-              <div className={styles.item} onClick={() => navigate("/app/me")}>
-                <BiUserCircle />
-                <p>My profile</p>
-              </div>
-            )}
-            <h3>General Settings</h3>
-            <div className={styles.options}>
-              <div
-                className={
-                  langDropdown ? `${styles.item} ${styles.active}` : styles.item
-                }
-                onClick={() => setLangDropdown((prevState) => !prevState)}
-              >
-                {language === "bs" && <img src={BosnianFlag} alt="" />}
-                {language === "en" && <img src={USAFlag} alt="" />}
-                {language === "de" && <img src={GermanFlag} alt="" />}
-                {language === "es" && <img src={SpanishFlag} alt="" />}
-                <span>Change language</span>
-              </div>
-              {langDropdown && (
-                <ChangeLanguageDropdown setLangDropdown={setLangDropdown} />
-              )}
+      <Navbar />
+      <DesktopNav />
 
-              <div
-                className={styles.item}
-                onClick={() => navigate("preferences")}
-              >
-                <img src={checkImage} alt="" />
-                <p>Change preference</p>
-              </div>
-              <div className={styles.item} onClick={() => setIsOpenModal(true)}>
-                <RiArrowGoBackLine />
-                <span>Reset settings</span>
-              </div>
-              <div
-                className={styles.item}
-                onClick={() => setSuggestPlace((prevState) => !prevState)}
-              >
-                <MdOutlineBed />
-                <span>
-                  Disable suggestions
-                  <label className={styles.customCheckbox}>
-                    <input
-                      type="checkbox"
-                      onChange={() =>
-                        setSuggestPlace((prevState) => !prevState)
-                      }
-                      checked={suggestPlace}
-                      className={styles.defaultCheckbox}
-                    />
-                    <span className={styles.checkbox} />
-                  </label>
-                </span>
-              </div>
+      <div className={styles.container}>
+        <div className={styles.settingsWrapper}>
+          <div className={styles.settings}>
+            {/* GENERAL SETTINGS */}
+            <div className={styles.general}>
               {user !== "Unauthorized" && (
-                <button
-                  className={styles.logout}
-                  onClick={() => {
-                    localStorage.removeItem("jwt");
-                    // Navigate to home page
-                    navigate("/app");
-                  }}
+                <div
+                  className={styles.item}
+                  onClick={() => navigate("/app/me")}
                 >
-                  Log out
-                  <HiOutlineLogout />
-                </button>
+                  <BiUserCircle />
+                  <p>My profile</p>
+                </div>
               )}
+              <h3>General Settings</h3>
+              <div className={styles.options}>
+                <div
+                  className={
+                    langDropdown
+                      ? `${styles.item} ${styles.active}`
+                      : styles.item
+                  }
+                  onClick={() => setLangDropdown((prevState) => !prevState)}
+                >
+                  {language === "bs" && <img src={BosnianFlag} alt="" />}
+                  {language === "en" && <img src={USAFlag} alt="" />}
+                  {language === "de" && <img src={GermanFlag} alt="" />}
+                  {language === "es" && <img src={SpanishFlag} alt="" />}
+                  <span>Change language</span>
+                </div>
+                {langDropdown && (
+                  <ChangeLanguageDropdown setLangDropdown={setLangDropdown} />
+                )}
+
+                <div
+                  className={styles.item}
+                  onClick={() => navigate("preferences")}
+                >
+                  <img src={checkImage} alt="" />
+                  <p>Change preference</p>
+                </div>
+                <div
+                  className={styles.item}
+                  onClick={() => setIsOpenModal(true)}
+                >
+                  <RiArrowGoBackLine />
+                  <span>Reset settings</span>
+                </div>
+                <div
+                  className={`${styles.item} ${
+                    suggestPlace
+                      ? styles.suggestionEnabled
+                      : styles.suggestionDisabled
+                  }`}
+                  onClick={() => setSuggestPlace((prevState) => !prevState)}
+                >
+                  <MdOutlineBed />
+                  <span>
+                    {suggestPlace
+                      ? "Disable suggestions"
+                      : "Enable suggestions"}
+                  </span>
+                </div>
+                {user !== "Unauthorized" && (
+                  <button
+                    className={styles.logout}
+                    onClick={() => {
+                      localStorage.removeItem("jwt");
+                      // Navigate to home page
+                      navigate("/app");
+                    }}
+                  >
+                    Log out
+                    <HiOutlineLogout />
+                  </button>
+                )}
+              </div>
+            </div>
+            {/* NOTIFICATION SETTINGS */}
+            <div className={styles.notifications}>
+              <h3>Notifications</h3>
+              <div className={`${styles.item} ${styles.disabled}`}>
+                <img src={notificationIcon} alt="" />
+                <span>Pop-up notifications</span>
+              </div>
+            </div>
+            {/* OTHER SETTINGS */}
+            <div className={styles.other}>
+              <h3>Other</h3>
+              <div className={`${styles.item} ${styles.disabled}`}>
+                <img src={reportIcon} alt="" />
+                <span>Report event</span>
+              </div>
+              <div className={`${styles.item} ${styles.disabled}`}>
+                <img src={checkImage} alt="" />
+                <span>Contact Support</span>
+              </div>
             </div>
           </div>
-          {/* NOTIFICATION SETTINGS */}
-          <div className={styles.notifications}>
-            <h3>Notifications</h3>
-            <div className={`${styles.item} ${styles.disabled}`}>
-              <img src={notificationIcon} alt="" />
-              <span>Pop-up notifications</span>
-            </div>
-          </div>
-          {/* OTHER SETTINGS */}
-          <div className={styles.other}>
-            <h3>Other</h3>
-            <div className={`${styles.item} ${styles.disabled}`}>
-              <img src={reportIcon} alt="" />
-              <span>Report event</span>
-            </div>
-            <div className={`${styles.item} ${styles.disabled}`}>
-              <img src={checkImage} alt="" />
-              <span>Contact Support</span>
-            </div>
-          </div>
-        </div>
           <img src={travnikLogo} alt="" className={styles.logo} />
 
-        <MobileNav />
+          <MobileNav />
         </div>
       </div>
       {isOpenModal && (
