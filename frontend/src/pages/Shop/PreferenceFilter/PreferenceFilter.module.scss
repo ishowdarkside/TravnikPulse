@@ -14,8 +14,13 @@
   z-index: 999999;
   width: calc(100vw - 2rem);
 
-  &::-webkit-scrollbar {
-    display: none;
+  @include desktop-md() {
+    width: 100% !important;
+
+    &::-webkit-scrollbar {
+      display: block !important;
+      background-color: red !important;
+    }
   }
 
   .preference {

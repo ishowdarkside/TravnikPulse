@@ -11,10 +11,9 @@
   justify-content: space-between;
   width: 100%;
 
-  .text {
-    width: 23rem;
+  @include desktop-md() {
+    display: none;
   }
-
   .calendar {
     text-decoration: none;
     color: $color-primary-red;

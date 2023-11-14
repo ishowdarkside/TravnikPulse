@@ -1,0 +1,33 @@
+@import "../../styles/mixin.scss";
+
+.nav {
+  padding: 2rem 0;
+
+  @include responsive("tab-port") {
+    display: none;
+  }
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 2rem;
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+:global(.active) {
+  color: #f37022 !important;
+}

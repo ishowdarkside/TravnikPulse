@@ -10,6 +10,7 @@ import MobileNav from "../../components/MobileNav/MobileNav";
 // SCSS
 import styles from "./TourPanel.module.scss";
 import Spinner from "../../components/Spinner/Spinner";
+import DesktopNav from "../../components/DesktopNav/DesktopNav";
 
 export default function TourPanel() {
   const { suggestPlace } = useTouristDataContext();
@@ -17,15 +18,18 @@ export default function TourPanel() {
 
   if (isLoading) return <Spinner />;
   return (
-    <section className={styles.mainApp}>
-      <div className={styles.container}>
-        <Navbar />
-        <Weather />
-        {suggestPlace && <Hotels />}
-        <PreferenceFilter />
-        <Activities />
-        <MobileNav />
-      </div>
-    </section>
+    <>
+      <DesktopNav />
+      <section className={styles.mainApp}>
+        <div className={styles.container}>
+          <Navbar />
+          <Weather />
+          {suggestPlace && <Hotels />}
+          <PreferenceFilter />
+          <Activities />
+          <MobileNav />
+        </div>
+      </section>
+    </>
   );
 }
