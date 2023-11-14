@@ -4,6 +4,9 @@
   display: grid !important;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  @include desktop-md() {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
 }
 
 .react-calendar__year-view__months {

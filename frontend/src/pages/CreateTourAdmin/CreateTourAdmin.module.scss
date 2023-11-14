@@ -64,6 +64,11 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @include desktop-lg() {
+    max-width: 120rem;
+    margin: 0 auto;
+  }
 }
 
 .inputImg {
@@ -100,6 +105,9 @@
 
 .sectionBody {
   padding: 10rem 3rem;
+  @include desktop-lg() {
+    padding: 20rem 3rem;
+  }
 }
 
 .errorMsg {

@@ -16,6 +16,7 @@
     border-radius: 6px;
     color: #fff;
     @include text("text-sm-medium");
+    cursor: pointer;
     &:first-of-type {
       background-color: transparent;
       border: 1px solid #f37022;

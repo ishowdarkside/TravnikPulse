@@ -23,9 +23,11 @@ export default function Page() {
             return (
               <div key={i} className={styles.categoryWrapper}>
                 <p className={styles.category}>{shop[0]}</p>
-                {shop[1].map((s, i) => (
-                  <ShopComponent shop={s} key={i} />
-                ))}
+                <div className={styles.grid}>
+                  {shop[1].map((s, i) => (
+                    <ShopComponent shop={s} key={i} />
+                  ))}
+                </div>
               </div>
             );
           })}

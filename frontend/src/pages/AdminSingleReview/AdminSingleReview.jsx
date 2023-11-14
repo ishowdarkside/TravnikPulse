@@ -27,38 +27,40 @@ export default function AdminSingleReview() {
     <>
       <ReturnButton />
       <section className={styles.sectionBody}>
-        <h2>Review</h2>
-        <p className={styles.sub}>Approve or decline review request</p>
+        <div className={styles.allWrapper}>
+          <h2>Review</h2>
+          <p className={styles.sub}>Approve or decline review request</p>
 
-        <div className={styles.userWrapper}>
-          <AiOutlineUser /> <span>{data.user?.username}</span>
-        </div>
-
-        <div className={styles.eventWrapper}>
-          <BsCalendarEvent />
-          <span>{data.tour?.name}</span>
-        </div>
-
-        <div>
-          <span className={styles.comment}>
-            <b>Review: </b>
-            {data?.review}
-          </span>
-        </div>
-        {data.images.length > 0 && (
-          <div className={styles.imgWrapper}>
-            {data.images?.map((img) => (
-              <img
-                src={`http://127.0.1:8000/${img}`}
-                alt="review image"
-                key={img}
-              />
-            ))}
+          <div className={styles.userWrapper}>
+            <AiOutlineUser /> <span>{data.user?.username}</span>
           </div>
-        )}
-        <div className={styles.buttonWrapper}>
-          <button onClick={() => approve()}>Approve review</button>
-          <button onClick={() => decline()}>Decline review</button>
+
+          <div className={styles.eventWrapper}>
+            <BsCalendarEvent />
+            <span>{data.tour?.name}</span>
+          </div>
+
+          <div>
+            <span className={styles.comment}>
+              <b>Review: </b>
+              {data?.review}
+            </span>
+          </div>
+          {data.images.length > 0 && (
+            <div className={styles.imgWrapper}>
+              {data.images?.map((img) => (
+                <img
+                  src={`http://127.0.1:8000/${img}`}
+                  alt="review image"
+                  key={img}
+                />
+              ))}
+            </div>
+          )}
+          <div className={styles.buttonWrapper}>
+            <button onClick={() => approve()}>Approve review</button>
+            <button onClick={() => decline()}>Decline review</button>
+          </div>
         </div>
       </section>
     </>

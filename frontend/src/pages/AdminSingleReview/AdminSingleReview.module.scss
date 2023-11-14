@@ -4,10 +4,18 @@
 
   h2 {
     @include text("text-xl-semibold");
+
+    @include desktop-md() {
+      @include text("display-xl-semibold");
+    }
   }
 
   .sub {
     @include text("text-md-medium");
+
+    @include desktop-md() {
+      @include text("display-xs-semibold");
+    }
   }
 
   .userWrapper {
@@ -16,9 +24,18 @@
     gap: 0.3rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    font-weight: 700 !important;
 
     svg {
       font-size: 2rem;
+    }
+
+    @include desktop-md() {
+      @include text("text-xl-regular");
+
+      svg {
+        font-size: 2.3rem;
+      }
     }
   }
 
@@ -28,6 +45,9 @@
     gap: 0.5rem;
     margin-bottom: 2rem;
 
+    @include desktop-md() {
+      @include text("text-xl-regular");
+    }
     svg {
       font-size: 2rem;
     }
@@ -35,6 +55,10 @@
 
   .comment {
     text-align: center;
+
+    @include desktop-md() {
+      @include text("text-xl-regular");
+    }
   }
 
   .imgWrapper {
@@ -55,11 +79,23 @@
   flex-direction: column;
   gap: 1.5rem;
 
+  @include desktop-md() {
+    flex-direction: row;
+    & > * {
+      flex-grow: 1;
+    }
+  }
+
   button {
     padding: 1.6rem;
     border-radius: 6px;
     border: none;
     outline: none;
+    cursor: pointer;
+
+    @include desktop-md() {
+      @include text("display-xs-regular");
+    }
 
     &:first-of-type {
       background-color: #f37022;
@@ -74,5 +110,13 @@
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
       color: #313131;
     }
+  }
+}
+
+.allWrapper {
+  @include desktop-md() {
+    max-width: 120rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
