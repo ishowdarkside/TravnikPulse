@@ -11,6 +11,10 @@
   gap: 1rem;
   cursor: pointer;
   @include text("text-xl-semibold");
+  @include desktop-md() {
+    padding: 1rem;
+    font-size: 1.7rem;
+  }
 
   span {
     display: flex;
@@ -23,10 +27,17 @@
       border-radius: 6rem;
       position: relative;
       cursor: pointer;
+
       .defaultCheckbox {
         display: none;
       }
+
       .checkbox {
+        @include desktop-md() {
+          width: 5rem;
+          height: 2.5rem;
+        }
+
         display: block;
         width: 7rem;
         height: 4rem;
@@ -34,6 +45,10 @@
         border-radius: 6rem;
         transition: 0.5s;
         &:before {
+          @include desktop-md() {
+            width: 2rem;
+            height: 2rem;
+          }
           content: "";
           position: absolute;
           width: 3.5rem;
@@ -66,6 +81,7 @@
     &.disabled {
       cursor: default;
       opacity: 0.4;
+      display: none;
     }
 
     &.active {
@@ -80,11 +96,40 @@
   }
 }
 
+.container {
+  @include desktop-md() {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 120rem;
+    overflow-x: hidden;
+  }
+}
 .settingsWrapper {
   padding: 0 2rem;
+  @include desktop-md() {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+
+  .logo {
+    display: none;
+    @include desktop-md() {
+      display: block;
+      width: 30rem;
+      position: relative;
+      left: 25%;
+    }
+  }
+  
 
   .settings {
     margin: 2rem 0;
+    @include desktop-md() {
+      margin: 3rem 0 0 0;
+      width: 50rem;
+    }
 
     .general {
       margin: 2rem 0;
@@ -102,9 +147,21 @@
         font-size: 2rem;
         border-radius: 1rem;
         font-family: "Satoshi";
-
+        cursor: pointer;
         svg {
           font-size: 3rem;
+        }
+
+        &:hover {
+          opacity: .8;
+        }
+
+        @include desktop-md() {
+          padding: 1rem;
+          font-size: 1.5rem;
+          svg {
+            font-size: 2rem;
+          }
         }
 
         .options {

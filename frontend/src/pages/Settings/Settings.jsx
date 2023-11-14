@@ -20,6 +20,8 @@ import styles from "./Settings.module.scss";
 import { useGetUser } from "../../hooks/useAuth";
 import Modal from "./Modal/Modal";
 import Spinner from "../../components/Spinner/Spinner";
+import DesktopNav from "../../components/DesktopNav/DesktopNav";
+import travnikLogo from '../../assets/main-logo.png'
 
 export default function Settings() {
   const [langDropdown, setLangDropdown] = useState();
@@ -45,8 +47,11 @@ export default function Settings() {
 
   return (
     <>
-      <div className={styles.settingsWrapper}>
+        <div className={styles.container}>
         <Navbar />
+        <DesktopNav />
+        
+      <div className={styles.settingsWrapper}>
         <div className={styles.settings}>
           {/* GENERAL SETTINGS */}
           <div className={styles.general}>
@@ -141,8 +146,10 @@ export default function Settings() {
             </div>
           </div>
         </div>
+          <img src={travnikLogo} alt="" className={styles.logo} />
 
         <MobileNav />
+        </div>
       </div>
       {isOpenModal && (
         <Modal setIsOpenModal={setIsOpenModal} resetSettings={resetSettings} />
