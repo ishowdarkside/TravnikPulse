@@ -7,8 +7,10 @@ export default function CreateShop() {
     <>
       <ReturnButton />
       <section className={styles.sectionBody}>
-        <h1>Create Shop</h1>
-        <CreateShopFrom />
+        <div className={styles.container}>
+          <h1>Create Shop</h1>
+          <CreateShopFrom />
+        </div>
       </section>
     </>
   );

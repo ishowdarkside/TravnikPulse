@@ -2,7 +2,7 @@
 import Calendar from "react-calendar";
 import { useGetTours } from "../../hooks/useTours";
 import styles from "./ClientCalendar.module.scss";
-import { formatDate, weekdays } from "../../services/dateServices";
+import { formatDate } from "../../services/dateServices";
 import Spinner from "../../components/Spinner/Spinner";
 
 export default function EventCalendar({ setActiveDate }) {
@@ -14,19 +14,13 @@ export default function EventCalendar({ setActiveDate }) {
     <div className={styles.calendarWrapper}>
       <Calendar
         className={styles.calendar}
-        tileContent={({ date, view }) => {
+        tileContent={({ date }) => {
           const toursOnDate = data.filter(
             (tour) => formatDate(tour.date) === formatDate(date)
           );
 
           return (
             <>
-              {view === "month" && (
-                <span className={styles.day}>
-                  {` ${weekdays[new Date(date).getDay()]}`}
-                </span>
-              )}
-
               {toursOnDate.length > 0 && (
                 <>
                   <div className={styles.imgWrapper}>
