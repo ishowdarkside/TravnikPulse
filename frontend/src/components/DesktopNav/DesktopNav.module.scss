@@ -19,8 +19,8 @@
   ul {
     list-style: none;
     display: flex;
-    gap: 1rem;
-
+    gap: 2rem;
+    align-items: center;
     a {
       text-decoration: none;
       color: inherit;
@@ -30,4 +30,16 @@
 
 :global(.active) {
   color: #f37022 !important;
+}
+
+.operation {
+  background-color: #f37022;
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  color: #fff;
+}
+
+.whiteBG {
+  background-color: #fff !important;
+  border: 1px solid #f37022;
 }

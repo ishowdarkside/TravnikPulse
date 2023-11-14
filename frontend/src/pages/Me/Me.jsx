@@ -7,7 +7,7 @@ import RatedTour from "./RatedTour";
 import MobileNav from "../../components/MobileNav/MobileNav";
 import Navbar from "../../components/Navbar/Navbar";
 import BookmarkComponent from "./BookmarkComponent/BookmarkComponent";
-
+import DesktopNav from "../../components/DesktopNav/DesktopNav";
 export default function Me() {
   const { data: user, isLoading } = useGetUser();
 
@@ -18,6 +18,7 @@ export default function Me() {
 
   return (
     <>
+      <DesktopNav />
       <section className={styles.sectionBody}>
         <div className={styles.container}>
           <Navbar />

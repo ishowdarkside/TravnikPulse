@@ -17,9 +17,9 @@ export default function MobileNav() {
       <ul>
         <li>
           <Link
-            to="/app"
+            to="/app/dashboard"
             className={
-              pathname === "/app"
+              pathname === "/app/dashboard"
                 ? `${styles.link} ${styles.active}`
                 : styles.link
             }

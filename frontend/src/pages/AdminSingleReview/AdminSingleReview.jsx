@@ -8,6 +8,9 @@ import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendarEvent } from "react-icons/bs";
 import styles from "./AdminSingleReview.module.scss";
 import Spinner from "../../components/Spinner/Spinner";
+import DesktopNav from "../../components/DesktopNav/DesktopNav";
+import MobileNav from "../../components/MobileNav/MobileNav";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function AdminSingleReview() {
   const { data, isLoading } = useGetSingleUnapprovedReview();
@@ -26,6 +29,8 @@ export default function AdminSingleReview() {
   return (
     <>
       <ReturnButton />
+      <DesktopNav />
+      <Navbar />
       <section className={styles.sectionBody}>
         <div className={styles.allWrapper}>
           <h2>Review</h2>
@@ -63,6 +68,7 @@ export default function AdminSingleReview() {
           </div>
         </div>
       </section>
+      <MobileNav />
     </>
   );
 }

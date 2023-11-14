@@ -8,12 +8,14 @@ import styles from "./Map.module.scss";
 
 export default function Map() {
   return (
-    <div className={styles.mapWrapper}>
+    <>
       <Navbar />
       <DesktopNav />
-      <MapFilter />
-      <MainMap />
+      <div className={styles.mapWrapper}>
+        <MapFilter />
+        <MainMap />
+      </div>
       <MobileNav />
-    </div>
+    </>
   );
 }
