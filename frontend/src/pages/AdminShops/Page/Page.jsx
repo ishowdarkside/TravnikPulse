@@ -4,11 +4,12 @@ import { useGetAllShops } from "../../../hooks/useShops.js";
 import ShopComponent from "../ShopComponent/ShopComponent.jsx";
 import styles from "./Page.module.scss";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../../../components/Spinner/Spinner.jsx";
 
 export default function Page() {
   const { data: shops, isLoading } = useGetAllShops();
   const navigate = useNavigate();
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
 
   const allShopsGrouped = Object.entries(groupShopsByCategory(shops));
 

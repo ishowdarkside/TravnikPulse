@@ -4,10 +4,11 @@ import MobileNav from "../../../components/MobileNav/MobileNav";
 import styles from "./Login.module.scss";
 import { useGetUser } from "../../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
+import Spinner from "../../../components/Spinner/Spinner";
 
 export default function Login() {
   const { data: user, isLoading } = useGetUser();
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
 
   if (user !== "Unauthorized" && user.role) return <Navigate to="/app/me" />;
   return (

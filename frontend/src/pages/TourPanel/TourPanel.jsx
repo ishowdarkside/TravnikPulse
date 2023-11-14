@@ -9,12 +9,13 @@ import Activities from "./Activities/Activities";
 import MobileNav from "../../components/MobileNav/MobileNav";
 // SCSS
 import styles from "./TourPanel.module.scss";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function TourPanel() {
   const { suggestPlace } = useTouristDataContext();
   const { data: user, isLoading } = useGetUser();
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
   return (
     <section className={styles.mainApp}>
       <Navbar />

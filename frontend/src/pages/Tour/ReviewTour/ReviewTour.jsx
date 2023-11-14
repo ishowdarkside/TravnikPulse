@@ -8,6 +8,7 @@ import styles from "./ReviewTour.module.scss";
 import { useCreateReview } from "../../../hooks/useReview";
 import { useGetSingleTour, useRateTour } from "../../../hooks/useTours";
 import { useGetUser } from "../../../hooks/useAuth";
+import Spinner from "../../../components/Spinner/Spinner";
 
 export default function ReviewTour({ setShowReview }) {
   const { data: user, isLoading: isLoadingUser } = useGetUser();
@@ -52,7 +53,7 @@ export default function ReviewTour({ setShowReview }) {
   }
 
   if (reviewIsLoading || rateIsLoading || isLoadingUser || isLoadingTour)
-    return <h1>LOADING...</h1>;
+    return <Spinner />;
 
   return (
     <div className={styles.reviewTour}>

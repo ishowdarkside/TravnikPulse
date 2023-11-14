@@ -19,6 +19,7 @@ import { HiOutlineLogout } from "react-icons/hi";
 import styles from "./Settings.module.scss";
 import { useGetUser } from "../../hooks/useAuth";
 import Modal from "./Modal/Modal";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function Settings() {
   const [langDropdown, setLangDropdown] = useState();
@@ -40,7 +41,7 @@ export default function Settings() {
     navigate("/app");
   }
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <Spinner />;
 
   return (
     <>

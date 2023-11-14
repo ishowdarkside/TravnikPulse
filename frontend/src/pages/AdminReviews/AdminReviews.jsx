@@ -2,11 +2,12 @@ import ReturnButton from "../../components/ReturnButton/ReturnButton";
 import { useGetUnapprovedReviews } from "../../hooks/useReview";
 import ReviewComponent from "./ReviewComponent";
 import styles from "./AdminReviews.module.scss";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function AdminReviews() {
   const { data: reviews, isLoading } = useGetUnapprovedReviews();
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
 
   return (
     <>

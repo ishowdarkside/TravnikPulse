@@ -4,12 +4,13 @@ import Activity from "./Activity/Activity";
 import styles from "./Activities.module.scss";
 import { useGetTours } from "../../../hooks/useTours";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
+import Spinner from "../../../components/Spinner/Spinner";
 
 export default function Activities() {
   const { data, isLoading } = useGetTours();
   const { activePreference } = useTouristDataContext();
 
-  if (isLoading) return <h1>LOADING...</h1>;
+  if (isLoading) return <Spinner />;
 
   return (
     <section className={styles.activities}>
