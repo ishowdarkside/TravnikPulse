@@ -1,12 +1,36 @@
 @import "../../../styles/mixin.scss";
 .section {
   padding: 10rem 3rem 3rem 3rem;
+
+  h2 {
+    @include desktop() {
+      max-width: 120rem;
+      margin: 0 auto;
+      @include text("display-xl-medium");
+    }
+  }
+
+  p {
+    @include desktop() {
+      max-width: 120rem;
+      margin: 0 auto;
+      margin-bottom: 3rem;
+      @include text("text-xl-medium");
+    }
+  }
 }
 
 .linksWrapper {
   display: flex;
   flex-direction: column;
   margin-top: 5rem;
+
+  @include desktop-md() {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 120rem;
+    margin: 0 auto;
+  }
 
   a {
     padding: 2rem;
@@ -25,6 +49,10 @@
     .eventTitle {
       @include text("text-xl-bold");
       color: #674747;
+
+      @include desktop-md() {
+        @include text("text-2xl-bold");
+      }
     }
 
     .itemLength {

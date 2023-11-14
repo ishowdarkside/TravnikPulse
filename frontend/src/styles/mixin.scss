@@ -429,3 +429,21 @@
     line-height: 1.8rem;
   }
 }
+
+@mixin desktop() {
+  @media only screen and (min-width: 37.5em) {
+    @content;
+  }
+}
+
+@mixin desktop-md() {
+  @media only screen and (min-width: 56.25em) {
+    @content;
+  }
+}
+
+@mixin desktop-lg() {
+  @media only screen and (min-width: 75em) {
+    @content;
+  }
+}
