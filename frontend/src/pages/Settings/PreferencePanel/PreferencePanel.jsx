@@ -13,6 +13,7 @@ export default function PreferencePanel({
 
   return (
     <div className={styles.preferenceWrapper}>
+      <div className={styles.container}>
       <div className={styles.grid}>
         <div
           onClick={() => addPreference("food")}
@@ -249,6 +250,7 @@ export default function PreferencePanel({
         >
           Pet-Friendly Places
         </div>
+      </div>
       </div>
     </div>
   );

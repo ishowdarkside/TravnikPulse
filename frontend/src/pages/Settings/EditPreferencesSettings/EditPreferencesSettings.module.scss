@@ -4,6 +4,8 @@
   gap: 2rem;
   margin-top: 3rem;
   padding: 2rem;
+  max-width: 50rem;
+  margin: 0 auto;
 
   & > * {
     flex-grow: 1;
