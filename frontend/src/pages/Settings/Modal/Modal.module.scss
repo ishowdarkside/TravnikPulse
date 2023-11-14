@@ -1,0 +1,45 @@
+.modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  z-index: 999;
+
+  text-align: center;
+
+  h2 {
+    padding: 0.3rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+
+  div {
+    display: flex;
+    gap: 3rem;
+
+    button {
+      cursor: pointer;
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      border: none;
+      outline: none;
+      letter-spacing: 1px;
+      color: #ffff;
+      &:first-of-type {
+        background-color: #34c759;
+      }
+
+      &:last-of-type {
+        background-color: #ee2d21;
+      }
+    }
+  }
+}

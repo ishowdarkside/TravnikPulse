@@ -1,0 +1,29 @@
+@import "../../../styles/mixin.scss";
+.buttonWrapper {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 2rem;
+
+  & > * {
+    flex-grow: 1;
+    padding: 1rem;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    border-radius: 6px;
+    color: #fff;
+    @include text("text-sm-medium");
+    &:first-of-type {
+      background-color: transparent;
+      border: 1px solid #f37022;
+      color: #f37022;
+    }
+
+    &:last-of-type {
+      background-color: #f37022;
+    }
+  }
+}

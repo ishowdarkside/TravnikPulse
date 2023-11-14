@@ -26,6 +26,7 @@ import Page from "./pages/AdminShops/Page/Page";
 import CreateShop from "./pages/CreateShop/CreateShop";
 import Me from "./pages/Me/Me";
 import MapContext from "./context/MapContext";
+import EditPreferences from "./pages/Settings/EditPreferencesSettings/EditPreferencesSettings";
 
 const queryClient = new QueryClient();
 
@@ -154,6 +155,14 @@ function App() {
                     <TouristDataContext>
                       <Settings />
                     </TouristDataContext>
+                  </Protect>
+                }
+              />
+              <Route
+                path="settings/preferences"
+                element={
+                  <Protect>
+                    <EditPreferences />
                   </Protect>
                 }
               />
