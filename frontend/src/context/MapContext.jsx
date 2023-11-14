@@ -6,6 +6,7 @@ export default function MapContext({ children }) {
 	const [ activeFilter, setActiveFilter ] = useState('all');
 	const [ tourLocation, setTourLocation ] = useState(null);
 	const [ currentPosition, setCurrentPosition ] = useState([]);
+	const [ travelTime, setTravelTime ] = useState(null);
 	const [ radius, setRadius ] = useState(0);
 
 	useEffect(
@@ -15,7 +16,7 @@ export default function MapContext({ children }) {
 
 			if (userPosition || userRadius) {
 				setCurrentPosition([ userPosition.lat, userPosition.lng ]);
-				setRadius(userRadius)
+				setRadius(userRadius);
 			}
 		},
 		[ setCurrentPosition, setRadius ]
@@ -31,7 +32,9 @@ export default function MapContext({ children }) {
 				currentPosition,
 				setCurrentPosition,
 				radius,
-				setRadius
+				setRadius,
+				travelTime,
+				setTravelTime
 			}}
 		>
 			{children}

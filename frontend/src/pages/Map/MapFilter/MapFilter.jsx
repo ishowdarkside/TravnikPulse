@@ -22,7 +22,7 @@ export default function MapFilter() {
             </section>
             {radiusModal && (
                 <div className={styles.radiusModal}>
-                    <input type="number" onChange={(e) => setRadius(e.target.value)} placeholder='Enter radius in km' />
+                    <input type="number" onChange={(e) => setRadius(e.target.value)} value={radius} placeholder='Enter radius in km' />
                     <FaTimes onClick={() => {
                         setActiveFilter('all')
                         setRadiusModal(false)
@@ -33,7 +33,6 @@ export default function MapFilter() {
                         localStorage.setItem('radius', JSON.parse(radius))
                         queryClient.invalidateQueries(['RadiusTours','RadiusShops']);
                     }}>Set</button>
-
                 </div>
             )}
         </>

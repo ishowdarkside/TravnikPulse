@@ -10,6 +10,7 @@ import 'leaflet/dist/leaflet.css';
 import LeafletRouting from '../LeafletRouting/LeafletRouting';
 import { useMapContext } from '../../../context/MapContext';
 import allHotels from '../../../utils/hotels/hotel.json';
+import MarkerCustomIcon from "../../../assets/marker.svg";
 
 export default function MainMap() {
   const {
@@ -33,6 +34,12 @@ export default function MainMap() {
 	const userLocation = JSON.parse(localStorage.getItem('position'))
 	  setCurrentPosition([userLocation.lat, userLocation.lng])
 	}, [setCurrentPosition]);
+
+  const userIcon = L.icon({
+    iconUrl: MarkerCustomIcon,
+    iconSize: [32, 32], // Width and height of the icon,
+    iconAnchor: [16, 32],
+  });
 	
   if (toursLoading || shopsLoading || radiusTourLoading || radiusShopLoading)
     return <h1>Loading...</h1>;
@@ -69,7 +76,7 @@ export default function MainMap() {
           <Markers key={index} tour={tour} setTourLocation={setTourLocation} />
         ))}
 
-        <Marker position={currentPosition} />
+        <Marker position={currentPosition} icon={userIcon} />
         {activeFilter === 'radius' && (
           <Circle center={currentPosition} radius={radiusInMeters} />
         )}
