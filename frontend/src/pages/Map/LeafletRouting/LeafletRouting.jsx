@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react";
 import { useMap } from "react-leaflet";
 import MarkerCustomIcon from "../../../assets/marker.svg";
@@ -13,6 +12,7 @@ export default function LeafletRouting({
 }) {
   const map = useMap();
   const routingControlRef = useRef(null);
+  const markersRef = useRef([]); // Store markers to be removed
   const { travelTime, setTravelTime } = useMapContext();
 
   useEffect(() => {
@@ -23,7 +23,6 @@ export default function LeafletRouting({
   }, [tourLocation, currentPosition, map]);
 
   useEffect(() => {
-    // Create a new routing control if it doesn't exist
     if (!routingControlRef.current) {
       const routingControl = L.Routing.control({
         waypoints: [L.latLng(currentPosition), L.latLng(tourLocation)],
@@ -40,16 +39,17 @@ export default function LeafletRouting({
         draggableWaypoints: false,
         createMarker: function (waypointIndex, waypoint, numberOfWaypoints) {
           const marker = L.marker(waypoint.latLng, {
-            draggable: true, // Set to true if you want to allow dragging
+            draggable: true,
             icon: L.icon({
-              iconUrl: MarkerCustomIcon, // Specify the path to your custom icon
-              iconSize: [32, 32], // Adjust the size of your icon as needed
-              iconAnchor: [16, 32], // Adjust the anchor point if necessary
-              popupAnchor: [0, -32], // Adjust the popup anchor if necessary
+              iconUrl: MarkerCustomIcon,
+              iconSize: [32, 32],
+              iconAnchor: [16, 32],
+              popupAnchor: [0, -32],
             }),
           });
 
-          // You can add additional customization or event handling for the marker here
+          // Add markers to the array to be removed
+          markersRef.current.push(marker);
 
           return marker;
         },
@@ -59,44 +59,43 @@ export default function LeafletRouting({
       routingControl.on("routesfound", function (e) {
         const routes = e.routes;
         if (routes.length > 0) {
-          const totalTimeInSeconds = routes[0].summary.totalTime; // total time in seconds
-          const totalTimeInMinutes = totalTimeInSeconds / 60; // convert to minutes
+          const totalTimeInSeconds = routes[0].summary.totalTime;
+          const totalTimeInMinutes = totalTimeInSeconds / 60;
           setTravelTime(totalTimeInMinutes.toFixed(0));
+
+          // Remove markers that are not part of the route
+          markersRef.current.forEach((marker) => {
+            map.removeLayer(marker);
+          });
+          markersRef.current = []; // Clear the array
         }
       });
 
       routingControlRef.current = routingControl;
     } else {
-      // Update waypoints if the control already exists
       routingControlRef.current
         .getPlan()
         .setWaypoints([L.latLng(currentPosition), L.latLng(tourLocation)]);
     }
 
-    // Add the routing control to the map if it's not already added
     if (!map.hasLayer(routingControlRef.current)) {
       routingControlRef.current.addTo(map);
     }
 
-    // Set up cancel route function
     const cancelRoute = () => {
       if (routingControlRef.current) {
         map.removeControl(routingControlRef.current);
         routingControlRef.current = null;
         setTravelTime(null);
-
-        // Reset map view to a larger distance
         map.setView(tourLocation, 15);
       }
     };
 
-    // Assign the cancel route function to the button click event
     if (cancelRouteRef.current) {
       cancelRouteRef.current.addEventListener("click", cancelRoute);
     }
 
     return () => {
-      // Cleanup on component unmount
       if (
         routingControlRef.current &&
         map.hasLayer(routingControlRef.current)
@@ -105,7 +104,6 @@ export default function LeafletRouting({
         routingControlRef.current = null;
       }
 
-      // Remove the event listener on component unmount
       if (cancelRouteRef.current) {
         cancelRouteRef.current.removeEventListener("click", cancelRoute);
       }

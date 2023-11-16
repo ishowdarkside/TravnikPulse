@@ -48,9 +48,18 @@ export default function Markers({ tour, setTourLocation }) {
 		  map.doubleClickZoom.enable();
 		  map.scrollWheelZoom.enable();
 		}
-	  }, [showModal, map]);
+	}, [showModal, map]);
 
-	  console.log(tour)
+	
+	const tourConvertedToSeconds = tour.duration * 60;
+	const travelConvertedToSeconds = travelTime * 60;
+	const getTourAndTravelTime = Math.floor(tourConvertedToSeconds) + Math.floor(travelConvertedToSeconds);
+	const hours = Math.floor(getTourAndTravelTime / 3600);
+	const remainingSeconds = getTourAndTravelTime % 3600;
+	const minutes = Math.floor(remainingSeconds / 60);
+	let formattedHours = hours < 10 ? '0' + hours : hours;
+  	let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+  	let totalTime = `${formattedHours}:${formattedMinutes} h`;
 
 	return (
     <>
@@ -73,8 +82,9 @@ export default function Markers({ tour, setTourLocation }) {
 								setTourLocation(tour.location.coordinates)
 							}}><MdDirections />Directions</button>
 							{tour?.type !== 'hotels' && !tour.shopName && <Link to={`/app/tour/${tour._id}`}>See more</Link>}
+
 						</div>
-						<img src={tour?.type !== 'hotels' ? `/${tour.coverImg}` : tour.pictures[0]} className={styles.img} alt="" />
+						<img src={tour?.type !== 'hotels' ? `http://127.0.0.1:8000/${tour.coverImg}` : tour.pictures[0]} className={styles.img} alt="" />
 						<div className={styles.navigation}>
 							<ul>
 								<li>Overview</li>
@@ -83,7 +93,7 @@ export default function Markers({ tour, setTourLocation }) {
 					</div>
 					<div className={styles.navContent}>
 							<ul>
-								<li><FaWalking />{travelTime ? tour.duration === undefined ? travelTime + 'min' : travelTime + tour?.duration + ' min' : 'Start route to calculate'}</li>
+								<li><FaWalking />{travelTime ? tour.duration === undefined ? travelTime > 60 ? Math.floor(travelTime / 60) + ' h' : travelTime + ' min' : totalTime : 'Start route to calculate'}</li>
 								{tour.type !== 'hotels' && !tour.shopName && ( <>
 									<li><IoMdTime />{tour.time}</li>
 									<li><GiSandsOfTime />{Math.floor(tour.duration / 60)} hours</li>

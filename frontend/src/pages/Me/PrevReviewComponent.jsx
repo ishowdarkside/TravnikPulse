@@ -6,7 +6,7 @@ export default function PrevReviewComponent({ review }) {
   const navigate = useNavigate();
   return (
     <div onClick={() => navigate(`/app/tour/${review.tour._id}`)}>
-      <img src={`/${review.tour.coverImg}`} alt="cover image" />
+      <img src={`http://127.0.0.1:8000/${review.tour.coverImg}`} alt="cover image" />
       <span>{review.tour.name}</span>
       <span
         className={`${styles.reviewStatus} ${

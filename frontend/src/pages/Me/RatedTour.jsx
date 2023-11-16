@@ -11,7 +11,7 @@ export default function RatedTour({ ratedTour }) {
       onClick={() => navigate(`/app/tour/${ratedTour.tour?._id}`)}
     >
       <div className={styles.imgWrapper}>
-        <img src={`/${ratedTour.tour?.coverImg}`} />
+        <img src={`http://127.0.0.1:8000/${ratedTour.tour?.coverImg}`} />
         <div className={styles.starWrapper}>
           {starsArr.map((star, i) => (
             <AiFillStar key={i} />

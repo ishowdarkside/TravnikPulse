@@ -10,7 +10,7 @@ export default function BookmarkComponent({ tour }) {
         className={styles.relativeWrapper}
         onClick={() => navigate(`/app/tour/${tour._id}`)}
       >
-        <img src={`/${tour.coverImg}`} alt="cover image " />
+        <img src={`http://127.0.0.1:8000/${tour.coverImg}`} alt="cover image " />
         <ImBookmark />
       </div>
       <span>{tour.name}</span>
