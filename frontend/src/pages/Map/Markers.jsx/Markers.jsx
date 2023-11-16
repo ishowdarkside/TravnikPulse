@@ -19,14 +19,14 @@ export default function Markers({ tour, setTourLocation }) {
 	const map = useMap();
 
 	const customIcon = new L.Icon({
-		iconUrl: `http://127.0.0.1:8000/${tour.coverImg}`,
+		iconUrl: `/${tour.coverImg}`,
 		iconSize: [48, 48], 
 		iconAnchor: [24, 48], 
 		popupAnchor: [0, -48],
 	});
 
 	const hotelIcon = new L.Icon({
-		iconUrl: tour.pictures ? tour.pictures[0] : `http://127.0.0.1:8000/${tour.coverImg}`,
+		iconUrl: tour.pictures ? tour.pictures[0] : `/${tour.coverImg}`,
 		iconSize: [48, 48],
 		iconAnchor: [24, 48], 
 		popupAnchor: [0, -48], 
@@ -74,7 +74,7 @@ export default function Markers({ tour, setTourLocation }) {
 							}}><MdDirections />Directions</button>
 							{tour?.type !== 'hotels' && !tour.shopName && <Link to={`/app/tour/${tour._id}`}>See more</Link>}
 						</div>
-						<img src={tour?.type !== 'hotels' ? `http://127.0.0.1:8000/${tour.coverImg}` : tour.pictures[0]} className={styles.img} alt="" />
+						<img src={tour?.type !== 'hotels' ? `/${tour.coverImg}` : tour.pictures[0]} className={styles.img} alt="" />
 						<div className={styles.navigation}>
 							<ul>
 								<li>Overview</li>

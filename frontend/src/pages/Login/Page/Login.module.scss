@@ -87,3 +87,11 @@
     }
   }
 }
+
+.container {
+  @include desktop-md() {
+    max-width: 120rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

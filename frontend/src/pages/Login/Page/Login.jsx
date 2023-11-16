@@ -5,6 +5,7 @@ import styles from "./Login.module.scss";
 import { useGetUser } from "../../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import Spinner from "../../../components/Spinner/Spinner";
+import DesktopNav from "../../../components/DesktopNav/DesktopNav";
 
 export default function Login() {
   const { data: user, isLoading } = useGetUser();
@@ -14,10 +15,13 @@ export default function Login() {
   return (
     <div className={styles.formWrapper}>
       <Navbar />
+      <DesktopNav />
       <section className={styles.loginSection}>
-        <h2>Welcome back!</h2>
-        <p>Log in to post a review, and rate the place where you’ve been</p>
-        <Form styles={styles} />
+        <div className={styles.container}>
+          <h2>Welcome back!</h2>
+          <p>Log in to post a review, and rate the place where you’ve been</p>
+          <Form styles={styles} />
+        </div>
       </section>
       <MobileNav />
     </div>

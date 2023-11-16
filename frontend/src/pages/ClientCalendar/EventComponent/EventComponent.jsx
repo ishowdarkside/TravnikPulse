@@ -9,10 +9,7 @@ export default function EventComponent({ tour }) {
       className={styles.tourWrapper}
       onClick={() => navigate(`/app/tour/${tour._id}`)}
     >
-      <img
-        src={`http://127.0.1:8000/${tour.coverImg}`}
-        alt="tour cover image"
-      />
+      <img src={`/${tour.coverImg}`} alt="tour cover image" />
 
       <div className={styles.overlay}>
         <h3>{tour.name}</h3>

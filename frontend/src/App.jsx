@@ -37,6 +37,7 @@ const Me = lazy(() => import("./pages/Me/Me"));
 import MapContext from "./context/MapContext";
 import EditPreferences from "./pages/Settings/EditPreferencesSettings/EditPreferencesSettings";
 import Spinner from "./components/Spinner/Spinner";
+import NotFound from "./pages/NotFound/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -208,6 +209,7 @@ function App() {
                   </TouristDataContext>
                 }
               />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
           <ReactQueryDevtools initialIsOpen={false} />

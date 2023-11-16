@@ -13,7 +13,7 @@ export default function EventComponent({ tour }) {
       <div key={tour._id} className={styles.tourWrapper}>
         <div className={styles.imgWrapper}>
           <img
-            src={`http://127.0.1:8000/${tour.coverImg}`}
+            src={`/${tour.coverImg}`}
             alt="tour cover image"
           />
           <div className={styles.operationWrapper}>

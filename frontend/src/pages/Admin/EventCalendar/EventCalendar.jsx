@@ -31,7 +31,7 @@ export default function EventCalendar() {
                     <div className={styles.imgWrapper}>
                       {toursOnDate.slice(0, 3).map((tour) => (
                         <img
-                          src={`http://127.0.1:8000/${tour.coverImg}`}
+                          src={`/${tour.coverImg}`}
                           key={tour._id}
                           className={styles.tourImg}
                         />

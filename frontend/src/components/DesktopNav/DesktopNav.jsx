@@ -27,6 +27,9 @@ export default function DesktopNav() {
             <NavLink to="/app/shop">Shops</NavLink>
           </li>
           <li>
+            <NavLink to="/app/calendar">Calendar</NavLink>
+          </li>
+          <li>
             <NavLink to="/app/settings">Settings</NavLink>
           </li>
           <li
@@ -35,7 +38,7 @@ export default function DesktopNav() {
             }`}
           >
             <NavLink to="/app/me">
-              {user === "Unauthorized" ? "Login " : user.username}
+              {user.role ? user.username : "Login "}
             </NavLink>
           </li>
         </ul>

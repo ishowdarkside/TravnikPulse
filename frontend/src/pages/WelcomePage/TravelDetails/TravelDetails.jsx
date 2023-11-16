@@ -24,7 +24,7 @@ export default function TravelDetails() {
         <button onClick={() => setActivePanel("explore")}>
           <AiOutlineArrowLeft />
         </button>
-        <h2>Get us know you better</h2>
+        <h2>Tell us more about yourself!</h2>
         <p>
           Supply us with information that will improve your enjoyment in Travnik
         </p>

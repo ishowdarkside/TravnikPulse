@@ -2,6 +2,7 @@
 .activities {
   display: flex;
   flex-direction: column;
+  min-height: 20rem;
   gap: 2rem;
   @include desktop() {
     display: grid;

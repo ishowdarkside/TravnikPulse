@@ -25,6 +25,10 @@ app.use("/api/tours", tourRouter);
 app.use("/api/reviews", reviewRouter);
 app.use("/api/shops", shopRouter);
 
+app.use("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 app.use(errorController);
 
 module.exports = app;
