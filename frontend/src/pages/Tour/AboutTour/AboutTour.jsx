@@ -15,6 +15,7 @@ import { PiMoneyLight } from "react-icons/pi";
 import ReviewComponent from "../ReviewComponent/ReviewComponent";
 import { useBookmarkTour } from "../../../hooks/useTours";
 import { useMapContext } from "../../../context/MapContext";
+import RateTour from "../../Settings/RateTour/RateTour";
 
 export default function AboutTour({ data, setShowReview, user }) {
   const { setEventLocation } = useMapContext();
@@ -75,6 +76,7 @@ export default function AboutTour({ data, setShowReview, user }) {
           )}
         </div>
 
+        {user.role && <RateTour />}
         <div className={styles.btnWrapper}>
           {user !== "Unauthorized" && user.role && (
             <button

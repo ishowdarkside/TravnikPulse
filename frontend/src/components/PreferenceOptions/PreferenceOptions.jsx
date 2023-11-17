@@ -184,7 +184,7 @@ export default function PreferenceOptions() {
             preferences.includes("bikingRoutes") ? styles.activeOption : ""
           }
         >
-          Biking Routes
+          Biking
         </div>
         <div
           onClick={() => addPreference("vegeterian")}

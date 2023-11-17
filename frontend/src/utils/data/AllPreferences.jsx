@@ -149,7 +149,7 @@ export const allPreferences = [
     icon: <PiCoffeeBold />,
   },
   {
-    value: "Biking Routes",
+    value: "Biking",
     preference: "bikingRoutes",
     icon: <FaPersonBiking />,
   },

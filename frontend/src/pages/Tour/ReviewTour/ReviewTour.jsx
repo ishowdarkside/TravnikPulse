@@ -1,41 +1,21 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // React icons
 import { MdOutlineDone } from "react-icons/md";
-import { AiOutlineCloudUpload, AiFillStar } from "react-icons/ai";
+import { AiOutlineCloudUpload } from "react-icons/ai";
 // SCSS
 import styles from "./ReviewTour.module.scss";
 import { useCreateReview } from "../../../hooks/useReview";
-import { useGetSingleTour, useRateTour } from "../../../hooks/useTours";
-import { useGetUser } from "../../../hooks/useAuth";
 import Spinner from "../../../components/Spinner/Spinner";
 
 export default function ReviewTour({ setShowReview }) {
-  const { data: user, isLoading: isLoadingUser } = useGetUser();
-  const { data: tour, isLoading: isLoadingTour } = useGetSingleTour();
-
   const [filesLength, setFilesLength] = useState(0);
   const [images, setImages] = useState(null);
-  const [rating, setRating] = useState(() => {
-    const myRating = tour.ratings.find((rating) => rating.user === user._id);
-    return myRating ? +myRating.value : 0;
-  });
-  const hasAlreadyRated = tour.ratings.find(
-    (rating) => rating.user === user._id
-  )
-    ? true
-    : false;
 
   const [message, setMessage] = useState("");
 
   const { mutate: reviewMutation, isLoading: reviewIsLoading } =
     useCreateReview();
-  const { mutate: rateMutation, isLoading: rateIsLoading } = useRateTour();
-
-  useEffect(() => {
-    if (rating === 0 || hasAlreadyRated) return;
-    rateMutation(rating);
-  }, [rating]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -52,8 +32,7 @@ export default function ReviewTour({ setShowReview }) {
     reviewMutation(formData);
   }
 
-  if (reviewIsLoading || rateIsLoading || isLoadingUser || isLoadingTour)
-    return <Spinner />;
+  if (reviewIsLoading) return <Spinner />;
 
   return (
     <div className={styles.reviewTour}>
@@ -96,53 +75,7 @@ export default function ReviewTour({ setShowReview }) {
             }}
           />
         </div>
-        <div className={styles.stars}>
-          <AiFillStar
-            className={
-              rating > 0 ? `${styles.star} ${styles.active}` : styles.star
-            }
-            onClick={() => {
-              if (hasAlreadyRated) return;
-              setRating(1);
-            }}
-          />
-          <AiFillStar
-            className={
-              rating > 1 ? `${styles.star} ${styles.active}` : styles.star
-            }
-            onClick={() => {
-              if (hasAlreadyRated) return;
-              setRating(2);
-            }}
-          />
-          <AiFillStar
-            className={
-              rating > 2 ? `${styles.star} ${styles.active}` : styles.star
-            }
-            onClick={() => {
-              if (hasAlreadyRated) return;
-              setRating(3);
-            }}
-          />
-          <AiFillStar
-            className={
-              rating > 3 ? `${styles.star} ${styles.active}` : styles.star
-            }
-            onClick={() => {
-              if (hasAlreadyRated) return;
-              setRating(4);
-            }}
-          />
-          <AiFillStar
-            className={
-              rating > 4 ? `${styles.star} ${styles.active}` : styles.star
-            }
-            onClick={() => {
-              if (hasAlreadyRated) return;
-              setRating(5);
-            }}
-          />
-        </div>
+
         <button type="submit" className={styles.submitBtn}>
           <MdOutlineDone />
           Submit review
