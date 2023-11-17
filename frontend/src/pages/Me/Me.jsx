@@ -16,6 +16,8 @@ export default function Me() {
   if (!user || user === "Unauthorized" || !user.role)
     return <Navigate to="/app/login" />;
 
+  if (user.role === "admin") return <Navigate to="/app/admin" />;
+
   return (
     <>
       <DesktopNav />
@@ -88,12 +90,14 @@ export default function Me() {
       </section>
       <MobileNav />
 
-      {user.reviewedTours.length === 0 && user.ratedTours.length === 0 && (
-        <span className={styles.noReviewsNoRatings}>
-          Once you start giving reviews to activities, or rating them, your
-          activity will be tracked here!
-        </span>
-      )}
+      {user.reviewedTours.length === 0 &&
+        user.ratedTours.length === 0 &&
+        user.bookmarkedTours.length === 0 && (
+          <span className={styles.noReviewsNoRatings}>
+            Once you start giving reviews to activities, or rating them, your
+            activity will be tracked here!
+          </span>
+        )}
     </>
   );
 }

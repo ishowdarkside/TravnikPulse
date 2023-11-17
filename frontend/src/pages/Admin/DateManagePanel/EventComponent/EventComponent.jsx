@@ -10,12 +10,14 @@ export default function EventComponent({ tour }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
   return (
     <>
-      <div key={tour._id} className={styles.tourWrapper}>
+      <div
+        key={tour._id}
+        className={styles.tourWrapper}
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(255, 126, 95, 0.5), rgba(254, 180, 123, 0.5)), url('http://127.0.1:8000/${tour.coverImg}')`,
+        }}
+      >
         <div className={styles.imgWrapper}>
-          <img
-            src={`/${tour.coverImg}`}
-            alt="tour cover image"
-          />
           <div className={styles.operationWrapper}>
             <button
               onClick={() => navigate(`/app/admin/edit-tour/${tour._id}`)}

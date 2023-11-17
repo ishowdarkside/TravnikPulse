@@ -17,7 +17,7 @@ export default function Explore() {
           <span className={styles.redText}>good food!</span> Find people, hang
           out, eat well, learn about history, enjoy nature, visit museums...
         </p>
-        <button onClick={() => setActivePanel("travelDetails")}>
+        <button onClick={() => setActivePanel("travelDetailsDuration")}>
           Explore Travnik
         </button>
       </div>

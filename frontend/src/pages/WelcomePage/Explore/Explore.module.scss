@@ -1,9 +1,10 @@
 @import "../../../styles/mixin.scss";
 
 .exploreSection {
-  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
+  padding: 2rem 0 4rem 0;
   justify-content: center;
 }
 
@@ -11,6 +12,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  img {
+    @include responsive("mobile") {
+      max-width: 30rem;
+    }
+
+    @include responsive-custom(25em) {
+      max-width: 20rem;
+    }
+  }
 
   h2 {
     margin-top: 4rem;

@@ -8,6 +8,7 @@ import TravelDetails from "../TravelDetails/TravelDetails";
 import Location from "../Location/Location";
 import Preference from "../Preferences/Preference";
 import Proceed from "../Proceed/Proceed";
+import TravelDetailsCount from "../TravelDetailsCount/TravelDetailsCount";
 
 export default function WelcomePage() {
   const { activePanel, setActivePanel } = useTouristDataContext();
@@ -21,7 +22,8 @@ export default function WelcomePage() {
       {activePanel === "intro" && <Intro />}
       {activePanel === "language" && <Language />}
       {activePanel === "explore" && <Explore />}
-      {activePanel === "travelDetails" && <TravelDetails />}
+      {activePanel === "travelDetailsDuration" && <TravelDetails />}
+      {activePanel === "travelDetailsCount" && <TravelDetailsCount />}
       {activePanel === "locationDetails" && <Location />}
       {activePanel === "preferenceDetails" && <Preference />}
       {activePanel === "proceed" && <Proceed />}

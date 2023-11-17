@@ -6,7 +6,8 @@
   justify-content: center;
 
   .panel {
-    max-width: 33.5rem;
+    max-width: 120rem;
+    padding: 0 2rem;
 
     h2 {
       @include text("display-sm-bold");

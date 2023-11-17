@@ -5,7 +5,7 @@ import ShopComponent from "../ShopComponent/ShopComponent.jsx";
 import styles from "./Page.module.scss";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../../../components/Spinner/Spinner.jsx";
-import Navbar from "../../../components/Navbar/Navbar.jsx";
+
 import DesktopNav from "../../../components/DesktopNav/DesktopNav.jsx";
 import MobileNav from "../../../components/MobileNav/MobileNav.jsx";
 
@@ -20,7 +20,6 @@ export default function Page() {
     <>
       <ReturnButton />
       <DesktopNav />
-      <Navbar />
 
       <section className={styles.sectionBody}>
         <h2>Shops</h2>

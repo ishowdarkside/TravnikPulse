@@ -30,7 +30,7 @@ export default function Location() {
   return (
     <section className={styles.locationSection}>
       <div className={styles.panel}>
-        <button onClick={() => setActivePanel("travelDetails")}>
+        <button onClick={() => setActivePanel("travelDetailsCount")}>
           <AiOutlineArrowLeft />
         </button>
         <h2>Tell us where you are</h2>

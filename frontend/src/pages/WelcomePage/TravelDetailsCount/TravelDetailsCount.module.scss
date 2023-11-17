@@ -53,6 +53,9 @@
 
   gap: 1.5rem;
 
+  @include responsive("mobile") {
+    grid-template-columns: 1fr;
+  }
   div {
     border: 3px solid rgba(#fff, 0);
     cursor: pointer;

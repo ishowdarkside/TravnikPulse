@@ -30,7 +30,7 @@ export default function Navbar() {
           </NavLink>
         )}
 
-        {user === "Unauthorized" && location.pathname !== "/app/login" && (
+        {!user.role && location.pathname !== "/app/login" && (
           <Link className={styles.loginBtn} to="/app/login">
             Log in <BiLogInCircle />
           </Link>

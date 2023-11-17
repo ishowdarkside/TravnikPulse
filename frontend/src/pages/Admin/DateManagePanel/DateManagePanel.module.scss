@@ -4,6 +4,7 @@
   top: 0;
   left: 0;
   position: fixed;
+  z-index: 9999999;
   width: 100%;
   background-color: #ffff;
   padding: 7rem 3rem;
@@ -15,10 +16,26 @@
 
 .toursWrapper {
   display: flex;
+  align-items: center;
+  align-content: start;
   padding-bottom: 13rem;
   flex-direction: column;
-  align-items: center;
   gap: 3rem;
+  justify-content: center;
+  padding-right: 1rem;
+  &::-webkit-scrollbar {
+    background-color: #ffff;
+    width: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #f37022;
+    border-radius: 5px;
+  }
+  height: 80rem;
+  overflow-y: scroll;
 
   @include desktop() {
     display: grid;
@@ -42,7 +59,6 @@
   position: fixed;
   bottom: 3rem;
   right: 5rem;
-  cursor: pointer;
   background-color: #f37022;
   color: #fff;
   display: flex;
@@ -59,8 +75,8 @@
   right: 2rem;
   border: none;
   outline: none;
-  font-size: 3rem;
   cursor: pointer;
+  font-size: 3rem;
   background-color: transparent;
 }
 
@@ -69,4 +85,12 @@
   display: block;
   margin-bottom: 5rem;
   @include text("text-xl-medium");
+}
+
+.noActivitiesMsg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
 }

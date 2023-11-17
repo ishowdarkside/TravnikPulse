@@ -15,7 +15,7 @@ export default function EditPreferences() {
   return (
     <>
       <Navbar />
-      <section>
+      <section className={styles.preferenceSectionSettings}>
         <PreferencePanel
           selectedPreferences={preferences}
           setSelectedPreferences={setPreferences}
@@ -24,8 +24,8 @@ export default function EditPreferences() {
           <button onClick={() => navigate(-1)}>Cancel</button>
           <button
             onClick={() => {
-              if (preferences.length < 5)
-                return toast.error("Choose at least 5 categories");
+              if (preferences.length < 1)
+                return toast.error("Choose at least 1 category");
               localStorage.setItem("preferences", JSON.stringify(preferences));
               navigate(-1);
             }}

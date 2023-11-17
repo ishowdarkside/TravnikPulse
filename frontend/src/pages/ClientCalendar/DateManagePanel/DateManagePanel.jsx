@@ -28,7 +28,7 @@ export default function DateManagePanel({ activeDate, setActiveDate }) {
           <AiOutlineClose />
         </button>
         <span>{dayFormated}</span>
-        <p>No activities for this day 😢</p>
+        <p className={styles.noActivitiesMsg}>No activities for this day 😢</p>
       </div>
     );
   return (

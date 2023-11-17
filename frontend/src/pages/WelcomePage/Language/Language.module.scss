@@ -15,6 +15,10 @@
     @include text("display-xl-semibold");
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    @include responsive-custom(25em) {
+      font-size: 4rem;
+    }
   }
 
   h3 {

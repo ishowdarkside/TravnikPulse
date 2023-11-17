@@ -2,7 +2,7 @@
 import { TbMessage2Minus } from "react-icons/tb";
 // SCSS
 import styles from "./AboutTour.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   AiOutlineCalendar,
   AiOutlineClockCircle,
@@ -15,10 +15,9 @@ import { PiMoneyLight } from "react-icons/pi";
 import ReviewComponent from "../ReviewComponent/ReviewComponent";
 import { useBookmarkTour } from "../../../hooks/useTours";
 import { useMapContext } from "../../../context/MapContext";
-import { useEffect } from "react";
 
 export default function AboutTour({ data, setShowReview, user }) {
-  const { eventLocation, setEventLocation } = useMapContext();
+  const { setEventLocation } = useMapContext();
   const navigate = useNavigate();
 
   const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
