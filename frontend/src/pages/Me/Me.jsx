@@ -46,12 +46,6 @@ export default function Me() {
             </div>
           )}
 
-          {user.reviewedTours.length === 0 && user.ratedTours.length > 0 && (
-            <span className={styles.spanSub}>
-              Once you start giving reviews to activities, they will show up
-              here!
-            </span>
-          )}
           {user.reviewedTours.length > 0 && (
             <div className={styles.ReviewPanel}>
               <span className={styles.spanSub}>
