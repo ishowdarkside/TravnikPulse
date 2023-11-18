@@ -1,4 +1,4 @@
-const BASE_URL = `/`;
+const BASE_URL = `http://127.0.1:8000/`;
 export async function getAllTours() {
   try {
     const res = await fetch(`${BASE_URL}api/tours`);

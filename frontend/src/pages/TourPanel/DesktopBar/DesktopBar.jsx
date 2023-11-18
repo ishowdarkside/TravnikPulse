@@ -26,7 +26,7 @@ export default function DesktopBar() {
         <div
           className={styles.eventWrapper}
           style={{
-            backgroundImage: `url("/${choiceTour.coverImg}") `,
+            backgroundImage: `url("http://127.0.1:8000/${choiceTour.coverImg}") `,
           }}
           onClick={() => navigate(`/app/tour/${choiceTour._id}`)}
         >

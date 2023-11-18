@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import ReactDOM from "react-dom";
-import { Marker, Popup, useMap } from "react-leaflet";
+import { Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 import styles from "./Markers.module.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BiSolidChevronDown } from "react-icons/bi";
 import { MdDirections } from "react-icons/md";
-import { SlLocationPin } from "react-icons/sl";
+
 import { GiSandsOfTime } from "react-icons/gi";
 import { IoMdTime } from "react-icons/io";
 import { TfiMoney } from "react-icons/tfi";
@@ -117,7 +118,7 @@ export default function Markers({ tour, setTourLocation }) {
               <img
                 src={
                   tour?.type !== "hotels"
-                    ? `/${tour.coverImg}`
+                    ? `http://127.0.1:8000/${tour.coverImg}`
                     : tour.pictures[0]
                 }
                 className={styles.img}

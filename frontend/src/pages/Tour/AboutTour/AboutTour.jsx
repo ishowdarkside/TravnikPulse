@@ -71,7 +71,7 @@ export default function AboutTour({ data, setShowReview, user }) {
           {data.ratings.length > 0 && (
             <span className={styles.flex}>
               <AiOutlineStar />
-              {avgRating}
+              {avgRating.toFixed(1)}
             </span>
           )}
         </div>

@@ -29,7 +29,7 @@ export default function Tour() {
           <div
             className={styles.image}
             style={{
-              backgroundImage: `url('/${data.coverImg}')`,
+              backgroundImage: `url('http://127.0.1:8000/${data.coverImg}')`,
             }}
           >
             <div className={styles.imageOverlay} />

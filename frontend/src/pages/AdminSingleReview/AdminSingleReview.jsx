@@ -30,7 +30,7 @@ export default function AdminSingleReview() {
     <>
       <ReturnButton />
       <DesktopNav />
-      <Navbar />
+
       <section className={styles.sectionBody}>
         <div className={styles.allWrapper}>
           <h2>Review</h2>
@@ -55,7 +55,7 @@ export default function AdminSingleReview() {
             <div className={styles.imgWrapper}>
               {data.images?.map((img) => (
                 <img
-                  src={`/${img}`}
+                  src={`http://127.0.1:8000/${img}`}
                   alt="review image"
                   key={img}
                 />
