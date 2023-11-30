@@ -15,6 +15,7 @@ const {
   getAllShops,
   getSingleShop,
   getShopsWithin,
+  editShop,
 } = require(path.join(__dirname, "..", "controllers", "shopController"));
 
 router
@@ -23,6 +24,7 @@ router
   .post(protectAdmin, upload.single("coverImg"), addShop);
 
 router.get("/:shopID", getSingleShop);
+router.patch("/:shopID", protectAdmin, editShop);
 
 router.get("/shops-within/distance/:distance/center/:latlng", getShopsWithin);
 

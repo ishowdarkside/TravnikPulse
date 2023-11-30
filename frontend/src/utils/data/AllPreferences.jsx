@@ -159,7 +159,7 @@ export const allPreferences = [
     icon: <PiPlant />,
   },
   {
-    value: "Pet-Friendly Places",
+    value: "Pet places",
     preference: "petFriendlyPlaces",
     icon: <MdOutlinePets />,
   },

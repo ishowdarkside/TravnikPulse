@@ -76,3 +76,18 @@ exports.getShopsWithin = catchAsync(async (req, res, next) => {
     shops,
   });
 });
+
+exports.editShop = catchAsync(async (req, res, next) => {
+  const shop = await Shop.findById(req.params.shopID);
+
+  Object.entries(req.body).forEach((entry) => {
+    shop[entry[0]] = entry[1];
+  });
+
+  await shop.save({ validateBeforeSave: false });
+
+  return res.status(200).json({
+    status: "success",
+    message: "Shop updated successfully!",
+  });
+});

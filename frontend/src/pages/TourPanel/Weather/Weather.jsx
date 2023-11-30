@@ -1,7 +1,7 @@
 import { useGetWeather } from "../../../hooks/useWeather";
 import { IoIosPaperPlane } from "react-icons/io";
 // image backgrounds
-import cloudyBackground from "../../../assets/cloudBg.png";
+import cloudyBackground from "../../../assets/CloudBg.png";
 import snowBackground from "../../../assets/snowBg.png";
 import sunnyBackground from "../../../assets/weather-sunny-bg.jpg";
 import rainBackground from "../../../assets/rainBg.png";
