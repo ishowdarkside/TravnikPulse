@@ -9,9 +9,7 @@ export default function TravelDetails() {
   const {
     selectedVisitPeriod,
     setSelectedVisitPeriod,
-
     setActivePanel,
-    suggestPlace,
     setSuggestPlace,
   } = useTouristDataContext();
 
@@ -43,7 +41,6 @@ export default function TravelDetails() {
             <div
               onClick={() => {
                 setSelectedVisitPeriod(2);
-                setActivePanel("travelDetailsCount");
               }}
               className={selectedVisitPeriod === 2 ? styles.activeOption : ""}
             >
@@ -55,7 +52,6 @@ export default function TravelDetails() {
             <div
               onClick={() => {
                 setSelectedVisitPeriod(3);
-                setActivePanel("travelDetailsCount");
               }}
               className={selectedVisitPeriod === 3 ? styles.activeOption : ""}
             >
@@ -67,12 +63,6 @@ export default function TravelDetails() {
           </div>
           {selectedVisitPeriod >= 2 && (
             <div className={styles.checkboxWrapper}>
-              <div
-                className={`${styles.checkbox} ${
-                  suggestPlace ? styles.checkboxActive : ""
-                }`}
-                onClick={() => setSuggestPlace((curr) => !curr)}
-              ></div>
               <span>
                 Do you want us to suggest{" "}
                 <TypeAnimation
@@ -90,6 +80,25 @@ export default function TravelDetails() {
                   repeat={Infinity}
                 />
               </span>
+              <div className={styles.optionWrapper}>
+                {" "}
+                <button
+                  onClick={() => {
+                    setSuggestPlace(false);
+                    setActivePanel("travelDetailsCount");
+                  }}
+                >
+                  NO
+                </button>
+                <button
+                  onClick={() => {
+                    setSuggestPlace(true);
+                    setActivePanel("travelDetailsCount");
+                  }}
+                >
+                  YES
+                </button>
+              </div>
             </div>
           )}
         </div>

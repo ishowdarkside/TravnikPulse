@@ -5,8 +5,6 @@ import MobileNav from "../../components/MobileNav/MobileNav";
 import Navbar from "../../components/Navbar/Navbar";
 import BosnianFlag from "../../assets/bosnian-flag.png";
 import USAFlag from "../../assets/usa-flag.png";
-import GermanFlag from "../../assets/german-flag.png";
-import SpanishFlag from "../../assets/spanish-flag.png";
 import checkImage from "../../assets/check-heart.png";
 import notificationIcon from "../../assets/notification-icon.png";
 import reportIcon from "../../assets/report-icon.png";
@@ -76,8 +74,6 @@ export default function Settings() {
                 >
                   {language === "bs" && <img src={BosnianFlag} alt="" />}
                   {language === "en" && <img src={USAFlag} alt="" />}
-                  {language === "de" && <img src={GermanFlag} alt="" />}
-                  {language === "es" && <img src={SpanishFlag} alt="" />}
                   <span>Change language</span>
                 </div>
                 {langDropdown && (

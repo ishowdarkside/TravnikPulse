@@ -16,7 +16,7 @@
 
 .toursWrapper {
   display: flex;
-  align-items: center;
+
   align-content: start;
   padding-bottom: 13rem;
   flex-direction: column;
@@ -71,8 +71,8 @@
 
 .closePanel {
   position: absolute;
-  top: 3rem;
-  right: 2rem;
+  top: 5rem;
+  right: 6rem;
   border: none;
   outline: none;
   cursor: pointer;
