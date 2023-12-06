@@ -10,7 +10,6 @@ import BookmarkComponent from "./BookmarkComponent/BookmarkComponent";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
 export default function Me() {
   const { data: user, isLoading } = useGetUser();
-
   if (isLoading) return <h1>LOADING</h1>;
 
   if (!user || user === "Unauthorized" || !user.role)

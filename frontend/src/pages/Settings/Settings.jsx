@@ -75,10 +75,10 @@ export default function Settings() {
                   {language === "bs" && <img src={BosnianFlag} alt="" />}
                   {language === "en" && <img src={USAFlag} alt="" />}
                   <span>Change language</span>
+                  {langDropdown && (
+                    <ChangeLanguageDropdown setLangDropdown={setLangDropdown} />
+                  )}
                 </div>
-                {langDropdown && (
-                  <ChangeLanguageDropdown setLangDropdown={setLangDropdown} />
-                )}
 
                 <div
                   className={styles.item}

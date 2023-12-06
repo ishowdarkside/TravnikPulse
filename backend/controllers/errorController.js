@@ -7,6 +7,12 @@ const errorController = (err, req, res, next) => {
   }
 
   if (process.env.NODE_ENV === "production") {
+    if (err.code === 11000)
+      return res.status(400).json({
+        status: "fail",
+        message: "Username already in use",
+      });
+
     if (err.errors?.date) {
       return res.status(400).json({
         status: "fail",

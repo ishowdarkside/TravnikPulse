@@ -21,29 +21,35 @@ export default function Tour() {
 
   if (data === "not-found") return <NotFound />;
   return (
-    <section className={styles.sectionBody}>
+    <>
       <DesktopNav />
       <Navbar />
-      <div className={styles.container}>
-        <div className={styles.tour}>
-          <div
-            className={styles.image}
-            style={{
-              backgroundImage: `url('http://127.0.1:8000/${data.coverImg}')`,
-            }}
-          >
-            <div className={styles.imageOverlay} />
-            <div className={styles.imageContent}></div>
-          </div>
+      <section className={styles.sectionBody}>
+        <div className={styles.container}>
+          <div className={styles.tour}>
+            <div
+              className={styles.image}
+              style={{
+                backgroundImage: `url('http://127.0.1:8000/${data.coverImg}')`,
+              }}
+            >
+              <div className={styles.imageOverlay} />
+              <div className={styles.imageContent}></div>
+            </div>
 
-          {!showReview ? (
-            <AboutTour setShowReview={setShowReview} data={data} user={user} />
-          ) : (
-            <ReviewTour setShowReview={setShowReview} />
-          )}
+            {!showReview ? (
+              <AboutTour
+                setShowReview={setShowReview}
+                data={data}
+                user={user}
+              />
+            ) : (
+              <ReviewTour setShowReview={setShowReview} />
+            )}
+          </div>
         </div>
-      </div>
-      <MobileNav />
-    </section>
+        <MobileNav />
+      </section>
+    </>
   );
 }

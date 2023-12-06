@@ -24,7 +24,7 @@ router
   .post(protectAdmin, upload.single("coverImg"), addShop);
 
 router.get("/:shopID", getSingleShop);
-router.patch("/:shopID", protectAdmin, editShop);
+router.patch("/:shopID", upload.single("coverImg"), protectAdmin, editShop);
 
 router.get("/shops-within/distance/:distance/center/:latlng", getShopsWithin);
 

@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const User = require("./User");
+
 const ReviewSchema = new mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
@@ -10,6 +12,22 @@ const ReviewSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+ReviewSchema.pre("remove", async function (next) {
+  const review = this;
+
+  // Remove the review from the users' reviewedTour arrays
+
+  try {
+    await User.updateMany(
+      { reviewedTours: review._id },
+      { $pull: { reviewedTours: review._id } }
+    );
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 const Review = mongoose.model("Review", ReviewSchema);
 

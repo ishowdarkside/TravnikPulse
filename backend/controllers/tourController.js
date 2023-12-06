@@ -116,6 +116,18 @@ exports.editTour = catchAsync(async (req, res, next) => {
 
 exports.deleteTour = catchAsync(async (req, res, next) => {
   const { tourID } = req.params;
+  await User.updateMany(
+    { "ratedTours.tour": tourID },
+    { $pull: { ratedTours: { tour: tourID } } }
+  );
+
+  await User.updateMany(
+    { bookmarkedTours: tourID },
+    { $pull: { bookmarkedTours: tourID } }
+  );
+
+  await Review.deleteMany({ tour: tourID });
+
   const tour = await Tour.findById(tourID);
   await fs.unlink(`public/${tour.coverImg}`);
   await Tour.findByIdAndDelete(tourID);

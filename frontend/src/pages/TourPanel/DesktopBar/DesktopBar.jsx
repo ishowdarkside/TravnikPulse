@@ -8,7 +8,7 @@ export default function DesktopBar() {
   const navigate = useNavigate();
   if (isLoading) return <Spinner />;
 
-  const choiceTour = tours.at(0);
+  const choiceTour = tours.at(tours.length - 1);
   return (
     <div className={styles.desktopBar}>
       <div className={styles.leftWrapper}>

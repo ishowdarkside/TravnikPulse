@@ -23,9 +23,11 @@ export function useLogin() {
 export function useSignup() {
   const navigate = useNavigate();
   const { mutate, isLoading } = useMutation({
-    mutationFn: ({ username, password, passwordConfirm }) => signup(username, password, passwordConfirm),
+    mutationFn: ({ username, password, passwordConfirm }) =>
+      signup(username, password, passwordConfirm),
     onSuccess: (res) => {
-      if (res.status === "fail") return toast.error(res.message);
+      if (res.status === "fail" || res.status === "error")
+        return toast.error(res.message);
       navigate("/app/login");
     },
     onError: (err) => {

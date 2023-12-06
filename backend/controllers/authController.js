@@ -57,7 +57,11 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   if (password !== passwordConfirm)
     return next(new AppError(400, "Passwords are not matching!"));
-  const user = await User.create({ username, password, passwordConfirm });
+  const user = await User.create({
+    username: username.toLowerCase(),
+    password,
+    passwordConfirm,
+  });
   const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
     expiresIn: "30d",
   });
