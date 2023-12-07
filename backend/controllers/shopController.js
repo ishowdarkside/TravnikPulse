@@ -2,6 +2,7 @@ const path = require("path");
 const catchAsync = require(path.join(__dirname, "..", "utils", "catchAsync"));
 const AppError = require(path.join(__dirname, "..", "utils", "AppError"));
 const Shop = require(path.join(__dirname, "..", "models", "Shop"));
+const fs = require("fs").promises;
 const sharp = require("sharp");
 const { v4: uuidv4 } = require("uuid");
 
@@ -24,7 +25,7 @@ exports.addShop = catchAsync(async (req, res, next) => {
     shopName,
     location,
     coverImg: `${imageName}.jpeg`,
-    category,
+    category: category.toLowerCase(),
   });
 
   res.status(201).json({
@@ -78,16 +79,38 @@ exports.getShopsWithin = catchAsync(async (req, res, next) => {
 });
 
 exports.editShop = catchAsync(async (req, res, next) => {
-  const shop = await Shop.findById(req.params.shopID);
+  const { shopID } = req.params;
+  const shop = await Shop.findById(shopID);
+  const imageName = uuidv4();
 
-  Object.entries(req.body).forEach((entry) => {
-    shop[entry[0]] = entry[1];
+  if (req.body.category) req.body.category = req.body.category.toLowerCase();
+
+  if (req.file) {
+    await sharp(req.file.buffer)
+      .jpeg(90)
+      .resize({ width: 1280, height: 800, fit: "cover" })
+      .toFile(`public/${imageName}.jpeg`);
+
+    req.body.coverImg = `${imageName}.jpeg`;
+    await fs.unlink(`public/${shop.coverImg}`);
+  }
+
+  if (req.body.location) req.body.location = JSON.parse(req.body.location);
+
+  if (!shop) return next(new AppError(404, "Shop not found!"));
+  Object.entries(req.body).forEach((e) => {
+    shop[e[0]] = e[1];
   });
 
-  await shop.save({ validateBeforeSave: false });
+  await shop.save({ validateBeforeSave: true });
 
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     message: "Shop updated successfully!",
   });
+});
+
+exports.deleteShop = catchAsync(async (req, res, next) => {
+  await Shop.findByIdAndDelete(req.params.shopID);
+  res.status(204).json({});
 });

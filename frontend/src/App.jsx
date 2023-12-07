@@ -34,6 +34,7 @@ const Register = lazy(() => import("./pages/Register/Page/Register"));
 const Page = lazy(() => import("./pages/AdminShops/Page/Page"));
 const CreateShop = lazy(() => import("./pages/CreateShop/CreateShop"));
 const Me = lazy(() => import("./pages/Me/Me"));
+const EditShop = lazy(() => import("./pages/EditShop/EditShop"));
 import MapContext from "./context/MapContext";
 import EditPreferences from "./pages/Settings/EditPreferencesSettings/EditPreferencesSettings";
 import Spinner from "./components/Spinner/Spinner";
@@ -141,6 +142,7 @@ function App() {
                     }
                   />
                   <Route path="shops/create-shop" element={<CreateShop />} />
+                  <Route path="edit-shop/:shopID" element={<EditShop />} />
                 </Route>
                 <Route
                   path="map"

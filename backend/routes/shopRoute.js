@@ -16,6 +16,7 @@ const {
   getSingleShop,
   getShopsWithin,
   editShop,
+  deleteShop,
 } = require(path.join(__dirname, "..", "controllers", "shopController"));
 
 router
@@ -25,6 +26,7 @@ router
 
 router.get("/:shopID", getSingleShop);
 router.patch("/:shopID", upload.single("coverImg"), protectAdmin, editShop);
+router.delete("/:shopID", protectAdmin, deleteShop);
 
 router.get("/shops-within/distance/:distance/center/:latlng", getShopsWithin);
 

@@ -44,3 +44,46 @@ export async function getRadiusShop() {
     console.log(error);
   }
 }
+
+export async function deleteShop(shopID) {
+  const token = localStorage.getItem("jwt");
+  try {
+    await fetch(`${BASE_URL}api/shops/${shopID}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function editShop(formData, tourID) {
+  const token = localStorage.getItem("jwt");
+  try {
+    const res = await fetch(`${BASE_URL}api/shops/${tourID}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function getSingleShop(shopID) {
+  try {
+    const res = await fetch(`${BASE_URL}api/shops/${shopID}`);
+    const data = await res.json(res);
+    if (data.status === "success") return data.shop;
+    return "not-found";
+  } catch (err) {
+    console.log(err);
+  }
+}

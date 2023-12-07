@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { AiOutlineClose } from "react-icons/ai";
+
 import { createPortal } from "react-dom";
 import styles from "./Popup.module.scss";
 import { deleteTour } from "../../../../services/tourServices";
@@ -13,14 +13,13 @@ export default function Popup({ tour, setIsOpenModal }) {
     setIsOpenModal(false);
   }
   return createPortal(
-    <div className={styles.popup}>
-      <button onClick={() => setIsOpenModal(false)} className={styles.closeBtn}>
-        <AiOutlineClose />
-      </button>
-      <h3>Are you sure that you want to delete tour {tour.name}</h3>
-      <div className={styles.btnWrapper}>
-        <button onClick={() => handleDelete()}>Yes</button>
-        <button onClick={() => setIsOpenModal(false)}>No</button>
+    <div className={styles.overlay}>
+      <div className={styles.panel}>
+        <h3>Are you sure that you want to delete tour {tour.name}</h3>
+        <div className={styles.btnWrapper}>
+          <button onClick={() => handleDelete()}>Yes</button>
+          <button onClick={() => setIsOpenModal(false)}>No</button>
+        </div>
       </div>
     </div>,
     document.body
