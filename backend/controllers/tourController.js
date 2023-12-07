@@ -30,6 +30,16 @@ exports.createTour = catchAsync(async (req, res, next) => {
   if (!categories || categories?.length === 0)
     return next(new AppError(400, "Provide categories for tour"));
 
+  if (price <= 0)
+    return next(
+      new AppError(
+        400,
+        "Price must be greater than 0. If you want it free, click option 'FREE'"
+      )
+    );
+  if (duration <= 0)
+    return next(new AppError(400, "Duration must be greater than 0"));
+
   const tour = await Tour.create({
     name,
     categories,
