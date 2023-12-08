@@ -14,11 +14,10 @@ const ReviewSchema = new mongoose.Schema(
 );
 
 ReviewSchema.pre("remove", async function (next) {
-  console.log("POZVANO");
   const review = this;
 
   // Remove the review from the users' reviewedTour arrays
-  console.log(review._id);
+
   try {
     await User.updateMany(
       { reviewedTours: review._id },

@@ -94,7 +94,6 @@ export function useGetRadiusTours() {
   const { data, isLoading } = useQuery({
     queryFn: getRadiusTour,
     queryKey: ["RadiusTours"],
-   
   });
   return { data, isLoading };
 }
@@ -106,7 +105,6 @@ export function useBookmarkTour() {
     mutationFn: () => bookmarkTour(tourID),
     onSuccess: (res) => {
       queryClient.invalidateQueries(["tour"]);
-      console.log(`IZ HOOKA `, res);
     },
   });
   return { mutate, isLoading };

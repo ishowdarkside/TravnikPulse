@@ -38,7 +38,7 @@ export async function getRadiusShop() {
       `${BASE_URL}api/shops/shops-within/distance/${radius}/center/${userPositon.lng},${userPositon.lat}`
     );
     const data = await res.json();
-    console.log(data.shops);
+
     return data.shops;
   } catch (error) {
     console.log(error);

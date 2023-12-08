@@ -21,7 +21,6 @@ export default function Activities() {
     );
   });
 
-  console.log(selectedTours);
   return (
     <section className={styles.activities}>
       {selectedTours.length === 0 && (

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Spinner from "../../../components/Spinner/Spinner";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import { useGetAllShops } from "../../../hooks/useShops";
@@ -10,6 +11,11 @@ export default function PreferenceFilter() {
 
   const { data: shops, isLoading } = useGetAllShops();
 
+  useEffect(() => {
+    if (isLoading) return;
+
+    setActiveShopPreference(shops.at(0).category);
+  }, [isLoading]);
   if (isLoading) return <Spinner />;
 
   const allShopsGrouped = Object.entries(groupShopsByCategory(shops));
