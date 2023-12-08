@@ -40,7 +40,7 @@ export default function DateManagePanel() {
         ))}
 
         {matchingDateTours.length === 0 && (
-          <span>
+          <span className={styles.absPosition}>
             No tours on this date! Start creating some by clicking on plus icon
             .
           </span>

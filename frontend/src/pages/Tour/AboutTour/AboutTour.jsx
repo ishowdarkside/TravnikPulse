@@ -31,7 +31,11 @@ export default function AboutTour({ data, setShowReview, user }) {
     data.ratings.map((e) => e.value).reduce((prev, curr) => prev + curr, 0) /
     data.ratings.length;
 
-  const isExpired = new Date(data.date).getTime() < new Date().getTime();
+  const hours = +data.time.split(":").at(0);
+  const minutes = +data.time.split(":").at(1);
+
+  const isExpired =
+    new Date(data.date).setHours(hours, minutes) < new Date().getTime();
 
   const { mutate: bookmark } = useBookmarkTour();
 
@@ -47,7 +51,9 @@ export default function AboutTour({ data, setShowReview, user }) {
         <div className={styles.filters}>
           <p className={styles.flex}>
             <AiOutlineCalendar /> {formattedDate}{" "}
-            {isExpired && <span>EXPIRED</span>}
+            {isExpired && (
+              <span className={styles.expiredSession}>EXPIRED</span>
+            )}
           </p>
           <p className={styles.flex}>
             <AiOutlineClockCircle /> {data.time}

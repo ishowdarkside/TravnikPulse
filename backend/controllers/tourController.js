@@ -169,10 +169,18 @@ exports.getToursWithin = catchAsync(async (req, res, next) => {
   const tours = await Tour.find({
     location: { $geoWithin: { $centerSphere: [[lng, lat], radius] } },
   });
+
+  const notExpiredTours = tours.filter((tour) => {
+    const hours = +tour.time.split(":").at(0);
+    const minutes = +tour.time.split(":").at(1);
+
+    return new Date(tour.date).setHours(hours, minutes) >= new Date().getTime();
+  });
+
   res.status(200).json({
     status: "success",
     results: tours.length,
-    tours,
+    tours: notExpiredTours,
   });
 });
 

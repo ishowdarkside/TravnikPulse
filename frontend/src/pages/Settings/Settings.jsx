@@ -124,26 +124,6 @@ export default function Settings() {
                 )}
               </div>
             </div>
-            {/* NOTIFICATION SETTINGS */}
-            <div className={styles.notifications}>
-              <h3>Notifications</h3>
-              <div className={`${styles.item} ${styles.disabled}`}>
-                <img src={notificationIcon} alt="" />
-                <span>Pop-up notifications</span>
-              </div>
-            </div>
-            {/* OTHER SETTINGS */}
-            <div className={styles.other}>
-              <h3>Other</h3>
-              <div className={`${styles.item} ${styles.disabled}`}>
-                <img src={reportIcon} alt="" />
-                <span>Report event</span>
-              </div>
-              <div className={`${styles.item} ${styles.disabled}`}>
-                <img src={checkImage} alt="" />
-                <span>Contact Support</span>
-              </div>
-            </div>
           </div>
           <img src={travnikLogo} alt="" className={styles.logo} />
 

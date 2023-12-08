@@ -21,19 +21,21 @@ export default function DesktopBar() {
         <Link to="/app/map">Explore Travnik</Link>
       </div>
 
-      <div className={styles.rightWrapper}>
-        <span className={styles.choiceSub}>🔥 Event of our choice</span>
-        <div
-          className={styles.eventWrapper}
-          style={{
-            backgroundImage: `url("http://127.0.1:8000/${choiceTour.coverImg}") `,
-          }}
-          onClick={() => navigate(`/app/tour/${choiceTour._id}`)}
-        >
-          <span>{choiceTour.name}</span>
-          <div className={styles.overlay}></div>
+      {tours.length > 0 && (
+        <div className={styles.rightWrapper}>
+          <span className={styles.choiceSub}>🔥 Event of our choice</span>
+          <div
+            className={styles.eventWrapper}
+            style={{
+              backgroundImage: `url("http://127.0.1:8000/${choiceTour.coverImg}") `,
+            }}
+            onClick={() => navigate(`/app/tour/${choiceTour._id}`)}
+          >
+            <span>{choiceTour.name}</span>
+            <div className={styles.overlay}></div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
