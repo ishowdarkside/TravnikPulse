@@ -10,6 +10,9 @@ export default function MapContext({ children }) {
 	const [ radius, setRadius ] = useState(0);
 	const [ eventLocation, setEventLocation ] = useState(null);
 
+	const [ showModal, setShowModal ] = useState(false);
+	const [ selectedTour, setSelectedTour ] = useState([]);
+
 	useEffect(
 		() => {
 			const userPosition = JSON.parse(localStorage.getItem('position'));
@@ -37,7 +40,11 @@ export default function MapContext({ children }) {
 				travelTime,
 				setTravelTime,
 				eventLocation,
-				setEventLocation
+				setEventLocation,
+				selectedTour,
+				setSelectedTour,
+				showModal,
+				setShowModal
 			}}
 		>
 			{children}

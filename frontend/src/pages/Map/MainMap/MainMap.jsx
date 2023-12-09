@@ -19,16 +19,19 @@ import { useMapContext } from "../../../context/MapContext";
 import allHotels from "../../../utils/hotels/hotel.json";
 import Spinner from "../../../components/Spinner/Spinner";
 import MarkerCustomIcon from "../../../assets/marker.svg";
+import SelectedTour from "../SelectedTour/SelectedTour";
 
 export default function MainMap() {
   const {
     activeFilter,
-    setTourLocation,
     tourLocation,
     currentPosition,
     setCurrentPosition,
     radius,
     eventLocation,
+    setTourLocation,
+    selectedTour,
+    showModal
   } = useMapContext();
   const { data: tours, isLoading: toursLoading } = useGetTours();
   const { data: shops, isLoading: shopsLoading } = useGetAllShops();
@@ -95,7 +98,7 @@ export default function MainMap() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {activeData.map((tour, index) => (
-          <Markers key={index} tour={tour} setTourLocation={setTourLocation} />
+          <Markers key={index} tour={tour} />
         ))}
 
         <Marker position={currentPosition} icon={userIcon} />
@@ -121,6 +124,7 @@ export default function MainMap() {
             />
           </>
         ) : null}
+        {showModal && <SelectedTour />}
       </MapContainer>
     </>
   );

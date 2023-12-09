@@ -7,7 +7,7 @@ export default function Activity({ tour }) {
     <Link to={`/app/tour/${tour._id}`}>
       <div
         className={styles.activity}
-        style={{ backgroundImage: `url(http://127.0.1:8000/${tour.coverImg})` }}
+        style={{ backgroundImage: `url(http://127.0.0.1:8000/${tour.coverImg})` }}
       >
         <div className={styles.activityOverlay} />
         <div className={styles.content}>
