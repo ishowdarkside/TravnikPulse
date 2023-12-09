@@ -5,11 +5,15 @@
   position: relative;
   z-index: 2;
   background-color: #fff;
-  padding: 2.5rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+
+  img {
+    max-width: 8rem;
+  }
 
   @include desktop-md() {
     display: none;

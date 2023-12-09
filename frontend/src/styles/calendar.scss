@@ -68,6 +68,7 @@
   transition: all 0.3s ease;
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 24px rgba(#f37022, 0.4);
+    box-shadow: rgba(darken(#000, 15), 0.12) 0px 2px 3px,
+      rgba(darken(#000, 15), 0.24) 0px 2px 2px;
   }
 }

@@ -106,8 +106,9 @@
   }
 }
 .settingsWrapper {
-  padding: 0 2rem;
+  padding: 2rem;
   @include desktop-lg() {
+    padding: 10rem 2rem;
     width: 100%;
     display: flex;
     align-items: center;
