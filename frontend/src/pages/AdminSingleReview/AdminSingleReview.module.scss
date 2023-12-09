@@ -81,6 +81,7 @@
 
   @include desktop-md() {
     flex-direction: row;
+    align-items: flex-start;
     & > * {
       flex-grow: 1;
     }
@@ -94,7 +95,8 @@
     cursor: pointer;
 
     @include desktop-md() {
-      @include text("display-xs-regular");
+      padding: 1.2rem;
+      @include text("text-md-regular");
     }
 
     &:first-of-type {

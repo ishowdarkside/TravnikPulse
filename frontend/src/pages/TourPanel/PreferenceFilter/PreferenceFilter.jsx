@@ -4,11 +4,16 @@ import { IoAdd } from "react-icons/io5";
 // SCSS
 import styles from "./PreferenceFilter.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function PreferenceFilter() {
   const { activePreference, setActivePreference } = useTouristDataContext();
   const userPreferences = JSON.parse(localStorage.getItem("preferences"));
 
+  useEffect(() => {
+    console.log(userPreferences);
+    setActivePreference(userPreferences[0]);
+  }, []);
   const navigate = useNavigate();
   return (
     <section className={styles.preferenceFilter}>

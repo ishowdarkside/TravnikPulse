@@ -11,7 +11,7 @@ export default function TouristDataContext({ children }) {
   const [position, setPosition] = useState(null);
   const [preferences, setPreferences] = useState([]);
   const [suggestPlace, setSuggestPlace] = useState(false);
-  const [activePreference, setActivePreference] = useState("nightlife");
+  const [activePreference, setActivePreference] = useState();
   const [activeShopPreference, setActiveShopPreference] = useState(null);
 
   useEffect(() => {
