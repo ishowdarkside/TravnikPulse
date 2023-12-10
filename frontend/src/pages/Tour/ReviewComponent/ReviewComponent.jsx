@@ -28,7 +28,7 @@ export default function ReviewComponent({ review, tour }) {
       {review.images.length > 0 && (
         <div className={styles.imagesWrapper}>
           {review.images.map((image) => (
-            <img src={`http://127.0.0.1:8000/${image}`} key={image} />
+            <img src={`http://127.0.1:8000/${image}`} key={image} />
           ))}
         </div>
       )}

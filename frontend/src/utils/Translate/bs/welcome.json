@@ -1,4 +1,6 @@
 {
+    "yes": "Da",
+    "no": "Ne",
     "welcome_page": {
         "h1_text": "Dobrodošli u Travnik",
         "p_text": "Grad dobrih ljudi i dobre hrane! Pronađite ljude, družite se, jedite dobro, učite o istoriji, uživajte u prirodi, posjećujte muzeje...",
@@ -10,6 +12,7 @@
         "time_details": {
             "title": "Koliko dugo ćeš biti tamo?"
         },
+        "suggest_text": "Da li želite naš predlog",
         "people_details": {
             "title": "Koliko vas je u posjeti Travniku?"
         },
@@ -31,7 +34,10 @@
             "5": "Muzeji",
             "6": "Filmovi",
             "7": "Muzika",
-            "8": "Sport"
+            "8": "Kultura",
+            "9": "Parkovi",
+            "10": "Nauka",
+            "11": "Sport"
         },
         "button_text": "Pošaljite izbore"
     }

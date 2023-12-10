@@ -3,9 +3,11 @@ import UserActive from "../../../assets/user-active.png";
 import UserInactive from "../../../assets/user-inactive.png";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
+import { useTranslation } from "react-i18next";
 
 export default function TravelDetailsCount() {
   const { visitCount, setVisitCount, setActivePanel } = useTouristDataContext();
+  const [t] = useTranslation("welcome");
 
   return (
     <section className={styles.sectionBody}>
@@ -13,13 +15,13 @@ export default function TravelDetailsCount() {
         <button onClick={() => setActivePanel("travelDetailsDuration")}>
           <AiOutlineArrowLeft />
         </button>
-        <h2>Tell us more about yourself!</h2>
+        <h2>{t("details_page.h1_text")}</h2>
         <p>
-          Supply us with information that will improve your enjoyment in Travnik
+        {t("details_page.p_text")}
         </p>
 
         <div className={styles.touristCountWrapper}>
-          <span>How many of you are visiting Travnik?</span>
+          <span>{t("details_page.people_details.title")}</span>
           <div className={styles.grid}>
             <div
               onClick={() => {

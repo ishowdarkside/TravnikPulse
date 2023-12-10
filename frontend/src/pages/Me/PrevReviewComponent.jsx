@@ -7,7 +7,7 @@ export default function PrevReviewComponent({ review }) {
   return (
     <div onClick={() => navigate(`/app/tour/${review.tour._id}`)}>
       <img
-        src={`http://127.0.0.1:8000/${review.tour.coverImg}`}
+        src={`http://127.0.1:8000/${review.tour.coverImg}`}
         alt="cover image"
       />
       <span>{review.tour.name}</span>

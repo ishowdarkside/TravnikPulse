@@ -47,7 +47,7 @@ const SelectedTour = () => {
         <img
           src={
             selectedTour?.type !== 'hotels'
-              ? `http://127.0.0.1:8000/${selectedTour.coverImg}`
+              ? `http://127.0.1:8000/${selectedTour.coverImg}`
               : selectedTour.pictures[0]
           }
           className={SelectedTourStyles.img}

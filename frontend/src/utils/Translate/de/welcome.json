@@ -1,4 +1,6 @@
 {
+    "yes": "Ja",
+    "no": "Nein",
     "welcome_page": {
         "h1_text": "Willkommen in Travnik",
         "p_text": "Stadt der guten Leute und des guten Essens! Leute finden, abhängen, gut essen, etwas über Geschichte lernen, die Natur genießen, Museen besuchen ...",
@@ -10,6 +12,7 @@
         "time_details": {
             "title": "Wie lange bleibst du da?"
         },
+        "suggest_text": "Möchten Sie, dass wir Ihnen einen Vorschlag machen?",
         "people_details": {
             "title": "Wie viele von Ihnen besuchen Travnik?"
         },
@@ -31,7 +34,10 @@
             "5": "Museen",
             "6": "Filme",
             "7": "Musik",
-            "8": "Sport"
+            "8": "Kultur",
+            "9": "Parks",
+            "10": "Wissenschaft",
+            "11": "Sport"
         },
         "button_text": "Auswahlmöglichkeiten einreichen"
     }

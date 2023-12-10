@@ -2,11 +2,13 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import Map from "../../../components/Map/Map";
 import styles from "./Location.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Location() {
-  const { activePanel, setActivePanel, position, setPosition } =
+  const { setActivePanel, position, setPosition } =
     useTouristDataContext();
+  const [t] = useTranslation("welcome");
 
   useEffect(() => {
     // Check if the browser supports geolocation
@@ -33,10 +35,9 @@ export default function Location() {
         <button onClick={() => setActivePanel("travelDetailsCount")}>
           <AiOutlineArrowLeft />
         </button>
-        <h2>Tell us where you are</h2>
+        <h2>{t("location_page.h1_text")}</h2>
         <p>
-          By marking your location we will be able to suggest you best places in
-          Travnik, nearby you
+        {t("location_page.p_text")}
         </p>
 
         <Map />
@@ -45,7 +46,7 @@ export default function Location() {
           onClick={() => setActivePanel("preferenceDetails")}
           disabled={!position}
         >
-          Continue
+          {t("location_page.button_text")}
         </button>
       </div>
     </section>

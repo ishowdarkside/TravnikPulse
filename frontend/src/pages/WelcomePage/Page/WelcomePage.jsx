@@ -7,7 +7,6 @@ import Explore from "../Explore/Explore";
 import TravelDetails from "../TravelDetails/TravelDetails";
 import Location from "../Location/Location";
 import Preference from "../Preferences/Preference";
-import Proceed from "../Proceed/Proceed";
 import TravelDetailsCount from "../TravelDetailsCount/TravelDetailsCount";
 
 export default function WelcomePage() {
@@ -26,7 +25,6 @@ export default function WelcomePage() {
       {activePanel === "travelDetailsCount" && <TravelDetailsCount />}
       {activePanel === "locationDetails" && <Location />}
       {activePanel === "preferenceDetails" && <Preference />}
-      {activePanel === "proceed" && <Proceed />}
     </section>
   );
 }

@@ -4,6 +4,7 @@ import DateInactive from "../../../assets/date-inactive.png";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import { TypeAnimation } from "react-type-animation";
+import { useTranslation } from "react-i18next";
 
 export default function TravelDetails() {
   const {
@@ -12,6 +13,7 @@ export default function TravelDetails() {
     setActivePanel,
     setSuggestPlace,
   } = useTouristDataContext();
+  const [t] = useTranslation("welcome");
 
   return (
     <section className={styles.sectionBody}>
@@ -19,12 +21,12 @@ export default function TravelDetails() {
         <button onClick={() => setActivePanel("explore")}>
           <AiOutlineArrowLeft />
         </button>
-        <h2>Tell us more about yourself!</h2>
+        <h2>{t("details_page.h1_text")}</h2>
         <p>
-          Supply us with information that will improve your enjoyment in Travnik
+        {t("details_page.p_text")}
         </p>
         <div className={styles.dateWrapper}>
-          <span>How long will you be here?</span>
+          <span>{t("details_page.time_details.title")}</span>
           <div className={styles.grid}>
             <div
               onClick={() => {
@@ -64,7 +66,7 @@ export default function TravelDetails() {
           {selectedVisitPeriod >= 2 && (
             <div className={styles.checkboxWrapper}>
               <span>
-                Do you want us to suggest{" "}
+              {t("details_page.suggest_text")}{" "}
                 <TypeAnimation
                   sequence={[
                     // Same substring at the start will only be typed out once, initially
@@ -88,7 +90,7 @@ export default function TravelDetails() {
                     setActivePanel("travelDetailsCount");
                   }}
                 >
-                  NO
+                  {t("no")}
                 </button>
                 <button
                   onClick={() => {
@@ -96,7 +98,7 @@ export default function TravelDetails() {
                     setActivePanel("travelDetailsCount");
                   }}
                 >
-                  YES
+                  {t("yes")}
                 </button>
               </div>
             </div>

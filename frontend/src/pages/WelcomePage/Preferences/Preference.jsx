@@ -3,6 +3,7 @@ import { useTouristDataContext } from "../../../context/TouristDataContext";
 import PreferenceOptions from "../../../components/PreferenceOptions/PreferenceOptions";
 import styles from "./Preference.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Preference() {
   const {
@@ -14,6 +15,7 @@ export default function Preference() {
     language,
     suggestPlace,
   } = useTouristDataContext();
+  const [t] = useTranslation("welcome");
 
   const navigate = useNavigate();
 
@@ -34,8 +36,8 @@ export default function Preference() {
         <button onClick={() => setActivePanel("locationDetails")}>
           <AiOutlineArrowLeft />
         </button>
-        <h2>Select your preferences</h2>
-        <p>Choose preferences that you'd like to see while exploring Travnik</p>
+        <h2>{t("location_page.h1_text")}</h2>
+        <p>{t("location_page.p_text")}</p>
 
         <PreferenceOptions />
 
@@ -45,7 +47,7 @@ export default function Preference() {
             handleClick();
           }}
         >
-          Submit Choices
+          {t("location_page.button_text")}
         </button>
       </div>
     </section>

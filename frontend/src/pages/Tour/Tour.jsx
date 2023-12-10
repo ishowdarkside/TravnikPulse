@@ -17,9 +17,11 @@ export default function Tour() {
   const { data, isLoading } = useGetSingleTour();
   const { data: user, isLoading: loadingUser } = useGetUser();
 
+  
   if (isLoading || loadingUser) return <Spinner />;
-
+  
   if (data === "not-found") return <NotFound />;
+  console.log(data.coverImg)
   return (
     <>
       <DesktopNav />
@@ -30,7 +32,7 @@ export default function Tour() {
             <div
               className={styles.image}
               style={{
-                backgroundImage: `url('http://127.0.0.1:8000/${data.coverImg}')`,
+                backgroundImage: `url('http://127.0.1:8000/${data.coverImg}')`,
               }}
             >
               <div className={styles.imageOverlay} />

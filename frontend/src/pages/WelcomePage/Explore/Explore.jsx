@@ -1,9 +1,12 @@
-import styles from "./Explore.module.scss";
 import TravnikExplorImg from "../../../assets/travnik-explore-img.png";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
+// SCSS
+import styles from "./Explore.module.scss";
 export default function Explore() {
   const { setActivePanel } = useTouristDataContext();
+  const [t] = useTranslation("welcome");
   return (
     <section className={styles.exploreSection}>
       <div className={styles.interactionWrapper}>
@@ -11,14 +14,12 @@ export default function Explore() {
           <AiOutlineArrowLeft />
         </button>
         <img src={TravnikExplorImg} alt="travnik image" />
-        <h2>Welcome to Travnik</h2>
+        <h2>{t("welcome_page.h1_text")}</h2>
         <p>
-          City of <span className={styles.redText}>good people</span> &{" "}
-          <span className={styles.redText}>good food!</span> Find people, hang
-          out, eat well, learn about history, enjoy nature, visit museums...
+          {t("welcome_page.p_text")}
         </p>
         <button onClick={() => setActivePanel("travelDetailsDuration")}>
-          Explore Travnik
+          {t("welcome_page.button_text")}
         </button>
       </div>
     </section>

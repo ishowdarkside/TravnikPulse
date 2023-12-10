@@ -9,7 +9,7 @@ export default function EventComponent({ tour }) {
       className={styles.tourWrapper}
       onClick={() => navigate(`/app/tour/${tour._id}`)}
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(255, 126, 95, 0.5), rgba(254, 180, 123, 0.5)), url('http://127.0.0.1:8000/${tour.coverImg}')`,
+        backgroundImage: `linear-gradient(to right, rgba(255, 126, 95, 0.5), rgba(254, 180, 123, 0.5)), url('http://127.0.1:8000/${tour.coverImg}')`,
       }}
     >
       <div className={styles.overlay}>

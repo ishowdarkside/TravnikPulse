@@ -9,8 +9,10 @@ export default function Markers({ tour }) {
   const { setSelectedTour, setShowModal, showModal } = useMapContext();
   const map = useMap();
 
+  console.log(tour)
+
   const customIcon = new L.Icon({
-    iconUrl: `http://127.0.0.1:8000/${tour.coverImg}`,
+    iconUrl: `http://127.0.1:8000/${tour.coverImg}`,
     iconSize: [48, 48],
     iconAnchor: [24, 48],
     popupAnchor: [0, -48],
