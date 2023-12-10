@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const context = createContext();
 
 export default function LanguageContext({ children }) {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState(null);
 
   useEffect(() => {
     const storageLanguage = JSON.parse(localStorage.getItem("language"));
