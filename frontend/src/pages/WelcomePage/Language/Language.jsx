@@ -21,7 +21,7 @@ export default function Language() {
           <div
             onClick={() => {
               i18n.changeLanguage("bs");
-              setLanguage("ba");
+              setLanguage("bs");
               setActivePanel("explore");
             }}
           >
