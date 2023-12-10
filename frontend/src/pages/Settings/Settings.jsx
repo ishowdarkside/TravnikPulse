@@ -21,6 +21,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
 import travnikLogo from "../../assets/main-logo.png";
 import { useLanguageContext } from "../../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 export default function Settings() {
   const [langDropdown, setLangDropdown] = useState(false);
@@ -29,6 +30,7 @@ export default function Settings() {
   const { data: user, isLoading } = useGetUser();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const navigate = useNavigate();
+  const [t] = useTranslation('main')
 
   // Reset all settings
   function resetSettings() {
@@ -61,10 +63,10 @@ export default function Settings() {
                   onClick={() => navigate("/app/me")}
                 >
                   <BiUserCircle />
-                  <p>My profile</p>
+                  <p>{t("main_page_settings.links.1")}</p>
                 </div>
               )}
-              <h3>General Settings</h3>
+              <h3>{t("main_page_settings.h3_text")}</h3>
               <div className={styles.options}>
                 <div
                   className={
@@ -78,7 +80,7 @@ export default function Settings() {
                   {language === "en" && <img src={USAFlag} alt="" />}
                   {language === "de" && <img src={GermanFlag} alt="" />}
                   {language === "es" && <img src={SpanishFlag} alt="" />}
-                  <span>Change language</span>
+                  <span>{t("main_page_settings.links.2")}</span>
                   {langDropdown && (
                     <ChangeLanguageDropdown setLangDropdown={setLangDropdown} />
                   )}
@@ -89,14 +91,14 @@ export default function Settings() {
                   onClick={() => navigate("preferences")}
                 >
                   <img src={checkImage} alt="" />
-                  <p>Change preference</p>
+                  <p>{t("main_page_settings.links.3")}</p>
                 </div>
                 <div
                   className={styles.item}
                   onClick={() => setIsOpenModal(true)}
                 >
                   <RiArrowGoBackLine />
-                  <span>Reset settings</span>
+                  <span>{t("main_page_settings.links.4")}</span>
                 </div>
                 <div
                   className={`${styles.item} ${
@@ -109,8 +111,8 @@ export default function Settings() {
                   <MdOutlineBed />
                   <span>
                     {suggestPlace
-                      ? "Disable suggestions"
-                      : "Enable suggestions"}
+                      ? t("main_page_settings.links.5")
+                      : t("main_page_settings.links.6")}
                   </span>
                 </div>
                 {user !== "Unauthorized" && (
@@ -122,7 +124,7 @@ export default function Settings() {
                       navigate("/app");
                     }}
                   >
-                    Log out
+                    {t("main_page_settings.links.7")}
                     <HiOutlineLogout />
                   </button>
                 )}

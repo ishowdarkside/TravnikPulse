@@ -8,10 +8,11 @@ import { GiSandsOfTime } from 'react-icons/gi';
 import { TfiMoney } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import { useMapContext } from '../../../context/MapContext';
+import { useTranslation } from 'react-i18next';
 
 const SelectedTour = () => {
   const { setShowModal, selectedTour, setSelectedTour, setTourLocation, travelTime } = useMapContext();
-    
+  const [t] = useTranslation('main')
   const travelConvertedToSeconds = travelTime * 60;
 
   return ReactDOM.createPortal(
@@ -38,10 +39,10 @@ const SelectedTour = () => {
             }}
           >
             <MdDirections />
-            Directions
+            {t("main_page_map.popup_details.direction_button_text")}
           </button>
           {selectedTour?.type !== 'hotels' && !selectedTour.shopName && (
-            <Link to={`/app/tour/${selectedTour._id}`}>See more</Link>
+            <Link to={`/app/tour/${selectedTour._id}`}>{t("main_page_map.popup_details.see_more_button_text")}</Link>
           )}
         </div>
         <img
@@ -55,7 +56,7 @@ const SelectedTour = () => {
         />
         <div className={SelectedTourStyles.navigation}>
           <ul>
-            <li>Overview</li>
+            <li>{t("main_page_map.popup_details.overview_text")}</li>
           </ul>
         </div>
       </div>
@@ -68,7 +69,7 @@ const SelectedTour = () => {
                   ? Math.floor(travelTime / 60) + ' h' :
                   travelConvertedToSeconds <= 60 ? Math.floor(travelConvertedToSeconds) + ' s'
                   : travelTime + ' min'
-                : 'Start route to calculate'}
+                : t("main_page_map.popup_details.overview_route_calculate")}
           </li>
           {selectedTour.type !== 'hotels' && !selectedTour.shopName && (
             <>

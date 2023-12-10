@@ -5,10 +5,12 @@ import styles from "./Activities.module.scss";
 import { useGetTours } from "../../../hooks/useTours";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import Spinner from "../../../components/Spinner/Spinner";
+import { useTranslation } from 'react-i18next';
 
 export default function Activities() {
   const { data, isLoading } = useGetTours();
   const { activePreference } = useTouristDataContext();
+  const [t] = useTranslation('main')
 
   if (isLoading) return <Spinner />;
   const selectedTours = data.filter(({ categories, date, time }) => {
@@ -25,7 +27,7 @@ export default function Activities() {
     <section className={styles.activities}>
       {selectedTours.length === 0 && (
         <span className={styles.noActivities}>
-          No tours for this category 😢
+          {t("main_page_tour_details.no_tours")} 😢
         </span>
       )}
       {data &&

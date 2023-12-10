@@ -16,9 +16,11 @@ import ReviewComponent from "../ReviewComponent/ReviewComponent";
 import { useBookmarkTour } from "../../../hooks/useTours";
 import { useMapContext } from "../../../context/MapContext";
 import RateTour from "../../Settings/RateTour/RateTour";
+import { useTranslation } from 'react-i18next';
 
 export default function AboutTour({ data, setShowReview, user }) {
   const { setEventLocation } = useMapContext();
+  const [t] = useTranslation('main')
   const navigate = useNavigate();
 
   const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
@@ -52,7 +54,7 @@ export default function AboutTour({ data, setShowReview, user }) {
           <p className={styles.flex}>
             <AiOutlineCalendar /> {formattedDate}{" "}
             {isExpired && (
-              <span className={styles.expiredSession}>EXPIRED</span>
+              <span className={styles.expiredSession}>{t("main_page_tour_details.expired")}</span>
             )}
           </p>
           <p className={styles.flex}>
@@ -68,7 +70,7 @@ export default function AboutTour({ data, setShowReview, user }) {
               navigate("/app/map");
             }}
           >
-            <CiLocationOn /> View location on map
+            <CiLocationOn /> {t("main_page_tour_details.view_location_text")}
           </span>
           <p className={styles.flex}>
             <PiMoneyLight /> {data.price}
@@ -92,7 +94,7 @@ export default function AboutTour({ data, setShowReview, user }) {
               onClick={bookmark}
             >
               {isBookmarked ? <BsBookmarkFill /> : <BsBookmark />}
-              {isBookmarked ? "Activity bookmarked" : "Bookmark this activity"}
+              {isBookmarked ? t("main_page_tour_details.activity_bookmarked") : t("main_page_tour_details.bookmark_button_text")}
             </button>
           )}
           <button
@@ -105,7 +107,7 @@ export default function AboutTour({ data, setShowReview, user }) {
             }}
           >
             <TbMessage2Minus />
-            Leave a review
+            {t("main_page_tour_details.review_button_text")}
           </button>
         </div>
         {data.reviews.length > 0 && (

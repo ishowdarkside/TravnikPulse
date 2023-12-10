@@ -5,9 +5,11 @@ import styles from "./ClientCalendar.module.scss";
 import { formatDate } from "../../services/dateServices";
 import Spinner from "../../components/Spinner/Spinner";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
+import { useTranslation } from "react-i18next";
 
 export default function EventCalendar({ setActiveDate }) {
   const { data, isLoading } = useGetTours();
+  const [t] = useTranslation('main');
 
   if (isLoading) return <Spinner />;
 
@@ -34,7 +36,7 @@ export default function EventCalendar({ setActiveDate }) {
                         />
                       ))}
                     </div>
-                    <span>{toursOnDate.length} events</span>
+                    <span>{toursOnDate.length} {t("main_page_calendar.events_text")}</span>
                   </>
                 )}
               </>

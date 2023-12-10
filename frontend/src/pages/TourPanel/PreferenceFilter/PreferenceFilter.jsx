@@ -5,9 +5,11 @@ import { IoAdd } from "react-icons/io5";
 import styles from "./PreferenceFilter.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function PreferenceFilter() {
   const { activePreference, setActivePreference } = useTouristDataContext();
+  const [t] = useTranslation('main');
   const userPreferences = JSON.parse(localStorage.getItem("preferences"));
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function PreferenceFilter() {
                   : styles.span
               }
             >
-              {value}
+              {t(value)}
             </span>
           </div>
         ))}
@@ -52,7 +54,7 @@ export default function PreferenceFilter() {
         <div className={styles.icon}>
           <IoAdd />
         </div>
-        <span className={styles.span}>Add</span>
+        <span className={styles.span}>{t("preferences.links.0")}</span>
       </div>
     </section>
   );

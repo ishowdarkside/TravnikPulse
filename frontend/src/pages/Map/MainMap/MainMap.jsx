@@ -30,7 +30,6 @@ export default function MainMap() {
     radius,
     eventLocation,
     setTourLocation,
-    selectedTour,
     showModal
   } = useMapContext();
   const { data: tours, isLoading: toursLoading } = useGetTours();

@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useTranslation } from "react-i18next";
 import styles from "./PreferencePanel.module.scss";
 
 export default function PreferencePanel({
   selectedPreferences,
   setSelectedPreferences,
 }) {
+  const [t] = useTranslation('main');
   function addPreference(p) {
     if (selectedPreferences.includes(p))
       return setSelectedPreferences((curr) => curr.filter((e) => e !== p));
@@ -21,7 +23,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("food") ? styles.activeOption : ""
             }
           >
-            Food
+            {t("preferences.links.2")}
           </div>
           <div
             onClick={() => addPreference("nightlife")}
@@ -31,7 +33,7 @@ export default function PreferencePanel({
                 : ""
             }
           >
-            Nightlife
+            {t("preferences.links.1")}
           </div>
           <div
             onClick={() => addPreference("art")}
@@ -39,7 +41,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("art") ? styles.activeOption : ""
             }
           >
-            Art
+            {t("preferences.links.3")}
           </div>
           <div
             onClick={() => addPreference("history")}
@@ -47,17 +49,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("history") ? styles.activeOption : ""
             }
           >
-            History
-          </div>
-          <div
-            onClick={() => addPreference("amenities")}
-            className={
-              selectedPreferences.includes("amenities")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Amenities
+            {t("preferences.links.4")}
           </div>
           <div
             onClick={() => addPreference("museums")}
@@ -65,7 +57,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("museums") ? styles.activeOption : ""
             }
           >
-            Museums
+            {t("preferences.links.5")}
           </div>
           <div
             onClick={() => addPreference("movies")}
@@ -73,7 +65,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("movies") ? styles.activeOption : ""
             }
           >
-            Movies
+            {t("preferences.links.6")}
           </div>
           <div
             onClick={() => addPreference("music")}
@@ -81,7 +73,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("music") ? styles.activeOption : ""
             }
           >
-            Music
+            {t("preferences.links.7")}
           </div>
           <div
             onClick={() => addPreference("culture")}
@@ -89,15 +81,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("culture") ? styles.activeOption : ""
             }
           >
-            Culture
-          </div>
-          <div
-            onClick={() => addPreference("dayTrip")}
-            className={
-              selectedPreferences.includes("dayTrip") ? styles.activeOption : ""
-            }
-          >
-            Day Trips
+            {t("preferences.links.8")}
           </div>
           <div
             onClick={() => addPreference("parks")}
@@ -105,7 +89,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("parks") ? styles.activeOption : ""
             }
           >
-            Parks
+            {t("preferences.links.9")}
           </div>
           <div
             onClick={() => addPreference("science")}
@@ -113,7 +97,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("science") ? styles.activeOption : ""
             }
           >
-            Science
+            {t("preferences.links.10")}
           </div>
           <div
             onClick={() => addPreference("sport")}
@@ -121,144 +105,7 @@ export default function PreferencePanel({
               selectedPreferences.includes("sport") ? styles.activeOption : ""
             }
           >
-            Sport
-          </div>
-          <div
-            onClick={() => addPreference("show")}
-            className={
-              selectedPreferences.includes("show") ? styles.activeOption : ""
-            }
-          >
-            Show
-          </div>
-          <div
-            onClick={() => addPreference("circus")}
-            className={
-              selectedPreferences.includes("circus") ? styles.activeOption : ""
-            }
-          >
-            Circus
-          </div>
-          <div
-            onClick={() => addPreference("events")}
-            className={
-              selectedPreferences.includes("events") ? styles.activeOption : ""
-            }
-          >
-            {" "}
-            Events
-          </div>
-          <div
-            onClick={() => addPreference("seminars")}
-            className={
-              selectedPreferences.includes("seminars")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Seminars
-          </div>
-          <div
-            onClick={() => addPreference("river")}
-            className={
-              selectedPreferences.includes("river") ? styles.activeOption : ""
-            }
-          >
-            River
-          </div>
-          <div
-            onClick={() => addPreference("workshop")}
-            className={
-              selectedPreferences.includes("workshop")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Workshops
-          </div>
-          <div
-            onClick={() => addPreference("shopping")}
-            className={
-              selectedPreferences.includes("shopping")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Shopping
-          </div>
-          <div
-            onClick={() => addPreference("hiking")}
-            className={
-              selectedPreferences.includes("hiking") ? styles.activeOption : ""
-            }
-          >
-            Hiking
-          </div>
-          <div
-            onClick={() => addPreference("camping")}
-            className={
-              selectedPreferences.includes("camping") ? styles.activeOption : ""
-            }
-          >
-            Camping
-          </div>
-          <div
-            onClick={() => addPreference("outdoor")}
-            className={
-              selectedPreferences.includes("outdoor") ? styles.activeOption : ""
-            }
-          >
-            Outdoor
-          </div>
-          <div
-            onClick={() => addPreference("technology")}
-            className={
-              selectedPreferences.includes("technology")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Technologoy
-          </div>
-          <div
-            onClick={() => addPreference("coffeeShop")}
-            className={
-              selectedPreferences.includes("coffeeShop")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Coffee Shops
-          </div>
-          <div
-            onClick={() => addPreference("bikingRoutes")}
-            className={
-              selectedPreferences.includes("bikingRoutes")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Biking
-          </div>
-          <div
-            onClick={() => addPreference("vegeterian")}
-            className={
-              selectedPreferences.includes("vegeterian")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Vegeterian
-          </div>
-          <div
-            onClick={() => addPreference("petFriendlyPlaces")}
-            className={
-              selectedPreferences.includes("petFriendlyPlaces")
-                ? styles.activeOption
-                : ""
-            }
-          >
-            Pet-Friendly Places
+            {t("preferences.links.11")}
           </div>
         </div>
       </div>

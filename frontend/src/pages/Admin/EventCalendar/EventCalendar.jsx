@@ -5,11 +5,13 @@ import { useAdminContext } from "../../../context/AdminContext";
 import { formatDate } from "../../../services/dateServices";
 import Spinner from "../../../components/Spinner/Spinner";
 import ReturnButton from "../../../components/ReturnButton/ReturnButton";
+import { useTranslation } from "react-i18next";
 //import "react-calendar/dist/Calendar.css";
 
 export default function EventCalendar() {
   const { data, isLoading } = useGetTours();
   const { setActiveDate } = useAdminContext();
+  const [t] = useTranslation('main');
 
   if (isLoading) return <Spinner />;
 
@@ -38,7 +40,7 @@ export default function EventCalendar() {
                       ))}
                     </div>
                     <span className={styles.tourLengthCount}>
-                      {toursOnDate.length} events
+                      {toursOnDate.length} {t("main_page_calendar.events_text")}
                     </span>
                   </>
                 )}

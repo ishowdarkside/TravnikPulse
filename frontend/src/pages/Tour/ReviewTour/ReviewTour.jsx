@@ -7,10 +7,12 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 import styles from "./ReviewTour.module.scss";
 import { useCreateReview } from "../../../hooks/useReview";
 import Spinner from "../../../components/Spinner/Spinner";
+import { useTranslation } from 'react-i18next';
 
 export default function ReviewTour({ setShowReview }) {
   const [filesLength, setFilesLength] = useState(0);
   const [images, setImages] = useState(null);
+  const [t] = useTranslation('main')
 
   const [message, setMessage] = useState("");
 
@@ -42,20 +44,20 @@ export default function ReviewTour({ setShowReview }) {
       >
         x
       </button>
-      <h2>Your review is incredibly helpful, thank you</h2>
+      <h2>{t("main_page_tour_details.review_form.h1_text")}</h2>
       <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.inputContainer}>
-          <label htmlFor="review">Message</label>
+          <label htmlFor="review">{t("main_page_tour_details.review_form.message_label_text")}</label>
           <textarea
             rows="5"
             id="review"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Your message"
+            placeholder={t("main_page_tour_details.review_form.message_input_placeholder")}
           ></textarea>
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="file">Attach images</label>
+          <label htmlFor="file">{t("main_page_tour_details.review_form.images_label_text")}</label>
           <label htmlFor="file" className={styles.fileInput}>
             {filesLength === 0
               ? "Max 30mb (jpg, png)"
@@ -78,7 +80,7 @@ export default function ReviewTour({ setShowReview }) {
 
         <button type="submit" className={styles.submitBtn}>
           <MdOutlineDone />
-          Submit review
+          {t("main_page_tour_details.review_form.button_text")}
         </button>
       </form>
     </div>

@@ -2,9 +2,11 @@ import styles from "./DesktopBar.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useGetTours } from "../../../hooks/useTours";
 import Spinner from "../../../components/Spinner/Spinner";
+import { useTranslation } from 'react-i18next';
 
 export default function DesktopBar() {
   const { data: tours, isLoading } = useGetTours();
+  const [t] = useTranslation('main')
   const navigate = useNavigate();
   if (isLoading) return <Spinner />;
 
@@ -12,18 +14,17 @@ export default function DesktopBar() {
   return (
     <div className={styles.desktopBar}>
       <div className={styles.leftWrapper}>
-        <h2>Welcome to Travnik</h2>
+        <h2>{t("main_page_desktop_text.h1_text")}</h2>
         <p>
-          City of <span className={styles.orange}>good people</span> &{" "}
-          <span className={styles.orange}>good food!</span>
+        {t("main_page_desktop_text.h2_text")}
         </p>
 
-        <Link to="/app/map">Explore Travnik</Link>
+        <Link to="/app/map">{t("main_page_desktop_text.button_text")}</Link>
       </div>
 
       {tours.length > 0 && (
         <div className={styles.rightWrapper}>
-          <span className={styles.choiceSub}>🔥 Event of our choice</span>
+          <span className={styles.choiceSub}>🔥 {t("main_page_desktop_text.event_of_choice")}</span>
           <div
             className={styles.eventWrapper}
             style={{

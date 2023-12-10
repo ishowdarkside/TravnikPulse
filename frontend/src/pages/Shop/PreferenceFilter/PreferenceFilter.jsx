@@ -4,10 +4,12 @@ import { useTouristDataContext } from "../../../context/TouristDataContext";
 import { useGetAllShops } from "../../../hooks/useShops";
 
 import styles from "./PreferenceFilter.module.scss";
+import { useTranslation } from "react-i18next";
 
 export default function PreferenceFilter() {
   const { activeShopPreference, setActiveShopPreference } =
     useTouristDataContext();
+  const [t] = useTranslation('main');
 
   const { data: shops, isLoading } = useGetAllShops();
 
@@ -31,7 +33,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Clothing
+          {t("main_page_shop.preferences.1")}
         </div>
       </div>
       <div
@@ -45,7 +47,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Souvenir
+          {t("main_page_shop.preferences.2")}
         </div>
       </div>
       <div
@@ -59,7 +61,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Art
+          {t("main_page_shop.preferences.3")}
         </div>
       </div>
       <div
@@ -73,7 +75,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Bookstores
+          {t("main_page_shop.preferences.4")}
         </div>
       </div>
       <div
@@ -87,7 +89,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Jewelry
+          {t("main_page_shop.preferences.5")}
         </div>
       </div>{" "}
       <div
@@ -101,7 +103,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Home
+          {t("main_page_shop.preferences.6")}
         </div>
       </div>
       <div
@@ -115,7 +117,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Electronics
+          {t("main_page_shop.preferences.7")}
         </div>
       </div>
       <div
@@ -129,7 +131,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Food
+          {t("main_page_shop.preferences.8")}
         </div>
       </div>
       <div
@@ -143,7 +145,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Grocery
+          {t("main_page_shop.preferences.9")}
         </div>
       </div>
       <div
@@ -157,7 +159,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Music
+          {t("main_page_shop.preferences.10")}
         </div>
       </div>
       <div
@@ -171,7 +173,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Beauty
+          {t("main_page_shop.preferences.11")}
         </div>
       </div>
       <div
@@ -185,7 +187,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Toys
+          {t("main_page_shop.preferences.12")}
         </div>
       </div>
       <div
@@ -199,7 +201,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Sports
+          {t("main_page_shop.preferences.13")}
         </div>
       </div>
       <div
@@ -213,7 +215,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Pets
+          {t("main_page_shop.preferences.14")}
         </div>
       </div>
       <div
@@ -227,7 +229,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Technology
+          {t("main_page_shop.preferences.15")}
         </div>
       </div>
       <div
@@ -241,7 +243,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Shoe Stores
+          {t("main_page_shop.preferences.16")}
         </div>
       </div>
       <div
@@ -255,7 +257,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Health
+          {t("main_page_shop.preferences.17")}
         </div>
       </div>
       <div
@@ -269,7 +271,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          Florists
+          {t("main_page_shop.preferences.18")}
         </div>
       </div>
     </section>
