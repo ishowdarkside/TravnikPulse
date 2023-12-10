@@ -39,6 +39,8 @@ import MapContext from "./context/MapContext";
 import EditPreferences from "./pages/Settings/EditPreferencesSettings/EditPreferencesSettings";
 import Spinner from "./components/Spinner/Spinner";
 import NotFound from "./pages/NotFound/NotFound";
+import { LanguageTranslator } from "./components/LanguageTranslator";
+import LanguageContext from "./context/LanguageContext";
 
 const queryClient = new QueryClient();
 
@@ -56,102 +58,158 @@ function App() {
                   path="dashboard"
                   element={
                     <TouristDataContext>
-                      <Protect>
-                        <TourPanel />
-                      </Protect>
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <Protect>
+                            <TourPanel />
+                          </Protect>
+                        </LanguageTranslator>
+                      </LanguageContext>
                     </TouristDataContext>
                   }
                 />
                 <Route
                   path="login"
                   element={
-                    <Protect>
-                      <Login />
-                    </Protect>
+                    <LanguageContext>
+                      <LanguageTranslator>
+                        <Protect>
+                          <Login />
+                        </Protect>
+                      </LanguageTranslator>
+                    </LanguageContext>
                   }
                 />
                 <Route
                   path="register"
                   element={
-                    <Protect>
-                      <Register />
-                    </Protect>
+                    <LanguageContext>
+                      <LanguageTranslator>
+                        <Protect>
+                          <Register />
+                        </Protect>
+                      </LanguageTranslator>
+                    </LanguageContext>
                   }
                 />
                 <Route path="admin">
                   <Route
                     index
                     element={
-                      <AdminContext>
-                        <ProtectAdmin>
-                          <Admin />
-                        </ProtectAdmin>
-                      </AdminContext>
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <AdminContext>
+                            <ProtectAdmin>
+                              <Admin />
+                            </ProtectAdmin>
+                          </AdminContext>
+                        </LanguageTranslator>
+                      </LanguageContext>
                     }
                   />
                   <Route
                     path="edit-tour/:tourID"
                     element={
-                      <ProtectAdmin>
-                        <EditTourAdmin />
-                      </ProtectAdmin>
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <ProtectAdmin>
+                            <EditTourAdmin />
+                          </ProtectAdmin>
+                        </LanguageTranslator>
+                      </LanguageContext>
                     }
                   />
                   <Route
                     path="create-tour"
                     element={
-                      <AdminContext>
-                        <ProtectAdmin>
-                          <CreateTourAdmin />
-                        </ProtectAdmin>
-                      </AdminContext>
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <AdminContext>
+                            <ProtectAdmin>
+                              <CreateTourAdmin />
+                            </ProtectAdmin>
+                          </AdminContext>
+                        </LanguageTranslator>
+                      </LanguageContext>
                     }
                   />
                   <Route
                     path="calendar"
                     element={
-                      <AdminContext>
-                        <ProtectAdmin>
-                          <AdminCalendar />
-                        </ProtectAdmin>
-                      </AdminContext>
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <AdminContext>
+                            <ProtectAdmin>
+                              <AdminCalendar />
+                            </ProtectAdmin>
+                          </AdminContext>
+                        </LanguageTranslator>
+                      </LanguageContext>
                     }
                   />
                   <Route
                     path="reviews"
                     element={
-                      <ProtectAdmin>
-                        <AdminReviews />
-                      </ProtectAdmin>
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <ProtectAdmin>
+                            <AdminReviews />
+                          </ProtectAdmin>
+                        </LanguageTranslator>
+                      </LanguageContext>
                     }
                   />
                   <Route
                     path="reviews/:reviewID"
                     element={
-                      <ProtectAdmin>
-                        <AdminSingleReview />
-                      </ProtectAdmin>
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <ProtectAdmin>
+                            <AdminSingleReview />
+                          </ProtectAdmin>
+                        </LanguageTranslator>
+                      </LanguageContext>
                     }
                   />
                   <Route
                     path="shops"
                     element={
-                      <ProtectAdmin>
-                        <Page />
-                      </ProtectAdmin>
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <ProtectAdmin>
+                            <Page />
+                          </ProtectAdmin>
+                        </LanguageTranslator>
+                      </LanguageContext>
                     }
                   />
-                  <Route path="shops/create-shop" element={<CreateShop />} />
-                  <Route path="edit-shop/:shopID" element={<EditShop />} />
+                  <Route path="shops/create-shop" element={
+                    <LanguageContext>
+                      <LanguageTranslator>
+                        <CreateShop />
+                      </LanguageTranslator>
+                    </LanguageContext>
+                  } />
+                  <Route path="edit-shop/:shopID" element={
+                    <LanguageContext>
+                      <LanguageTranslator>
+                        <EditShop />
+                      </LanguageTranslator>
+                    </LanguageContext>
+                  } />
                 </Route>
                 <Route
                   path="map"
                   element={
-                    <MapContext>
-                      <Protect>
-                        <Map />
-                      </Protect>
-                    </MapContext>
+                    <LanguageContext>  
+                      <LanguageTranslator>
+                        <MapContext>
+                          <Protect>
+                            <Map />
+                          </Protect>
+                        </MapContext>
+                      </LanguageTranslator>
+                    </LanguageContext>
                   }
                 />
 
@@ -159,55 +217,85 @@ function App() {
                   path="shop"
                   element={
                     <TouristDataContext>
-                      <Shop />
+                      <LanguageContext>
+                        <LanguageTranslator>
+                          <Shop />
+                        </LanguageTranslator>
+                      </LanguageContext>
                     </TouristDataContext>
                   }
                 />
                 <Route
                   path="settings"
                   element={
-                    <Protect>
-                      <TouristDataContext>
-                        <Settings />
-                      </TouristDataContext>
-                    </Protect>
+                    <LanguageContext>
+                      <LanguageTranslator>
+                        <Protect>
+                          <TouristDataContext>
+                            <Settings />
+                          </TouristDataContext>
+                        </Protect>
+                      </LanguageTranslator>
+                    </LanguageContext>
                   }
                 />
                 <Route
                   path="settings/preferences"
                   element={
-                    <Protect>
-                      <EditPreferences />
-                    </Protect>
+                    <LanguageContext>
+                      <LanguageTranslator>
+                        <Protect>
+                          <EditPreferences />
+                        </Protect>
+                      </LanguageTranslator>
+                    </LanguageContext>
                   }
                 />
                 <Route
                   path="tour/:tourID"
                   element={
-                    <MapContext>
-                      <Protect>
-                        <Tour />
-                      </Protect>
-                    </MapContext>
+                    <LanguageContext>  
+                      <LanguageTranslator>
+                        <MapContext>
+                          <Protect>
+                            <Tour />
+                          </Protect>
+                        </MapContext>
+                      </LanguageTranslator>
+                    </LanguageContext>
                   }
                 />
                 <Route
                   path="calendar"
                   element={
-                    <Protect>
-                      <CalendarPage />
-                    </Protect>
+                    <LanguageContext>
+                      <LanguageTranslator>
+                        <Protect>
+                          <CalendarPage />
+                        </Protect>
+                      </LanguageTranslator>
+                    </LanguageContext>
                   }
                 />
-                <Route path="me" element={<Me />} />
+                <Route path="me" element={
+                  <LanguageContext>
+                    <LanguageTranslator>
+                      <Me />
+                    </LanguageTranslator>
+                  </LanguageContext>
+                } />
               </Route>
               <Route
                 path="/welcome"
                 element={
                   <TouristDataContext>
-                    <PreventInit>
-                      <WelcomePage />
-                    </PreventInit>
+                    <LanguageContext>
+                      <LanguageTranslator>
+                        <PreventInit>
+                          <WelcomePage />
+                        </PreventInit>
+                      </LanguageTranslator>
+                    </LanguageContext>
                   </TouristDataContext>
                 }
               />

@@ -5,9 +5,9 @@ import MobileNav from "../../components/MobileNav/MobileNav";
 import Navbar from "../../components/Navbar/Navbar";
 import BosnianFlag from "../../assets/bosnian-flag.png";
 import USAFlag from "../../assets/usa-flag.png";
+import GermanFlag from "../../assets/german-flag.png";
+import SpanishFlag from "../../assets/spanish-flag.png";
 import checkImage from "../../assets/check-heart.png";
-import notificationIcon from "../../assets/notification-icon.png";
-import reportIcon from "../../assets/report-icon.png";
 import ChangeLanguageDropdown from "./ChangeLanguageDropdown/ChangeLanguageDropdown";
 // React icons
 import { BiUserCircle } from "react-icons/bi";
@@ -20,10 +20,12 @@ import Modal from "./Modal/Modal";
 import Spinner from "../../components/Spinner/Spinner";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
 import travnikLogo from "../../assets/main-logo.png";
+import { useLanguageContext } from "../../context/LanguageContext";
 
 export default function Settings() {
-  const [langDropdown, setLangDropdown] = useState();
-  const { language, setSuggestPlace, suggestPlace } = useTouristDataContext();
+  const [langDropdown, setLangDropdown] = useState(false);
+  const { setSuggestPlace, suggestPlace } = useTouristDataContext();
+  const { language } = useLanguageContext();
   const { data: user, isLoading } = useGetUser();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const navigate = useNavigate();
@@ -74,6 +76,8 @@ export default function Settings() {
                 >
                   {language === "bs" && <img src={BosnianFlag} alt="" />}
                   {language === "en" && <img src={USAFlag} alt="" />}
+                  {language === "de" && <img src={GermanFlag} alt="" />}
+                  {language === "es" && <img src={SpanishFlag} alt="" />}
                   <span>Change language</span>
                   {langDropdown && (
                     <ChangeLanguageDropdown setLangDropdown={setLangDropdown} />

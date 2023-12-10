@@ -11,7 +11,6 @@ export default function PreferenceFilter() {
   const userPreferences = JSON.parse(localStorage.getItem("preferences"));
 
   useEffect(() => {
-    console.log(userPreferences);
     setActivePreference(userPreferences[0]);
   }, []);
   const navigate = useNavigate();

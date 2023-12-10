@@ -1,0 +1,84 @@
+{
+    "main_page_navbar": {
+        "links": {
+            "1": "Tablero",
+            "2": "Mapa",
+            "3": "Tiendas",
+            "4": "Calendario",
+            "5": "Configuraciones",
+            "login": "Iniciar sesión",
+            "admin": "Administración"
+        }
+    },
+    "main_page_hotels": {
+        "text": "de ti"
+    },
+    "main_page_mobile_h1_text": "Encontramos un lugar para dormir",
+    "main_page_desktop_text": {
+        "h1_text": "Bienvenido a Travnik",
+        "h2_text": "¡Ciudad de gente buena y buena comida!",
+        "button_text": "Explorar Travnik",
+        "event_of_choice": "Evento de nuestra elección"
+    },
+    "preferences": {
+        "links": {
+            "0": "Agregar",
+            "1": "Comida",
+            "2": "Vida nocturna",
+            "3": "Arte",
+            "4": "Historia",
+            "5": "Museos",
+            "6": "Películas",
+            "7": "Música",
+            "8": "Cultura",
+            "9": "Parques",
+            "10": "Ciencia",
+            "11": "Deportes"
+        }
+    },
+    "main_page_tour_details": {
+        "free_text": "GRATIS",
+        "rate_tour": "Calificar tour",
+        "view_location_text": "Ver ubicación en mapa",
+        "review_button_text": "Dejar una reseña",
+        "bookmark_button_text": "Marcar esta actividad",
+        "review_form": {
+            "h1_text": "Tu reseña es increíblemente útil, gracias",
+            "message_label_text": "Mensaje",
+            "message_input_placeholder": "Tu mensaje",
+            "images_label_text": "Adjuntar imágenes",
+            "button_text": "Enviar reseña"
+        }
+    },
+    "main_page_map": {
+        "nav_links": {
+            "1": "Todos",
+            "2": "Radio",
+            "3": "Eventos",
+            "4": "Hoteles",
+            "5": "Tiendas"
+        },
+        "popup_details": {
+            "direction_button_text": "Direcciones",
+            "see_more_button_text": "Ver más",
+            "overview_text": "VISTA GENERAL",
+            "overview_route_calculate": "Iniciar ruta para calcular",
+            "overview_price_free": "GRATIS"
+        }
+    },
+    "main_page_calendar": {
+        "events_text": "eventos"
+    },
+    "main_page_settings": {
+        "h3_text": "Configuraciones generales",
+        "links": {
+            "1": "Mi perfil",
+            "2": "Cambiar idioma",
+            "3": "Cambiar preferencias",
+            "4": "Restablecer configuraciones",
+            "5": "Desactivar sugerencias",
+            "6": "Activar sugerencias",
+            "7": "Cerrar sesión"
+        }
+    }
+}

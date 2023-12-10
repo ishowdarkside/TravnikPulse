@@ -3,8 +3,10 @@ import Logo from "../../assets/simple-logo.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useGetUser } from "../../hooks/useAuth";
 import Spinner from "../../components/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
 export default function DesktopNav() {
   const { data: user, isLoading } = useGetUser();
+  const [t] = useTranslation("main");
 
   const location = useLocation();
 
@@ -18,19 +20,19 @@ export default function DesktopNav() {
 
         <ul>
           <li>
-            <NavLink to="/app/dashboard">Dashboard</NavLink>
+            <NavLink to="/app/dashboard">{t("main_page_navbar.links.1")}</NavLink>
           </li>
           <li>
-            <NavLink to="/app/map">Map</NavLink>
+            <NavLink to="/app/map">{t("main_page_navbar.links.2")}</NavLink>
           </li>
           <li>
-            <NavLink to="/app/shop">Shops</NavLink>
+            <NavLink to="/app/shop">{t("main_page_navbar.links.3")}</NavLink>
           </li>
           <li>
-            <NavLink to="/app/calendar">Calendar</NavLink>
+            <NavLink to="/app/calendar">{t("main_page_navbar.links.4")}</NavLink>
           </li>
           <li>
-            <NavLink to="/app/settings">Settings</NavLink>
+            <NavLink to="/app/settings">{t("main_page_navbar.links.5")}</NavLink>
           </li>
           <li
             className={`${styles.operation} ${
@@ -38,7 +40,7 @@ export default function DesktopNav() {
             }`}
           >
             <NavLink to="/app/me">
-              {user.role ? user.username : "Login "}
+              {user.role ? user.username : t("main_page_navbar.links.login")}
             </NavLink>
           </li>
         </ul>

@@ -6,8 +6,9 @@ import SpanishFlag from "../../../assets/spanish-flag.png";
 import USAFlag from "../../../assets/usa-flag.png";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import { useTranslation } from "react-i18next";
+import { useLanguageContext } from "../../../context/LanguageContext";
 export default function Language() {
-  const { setLanguage, setActivePanel } = useTouristDataContext();
+  const { setLanguage, setActivePanel } = useLanguageContext();
   const [t, i18n] = useTranslation("welcome");
   return (
     <section className={styles.languageSection}>

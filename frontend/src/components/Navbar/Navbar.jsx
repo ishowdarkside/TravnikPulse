@@ -5,9 +5,11 @@ import styles from "./Navbar.module.scss";
 import { useGetUser } from "../../hooks/useAuth";
 import { BiSolidUserCircle, BiLogInCircle } from "react-icons/bi";
 import Spinner from "../Spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const { data: user, isLoading } = useGetUser();
+  const [t] = useTranslation("main");
 
   const location = useLocation();
 
@@ -32,7 +34,7 @@ export default function Navbar() {
 
         {!user.role && location.pathname !== "/app/login" && (
           <Link className={styles.loginBtn} to="/app/login">
-            Log in <BiLogInCircle />
+            {t("main_page_navbar.links.login")} <BiLogInCircle />
           </Link>
         )}
       </nav>

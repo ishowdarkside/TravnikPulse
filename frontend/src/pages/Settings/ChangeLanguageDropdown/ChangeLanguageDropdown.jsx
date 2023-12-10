@@ -6,9 +6,10 @@ import GermanFlag from "../../../assets/german-flag.png";
 import SpanishFlag from "../../../assets/spanish-flag.png";
 // SCSS
 import styles from './ChangeLanguageDropdown.module.scss';
+import { useLanguageContext } from "../../../context/LanguageContext";
 
 export default function ChangeLanguageDropdown({ setLangDropdown }) {
-    const { language, setLanguage } = useTouristDataContext();
+    const { language, setLanguage } = useLanguageContext();
 
     return (
         <div className={styles.changeLangDropdown}>
