@@ -5,6 +5,7 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useCreateShop } from "../../../hooks/useShops";
 import toast from "react-hot-toast";
 import Spinner from "../../../components/Spinner/Spinner";
+import CategoryPalete from "../../../components/CategoryPalete/CategoryPalete";
 export default function CreateShopFrom() {
   const [position, setPosition] = useState([]);
   const [shopName, setShopName] = useState("");
@@ -44,14 +45,7 @@ export default function CreateShopFrom() {
 
       <div className={styles.inputWrapper}>
         <label htmlFor="category">Add shop category</label>
-        <input
-          type="text"
-          name="category"
-          id="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value.toLowerCase())}
-          placeholder="ex. food, restaurant"
-        />
+        <CategoryPalete setCategory={setCategory} category={category} />
       </div>
       <div className={styles.inputWrapper}>
         <span>Cover image</span>

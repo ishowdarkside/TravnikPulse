@@ -20,11 +20,12 @@ export default function Preference() {
   const navigate = useNavigate();
 
   function handleClick() {
+    console.log(language);
     localStorage.setItem("selectedVisitPeriod", selectedVisitPeriod);
     localStorage.setItem("visitCount", visitCount);
     localStorage.setItem("position", JSON.stringify(position));
     localStorage.setItem("preferences", JSON.stringify(preferences));
-    localStorage.setItem("language", JSON.stringify(language));
+    // localStorage.setItem("language", JSON.stringify(language));
     localStorage.setItem("suggestPlace", JSON.stringify(suggestPlace));
 
     navigate("/app");

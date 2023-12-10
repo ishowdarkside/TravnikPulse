@@ -15,6 +15,7 @@ export default function LanguageContext({ children }) {
   }, [setLanguage]);
 
   useEffect(() => {
+    if (!language) return;
     localStorage.setItem("language", JSON.stringify(language));
   }, [language]);
 
@@ -22,7 +23,7 @@ export default function LanguageContext({ children }) {
     <context.Provider
       value={{
         language,
-        setLanguage
+        setLanguage,
       }}
     >
       {children}

@@ -8,7 +8,8 @@ import { useTouristDataContext } from "../../../context/TouristDataContext";
 import { useTranslation } from "react-i18next";
 import { useLanguageContext } from "../../../context/LanguageContext";
 export default function Language() {
-  const { setLanguage, setActivePanel } = useLanguageContext();
+  const { setLanguage } = useLanguageContext();
+  const { setActivePanel } = useTouristDataContext();
   const [t, i18n] = useTranslation("welcome");
   return (
     <section className={styles.languageSection}>
@@ -19,7 +20,7 @@ export default function Language() {
         <div className={styles.languagesWrapper}>
           <div
             onClick={() => {
-              i18n.changeLanguage('bs')
+              i18n.changeLanguage("bs");
               setLanguage("ba");
               setActivePanel("explore");
             }}
@@ -29,7 +30,7 @@ export default function Language() {
           </div>
           <div
             onClick={() => {
-              i18n.changeLanguage('en')
+              i18n.changeLanguage("en");
               setLanguage("en");
               setActivePanel("explore");
             }}
@@ -39,7 +40,7 @@ export default function Language() {
           </div>
           <div
             onClick={() => {
-              i18n.changeLanguage('de')
+              i18n.changeLanguage("de");
               setLanguage("de");
               setActivePanel("explore");
             }}
@@ -49,7 +50,7 @@ export default function Language() {
           </div>
           <div
             onClick={() => {
-              i18n.changeLanguage('es')
+              i18n.changeLanguage("es");
               setLanguage("es");
               setActivePanel("explore");
             }}
