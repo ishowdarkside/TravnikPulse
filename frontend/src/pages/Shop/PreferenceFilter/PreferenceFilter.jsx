@@ -2,14 +2,31 @@ import { useEffect } from "react";
 import Spinner from "../../../components/Spinner/Spinner";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import { useGetAllShops } from "../../../hooks/useShops";
-
+import { FaTshirt } from "react-icons/fa";
+import { GiBigDiamondRing } from "react-icons/gi";
+import { FaPaintbrush } from "react-icons/fa6";
+import { GiHeartPlus } from "react-icons/gi";
+import { FaBookOpen } from "react-icons/fa";
 import styles from "./PreferenceFilter.module.scss";
 import { useTranslation } from "react-i18next";
+import { IoHomeSharp } from "react-icons/io5";
+import { GiHeartNecklace } from "react-icons/gi";
+import { MdLocalGroceryStore } from "react-icons/md";
+import { MdFastfood } from "react-icons/md";
+import { PiFlowerBold } from "react-icons/pi";
+import { MdMusicNote } from "react-icons/md";
+import { MdToys } from "react-icons/md";
+import { RiScissors2Line } from "react-icons/ri";
+import { AiFillThunderbolt } from "react-icons/ai";
+import { FaComputer } from "react-icons/fa6";
+import { FaPaw } from "react-icons/fa";
+import { MdSportsTennis } from "react-icons/md";
+import { GiSteeltoeBoots } from "react-icons/gi";
 
 export default function PreferenceFilter() {
   const { activeShopPreference, setActiveShopPreference } =
     useTouristDataContext();
-  const [t] = useTranslation('main');
+  const [t] = useTranslation("main");
 
   const { data: shops, isLoading } = useGetAllShops();
 
@@ -33,7 +50,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.1")}
+          <FaTshirt /> {t("main_page_shop.preferences.1")}
         </div>
       </div>
       <div
@@ -47,7 +64,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.2")}
+          <GiBigDiamondRing /> {t("main_page_shop.preferences.2")}
         </div>
       </div>
       <div
@@ -61,7 +78,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.3")}
+          <FaPaintbrush /> {t("main_page_shop.preferences.3")}
         </div>
       </div>
       <div
@@ -75,7 +92,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.4")}
+          <FaBookOpen /> {t("main_page_shop.preferences.4")}
         </div>
       </div>
       <div
@@ -89,7 +106,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.5")}
+          <GiHeartNecklace /> {t("main_page_shop.preferences.5")}
         </div>
       </div>{" "}
       <div
@@ -103,7 +120,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.6")}
+          <IoHomeSharp /> {t("main_page_shop.preferences.6")}
         </div>
       </div>
       <div
@@ -117,7 +134,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.7")}
+          <AiFillThunderbolt /> {t("main_page_shop.preferences.7")}
         </div>
       </div>
       <div
@@ -131,7 +148,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.8")}
+          <MdFastfood /> {t("main_page_shop.preferences.8")}
         </div>
       </div>
       <div
@@ -145,6 +162,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
+          <MdLocalGroceryStore />
           {t("main_page_shop.preferences.9")}
         </div>
       </div>
@@ -159,6 +177,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
+          <MdMusicNote />
           {t("main_page_shop.preferences.10")}
         </div>
       </div>
@@ -173,6 +192,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
+          <RiScissors2Line />
           {t("main_page_shop.preferences.11")}
         </div>
       </div>
@@ -187,7 +207,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.12")}
+          <MdToys /> {t("main_page_shop.preferences.12")}
         </div>
       </div>
       <div
@@ -201,7 +221,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.13")}
+          <MdSportsTennis /> {t("main_page_shop.preferences.13")}
         </div>
       </div>
       <div
@@ -215,7 +235,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.14")}
+          <FaPaw /> {t("main_page_shop.preferences.14")}
         </div>
       </div>
       <div
@@ -229,7 +249,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.15")}
+          <FaComputer /> {t("main_page_shop.preferences.15")}
         </div>
       </div>
       <div
@@ -243,7 +263,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.16")}
+          <GiSteeltoeBoots /> {t("main_page_shop.preferences.16")}
         </div>
       </div>
       <div
@@ -257,7 +277,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.17")}
+          <GiHeartPlus /> {t("main_page_shop.preferences.17")}
         </div>
       </div>
       <div
@@ -271,7 +291,7 @@ export default function PreferenceFilter() {
               : styles.icon
           }
         >
-          {t("main_page_shop.preferences.18")}
+          <PiFlowerBold /> {t("main_page_shop.preferences.18")}
         </div>
       </div>
     </section>

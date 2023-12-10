@@ -37,6 +37,9 @@
 
     .icon {
       padding: 0.6rem 4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       min-height: 4.5rem;
       border-radius: 100px;
       color: #000;
