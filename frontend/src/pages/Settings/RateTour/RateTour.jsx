@@ -4,6 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useGetSingleTour, useRateTour } from "../../../hooks/useTours";
 import Spinner from "../../../components/Spinner/Spinner";
 import { useGetUser } from "../../../hooks/useAuth";
+import { useTranslation } from "react-i18next";
 export default function RateTour() {
   const { data: tour, isLoading: isLoadingTour } = useGetSingleTour();
   const { data: user, isLoading: isLoadingUser } = useGetUser();
@@ -13,6 +14,7 @@ export default function RateTour() {
     const myRating = tour.ratings.find((rating) => rating.user === user._id);
     return myRating ? +myRating.value : 0;
   });
+  const [t] = useTranslation('main');
   const hasAlreadyRated = tour.ratings.find(
     (rating) => rating.user === user._id
   )
@@ -28,7 +30,7 @@ export default function RateTour() {
 
   return (
     <div className={styles.fillerFlex}>
-      <span>Rate tour</span>
+      <span>{t("main_page_tour_details.rate_tour")}</span>
       <div className={styles.stars}>
         <AiFillStar
           className={
