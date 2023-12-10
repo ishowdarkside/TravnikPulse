@@ -109,5 +109,23 @@
 			"17": "Gesundheit",
 			"18": "Blumenläden"
 		}
-	}
+	},
+	"main_page_login": {
+		"h1_text": "Willkommen zurück!",
+		"p_text": "Melden Sie sich an, um eine Bewertung zu veröffentlichen und den Ort zu bewerten, an dem Sie waren.",
+		"username_label_text": "Benutzername",
+		"username_placeholder_text": "johndoe",
+		"password_label_text": "Passwort",
+		"login_button_text": "Anmelden",
+		"create_account_text": "Konto erstellen"
+	},
+	"main_page_register": {
+		"h1_text": "Neues Konto erstellen",
+		"p_text": "Wenn Sie noch keins haben, können Sie gerne ein neues Konto erstellen, indem Sie ein einfaches Formular ausfüllen.",
+		"username_label_text": "Benutzername",
+		"username_placeholder_text": "johndoe",
+		"password_label_text": "Passwort",
+		"confirm_pass_label_text": "Passwort bestätigen",
+		"register_button_text": "Konto erstellen"
+	}	
 }

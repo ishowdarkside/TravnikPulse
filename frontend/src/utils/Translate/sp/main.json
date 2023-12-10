@@ -109,5 +109,23 @@
             "17": "Salud",
             "18": "Florerías"
         }
-    }
+    },
+    "main_page_login": {
+        "h1_text": "¡Bienvenido de nuevo!",
+        "p_text": "Inicia sesión para publicar una reseña y calificar el lugar donde has estado.",
+        "username_label_text": "Nombre de usuario",
+        "username_placeholder_text": "johndoe",
+        "password_label_text": "Contraseña",
+        "login_button_text": "Iniciar sesión",
+        "create_account_text": "Crear cuenta"
+    },
+    "main_page_register": {
+        "h1_text": "Crear una nueva cuenta",
+        "p_text": "Si no tienes una, siéntete libre de crear una nueva cuenta rellenando un formulario sencillo.",
+        "username_label_text": "Nombre de usuario",
+        "username_placeholder_text": "johndoe",
+        "password_label_text": "Contraseña",
+        "confirm_pass_label_text": "Confirmar contraseña",
+        "register_button_text": "Crear cuenta"
+    }    
 }

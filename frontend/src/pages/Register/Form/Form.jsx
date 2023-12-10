@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useSignup } from "../../../hooks/useAuth";
 import Spinner from "../../../components/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 export default function Form({ styles }) {
   const { mutate, isLoading } = useSignup();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [t] = useTranslation('main');
 
   if (isLoading) return <Spinner />;
 
@@ -19,7 +21,7 @@ export default function Form({ styles }) {
       }}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">{t("main_page_register.username_label_text")}</label>
         <input
           type="text"
           id="username"
@@ -29,7 +31,7 @@ export default function Form({ styles }) {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t("main_page_register.password_label_text")}</label>
         <input
           type="password"
           id="password"
@@ -39,7 +41,7 @@ export default function Form({ styles }) {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="passwordConfirm">Repeat Password</label>
+        <label htmlFor="passwordConfirm">{t("main_page_register.confirm_pass_label_text")}</label>
         <input
           type="password"
           id="passwordConfirm"
@@ -49,7 +51,7 @@ export default function Form({ styles }) {
         />
       </div>
 
-      <button>Create Account</button>
+      <button>{t("main_page_register.register_button_text")}</button>
     </form>
   );
 }

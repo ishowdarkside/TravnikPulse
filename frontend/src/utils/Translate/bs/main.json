@@ -109,5 +109,23 @@
 			"17": "Zdravlje",
 			"18": "Cvjećare"
 		}
+	},
+	"main_page_login": {
+		"h1_text": "Dobrodošli natrag!",
+		"p_text": "Prijavite se kako biste objavili recenziju i ocijenili mjesto gdje ste bili.",
+		"username_label_text": "Korisničko ime",
+		"username_placeholder_text": "johndoe",
+		"password_label_text": "Lozinka",
+		"login_button_text": "Prijava",
+		"create_account_text": "Kreirajte račun"
+	},
+	"main_page_register": {
+		"h1_text": "Kreirajte novi račun",
+		"p_text": "Ako ga nemate, slobodno kreirajte novi račun popunjavanjem jednostavnog obrasca.",
+		"username_label_text": "Korisničko ime",
+		"username_placeholder_text": "johndoe",
+		"password_label_text": "Lozinka",
+		"confirm_pass_label_text": "Potvrdi lozinku",
+		"register_button_text": "Kreirajte račun"
 	}
 }

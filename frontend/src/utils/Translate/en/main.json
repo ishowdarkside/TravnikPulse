@@ -109,5 +109,21 @@
 			"17": "Health",
 			"18": "Florists"
 		}
+	},
+	"main_page_login": {
+		"h1_text": "Welcome back!",
+		"p_text": "Log in to post a review, and rate the place where you’ve been",
+		"username_label_text": "Username",
+		"password_label_text": "Password",
+		"login_button_text": "Login",
+		"create_account_text": "Create Account"
+	},
+	"main_page_register": {
+		"h1_text": "Create New Account",
+		"p_text": "If you don’t have one, feel free to create new account by filling simple form",
+		"username_label_text": "Username",
+		"password_label_text": "Password",
+		"confirm_pass_label_text": "Password",
+		"register_button_text": "Create Account"
 	}
 }

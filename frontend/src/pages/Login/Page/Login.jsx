@@ -6,9 +6,11 @@ import { useGetUser } from "../../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import Spinner from "../../../components/Spinner/Spinner";
 import DesktopNav from "../../../components/DesktopNav/DesktopNav";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
   const { data: user, isLoading } = useGetUser();
+  const [t] = useTranslation("main");
   if (isLoading) return <Spinner />;
 
   if (user !== "Unauthorized" && user.role) return <Navigate to="/app/me" />;
@@ -18,8 +20,8 @@ export default function Login() {
       <DesktopNav />
       <section className={styles.loginSection}>
         <div className={styles.container}>
-          <h2>Welcome back!</h2>
-          <p>Log in to post a review, and rate the place where you’ve been</p>
+          <h2>{t("main_page_login.h1_text")}</h2>
+          <p>{t("main_page_login.p_text")}</p>
           <Form styles={styles} />
         </div>
       </section>
