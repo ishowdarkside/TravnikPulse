@@ -1,67 +1,69 @@
+import { useTranslation } from "react-i18next";
 import styles from "./CategoryPalete.module.scss";
 export default function CategoryPalete({ category, setCategory }) {
+  const [t] = useTranslation('profile')
   return (
     <div className={styles.categoryGridWrapper}>
       <div
         className={category === "clothing" ? styles.activeOption : ""}
         onClick={() => setCategory("clothing")}
       >
-        Clothing
+        {t("profile_shop_page.form_create.preferences.1")}
       </div>
       <div
         className={category === "souvenir shops" ? styles.activeOption : ""}
         onClick={() => setCategory("souvenir shops")}
       >
-        Souvenir Shops
+        {t("profile_shop_page.form_create.preferences.2")}
       </div>
       <div
         className={category === "art" ? styles.activeOption : ""}
         onClick={() => setCategory("art")}
       >
-        Art
+        {t("profile_shop_page.form_create.preferences.3")}
       </div>
       <div
         className={category === "bookstores" ? styles.activeOption : ""}
         onClick={() => setCategory("bookstores")}
       >
-        Bookstores
+        {t("profile_shop_page.form_create.preferences.4")}
       </div>
       <div
         className={category === "jewelry" ? styles.activeOption : ""}
         onClick={() => setCategory("jewelry")}
       >
         {" "}
-        Jewelry
+        {t("profile_shop_page.form_create.preferences.5")}
       </div>
       <div
         className={category === "home decor" ? styles.activeOption : ""}
         onClick={() => setCategory("home decor")}
       >
-        Home Decor
+        {t("profile_shop_page.form_create.preferences.6")}
       </div>
       <div
         className={category === "electronics" ? styles.activeOption : ""}
         onClick={() => setCategory("electronics")}
       >
-        Electronics
+        {t("profile_shop_page.form_create.preferences.7")}
       </div>
       <div
         className={category === "food" ? styles.activeOption : ""}
         onClick={() => setCategory("food")}
       >
-        Food
+        {t("profile_shop_page.form_create.preferences.8")}
       </div>
       <div
         className={category === "grocery" ? styles.activeOption : ""}
         onClick={() => setCategory("grocery")}
       >
-        Grocery
+        {t("profile_shop_page.form_create.preferences.9")}
       </div>
       <div
         className={category === "music store" ? styles.activeOption : ""}
         onClick={() => setCategory("music store")}
       >
-        Music store
+        {t("profile_shop_page.form_create.preferences.10")}
       </div>
       <div
         className={
@@ -69,37 +71,37 @@ export default function CategoryPalete({ category, setCategory }) {
         }
         onClick={() => setCategory("beauty and cosmetics")}
       >
-        Beauty and Cosmetics
+        {t("profile_shop_page.form_create.preferences.11")}
       </div>
       <div
         className={category === "toys and games" ? styles.activeOption : ""}
         onClick={() => setCategory("toys and games")}
       >
-        Toys and Games
+        {t("profile_shop_page.form_create.preferences.12")}
       </div>
       <div
         className={category === "sports and fitness" ? styles.activeOption : ""}
         onClick={() => setCategory("sports and fitness")}
       >
-        Sports and Fitness
+        {t("profile_shop_page.form_create.preferences.13")}
       </div>
       <div
         className={category === "pet shops" ? styles.activeOption : ""}
         onClick={() => setCategory("pet shops")}
       >
-        Pet Shops
+        {t("profile_shop_page.form_create.preferences.14")}
       </div>
       <div
         className={category === "tech and gadgets" ? styles.activeOption : ""}
         onClick={() => setCategory("tech and gadgets")}
       >
-        Tech and Gadgets
+        {t("profile_shop_page.form_create.preferences.15")}
       </div>
       <div
         className={category === "shoe stores" ? styles.activeOption : ""}
         onClick={() => setCategory("shoe stores")}
       >
-        Shoe Stores
+        {t("profile_shop_page.form_create.preferences.16")}
       </div>
       <div
         className={
@@ -107,13 +109,13 @@ export default function CategoryPalete({ category, setCategory }) {
         }
         onClick={() => setCategory("health and wellness")}
       >
-        Health and Wellness
+        {t("profile_shop_page.form_create.preferences.17")}
       </div>
       <div
         className={category === "florists" ? styles.activeOption : ""}
         onClick={() => setCategory("florists")}
       >
-        Florists
+        {t("profile_shop_page.form_create.preferences.18")}
       </div>
     </div>
   );
