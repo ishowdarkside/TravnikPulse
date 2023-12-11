@@ -6,15 +6,15 @@ import EditTourMap from "../EditShopMap/EditShopMap";
 import { useForm } from "react-hook-form";
 import { useEditShop } from "../../../hooks/useShops";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
 export default function EditShopForm({ shop }) {
-  //staviti state iz toura kad prebacim na string
-
   const [category, setCategory] = useState(shop.category);
   const [position, setPosition] = useState(shop.location.coordinates);
 
   const { register, handleSubmit } = useForm();
   const { mutate, isLoading } = useEditShop();
+  const [t] = useTranslation('profile');
 
   async function submitFnc(data) {
     if (data.coverImg.length === 0) delete data.coverImg;
@@ -39,9 +39,9 @@ export default function EditShopForm({ shop }) {
       onSubmit={handleSubmit((data) => submitFnc(data))}
       className={styles.form}
     >
-      <h1>Edit Shop</h1>
+      <h1>{t("profile_shop_page.form_edit.h1_text")}</h1>
       <div className={styles.inputWrapper}>
-        <label htmlFor="name">Title</label>
+        <label htmlFor="name">{t("profile_shop_page.form_edit.title_label")}</label>
         <input
           type="text"
           name="shopName"
@@ -50,20 +50,20 @@ export default function EditShopForm({ shop }) {
         />
       </div>{" "}
       <div className={styles.inputWrapper}>
-        <label htmlFor="category">Add shop category</label>
+        <label htmlFor="category">{t("profile_shop_page.form_edit.add_shop_category")}</label>
         <input
           type="text"
           name="category"
           id="category"
           onChange={(e) => setCategory(e.target.value.toLowerCase())}
-          placeholder="ex. food, restaurant"
+          placeholder=""
           defaultValue={shop.category}
         />
       </div>
       <div className={styles.inputWrapper}>
-        <span>Cover Image</span>
+        <span>{t("profile_shop_page.form_edit.cover_image_label")}</span>
         <label htmlFor="coverImg" className={styles.labelImg}>
-          Choose cover image <AiOutlineCloudUpload />
+        {t("profile_shop_page.form_edit.choose_cover_image")} <AiOutlineCloudUpload />
         </label>
         <input
           type="file"
@@ -75,7 +75,7 @@ export default function EditShopForm({ shop }) {
         />
       </div>
       <div>
-        <span>Choose location of shop</span>
+        <span>{t("profile_shop_page.form_edit.choose_location")}</span>
         <EditTourMap
           shop={shop}
           position={position}
@@ -83,7 +83,7 @@ export default function EditShopForm({ shop }) {
         />
       </div>
       <button type="submit" className={styles.submitBtn}>
-        Save changes
+      {t("profile_shop_page.form_edit.save_button_text")}
       </button>
     </form>
   );

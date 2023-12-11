@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import styles from "./ReviewComponent.module.scss";
+import { useTranslation } from "react-i18next";
 
 export default function ReviewComponent({ i, review }) {
+  const [t] = useTranslation('profile');
   const navigate = useNavigate();
 
   return (
@@ -12,7 +14,7 @@ export default function ReviewComponent({ i, review }) {
     >
       <div className={styles.index}>{i}</div>
       <p>
-        <b>{review.user.username} </b> left a review on tour "
+        <b>{review.user.username} </b> {t("profile_reviews_page.left_a_review_message")} "
         {review?.tour?.name}"
       </p>
     </div>

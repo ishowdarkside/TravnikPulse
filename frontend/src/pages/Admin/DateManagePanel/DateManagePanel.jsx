@@ -6,11 +6,13 @@ import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import EventComponent from "./EventComponent/EventComponent";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../../../components/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 export default function DateManagePanel() {
   const { data, isLoading } = useGetTours();
   const { activeDate, setActiveDate } = useAdminContext();
   const navigate = useNavigate();
+  const [t] = useTranslation('profile');
 
   if (isLoading) return <Spinner />;
 
@@ -41,8 +43,7 @@ export default function DateManagePanel() {
 
         {matchingDateTours.length === 0 && (
           <span className={styles.absPosition}>
-            No tours on this date! Start creating some by clicking on plus icon
-            .
+            {t("profile_events_page.no_events")}
           </span>
         )}
       </div>

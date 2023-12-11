@@ -8,10 +8,12 @@ import Spinner from "../../../components/Spinner/Spinner.jsx";
 
 import DesktopNav from "../../../components/DesktopNav/DesktopNav.jsx";
 import MobileNav from "../../../components/MobileNav/MobileNav.jsx";
+import { useTranslation } from "react-i18next";
 
 export default function Page() {
   const { data: shops, isLoading } = useGetAllShops();
   const navigate = useNavigate();
+  const [t] = useTranslation('profile');
   if (isLoading) return <Spinner />;
 
   const allShopsGrouped = Object.entries(groupShopsByCategory(shops));
@@ -22,7 +24,7 @@ export default function Page() {
       <DesktopNav />
 
       <section className={styles.sectionBody}>
-        <h2>Shops</h2>
+        <h2>{t("profile_shop_page.h1_text")}</h2>
         <div className={styles.shopsWrapper}>
           {allShopsGrouped.map((shop, i) => {
             return (

@@ -10,9 +10,10 @@ import styles from "./AdminSingleReview.module.scss";
 import Spinner from "../../components/Spinner/Spinner";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
 import MobileNav from "../../components/MobileNav/MobileNav";
-import Navbar from "../../components/Navbar/Navbar";
+import { useTranslation } from "react-i18next";
 
 export default function AdminSingleReview() {
+  const [t] = useTranslation('profile');
   const { data, isLoading } = useGetSingleUnapprovedReview();
   const { mutate: approve, isLoading: isApproving } = useApproveReview();
   const { mutate: decline, isLoading: isDeleting } = useDeclineReview();
@@ -33,8 +34,8 @@ export default function AdminSingleReview() {
 
       <section className={styles.sectionBody}>
         <div className={styles.allWrapper}>
-          <h2>Review</h2>
-          <p className={styles.sub}>Approve or decline review request</p>
+          <h2>{t("profile_reviews_page.review.h1_text")}</h2>
+          <p className={styles.sub}>{t("profile_reviews_page.review.p_text")}</p>
 
           <div className={styles.userWrapper}>
             <AiOutlineUser /> <span>{data.user?.username}</span>
@@ -63,8 +64,8 @@ export default function AdminSingleReview() {
             </div>
           )}
           <div className={styles.buttonWrapper}>
-            <button onClick={() => approve()}>Approve review</button>
-            <button onClick={() => decline()}>Decline review</button>
+            <button onClick={() => approve()}>{t("profile_reviews_page.review.approve_button_text")}</button>
+            <button onClick={() => decline()}>{t("profile_reviews_page.review.decline_button_text")}</button>
           </div>
         </div>
       </section>

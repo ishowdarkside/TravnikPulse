@@ -12,10 +12,11 @@ import { useCreateTour } from "../../hooks/useTours";
 import { useAdminContext } from "../../context/AdminContext";
 import { Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export default function CreateTourForm() {
   const [selectedPreferences, setSelectedPreferences] = useState([]);
-
+  const [t] = useTranslation('profile');
   const [time, setTime] = useState(null);
   const [price, setPrice] = useState("");
   const [isFree, setIsFree] = useState(false);
@@ -62,30 +63,30 @@ export default function CreateTourForm() {
       onSubmit={handleSubmit((data) => submitFnc(data))}
       className={styles.form}
     >
-      <h1>Create event</h1>
+      <h1>{t("profile_events_page.form_create_edit.h1_text_create")}</h1>
       <div className={styles.inputWrapper}>
-        <label htmlFor="name">Title</label>
+        <label htmlFor="name">{t("profile_events_page.form_create_edit.title_label_text")}</label>
         <input
           type="text"
           name="name"
-          placeholder="Title goes here"
+          placeholder={t("profile_events_page.form_create_edit.title_placeholder_text")}
           {...register("name", { required: true })}
         />
         {errors.name && (
           <span className={styles.errorMsg}>
-            Provide title of your activity
+            {t("profile_events_page.form_create_edit.title_error_text")}
           </span>
         )}
       </div>
       <div className={styles.inputWrapper}>
-        <span>Categories</span>
+        <span>{t("profile_events_page.form_create_edit.categories_label_text")}</span>
         <EditTourPreferences
           selectedPreferences={selectedPreferences}
           setSelectedPreferences={setSelectedPreferences}
         />
       </div>
       <div className={styles.inputWrapper}>
-        <span>Select time</span>
+        <span>{t("profile_events_page.form_create_edit.select_time_label_text")}</span>
         <TimePicker
           showTimeSelect
           timeFormat="p"
@@ -96,7 +97,7 @@ export default function CreateTourForm() {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <label htmlFor="duration">Duration (in minutes)</label>
+        <label htmlFor="duration">{t("profile_events_page.form_create_edit.duration_label_text")}</label>
         <input
           type="number"
           placeholder="120 Minutes"
@@ -105,12 +106,12 @@ export default function CreateTourForm() {
         />
         {errors.duration && (
           <span className={styles.errorMsg}>
-            Provide duration of your activity
+            {t("profile_events_page.form_create_edit.duration_error_text")}
           </span>
         )}
       </div>
       <div className={styles.inputWrapper}>
-        <span>Price</span>
+        <span>{t("profile_events_page.form_create_edit.price_label_text")}</span>
         <div className={styles.pricingWrapper}>
           <span
             className={isFree ? styles.isFree : styles.freeBtn}
@@ -128,21 +129,21 @@ export default function CreateTourForm() {
         </div>
       </div>
       <div className={styles.inputWrapper}>
-        <span>Description</span>
+        <span>{t("profile_events_page.form_create_edit.description_label_text")}</span>
         <textarea
-          placeholder="Description"
+          placeholder={t("profile_events_page.form_create_edit.description_label_text")}
           {...register("description", { required: true })}
         ></textarea>
         {errors.description && (
           <span className={styles.errorMsg}>
-            Provide description of activity
+            {t("profile_events_page.form_create_edit.description_error_text")}
           </span>
         )}
       </div>
       <div className={styles.inputWrapper}>
-        <span>Cover Image</span>
+        <span>{t("profile_events_page.form_create_edit.cover_image_label")}</span>
         <label htmlFor="coverImg" className={styles.labelImg}>
-          Choose cover image <AiOutlineCloudUpload />
+        {t("profile_events_page.form_create_edit.choose_cover_image")} <AiOutlineCloudUpload />
         </label>
         <input
           type="file"
@@ -154,17 +155,17 @@ export default function CreateTourForm() {
         />
         {errors.coverImg && (
           <span className={styles.errorMsg}>
-            Provide cover image of activity
+            {t("profile_events_page.form_create_edit.choose_cover_error_text")}
           </span>
         )}
       </div>
 
       <div>
-        <span>Choose location of activity</span>
+        <span>{t("profile_events_page.form_create_edit.choose_activity_location")}</span>
         <EditTourMap position={position} setPosition={setPosition} />
       </div>
       <button type="submit" className={styles.submitBtn}>
-        Save changes
+        {t("profile_events_page.form_create_edit.submit_button_text")}
       </button>
     </form>
   );

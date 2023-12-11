@@ -9,6 +9,7 @@ import EditTourMap from "../EditTourMap/EditTourMap";
 import { useForm } from "react-hook-form";
 import { useEditTour } from "../../../hooks/useTours";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
 export default function EditTourForm({ tour }) {
   const [selectedPreferences, setSelectedPreferences] = useState(
@@ -22,7 +23,7 @@ export default function EditTourForm({ tour }) {
     tour.price === "FREE" ? true : false
   );
   const [position, setPosition] = useState(tour.location.coordinates);
-
+  const [t] = useTranslation('profile');
   const { register, handleSubmit } = useForm();
   const { mutate, isLoading } = useEditTour();
 
@@ -52,9 +53,9 @@ export default function EditTourForm({ tour }) {
       onSubmit={handleSubmit((data) => submitFnc(data))}
       className={styles.form}
     >
-      <h1>Edit event</h1>
+      <h1>{t("profile_events_page.form_create_edit.h1_text_edit")}</h1>
       <div className={styles.inputWrapper}>
-        <label htmlFor="name">Title</label>
+        <label htmlFor="name">{t("profile_events_page.form_create_edit.title_label_text")}</label>
         <input
           type="text"
           name="name"
@@ -63,14 +64,14 @@ export default function EditTourForm({ tour }) {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <span>Categories</span>
+        <span>{t("profile_events_page.form_create_edit.categories_label_text")}</span>
         <EditTourPreferences
           selectedPreferences={selectedPreferences}
           setSelectedPreferences={setSelectedPreferences}
         />
       </div>
       <div className={styles.inputWrapper}>
-        <span>Select time</span>
+        <span>{t("profile_events_page.form_create_edit.select_time_label_text")}</span>
         <TimePicker
           showTimeSelect
           timeFormat="p"
@@ -81,7 +82,7 @@ export default function EditTourForm({ tour }) {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <label htmlFor="duration">Duration</label>
+        <label htmlFor="duration">{t("profile_events_page.form_create_edit.duration_label_text")}</label>
         <input
           type="number"
           placeholder="120 Minutes"
@@ -91,7 +92,7 @@ export default function EditTourForm({ tour }) {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <span>Price</span>
+        <span>{t("profile_events_page.form_create_edit.price_label_text")}</span>
         <div className={styles.pricingWrapper}>
           <span
             className={isFree ? styles.isFree : styles.freeBtn}
@@ -109,7 +110,7 @@ export default function EditTourForm({ tour }) {
         </div>
       </div>
       <div className={styles.inputWrapper}>
-        <span>Description</span>
+        <span>{t("profile_events_page.form_create_edit.description_label_text")}</span>
         <textarea
           placeholder="Description"
           defaultValue={tour.description}
@@ -117,9 +118,9 @@ export default function EditTourForm({ tour }) {
         ></textarea>
       </div>
       <div className={styles.inputWrapper}>
-        <span>Cover Image</span>
+        <span>{t("profile_events_page.form_create_edit.cover_image_label")}</span>
         <label htmlFor="coverImg" className={styles.labelImg}>
-          Choose cover image <AiOutlineCloudUpload />
+        {t("profile_events_page.form_create_edit.choose_cover_image")} <AiOutlineCloudUpload />
         </label>
         <input
           type="file"
@@ -132,7 +133,7 @@ export default function EditTourForm({ tour }) {
       </div>
 
       <div>
-        <span>Choose location of activity</span>
+        <span>{t("profile_events_page.form_create_edit.choose_activity_location")}</span>
         <EditTourMap
           tour={tour}
           position={position}
@@ -140,7 +141,7 @@ export default function EditTourForm({ tour }) {
         />
       </div>
       <button type="submit" className={styles.submitBtn}>
-        Save changes
+      {t("profile_events_page.form_create_edit.submit_button_text")}
       </button>
     </form>
   );

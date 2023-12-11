@@ -1,0 +1,117 @@
+{
+    "profile_page_home": {
+        "h1_text": "Prijavljeni ste kao administrator",
+        "p_text": "Odaberite radnju koju želite koristiti u adminska ploča da dodate, uređujete ili uklonite događaje.",
+        "links": {
+            "main_link_text": {
+                "1": "Događaji",
+                "2": "Recenzije",
+                "3": "Prodavnice"
+            },
+            "sub_link_text": {
+                "1": "ukupno događaja",
+                "2": "recenzija čeka odobrenje",
+                "3": "ukupno prodavnica"
+            }
+        }
+    },
+    "profile_events_page": {
+        "no_events": "Nema tura za ovaj datum! Počnite kreirati neke klikom na ikonu plus.",
+        "form_create_edit": {
+            "h1_text_create": "Kreirajte događaj",
+            "h1_text_edit": "Uredi događaj",
+            "title_label_text": "Naslov",
+            "title_placeholder_text": "Naslov ide ovdje",
+            "title_error_text": "Obezbijedite naslov vaše aktivnosti",
+            "categories_label_text": "Kategorije",
+            "preferences": {
+                "1": "Hrana",
+                "2": "Noćni život",
+                "3": "Umjetnost",
+                "4": "Historija",
+                "5": "Muzeji",
+                "6": "Filmovi",
+                "7": "Muzika",
+                "8": "Kultura",
+                "9": "Parkovi",
+                "10": "Nauka",
+                "11": "Sport"
+            },
+            "select_time_label_text": "Odaberite vrijeme",
+            "duration_label_text": "Trajanje (u minutama)",
+            "duration_error_text": "Obezbijedite trajanje vaše aktivnosti",
+            "price_label_text": "Cijena",
+            "description_label_text": "Opis",
+            "description_error_text": "Obezbijedite opis aktivnosti",
+            "cover_image_label": "Naslovna slika",
+            "choose_cover_error_text": "Obezbijedite naslovnu sliku aktivnosti",
+            "choose_cover_image": "Izaberite naslovnu sliku",
+            "choose_activity_location": "Izaberite lokaciju aktivnosti",
+            "submit_button_text": "Sačuvajte promjene"
+        }
+    },
+    "profile_reviews_page": {
+        "h1_text": "Recenzije",
+        "p_text": "Provjerite kako su ljudi recenzirali događaje i odobrite njihove recenzije.",
+        "no_reviews": "Nema recenzija za sada 😢! Vratite se kasnije.",
+        "left_a_review_message": "ostavio/la recenziju za turu",
+        "review": {
+            "h1_text": "Recenzija",
+            "p_text": "Odobrite ili odbijte zahtjev za recenziju",
+            "approve_button_text": "Odobri recenziju",
+            "decline_button_text": "Odbij recenziju"
+        }
+    },
+    "profile_shop_page": {
+        "h1_text": "Prodavnice",
+        "preferences": {
+            "1": "Odjeća",
+            "2": "Suveniri",
+            "3": "Umjetnost",
+            "4": "Knjižare",
+            "5": "Nakit",
+            "6": "Kuća",
+            "7": "Elektronika",
+            "8": "Hrana",
+            "9": "Prehrambeni proizvodi",
+            "10": "Muzika",
+            "11": "Ljepota",
+            "12": "Igračke",
+            "13": "Sport",
+            "14": "Kućni ljubimci",
+            "15": "Tehnologija",
+            "16": "Prodavnice obuće",
+            "17": "Zdravlje",
+            "18": "Cvjećare"
+        },
+        "form_create": {
+            "h1_text": "Kreirajte prodavnicu",
+            "shop_name_label": "Dodajte ime prodavnice",
+            "shop_name_placeholder": "npr. Pekara Kabil",
+            "shop_category_label": "Dodajte kategoriju prodavnice",
+            "preferences": {
+
+            },
+            "cover_image_label": "Naslovna slika",
+            "attach_image_label": "Priloži sliku",
+            "shop_location_label": "Dodajte lokaciju prodavnice",
+            "create_shop_button_text": "Kreirajte prodavnicu"
+        },
+        "form_edit": {
+            "h1_text": "Uredi prodavnicu",
+            "title_label": "Naslov",
+            "add_shop_category": "Dodajte kategoriju prodavnice",
+            "cover_image_label": "Naslovna slika",
+            "choose_cover_image": "Izaberite naslovnu sliku",
+            "choose_location": "Izaberite lokaciju prodavnice",
+            "save_button_text": "Sačuvajte promjene" 
+        },
+        "delete_message": {
+            "tour": "Jeste li sigurni da želite izbrisati turu",
+            "shop": "Jeste li sigurni da želite izbrisati",
+            "yes": "DA",
+            "no": "NE",
+            "deleting": "Brisanje..."
+        }
+    }
+}

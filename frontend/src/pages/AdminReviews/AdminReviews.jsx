@@ -5,9 +5,11 @@ import styles from "./AdminReviews.module.scss";
 import Spinner from "../../components/Spinner/Spinner";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
 import MobileNav from "../../components/MobileNav/MobileNav";
+import { useTranslation } from "react-i18next";
 
 export default function AdminReviews() {
   const { data: reviews, isLoading } = useGetUnapprovedReviews();
+  const [t] = useTranslation('profile');
 
   if (isLoading) return <Spinner />;
 
@@ -17,14 +19,14 @@ export default function AdminReviews() {
 
       <ReturnButton />
       <section className={styles.sectionBody}>
-        <h2>Reviews</h2>
+        <h2>{t("profile_reviews_page.h1_text")}</h2>
         <p className={styles.sectionParagraph}>
-          Check how people reviewed the events, and approve their reviews
+        {t("profile_reviews_page.p_text")}
         </p>
 
         {reviews.length === 0 && (
           <span className={styles.noReviews}>
-            No reviews for now 😢! Comeback later.
+            {t("profile_reviews_page.no_reviews")}
           </span>
         )}
         <div className={styles.reviewsWrapper}>

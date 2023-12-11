@@ -14,6 +14,12 @@ import main_en from '../utils/Translate/en/main.json';
 import main_de from '../utils/Translate/de/main.json';
 import main_es from '../utils/Translate/sp/main.json';
 
+// PROFILE PAGE
+import profile_bs from '../utils/Translate/bs/profile.json';
+import profile_en from '../utils/Translate/en/profile.json';
+import profile_de from '../utils/Translate/de/profile.json';
+import profile_es from '../utils/Translate/sp/profile.json';
+
 export const LanguageTranslator = ({ children }) => {
 	const { language } = useLanguageContext();
 
@@ -21,10 +27,10 @@ export const LanguageTranslator = ({ children }) => {
 		lng: language,
 		interpolation: { escapeValue: false },
 		resources: {
-			bs: { welcome: welcome_bs, main: main_bs },
-			en: { welcome: welcome_en, main: main_en },
-			de: { welcome: welcome_de, main: main_de },
-			es: { welcome: welcome_es, main: main_es }
+			bs: { welcome: welcome_bs, main: main_bs, profile: profile_bs },
+			en: { welcome: welcome_en, main: main_en, profile: profile_en },
+			de: { welcome: welcome_de, main: main_de, profile: profile_de },
+			es: { welcome: welcome_es, main: main_es, profile: profile_es }
 		}
 	});
 

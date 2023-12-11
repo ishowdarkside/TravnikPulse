@@ -6,11 +6,13 @@ import { useCreateShop } from "../../../hooks/useShops";
 import toast from "react-hot-toast";
 import Spinner from "../../../components/Spinner/Spinner";
 import CategoryPalete from "../../../components/CategoryPalete/CategoryPalete";
+import { useTranslation } from "react-i18next";
 export default function CreateShopFrom() {
   const [position, setPosition] = useState([]);
   const [shopName, setShopName] = useState("");
   const [category, setCategory] = useState("");
   const [coverImg, setCoverImg] = useState(null);
+  const [t] = useTranslation('profile');
 
   const { mutate, isLoading } = useCreateShop();
 
@@ -32,7 +34,7 @@ export default function CreateShopFrom() {
   return (
     <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
       <div className={styles.inputWrapper}>
-        <label htmlFor="shopName">Add shop name</label>
+        <label htmlFor="shopName">{t("profile_shop_page.form_create.shop_name_label")}</label>
         <input
           type="text"
           name="shopName"
@@ -44,14 +46,14 @@ export default function CreateShopFrom() {
       </div>
 
       <div className={styles.inputWrapper}>
-        <label htmlFor="category">Add shop category</label>
+        <label htmlFor="category">{t("profile_shop_page.form_create.shop_category_label")}</label>
         <CategoryPalete setCategory={setCategory} category={category} />
       </div>
       <div className={styles.inputWrapper}>
-        <span>Cover image</span>
+        <span>{t("profile_shop_page.form_create.cover_image_label")}</span>
         <label htmlFor="coverImg" className={styles.labelImg}>
           {" "}
-          Attach image <AiOutlineCloudUpload />
+          {t("profile_shop_page.form_create.attach_image_label")} <AiOutlineCloudUpload />
         </label>
         <input
           type="file"
@@ -62,10 +64,10 @@ export default function CreateShopFrom() {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <span>Add shop location</span>
+        <span>{t("profile_shop_page.form_create.shop_location_label")}</span>
         <EditTourMap position={position} setPosition={setPosition} />
       </div>
-      <button className={styles.submitBtn}>Create shop</button>
+      <button className={styles.submitBtn}>{t("profile_shop_page.form_create.create_shop_button_text")}</button>
     </form>
   );
 }
