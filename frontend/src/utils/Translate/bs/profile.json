@@ -130,5 +130,15 @@
             "no": "NE",
             "deleting": "Brisanje..."
         }
+    },
+    "client_home": {
+        "hi_text": "Zdravo",
+        "welcome_back_text": "Dobrodošli nazad!",
+        "no_review": "Kada počnete davati recenzije aktivnostima ili ih ocjenjivati, vaše aktivnosti će biti praćene ovdje!",
+        "h1_review_message": "Molimo vas, pregledajte što ste recenzirali.",
+        "h1_rated_message": "Pogledajte ture koje ste ocijenili",
+        "bookmarked_text": "Označene aktivnosti",
+        "approved": "ODOBRENO OD ADMINISTRATORA",
+        "under_review": "POD PREGLEDOM"
     }
 }

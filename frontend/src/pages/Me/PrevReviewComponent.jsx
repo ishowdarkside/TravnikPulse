@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import styles from "./Me.module.scss";
+import { useTranslation } from "react-i18next";
 
 export default function PrevReviewComponent({ review }) {
+  const [t] = useTranslation('profile');
   const navigate = useNavigate();
   return (
     <div onClick={() => navigate(`/app/tour/${review.tour._id}`)}>
@@ -16,7 +18,7 @@ export default function PrevReviewComponent({ review }) {
           review.approved ? styles.approved : ""
         }`}
       >
-        {review.approved ? "Approved by admin" : "Under Review"}
+        {review.approved ? t("client_home.approved") : t("client_home.under_review")}
       </span>
     </div>
   );

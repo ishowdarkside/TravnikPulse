@@ -130,5 +130,15 @@
 			"no": "NEIN",
 			"deleting": "Löschen..."
 		}
-	}
+	},
+    "client_home": {
+        "hi_text": "Hallo",
+        "welcome_back_text": "Willkommen zurück!",
+        "no_review": "Sobald Sie damit beginnen, Bewertungen für Aktivitäten zu geben oder diese zu bewerten, werden Ihre Aktivitäten hier verfolgt!",
+        "h1_review_message": "Bitte werfen Sie einen Blick auf das, was Sie bewertet haben.",
+        "h1_rated_message": "Schauen Sie sich Touren an, die Sie bewertet haben.",
+        "bookmarked_text": "Gespeicherte Aktivitäten",
+        "approved": "VOM ADMINISTRATOR GENEHMIGT",
+        "under_review": "IN ÜBERPRÜFUNG"
+    }
 }

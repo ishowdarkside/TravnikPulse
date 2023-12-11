@@ -8,7 +8,9 @@ import MobileNav from "../../components/MobileNav/MobileNav";
 import Navbar from "../../components/Navbar/Navbar";
 import BookmarkComponent from "./BookmarkComponent/BookmarkComponent";
 import DesktopNav from "../../components/DesktopNav/DesktopNav";
+import { useTranslation } from "react-i18next";
 export default function Me() {
+  const [t] = useTranslation('profile');
   const { data: user, isLoading } = useGetUser();
   if (isLoading) return <h1>LOADING</h1>;
 
@@ -24,7 +26,7 @@ export default function Me() {
         <div className={styles.container}>
           <Navbar />
           <span className={styles.welcomMessage}>
-            Hi <b>{user.username}</b>, welcome back!
+            {t("client_home.hi_text")} <b>{user.username}</b>, {t("client_home.welcome_back_text")}
           </span>
 
           {user.role === "admin" && (
@@ -36,7 +38,7 @@ export default function Me() {
 
           {user.bookmarkedTours.length > 0 && (
             <div className={styles.bookmarksWrapper}>
-              <span className={styles.spanSub}>Bookmarked activities</span>
+              <span className={styles.spanSub}>{t("client_home.bookmarked_text")}</span>
               <div className={styles.bookmarksGrid}>
                 {user.bookmarkedTours.map((tour) => (
                   <BookmarkComponent tour={tour} key={tour._id} />
@@ -48,7 +50,7 @@ export default function Me() {
           {user.reviewedTours.length > 0 && (
             <div className={styles.ReviewPanel}>
               <span className={styles.spanSub}>
-                Please, have a insight on what you’ve reviewed.
+              {t("client_home.h1_review_message")}
               </span>
               <div className={styles.reviewsWrapper}>
                 {user.reviewedTours.map((review) => {
@@ -63,13 +65,13 @@ export default function Me() {
           <div className={styles.ratedToursPanel}>
             {user.ratedTours.length > 0 && (
               <span className={styles.spanSub}>
-                Take a look at tours you have rated
+                {t("client_home.h1_rated_message")}
               </span>
             )}
 
             {user.reviewedTours.length > 0 && user.ratedTours.length === 0 && (
               <span className={styles.spanSub}>
-                Once you start rating activities, they will show up here!
+                {t("client_home.no_rating")}
               </span>
             )}
 
@@ -87,8 +89,7 @@ export default function Me() {
         user.ratedTours.length === 0 &&
         user.bookmarkedTours.length === 0 && (
           <span className={styles.noReviewsNoRatings}>
-            Once you start giving reviews to activities, or rating them, your
-            activity will be tracked here!
+            {t("client_home.no_review_rating")}
           </span>
         )}
     </>

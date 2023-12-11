@@ -130,5 +130,16 @@
 			"no": "NO",
 			"deleting": "Deleting..."
 		}
-	}
+	},
+    "client_home": {
+        "hi_text": "Hi",
+        "welcome_back_text": "welcome back!",
+        "no_review_rating": "Once you start giving reviews to activities, or rating them, your activity will be tracked here!",
+        "no_rating": "Once you start rating activities, they will show up here!",
+        "h1_review_message": "Please, have a insight on what you’ve reviewed.",
+        "h1_rated_message": "Take a look at tours you have rated",
+        "bookmarked_text": "Bookmarked activities",
+        "approved": "APPROVED BY ADMIN",
+        "under_review": "UNDER REVIEW"
+    }
 }
