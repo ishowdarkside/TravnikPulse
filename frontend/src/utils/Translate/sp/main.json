@@ -86,7 +86,13 @@
             "5": "Desactivar sugerencias",
             "6": "Activar sugerencias",
             "7": "Cerrar sesión"
+        },
+        "reset_modal": {
+            "text": "¿Estás seguro de que quieres restablecer todas las configuraciones (Preferencias, Ubicación, etc.)?",
+            "yes": "SÍ",
+            "no": "NO"
         }
+        
     },
     "main_page_shop": {
         "preferences": {

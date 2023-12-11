@@ -13,28 +13,32 @@ export default function ChangeLanguageDropdown({ setLangDropdown }) {
 
     return (
         <div className={styles.changeLangDropdown}>
-            <div className={language === 'bs' ? `${styles.option} ${styles.active}` : styles.option} onClick={() => {
+            <div className={language === 'bs' ? `${styles.option} ${styles.active}` : styles.option} onClick={(e) => {
+                e.stopPropagation()
                 setLanguage('bs')
                 setLangDropdown(false)
             }}>
                 <img src={BosnianFlag} alt="" />
                 <span>Bosnian</span>
             </div>
-            <div className={language === 'en' ? `${styles.option} ${styles.active}` : styles.option} onClick={() => {
+            <div className={language === 'en' ? `${styles.option} ${styles.active}` : styles.option} onClick={(e) => {
+                e.stopPropagation()
                 setLanguage('en')
                 setLangDropdown(false)
             }}>
                 <img src={USAFlag} alt="" />
                 <span>English</span>
             </div>
-            <div className={language === 'de' ? `${styles.option} ${styles.active}` : styles.option} onClick={() => {
+            <div className={language === 'de' ? `${styles.option} ${styles.active}` : styles.option} onClick={(e) => {
+                e.stopPropagation()
                 setLanguage('de')
                 setLangDropdown(false)
             }}>
                 <img src={GermanFlag} alt="" />
                 <span>German</span>
             </div>
-            <div className={language === 'es' ? `${styles.option} ${styles.active}` : styles.option} onClick={() => {
+            <div className={language === 'es' ? `${styles.option} ${styles.active}` : styles.option} onClick={(e) => {
+                e.stopPropagation()
                 setLanguage('es')
                 setLangDropdown(false)
             }}>

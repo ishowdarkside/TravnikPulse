@@ -86,6 +86,11 @@
 			"5": "Disable suggestions",
 			"6": "Enable suggestions",
 			"7": "Log out"
+		},
+		"reset_modal": {
+			"text": "Are you sure that you want to reset all settings (Preferences, Location, etc..)?",
+			"yes": "YES",
+			"no": "NO"
 		}
 	},
 	"main_page_shop": {

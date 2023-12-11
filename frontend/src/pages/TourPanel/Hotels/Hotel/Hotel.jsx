@@ -11,7 +11,6 @@ export default function Hotel({ hotel }) {
 			<div className={styles.hotelOverlay} />
 			<div className={styles.content}>
                 <h2>{hotel.name}</h2>
-                <p>70m {t("main_page_hotels.text")}</p>
                 <div className={styles.reviewStars}>
                     <div className={hotel.rating > 0 ? `${styles.star} ${styles.active}` : styles.star}>
                         <BsFillStarFill />

@@ -86,7 +86,13 @@
 			"5": "Vorschläge deaktivieren",
 			"6": "Vorschläge aktivieren",
 			"7": "Abmelden"
+		},
+		"reset_modal": {
+			"text": "Sind Sie sicher, dass Sie alle Einstellungen zurücksetzen möchten (Präferenzen, Standort usw.)?",
+			"yes": "JA",
+			"no": "NEIN"
 		}
+		
 	},
 	"main_page_shop": {
 		"preferences": {
