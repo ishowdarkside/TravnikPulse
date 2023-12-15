@@ -5,14 +5,15 @@ import styles from "./Activities.module.scss";
 import { useGetTours } from "../../../hooks/useTours";
 import { useTouristDataContext } from "../../../context/TouristDataContext";
 import Spinner from "../../../components/Spinner/Spinner";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export default function Activities() {
   const { data, isLoading } = useGetTours();
   const { activePreference } = useTouristDataContext();
-  const [t] = useTranslation('main')
+  const [t] = useTranslation("main");
 
   if (isLoading) return <Spinner />;
+
   const selectedTours = data.filter(({ categories, date, time }) => {
     const hours = +time.split(":").at(0);
     const minutes = +time.split(":").at(1);

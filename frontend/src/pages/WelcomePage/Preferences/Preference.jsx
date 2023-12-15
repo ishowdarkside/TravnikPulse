@@ -44,6 +44,7 @@ export default function Preference() {
 
         <button
           onClick={() => {
+            if (preferences.length === 0) return;
             setActivePanel("proceed");
             handleClick();
           }}

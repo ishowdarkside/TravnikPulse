@@ -56,7 +56,7 @@ export default function AdminSingleReview() {
             <div className={styles.imgWrapper}>
               {data.images?.map((img) => (
                 <img
-                  src={`http://127.0.1:8000/${img}`}
+                  src={`/${img}`}
                   alt="review image"
                   key={img}
                 />

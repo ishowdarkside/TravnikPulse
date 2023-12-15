@@ -31,10 +31,10 @@ export default function PreferenceFilter() {
   const { data: shops, isLoading } = useGetAllShops();
 
   useEffect(() => {
-    if (isLoading) return;
+    if (isLoading || !shops?.at(0)?.category) return;
 
     setActiveShopPreference(shops.at(0).category);
-  }, [isLoading]);
+  }, [isLoading, shops]);
   if (isLoading) return <Spinner />;
 
   return (

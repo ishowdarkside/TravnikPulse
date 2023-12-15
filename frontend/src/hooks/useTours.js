@@ -56,8 +56,10 @@ export function useCreateTour() {
   const { mutate, isLoading } = useMutation({
     mutationFn: (formData) => createTour(formData),
     onSuccess: (res) => {
+      toast.success("HELLO");
       if (res.status === "success") {
         toast.success(res.message);
+
         queryClient.invalidateQueries(["tours"]);
         return navigate(-1);
       }

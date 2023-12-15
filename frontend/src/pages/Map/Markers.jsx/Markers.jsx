@@ -12,7 +12,7 @@ export default function Markers({ tour }) {
   console.log(tour)
 
   const customIcon = new L.Icon({
-    iconUrl: `http://127.0.1:8000/${tour.coverImg}`,
+    iconUrl: `/${tour.coverImg}`,
     iconSize: [48, 48],
     iconAnchor: [24, 48],
     popupAnchor: [0, -48],

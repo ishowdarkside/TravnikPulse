@@ -107,6 +107,7 @@
 }
 .settingsWrapper {
   padding: 2rem;
+  padding-bottom: 12rem;
   @include desktop-lg() {
     padding: 10rem 2rem;
     width: 100%;

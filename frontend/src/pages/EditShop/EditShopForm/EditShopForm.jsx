@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import styles from "./EditTourForm.module.scss";
-
+import CategoryPalete from "../../../components/CategoryPalete/CategoryPalete";
 import EditTourMap from "../EditShopMap/EditShopMap";
 import { useForm } from "react-hook-form";
 import { useEditShop } from "../../../hooks/useShops";
@@ -14,7 +14,7 @@ export default function EditShopForm({ shop }) {
 
   const { register, handleSubmit } = useForm();
   const { mutate, isLoading } = useEditShop();
-  const [t] = useTranslation('profile');
+  const [t] = useTranslation("profile");
 
   async function submitFnc(data) {
     if (data.coverImg.length === 0) delete data.coverImg;
@@ -41,7 +41,9 @@ export default function EditShopForm({ shop }) {
     >
       <h1>{t("profile_shop_page.form_edit.h1_text")}</h1>
       <div className={styles.inputWrapper}>
-        <label htmlFor="name">{t("profile_shop_page.form_edit.title_label")}</label>
+        <label htmlFor="name">
+          {t("profile_shop_page.form_edit.title_label")}
+        </label>
         <input
           type="text"
           name="shopName"
@@ -50,20 +52,17 @@ export default function EditShopForm({ shop }) {
         />
       </div>{" "}
       <div className={styles.inputWrapper}>
-        <label htmlFor="category">{t("profile_shop_page.form_edit.add_shop_category")}</label>
-        <input
-          type="text"
-          name="category"
-          id="category"
-          onChange={(e) => setCategory(e.target.value.toLowerCase())}
-          placeholder=""
-          defaultValue={shop.category}
-        />
+        <label htmlFor="category">
+          {t("profile_shop_page.form_edit.add_shop_category")}
+        </label>
+
+        <CategoryPalete category={category} setCategory={setCategory} />
       </div>
       <div className={styles.inputWrapper}>
         <span>{t("profile_shop_page.form_edit.cover_image_label")}</span>
         <label htmlFor="coverImg" className={styles.labelImg}>
-        {t("profile_shop_page.form_edit.choose_cover_image")} <AiOutlineCloudUpload />
+          {t("profile_shop_page.form_edit.choose_cover_image")}{" "}
+          <AiOutlineCloudUpload />
         </label>
         <input
           type="file"
@@ -83,7 +82,7 @@ export default function EditShopForm({ shop }) {
         />
       </div>
       <button type="submit" className={styles.submitBtn}>
-      {t("profile_shop_page.form_edit.save_button_text")}
+        {t("profile_shop_page.form_edit.save_button_text")}
       </button>
     </form>
   );
